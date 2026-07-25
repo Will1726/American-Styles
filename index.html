@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>American Style Store</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"/>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#f4f4f4;
+}
+
+/*================ HEADER =================*/
+
+header{
+
+    position:fixed;
+    top:0;
+    left:0;
+
+    width:100%;
+    height:80px;
+
+    background:white;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    padding:0 8%;
+
+    box-shadow:0 3px 10px rgba(0,0,0,.08);
+
+    z-index:1000;
+
+}
+
+.logo{
+
+    font-size:28px;
+    font-weight:700;
+
+}
+
+.logo i{
+
+    color:#0F62FE;
+
+}
+
+nav{
+
+    display:flex;
+    gap:30px;
+
+}
+
+nav a{
+
+    text-decoration:none;
+    color:#333;
+    font-weight:500;
+    transition:.3s;
+
+}
+
+nav a:hover{
+
+    color:#0F62FE;
+
+}
+
+.acciones{
+
+    display:flex;
+    gap:20px;
+    align-items:center;
+
+}
+
+.buscar{
+
+    background:#eee;
+
+    border-radius:30px;
+
+    padding:10px 18px;
+
+}
+
+.buscar input{
+
+    border:none;
+    outline:none;
+    background:none;
+
+}
+
+.carrito{
+
+    width:50px;
+    height:50px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:#0F62FE;
+
+    color:white;
+
+    cursor:pointer;
+
+    position:relative;
+
+    font-size:18px;
+
+}
+
+#contador{
+
+    position:absolute;
+
+    top:-5px;
+    right:-5px;
+
+    width:22px;
+    height:22px;
+
+    background:red;
+
+    border-radius:50%;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    font-size:12px;
+
+}
+
+/*================ HERO =================*/
+
+.hero{
+
+    height:100vh;
+
+    background:url("https://images.unsplash.com/photo-1523381210434-271e8be1f52b?w=1600") center center/cover;
+
+    display:flex;
+    align-items:center;
+
+    padding:0 10%;
+
+}
+
+.hero::before{
+
+    content:"";
+
+    position:absolute;
+
+    left:0;
+    top:0;
+
+    width:100%;
+    height:100vh;
+
+    background:rgba(0,0,0,.45);
+
+}
+
+.hero-texto{
+
+    position:relative;
+
+    color:white;
+
+    max-width:600px;
+
+}
+
+.hero h1{
+
+    font-size:65px;
+
+}
+
+.hero p{
+
+    margin:20px 0;
+
+    font-size:20px;
+
+}
+
+.hero button{
+
+    background:#0F62FE;
+
+    color:white;
+
+    border:none;
+
+    padding:18px 45px;
+
+    border-radius:40px;
+
+    cursor:pointer;
+
+    font-size:18px;
+
+    transition:.3s;
+
+}
+
+.hero button:hover{
+
+    background:#0049c9;
+
+}
+
+/*================ CATEGORIAS =================*/
+
+.categorias{
+
+    padding:80px 10%;
+
+    display:flex;
+    justify-content:center;
+
+    flex-wrap:wrap;
+
+    gap:30px;
+
+}
+
+.categoria{
+
+    width:250px;
+
+    background:white;
+
+    border-radius:15px;
+
+    padding:40px;
+
+    text-align:center;
+
+    transition:.3s;
+
+}
+
+.categoria:hover{
+
+    transform:translateY(-10px);
+
+    box-shadow:0 10px 25px rgba(0,0,0,.15);
+
+}
+
+.categoria i{
+
+    font-size:45px;
+
+    color:#0F62FE;
+
+    margin-bottom:20px;
+
+}
+
+/*================ PRODUCTOS =================*/
+
+.productos{
+
+    padding:40px 8%;
+
+}
+
+.productos h2{
+
+    text-align:center;
+
+    margin-bottom:40px;
+
+}
+
+.grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+
+    gap:30px;
+
+}
+
+.card{
+
+    background:white;
+
+    border-radius:15px;
+
+    overflow:hidden;
+
+    transition:.3s;
+
+}
+
+.card:hover{
+
+    transform:translateY(-10px);
+
+    box-shadow:0 15px 25px rgba(0,0,0,.15);
+
+}
+
+.card img{
+
+    width:100%;
+    height:320px;
+
+    object-fit:cover;
+
+}
+
+.card h3{
+
+    margin:15px;
+
+}
+
+.card p{
+
+    margin:0 15px;
+
+    color:#0F62FE;
+
+    font-weight:bold;
+
+    font-size:20px;
+
+}
+
+.card button{
+
+    width:90%;
+
+    margin:20px auto;
+
+    display:block;
+
+    border:none;
+
+    background:#0F62FE;
+
+    color:white;
+
+    padding:14px;
+
+    border-radius:10px;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.card button:hover{
+
+    background:#0049c9;
+
+}
+
+/*================ FOOTER =================*/
+
+footer{
+
+    margin-top:80px;
+
+    background:#111;
+
+    color:white;
+
+    text-align:center;
+
+    padding:50px;
+
+}
+
+footer h2{
+
+    margin-bottom:15px;
+
+}
+
+.redes{
+
+    margin:25px;
+
+}
+
+.redes i{
+
+    margin:0 15px;
+
+    font-size:28px;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.redes i:hover{
+
+    color:#0F62FE;
+
+}
+
+/*================ RESPONSIVE =================*/
+
+@media(max-width:900px){
+
+nav{
+
+display:none;
+
+}
+
+header{
+
+padding:0 20px;
+
+}
+
+.hero h1{
+
+font-size:45px;
+
+}
+
+.hero p{
+
+font-size:18px;
+
+}
+
+}
+
+</style>
+
+</head>
+<body>
+
+<header>
+
+<div class="logo">
+<i class="fa-solid fa-shirt"></i>
+American Style
+</div>
+
+<nav>
+
+<a href="#">Inicio</a>
+<a href="#productos">Productos</a>
+<a href="#">Hombre</a>
+<a href="#">Mujer</a>
+<a href="#">Ofertas</a>
+<a href="#">Contacto</a>
+
+</nav>
+
+<div class="acciones">
+
+<div class="buscar">
+
+<i class="fa-solid fa-magnifying-glass"></i>
+
+<input type="text" placeholder="Buscar">
+
+</div>
+
+<button class="carrito">
+
+<i class="fa-solid fa-cart-shopping"></i>
+
+<span id="contador">0</span>
+
+</button>
+
+</div>
+
+</header>
+
+<section class="hero">
+
+<div class="hero-texto">
+
+<h1>Nueva Colección 2026</h1>
+
+<p>
+Las mejores marcas americanas con precios increíbles.
+</p>
+
+<button>Comprar ahora</button>
+
+</div>
+
+</section>
+
+<section class="categorias">
+
+<div class="categoria">
+
+<i class="fa-solid fa-shirt"></i>
+
+<h3>Hombre</h3>
+
+</div>
+
+<div class="categoria">
+
+<i class="fa-solid fa-person-dress"></i>
+
+<h3>Mujer</h3>
+
+</div>
+
+<div class="categoria">
+
+<i class="fa-solid fa-hat-cowboy"></i>
+
+<h3>Accesorios</h3>
+
+</div>
+
+</section>
+
+<section class="productos" id="productos">
+
+<h2>Productos Destacados</h2>
+
+<div class="grid">
+
+<div class="card">
+
+<img src="https://picsum.photos/400/500?1">
+
+<h3>Sudadera Nike</h3>
+
+<p>$750 MXN</p>
+
+<button>Agregar al carrito</button>
+
+</div>
+
+<div class="card">
+
+<img src="https://picsum.photos/400/500?2">
+
+<h3>Jeans Levi's</h3>
+
+<p>$650 MXN</p>
+
+<button>Agregar al carrito</button>
+
+</div>
+
+<div class="card">
+
+<img src="https://picsum.photos/400/500?3">
+
+<h3>Playera Adidas</h3>
+
+<p>$420 MXN</p>
+
+<button>Agregar al carrito</button>
+
+</div>
+
+<div class="card">
+
+<img src="https://picsum.photos/400/500?4">
+
+<h3>Chamarra Tommy</h3>
+
+<p>$1,250 MXN</p>
+
+<button>Agregar al carrito</button>
+
+</div>
+
+<div class="card">
+
+<img src="https://picsum.photos/400/500?5">
+
+<h3>Gorra New Era</h3>
+
+<p>$480 MXN</p>
+
+<button>Agregar al carrito</button>
+
+</div>
+
+<div class="card">
+
+<img src="https://picsum.photos/400/500?6">
+
+<h3>Tenis Converse</h3>
+
+<p>$1,450 MXN</p>
+
+<button>Agregar al carrito</button>
+
+</div>
+
+</div>
+
+</section>
+
+<footer>
+
+<h2>American Style Store</h2>
+
+<p>Moda americana original para todos.</p>
+
+<div class="redes">
+
+<i class="fab fa-facebook"></i>
+
+<i class="fab fa-instagram"></i>
+
+<i class="fab fa-tiktok"></i>
+
+<i class="fab fa-whatsapp"></i>
+
+</div>
+
+<p>© 2026 American Style Store | Todos los derechos reservados.</p>
+
+</footer>
+
+<script>
+
+let carrito=0;
+
+const contador=document.getElementById("contador");
+
+const botones=document.querySelectorAll(".card button");
+
+botones.forEach(boton=>{
+
+boton.onclick=()=>{
+
+carrito++;
+
+contador.innerHTML=carrito;
+
+}
+
+});
+
+</script>
+
+</body>
+</html>
