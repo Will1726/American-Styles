@@ -482,13 +482,22 @@ American Style
 
 <nav>
 
-<a href="#">Inicio</a>
-<a href="#productos">Productos</a>
-<a href="#">Hombre</a>
-<a href="#">Mujer</a>
-<a href="#">Ofertas</a>
-<a href="#">Contacto</a>
+<nav>
 
+<a href="#">Inicio</a>
+
+<a href="#hombre">Hombre</a>
+
+<a href="#mujer">Mujer</a>
+
+<a href="#infantil">Infantil</a>
+
+<a href="#accesorios">Accesorios</a>
+
+<a href="#contacto">Contacto</a>
+
+<a href="#ofertas">Ofertas</a>
+</nav>
 </nav>
 
 <div class="acciones">
@@ -497,7 +506,7 @@ American Style
 
 <i class="fa-solid fa-magnifying-glass"></i>
 
-<input type="text" placeholder="Buscar">
+<input type="text" id="buscador" placeholder="Buscar productos...">
 
 </div>
 
@@ -559,7 +568,7 @@ Las mejores marcas americanas con precios increíbles.
 
 <div class="grid">
 
-<div class="card">
+<div class="card" data-categoria="hombre">
 
 <img src="https://picsum.photos/400/500?1">
 
@@ -571,7 +580,7 @@ Las mejores marcas americanas con precios increíbles.
 
 </div>
 
-<div class="card">
+<div class="card" data-categoria="hombre">
 
 <img src="https://picsum.photos/400/500?2">
 
@@ -592,7 +601,7 @@ Las mejores marcas americanas con precios increíbles.
 
 <div class="grid">
 
-<div class="card">
+<div class="card" data-categoria="mujer">
 
 <img src="https://picsum.photos/400/500?3">
 
@@ -604,7 +613,7 @@ Las mejores marcas americanas con precios increíbles.
 
 </div>
 
-<div class="card">
+<div class="card" data-categoria="mujer">
 
 <img src="https://picsum.photos/400/500?4">
 
@@ -625,7 +634,7 @@ Las mejores marcas americanas con precios increíbles.
 
 <div class="grid">
 
-<div class="card">
+<div class="card" data-categoria="infantil">
 
 <img src="https://picsum.photos/400/500?5">
 
@@ -637,7 +646,7 @@ Las mejores marcas americanas con precios increíbles.
 
 </div>
 
-<div class="card">
+<div class="card" data-categoria="infantil">
 
 <img src="https://picsum.photos/400/500?6">
 
@@ -658,7 +667,7 @@ Las mejores marcas americanas con precios increíbles.
 
 <div class="grid">
 
-<div class="card">
+<div class="card" data-categoria="accesorios">
 
 <img src="https://picsum.photos/400/500?7">
 
@@ -670,7 +679,7 @@ Las mejores marcas americanas con precios increíbles.
 
 </div>
 
-<div class="card">
+<div class="card" data-categoria="accesorios">
 
 <img src="https://picsum.photos/400/500?8">
 
@@ -725,6 +734,35 @@ carrito++;
 contador.innerHTML=carrito;
 
 }
+
+});
+    // BUSCADOR
+
+const buscador = document.getElementById("buscador");
+
+buscador.addEventListener("keyup", function () {
+
+    const texto = this.value.toLowerCase();
+
+    const productos = document.querySelectorAll(".card");
+
+    productos.forEach(producto => {
+
+        const nombre = producto.querySelector("h3").textContent.toLowerCase();
+
+        const categoria = producto.dataset.categoria.toLowerCase();
+
+        if (nombre.includes(texto) || categoria.includes(texto)) {
+
+            producto.style.display = "block";
+
+        } else {
+
+            producto.style.display = "none";
+
+        }
+
+    });
 
 });
 
