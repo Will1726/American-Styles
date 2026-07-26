@@ -967,7 +967,14 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/12.1.0/firebas
 
 import { getAuth } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
 
-import { getFirestore } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
+import { 
+getFirestore,
+doc,
+setDoc,
+getDoc,
+addDoc,
+collection
+} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
 
 const firebaseConfig = {
 
@@ -992,6 +999,27 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
 const db = getFirestore(app);
+
+let usuarioActual = null;
+
+import {
+onAuthStateChanged
+} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
+
+
+onAuthStateChanged(auth,(usuario)=>{
+
+if(usuario){
+
+usuarioActual = usuario;
+
+console.log("Usuario:",usuario.email);
+
+cargarCarrito();
+
+}
+
+});
 
 console.log("🔥 Firebase conectado correctamente.");
 
@@ -1115,8 +1143,31 @@ function actualizarCarrito() {
     });
 
     totalCarrito.textContent = total;
+guardarCarrito();
+}
+
+async function cargarCarrito(){
+
+const referencia = doc(
+db,
+"carritos",
+usuarioActual.uid
+);
+
+
+const datos = await getDoc(referencia);
+
+
+if(datos.exists()){
+
+carrito = datos.data().productos;
+
+actualizarCarrito();
 
 }
+
+}
+    
 function cambiarCantidad(id,cambio){
 
     const producto = carrito.find(p=>p.id===id);
@@ -1140,6 +1191,20 @@ function eliminarProducto(id){
     carrito = carrito.filter(p=>p.id!==id);
 
     actualizarCarrito();
+
+}
+    async function guardarCarrito(){
+
+if(!usuarioActual) return;
+
+
+await setDoc(
+doc(db,"carritos",usuarioActual.uid),
+{
+productos:carrito
+}
+);
+
 
 }
     // BUSCADOR
@@ -1182,13 +1247,27 @@ return;
 
 }
 
-alert("Gracias por tu compra 🛍️");
+await addDoc(collection(db,"pedidos"),{
+
+usuario:usuarioActual.uid,
+
+productos:carrito,
+
+total:carrito.reduce(
+(total,p)=>total+(p.precio*p.cantidad),0
+),
+
+fecha:new Date()
+
+});
+
+
+alert("Compra realizada correctamente 🛍️");
+
 
 carrito=[];
 
 actualizarCarrito();
-
-});
     window.cambiarCantidad = cambiarCantidad;
 window.eliminarProducto = eliminarProducto;
 
