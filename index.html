@@ -9,9 +9,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"/>
-
+    
 <style>
-
+/*================ CSS =================*/
 *{
     margin:0;
     padding:0;
@@ -437,7 +437,111 @@ footer h2{
     color:#0F62FE;
 
 }
+/*================ CARRITO LATERAL =================*/
 
+#panelCarrito{
+
+    position: fixed;
+
+    top: 0;
+
+    right: -400px;
+
+    width: 350px;
+
+    height: 100vh;
+
+    background: white;
+
+    box-shadow: -5px 0 20px rgba(0,0,0,.2);
+
+    z-index: 3000;
+
+    transition: .4s;
+
+    display: flex;
+
+    flex-direction: column;
+
+}
+
+#panelCarrito.activo{
+
+    right: 0;
+
+}
+
+.encabezadoCarrito{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:20px;
+
+    border-bottom:1px solid #ddd;
+
+}
+
+#cerrarCarrito{
+
+    border:none;
+
+    background:none;
+
+    font-size:22px;
+
+    cursor:pointer;
+
+}
+
+#listaCarrito{
+
+    flex:1;
+
+    overflow-y:auto;
+
+    padding:20px;
+
+}
+
+.pieCarrito{
+
+    border-top:1px solid #ddd;
+
+    padding:20px;
+
+}
+
+#comprar{
+
+    width:100%;
+
+    margin-top:15px;
+
+    padding:15px;
+
+    border:none;
+
+    background:#0F62FE;
+
+    color:white;
+
+    border-radius:10px;
+
+    cursor:pointer;
+
+    font-size:16px;
+
+}
+
+#comprar:hover{
+
+    background:#0049c9;
+
+}
 /*================ RESPONSIVE =================*/
 
 @media(max-width:900px){
@@ -482,8 +586,6 @@ American Style
 
 <nav>
 
-<nav>
-
 <a href="#">Inicio</a>
 
 <a href="#hombre">Hombre</a>
@@ -497,7 +599,7 @@ American Style
 <a href="#contacto">Contacto</a>
 
 <a href="#ofertas">Ofertas</a>
-</nav>
+
 </nav>
 
 <div class="acciones">
@@ -510,8 +612,8 @@ American Style
 
 </div>
 
-<button class="carrito">
-
+<button class="carrito" id="abrirCarrito">
+    
 <i class="fa-solid fa-cart-shopping"></i>
 
 <span id="contador">0</span>
@@ -521,6 +623,29 @@ American Style
 </div>
 
 </header>
+
+<div id="panelCarrito">
+
+    <div class="encabezadoCarrito">
+        <h2>🛒 Mi carrito</h2>
+        <button id="cerrarCarrito">✖</button>
+    </div>
+
+    <div id="listaCarrito">
+        <p>No hay productos.</p>
+    </div>
+
+    <div class="pieCarrito">
+
+        <h3>Total: $<span id="totalCarrito">0</span></h3>
+
+        <button id="comprar">
+            Finalizar compra
+        </button>
+
+    </div>
+
+</div>
 
 <section class="hero">
 
@@ -719,6 +844,25 @@ Las mejores marcas americanas con precios increíbles.
 
 <script>
 
+// ================= CARRITO LATERAL =================
+
+const panelCarrito = document.getElementById("panelCarrito");
+
+const abrirCarrito = document.getElementById("abrirCarrito");
+
+const cerrarCarrito = document.getElementById("cerrarCarrito");
+
+abrirCarrito.addEventListener("click", () => {
+
+    panelCarrito.classList.add("activo");
+
+});
+
+cerrarCarrito.addEventListener("click", () => {
+
+    panelCarrito.classList.remove("activo");
+
+});
 let carrito=0;
 
 const contador=document.getElementById("contador");
