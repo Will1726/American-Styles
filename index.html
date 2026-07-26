@@ -961,8 +961,42 @@ Las mejores marcas americanas con precios increíbles.
 <p>© 2026 American Style Store | Todos los derechos reservados.</p>
 
 </footer>
+<script type="module">
 
-<script>
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+
+import { getAuth } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
+
+import { getFirestore } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
+
+const firebaseConfig = {
+
+  apiKey: "AIzaSyAfJ8vGvEy7HCi9PaiA6hmv6yhlm-JDDBE",
+
+  authDomain: "american-styless.firebaseapp.com",
+
+  projectId: "american-styless",
+
+  storageBucket: "american-styless.firebasestorage.app",
+
+  messagingSenderId: "599897055313",
+
+  appId: "1:599897055313:web:d97d7c0d849f09b1671870",
+
+  measurementId: "G-MN6MXW6PZN"
+
+};
+
+const app = initializeApp(firebaseConfig);
+
+const auth = getAuth(app);
+
+const db = getFirestore(app);
+
+console.log("🔥 Firebase conectado correctamente.");
+
+</script>
+<script type="module">
 
 // ================= CARRITO LATERAL =================
 
