@@ -863,23 +863,60 @@ cerrarCarrito.addEventListener("click", () => {
     panelCarrito.classList.remove("activo");
 
 });
-let carrito=0;
+let carrito = [];
 
-const contador=document.getElementById("contador");
+const contador = document.getElementById("contador");
+const listaCarrito = document.getElementById("listaCarrito");
+const totalCarrito = document.getElementById("totalCarrito");
 
-const botones=document.querySelectorAll(".card button");
+const botones = document.querySelectorAll(".card button");
 
-botones.forEach(boton=>{
+botones.forEach(boton => {
 
-boton.onclick=()=>{
+    boton.addEventListener("click", () => {
 
-carrito++;
+        const card = boton.parentElement;
 
-contador.innerHTML=carrito;
+        const nombre = card.querySelector("h3").textContent;
 
-}
+        const precioTexto = card.querySelector("p").textContent;
+        const precio = parseInt(precioTexto.replace(/\D/g, ""));
+
+        carrito.push({
+            nombre,
+            precio
+        });
+
+        actualizarCarrito();
+
+    });
 
 });
+
+function actualizarCarrito(){
+
+    contador.textContent = carrito.length;
+
+    listaCarrito.innerHTML = "";
+
+    let total = 0;
+
+    carrito.forEach(producto => {
+
+        total += producto.precio;
+
+        listaCarrito.innerHTML += `
+            <div style="margin-bottom:15px;border-bottom:1px solid #ddd;padding-bottom:10px;">
+                <strong>${producto.nombre}</strong><br>
+                $${producto.precio} MXN
+            </div>
+        `;
+
+    });
+
+    totalCarrito.textContent = total;
+
+}
     // BUSCADOR
 
 const buscador = document.getElementById("buscador");
