@@ -571,7 +571,111 @@ font-size:18px;
 }
 
 }
+.itemCarrito{
 
+display:flex;
+
+gap:15px;
+
+margin-bottom:20px;
+
+padding-bottom:15px;
+
+border-bottom:1px solid #ddd;
+
+animation:aparecer .3s;
+
+}
+
+.imgCarrito{
+
+width:80px;
+
+height:80px;
+
+border-radius:10px;
+
+object-fit:cover;
+
+}
+
+.infoCarrito{
+
+flex:1;
+
+}
+
+.infoCarrito h4{
+
+margin-bottom:5px;
+
+font-size:16px;
+
+}
+
+.infoCarrito p{
+
+color:#0F62FE;
+
+font-weight:bold;
+
+margin-bottom:10px;
+
+}
+
+.controles{
+
+display:flex;
+
+align-items:center;
+
+gap:10px;
+
+}
+
+.controles button{
+
+width:30px;
+
+height:30px;
+
+border:none;
+
+border-radius:8px;
+
+cursor:pointer;
+
+background:#0F62FE;
+
+color:white;
+
+}
+
+.eliminar{
+
+background:#e53935!important;
+
+}
+
+@keyframes aparecer{
+
+from{
+
+opacity:0;
+
+transform:translateX(40px);
+
+}
+
+to{
+
+opacity:1;
+
+transform:translateX(0);
+
+}
+
+}
 </style>
 
 </head>
@@ -752,7 +856,7 @@ Las mejores marcas americanas con precios increíbles.
 
 <h3>Chamarra Tommy Mujer</h3>
 
-<p data-precio="1,250">$1,250 MXN</p>
+<p data-precio="1250">$1,250 MXN</p>
 
 <button>Agregar al carrito</button>
 
@@ -895,13 +999,19 @@ botones.forEach(boton => {
 
         const nombre = card.querySelector("h3").textContent;
 
-        const precioTexto = card.querySelector("p").textContent;
-        const precio = parseInt(precioTexto.replace(/\D/g, ""));
+        const precio = Number(card.querySelector("p").dataset.precio);
 
-        carrito.push({
-            nombre,
-            precio
-        });
+       const id = Number(card.dataset.id);
+
+const imagen = card.querySelector("img").src;
+
+carrito.push({
+    id,
+    nombre,
+    precio,
+    imagen,
+    cantidad: 1
+});
 
         actualizarCarrito();
 
@@ -909,10 +1019,9 @@ botones.forEach(boton => {
 
 });
 
-function actualizarCarrito(){
+function actualizarCarrito() {
 
-    console.log(carrito);
-    contador.textContent = carrito.length;
+    contador.textContent = carrito.reduce((total, p) => total + p.cantidad, 0);
 
     listaCarrito.innerHTML = "";
 
@@ -920,18 +1029,73 @@ function actualizarCarrito(){
 
     carrito.forEach(producto => {
 
-        total += producto.precio;
+        const subtotal = producto.precio * producto.cantidad;
+
+        total += subtotal;
 
         listaCarrito.innerHTML += `
-            <div style="margin-bottom:15px;border-bottom:1px solid #ddd;padding-bottom:10px;">
-                <strong>${producto.nombre}</strong><br>
-                $${producto.precio} MXN
+
+        <div class="itemCarrito">
+
+            <img src="${producto.imagen}" class="imgCarrito">
+
+            <div class="infoCarrito">
+
+                <h4>${producto.nombre}</h4>
+
+                <p>$${producto.precio} MXN</p>
+
+                <div class="controles">
+
+                    <button onclick="cambiarCantidad(${producto.id},-1)">➖</button>
+
+                    <span>${producto.cantidad}</span>
+
+                    <button onclick="cambiarCantidad(${producto.id},1)">➕</button>
+
+                    <button class="eliminar"
+                    onclick="eliminarProducto(${producto.id})">
+
+                    🗑️
+
+                    </button>
+
+                </div>
+
             </div>
+
+        </div>
+
         `;
 
     });
 
     totalCarrito.textContent = total;
+
+}
+function cambiarCantidad(id,cambio){
+
+    const producto = carrito.find(p=>p.id===id);
+
+    if(!producto) return;
+
+    producto.cantidad += cambio;
+
+    if(producto.cantidad<=0){
+
+        carrito = carrito.filter(p=>p.id!==id);
+
+    }
+
+    actualizarCarrito();
+
+}
+
+function eliminarProducto(id){
+
+    carrito = carrito.filter(p=>p.id!==id);
+
+    actualizarCarrito();
 
 }
     // BUSCADOR
