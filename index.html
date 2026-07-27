@@ -1235,7 +1235,7 @@ buscador.addEventListener("keyup", function () {
 
 });
 //borrar carrito
-    document.getElementById("comprar").addEventListener("click",()=>{
+    document.getElementById("comprar").addEventListener("click",async ()=>{
 
 if(carrito.length===0){
 
@@ -1266,6 +1266,8 @@ alert("Compra realizada correctamente 🛍️");
 carrito=[];
 
 actualizarCarrito();
+
+});
     window.cambiarCantidad = cambiarCantidad;
 window.eliminarProducto = eliminarProducto;
 
