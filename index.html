@@ -1718,8 +1718,13 @@ Crear cuenta
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
 
-import { getAuth } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
-
+import {
+getAuth,
+createUserWithEmailAndPassword,
+signInWithEmailAndPassword,
+signOut,
+onAuthStateChanged
+} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
 import { 
 getFirestore,
 doc,
@@ -1754,11 +1759,6 @@ const auth = getAuth(app);
 const db = getFirestore(app);
 
 let usuarioActual = null;
-
-import {
-onAuthStateChanged
-} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
-
 
 onAuthStateChanged(auth, (usuario) => {
 
@@ -2255,6 +2255,50 @@ document.getElementById("cerrarModal").onclick = ()=>{
 modal.classList.remove("activo");
 
 }
+const correo = document.getElementById("correo");
+const password = document.getElementById("password");
+
+document.getElementById("registroBtn").onclick = async () => {
+
+    try{
+
+        await createUserWithEmailAndPassword(
+            auth,
+            correo.value,
+            password.value
+        );
+
+        alert("Cuenta creada");
+
+        modal.classList.remove("activo");
+
+    }catch(error){
+
+        alert(error.message);
+
+    }
+
+};
+
+document.getElementById("loginBtn").onclick = async () => {
+
+    try{
+
+        await signInWithEmailAndPassword(
+            auth,
+            correo.value,
+            password.value
+        );
+
+        modal.classList.remove("activo");
+
+    }catch(error){
+
+        alert("Correo o contraseña incorrectos");
+
+    }
+
+};
 </script>
 
 </body>
