@@ -317,13 +317,15 @@ nav a:hover{
 
 .card{
 
-    background:white;
+background:white;
 
-    border-radius:22px;
+border-radius:22px;
 
-    overflow:hidden;
+overflow:hidden;
 
-    transition:.3s;
+transition:.3s;
+
+position:relative;
 
 }
 
@@ -964,6 +966,130 @@ transition:.45s;
 transform:scale(1.08);
 
 }
+    .favorito{
+
+position:absolute;
+
+top:12px;
+right:12px;
+
+width:40px;
+height:40px;
+
+background:white;
+
+border-radius:50%;
+
+display:flex;
+justify-content:center;
+align-items:center;
+
+cursor:pointer;
+
+transition:.3s;
+
+box-shadow:0 8px 20px rgba(0,0,0,.15);
+
+}
+
+.favorito:hover{
+
+background:#ef4444;
+transform:scale(1.1);
+
+}
+
+.favorito:hover i{
+
+color:white;
+
+}
+.favorito.activo{
+
+background:#ef4444;
+
+}
+
+.favorito.activo i{
+
+color:white;
+
+}
+.card button{
+
+width:90%;
+
+margin:18px auto;
+
+padding:15px;
+
+border:none;
+
+border-radius:14px;
+
+background:#0F62FE;
+
+color:white;
+
+font-size:15px;
+
+font-weight:600;
+
+cursor:pointer;
+
+transition:.35s;
+
+}
+
+.card button:hover{
+
+transform:translateY(-2px);
+
+box-shadow:0 12px 25px rgba(15,98,254,.35);
+
+}
+.precioAnterior{
+
+text-decoration:line-through;
+
+color:#999;
+
+font-size:15px;
+
+margin-right:8px;
+
+font-weight:400;
+
+}
+.productos h2{
+
+font-size:36px;
+
+font-weight:700;
+
+margin-bottom:45px;
+
+position:relative;
+
+}
+
+.productos h2::after{
+
+content:"";
+
+width:70px;
+
+height:4px;
+
+background:#0F62FE;
+
+display:block;
+
+margin:12px auto;
+
+border-radius:20px;
+
+}
 </style>
 
 </head>
@@ -1141,6 +1267,13 @@ American Style
 <div class="card" 
     data-id="1"
     data-categoria="hombre">
+    <span class="badge nuevo">
+    NUEVO
+</span>
+
+<div class="favorito">
+    <i class="fa-regular fa-heart"></i>
+</div>
 
 <img src="https://picsum.photos/400/500?1">
 
@@ -1155,6 +1288,13 @@ American Style
 <div class="card" 
     data-id="2"
     data-categoria="hombre">
+    <span class="badge nuevo">
+    NUEVO
+</span>
+
+<div class="favorito">
+    <i class="fa-regular fa-heart"></i>
+</div>
 
 <img src="https://picsum.photos/400/500?2">
 
@@ -1178,6 +1318,13 @@ American Style
 <div class="card" 
     data-id="3"
     data-categoria="mujer">
+    <span class="badge nuevo">
+    NUEVO
+</span>
+
+<div class="favorito">
+    <i class="fa-regular fa-heart"></i>
+</div>
 
 <img src="https://picsum.photos/400/500?3">
 
@@ -1192,6 +1339,13 @@ American Style
 <div class="card" 
     data-id="4"
     data-categoria="mujer">
+    <span class="badge nuevo">
+    NUEVO
+</span>
+
+<div class="favorito">
+    <i class="fa-regular fa-heart"></i>
+</div>
 
 <img src="https://picsum.photos/400/500?4">
 
@@ -1215,6 +1369,13 @@ American Style
 <div class="card" 
     data-id="5"
     data-categoria="infantil">
+    <span class="badge nuevo">
+    NUEVO
+</span>
+
+<div class="favorito">
+    <i class="fa-regular fa-heart"></i>
+</div>
 
 <img src="https://picsum.photos/400/500?5">
 
@@ -1229,6 +1390,13 @@ American Style
 <div class="card" 
     data-id="6"
     data-categoria="infantil">
+    <span class="badge nuevo">
+    NUEVO
+</span>
+
+<div class="favorito">
+    <i class="fa-regular fa-heart"></i>
+</div>
 
 <img src="https://picsum.photos/400/500?6">
 
@@ -1252,6 +1420,13 @@ American Style
 <div class="card" 
     data-id="7"
     data-categoria="accesorios">
+    <span class="badge nuevo">
+    NUEVO
+</span>
+
+<div class="favorito">
+    <i class="fa-regular fa-heart"></i>
+</div>
 
 <img src="https://picsum.photos/400/500?7">
 
@@ -1266,6 +1441,13 @@ American Style
 <div class="card" 
     data-id="8"
     data-categoria="accesorios">
+    <span class="badge nuevo">
+    NUEVO
+</span>
+
+<div class="favorito">
+    <i class="fa-regular fa-heart"></i>
+</div>
 
 <img src="https://picsum.photos/400/500?8">
 
@@ -1369,6 +1551,7 @@ usuarioActual = usuario;
 console.log("Usuario:",usuario.email);
 
 cargarCarrito();
+cargarFavoritos();
 
 }
 
@@ -1397,6 +1580,7 @@ cerrarCarrito.addEventListener("click", () => {
 
 });
 let carrito = [];
+let favoritos = [];
 const toast = document.getElementById("toast");
 const toastTexto = document.getElementById("toastTexto");
 const contador = document.getElementById("contador");
@@ -1437,6 +1621,7 @@ if(existe){
 
 }
 
+});
 actualizarCarrito();
 
 mostrarToast(nombre);
@@ -1497,6 +1682,20 @@ listaCarrito.innerHTML="<p>No hay productos.</p>";
         `;
 
     });
+    document.querySelectorAll(".favorito").forEach(corazon=>{
+
+    corazon.addEventListener("click",()=>{
+
+        const icono = corazon.querySelector("i");
+
+        icono.classList.toggle("fa-regular");
+        icono.classList.toggle("fa-solid");
+
+        corazon.classList.toggle("activo");
+
+    });
+
+});
 
     totalCarrito.textContent = total;
 guardarCarrito();
@@ -1574,6 +1773,35 @@ function mostrarToast(nombre){
         toast.classList.remove("mostrar");
 
     },2500);
+
+}
+async function guardarFavoritos(){
+
+    if(!usuarioActual) return;
+
+    await setDoc(
+        doc(db,"favoritos",usuarioActual.uid),
+        {
+            productos:favoritos
+        }
+    );
+
+}
+async function cargarFavoritos(){
+
+    const referencia = doc(
+        db,
+        "favoritos",
+        usuarioActual.uid
+    );
+
+    const datos = await getDoc(referencia);
+
+    if(datos.exists()){
+
+        favoritos = datos.data().productos;
+
+    }
 
 }
     // BUSCADOR
