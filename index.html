@@ -999,7 +999,19 @@ Las mejores marcas americanas con precios increíbles.
 </div>
 
 </section>
+<div id="toast" class="toast">
 
+    <i class="fa-solid fa-circle-check"></i>
+
+    <div>
+
+        <strong>Producto agregado</strong>
+
+        <p id="toastTexto"></p>
+
+    </div>
+
+</div>
 <footer>
 
 <h2>American Style Store</h2>
@@ -1144,7 +1156,9 @@ if(existe){
 
 }
 
-        actualizarCarrito();
+actualizarCarrito();
+
+mostrarToast(nombre);
 
     });
 
@@ -1154,7 +1168,11 @@ function actualizarCarrito() {
 
     contador.textContent = carrito.reduce((total, p) => total + p.cantidad, 0);
 
-    listaCarrito.innerHTML = "";
+  if(carrito.length===0){
+
+listaCarrito.innerHTML="<p>No hay productos.</p>";
+
+}
 
     let total = 0;
 
@@ -1347,14 +1365,6 @@ mostrarToast(nombre);
     window.cambiarCantidad = cambiarCantidad;
 window.eliminarProducto = eliminarProducto;
 
-<div id="toast" class="toast">
-    <i class="fa-solid fa-circle-check"></i>
-
-    <div>
-        <strong>Producto agregado</strong>
-        <p id="toastTexto"></p>
-    </div>
-</div>
 </script>
 
 </body>
