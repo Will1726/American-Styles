@@ -1315,9 +1315,7 @@ American Style
 <input type="text" id="buscador" placeholder="Buscar productos...">
 
 </div>
-<button class="usuario" id="btnUsuario">
-    <i class="fa-solid fa-user"></i>
-</button>
+
 <button class="carrito" id="abrirCarrito">
     
 <i class="fa-solid fa-cart-shopping"></i>
@@ -1762,18 +1760,32 @@ onAuthStateChanged
 } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
 
 
-onAuthStateChanged(auth,(usuario)=>{
+onAuthStateChanged(auth, (usuario) => {
 
-if(usuario){
+    if (usuario) {
 
-usuarioActual = usuario;
+        usuarioActual = usuario;
 
-console.log("Usuario:",usuario.email);
+        let nombre = usuario.email.split("@")[0];
 
-cargarCarrito();
-cargarFavoritos();
+        // Quitar números
+        nombre = nombre.replace(/[0-9]/g, "");
 
-}
+        // Primera letra en mayúscula
+        nombre = nombre.charAt(0).toUpperCase() + nombre.slice(1);
+
+        document.getElementById("textoUsuario").textContent = nombre;
+
+        cargarCarrito();
+        cargarFavoritos();
+
+    } else {
+
+        usuarioActual = null;
+
+        document.getElementById("textoUsuario").textContent = "Iniciar sesión";
+
+    }
 
 });
 
@@ -2047,7 +2059,7 @@ buscador.addEventListener("keyup", function () {
 
         if (nombre.includes(texto) || categoria.includes(texto)) {
 
-            producto.style.display = "block";
+            producto.style.display = "";
 
         } else {
 
