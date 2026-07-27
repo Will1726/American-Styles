@@ -1682,16 +1682,37 @@ listaCarrito.innerHTML="<p>No hay productos.</p>";
         `;
 
     });
-    document.querySelectorAll(".favorito").forEach(corazon=>{
+   document.querySelectorAll(".favorito").forEach(corazon=>{
 
-    corazon.addEventListener("click",()=>{
+    corazon.addEventListener("click", async ()=>{
+
+        const card = corazon.closest(".card");
+
+        const id = Number(card.dataset.id);
 
         const icono = corazon.querySelector("i");
 
-        icono.classList.toggle("fa-regular");
-        icono.classList.toggle("fa-solid");
+        if(favoritos.includes(id)){
 
-        corazon.classList.toggle("activo");
+            favoritos = favoritos.filter(item => item !== id);
+
+            corazon.classList.remove("activo");
+
+            icono.classList.remove("fa-solid");
+            icono.classList.add("fa-regular");
+
+        }else{
+
+            favoritos.push(id);
+
+            corazon.classList.add("activo");
+
+            icono.classList.remove("fa-regular");
+            icono.classList.add("fa-solid");
+
+        }
+
+        await guardarFavoritos();
 
     });
 
@@ -1797,12 +1818,31 @@ async function cargarFavoritos(){
 
     const datos = await getDoc(referencia);
 
-    if(datos.exists()){
+if(datos.exists()){
 
-        favoritos = datos.data().productos;
+    favoritos = datos.data().productos;
+
+}
+
+document.querySelectorAll(".card").forEach(card=>{
+
+    const id = Number(card.dataset.id);
+
+    if(favoritos.includes(id)){
+
+        const corazon = card.querySelector(".favorito");
+
+        const icono = corazon.querySelector("i");
+
+        corazon.classList.add("activo");
+
+        icono.classList.remove("fa-regular");
+
+        icono.classList.add("fa-solid");
 
     }
 
+});
 }
     // BUSCADOR
 
