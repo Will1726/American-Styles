@@ -1160,6 +1160,7 @@ actualizarCarrito();
 
 mostrarToast(nombre);
 
+panelCarrito.classList.add("activo");
     });
 
 });
@@ -1167,7 +1168,7 @@ mostrarToast(nombre);
 function actualizarCarrito() {
 
     contador.textContent = carrito.reduce((total, p) => total + p.cantidad, 0);
-
+listaCarrito.innerHTML = "";
   if(carrito.length===0){
 
 listaCarrito.innerHTML="<p>No hay productos.</p>";
@@ -1196,18 +1197,15 @@ listaCarrito.innerHTML="<p>No hay productos.</p>";
 
                 <div class="controles">
 
-                    <button onclick="cambiarCantidad(${producto.id},-1)">➖</button>
-
+                    <button onclick="cambiarCantidad(${producto.id},-1)"><i class="fa-solid fa-minus"></i>
+</button>
                     <span>${producto.cantidad}</span>
 
-                    <button onclick="cambiarCantidad(${producto.id},1)">➕</button>
-
+                    <button onclick="cambiarCantidad(${producto.id},1)"><i class="fa-solid fa-plus"></i>
+</button>
                     <button class="eliminar"
-                    onclick="eliminarProducto(${producto.id})">
-
-                    🗑️
-
-                    </button>
+                    onclick="eliminarProducto(${producto.id})"><i class="fa-solid fa-trash"></i>
+</button>
 
                 </div>
 
@@ -1358,8 +1356,6 @@ alert("Compra realizada correctamente 🛍️");
 carrito=[];
 
 actualizarCarrito();
-
-mostrarToast(nombre);
 
 });
     window.cambiarCantidad = cambiarCantidad;
