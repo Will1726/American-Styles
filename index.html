@@ -135,17 +135,23 @@ nav a:hover{
 }
 .usuario{
 
-width:50px;
+display:flex;
+align-items:center;
+gap:10px;
+
+padding:0 18px;
+
 height:50px;
 
 border:none;
-border-radius:50%;
 
-background:#fff;
+border-radius:30px;
+
+background:white;
 
 color:#0F62FE;
 
-font-size:20px;
+font-weight:600;
 
 cursor:pointer;
 
@@ -158,9 +164,14 @@ transition:.3s;
 .usuario:hover{
 
 background:#0F62FE;
+
 color:white;
 
-transform:translateY(-2px);
+}
+
+.usuario span{
+
+white-space:nowrap;
 
 }
 
@@ -1172,6 +1183,99 @@ margin:12px auto;
 border-radius:20px;
 
 }
+.modal{
+
+display:none;
+
+position:fixed;
+
+left:0;
+top:0;
+
+width:100%;
+height:100%;
+
+background:rgba(0,0,0,.55);
+
+z-index:6000;
+
+justify-content:center;
+
+align-items:center;
+
+}
+
+.modal.activo{
+
+display:flex;
+
+}
+
+.contenidoModal{
+
+background:white;
+
+padding:40px;
+
+border-radius:20px;
+
+width:380px;
+
+display:flex;
+
+flex-direction:column;
+
+gap:15px;
+
+position:relative;
+
+animation:aparecer .35s;
+
+}
+
+.contenidoModal input{
+
+padding:14px;
+
+border:1px solid #ddd;
+
+border-radius:10px;
+
+font-size:15px;
+
+}
+
+.contenidoModal button{
+
+padding:15px;
+
+border:none;
+
+border-radius:10px;
+
+background:#0F62FE;
+
+color:white;
+
+cursor:pointer;
+
+font-size:16px;
+
+}
+
+#cerrarModal{
+
+position:absolute;
+
+right:18px;
+
+top:15px;
+
+font-size:26px;
+
+cursor:pointer;
+
+}
 </style>
 
 </head>
@@ -1225,7 +1329,10 @@ American Style
 </div>
 
 </header>
-
+<button class="usuario" id="btnUsuario">
+    <i class="fa-solid fa-user"></i>
+    <span id="textoUsuario">Iniciar sesión</span>
+</button>
 <div id="panelCarrito">
 
     <div class="encabezadoCarrito">
@@ -1557,6 +1664,35 @@ American Style
         <p id="toastTexto"></p>
 
     </div>
+
+</div>
+<div id="modalLogin" class="modal">
+
+<div class="contenidoModal">
+
+<span id="cerrarModal">&times;</span>
+
+<h2>Bienvenido</h2>
+
+<input
+type="email"
+id="correo"
+placeholder="Correo electrónico">
+
+<input
+type="password"
+id="password"
+placeholder="Contraseña">
+
+<button id="loginBtn">
+Iniciar sesión
+</button>
+
+<button id="registroBtn">
+Crear cuenta
+</button>
+
+</div>
 
 </div>
 <footer>
@@ -2094,6 +2230,19 @@ corazones.forEach(corazon => {
     });
 
 });
+const modal = document.getElementById("modalLogin");
+
+document.getElementById("btnUsuario").onclick = ()=>{
+
+modal.classList.add("activo");
+
+}
+
+document.getElementById("cerrarModal").onclick = ()=>{
+
+modal.classList.remove("activo");
+
+}
 </script>
 
 </body>
