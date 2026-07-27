@@ -676,6 +676,66 @@ transform:translateX(0);
 }
 
 }
+/*================ TOAST =================*/
+
+.toast{
+
+    position:fixed;
+
+    top:25px;
+    right:-420px;
+
+    background:white;
+
+    width:320px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+    padding:18px;
+
+    border-radius:15px;
+
+    box-shadow:0 15px 40px rgba(0,0,0,.18);
+
+    transition:.45s;
+
+    z-index:5000;
+
+}
+
+.toast i{
+
+    color:#16a34a;
+
+    font-size:30px;
+
+}
+
+.toast strong{
+
+    display:block;
+
+    margin-bottom:4px;
+
+}
+
+.toast p{
+
+    color:#666;
+
+    font-size:14px;
+
+}
+
+.toast.mostrar{
+
+    right:25px;
+
+}
 </style>
 
 </head>
@@ -1044,7 +1104,8 @@ cerrarCarrito.addEventListener("click", () => {
 
 });
 let carrito = [];
-
+const toast = document.getElementById("toast");
+const toastTexto = document.getElementById("toastTexto");
 const contador = document.getElementById("contador");
 const listaCarrito = document.getElementById("listaCarrito");
 const totalCarrito = document.getElementById("totalCarrito");
@@ -1205,6 +1266,19 @@ productos:carrito
 
 
 }
+function mostrarToast(nombre){
+
+    toastTexto.textContent = nombre;
+
+    toast.classList.add("mostrar");
+
+    setTimeout(()=>{
+
+        toast.classList.remove("mostrar");
+
+    },2500);
+
+}
     // BUSCADOR
 
 const buscador = document.getElementById("buscador");
@@ -1267,10 +1341,20 @@ carrito=[];
 
 actualizarCarrito();
 
+mostrarToast(nombre);
+
 });
     window.cambiarCantidad = cambiarCantidad;
 window.eliminarProducto = eliminarProducto;
 
+<div id="toast" class="toast">
+    <i class="fa-solid fa-circle-check"></i>
+
+    <div>
+        <strong>Producto agregado</strong>
+        <p id="toastTexto"></p>
+    </div>
+</div>
 </script>
 
 </body>
