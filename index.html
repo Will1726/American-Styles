@@ -753,7 +753,19 @@ transform:translateX(0);
 
     opacity:0;
 
-    transition:opacity .8s;
+    visibility:hidden;
+
+    transition:opacity .8s ease, visibility .8s ease;
+
+}
+
+.slide.activo{
+
+    opacity:1;
+
+    visibility:visible;
+
+    z-index:2;
 
 }
 
@@ -764,6 +776,8 @@ transform:translateX(0);
     height:100%;
 
     object-fit:cover;
+
+    display:block;
 
 }
 
@@ -778,6 +792,8 @@ transform:translateX(0);
     position:relative;
 
     overflow:hidden;
+
+    height:100vh;
 
 }
 
@@ -1891,6 +1907,109 @@ carrito=[];
 actualizarCarrito();
 
 });
+//================ SLIDER =================//
+
+const slides = document.querySelectorAll(".slide");
+const dots = document.querySelectorAll(".dot");
+
+let indice = 0;
+let intervalo;
+
+function mostrarSlide(i){
+
+    slides.forEach(slide=>slide.classList.remove("activo"));
+    dots.forEach(dot=>dot.classList.remove("activo"));
+
+    slides[i].classList.add("activo");
+    dots[i].classList.add("activo");
+
+    indice = i;
+
+}
+
+function siguienteSlide(){
+
+    indice++;
+
+    if(indice >= slides.length){
+
+        indice = 0;
+
+    }
+
+    mostrarSlide(indice);
+
+}
+
+function anteriorSlide(){
+
+    indice--;
+
+    if(indice < 0){
+
+        indice = slides.length - 1;
+
+    }
+
+    mostrarSlide(indice);
+
+}
+
+function iniciarSlider(){
+
+    intervalo = setInterval(siguienteSlide,5000);
+
+}
+
+function detenerSlider(){
+
+    clearInterval(intervalo);
+
+}
+
+document.getElementById("siguiente")
+.addEventListener("click",()=>{
+
+    siguienteSlide();
+
+    detenerSlider();
+
+    iniciarSlider();
+
+});
+
+document.getElementById("anterior")
+.addEventListener("click",()=>{
+
+    anteriorSlide();
+
+    detenerSlider();
+
+    iniciarSlider();
+
+});
+
+dots.forEach((dot,i)=>{
+
+    dot.addEventListener("click",()=>{
+
+        mostrarSlide(i);
+
+        detenerSlider();
+
+        iniciarSlider();
+
+    });
+
+});
+
+const hero = document.querySelector(".hero");
+
+hero.addEventListener("mouseenter",detenerSlider);
+
+hero.addEventListener("mouseleave",iniciarSlider);
+
+iniciarSlider();
     window.cambiarCantidad = cambiarCantidad;
 window.eliminarProducto = eliminarProducto;
 corazones.forEach(corazon => {
