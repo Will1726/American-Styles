@@ -2325,6 +2325,17 @@ const password = document.getElementById("password");
 
 document.getElementById("registroBtn").onclick = async () => {
 
+if(correo.value.trim()==="" || password.value.trim()===""){
+
+    mostrarMensaje(
+        "Campos incompletos",
+        "Escribe tu correo y contraseña."
+    );
+
+    return;
+
+}
+    
     try{
 
         await createUserWithEmailAndPassword(
