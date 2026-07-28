@@ -1695,6 +1695,10 @@ Iniciar sesión
 
 <button id="registroBtn">
 Crear cuenta
+<button id="googleBtn">
+<i class="fa-brands fa-google"></i>
+Continuar con Google
+</button>
 </button>
 
 </div>
@@ -1730,7 +1734,9 @@ getAuth,
 createUserWithEmailAndPassword,
 signInWithEmailAndPassword,
 signOut,
-onAuthStateChanged
+onAuthStateChanged,
+GoogleAuthProvider,
+signInWithPopup
 } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
 import { 
 getFirestore,
@@ -1762,6 +1768,8 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 
 const auth = getAuth(app);
+
+const provider = new GoogleAuthProvider();
 
 const db = getFirestore(app);
 
@@ -2248,9 +2256,19 @@ corazones.forEach(corazon => {
 });
 const modal = document.getElementById("modalLogin");
 
-document.getElementById("btnUsuario").onclick = ()=>{
+document.getElementById("btnUsuario").onclick = async ()=>{
 
-modal.classList.add("activo");
+    if(usuarioActual){
+
+        await signOut(auth);
+
+        alert("Sesión cerrada");
+
+    }else{
+
+        modal.classList.add("activo");
+
+    }
 
 }
 
@@ -2299,6 +2317,21 @@ document.getElementById("loginBtn").onclick = async () => {
     }catch(error){
 
         alert("Correo o contraseña incorrectos");
+
+    }
+
+};
+document.getElementById("googleBtn").onclick = async () => {
+
+    try{
+
+        await signInWithPopup(auth, provider);
+
+        modal.classList.remove("activo");
+
+    }catch(error){
+
+        alert(error.message);
 
     }
 
