@@ -203,8 +203,6 @@ white-space:nowrap;
 
     height:100vh;
 
-    background:url("https://images.unsplash.com/photo-1523381210434-271e8be1f52b?w=1600") center center/cover;
-
     display:flex;
     align-items:center;
 
@@ -1312,7 +1310,11 @@ American Style
 
 <i class="fa-solid fa-magnifying-glass"></i>
 
-<input type="text" id="buscador" placeholder="Buscar productos...">
+<input
+type="text"
+id="buscador"
+placeholder="Buscar productos..."
+autocomplete="off">
 
 </div>
 
@@ -1768,12 +1770,9 @@ onAuthStateChanged(auth, (usuario) => {
 
         let nombre = usuario.email.split("@")[0];
 
-        // Quitar números
-        nombre = nombre.replace(/[0-9]/g, "");
+nombre = nombre.replace(/[^a-zA-ZáéíóúÁÉÍÓÚñÑ]/g,"");
 
-        // Primera letra en mayúscula
-        nombre = nombre.charAt(0).toUpperCase() + nombre.slice(1);
-
+nombre = nombre.charAt(0).toUpperCase() + nombre.slice(1).toLowerCase();
         document.getElementById("textoUsuario").textContent = nombre;
 
         cargarCarrito();
