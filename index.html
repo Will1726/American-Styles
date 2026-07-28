@@ -1311,10 +1311,15 @@ American Style
 <i class="fa-solid fa-magnifying-glass"></i>
 
 <input
-type="text"
-id="buscador"
+type="search"
+id="buscarProducto"
+name="q"
 placeholder="Buscar productos..."
-autocomplete="off">
+autocomplete="new-password"
+autocorrect="off"
+autocapitalize="off"
+spellcheck="false"
+value="">
 
 </div>
 
@@ -2042,7 +2047,7 @@ document.querySelectorAll(".card").forEach(card=>{
 }
     // BUSCADOR
 
-const buscador = document.getElementById("buscador");
+const buscador = document.getElementById("buscarProducto");
 
 buscador.addEventListener("keyup", function () {
 
