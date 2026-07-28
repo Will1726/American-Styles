@@ -1218,6 +1218,20 @@ display:flex;
 
 }
 
+#tituloMensaje{
+
+    color:#0F62FE;
+    margin-bottom:10px;
+
+}
+
+#textoMensaje{
+
+    font-size:16px;
+    line-height:1.5;
+
+}
+
 .contenidoModal{
 
 background:white;
@@ -1783,6 +1797,24 @@ const db = getFirestore(app);
 
 let usuarioActual = null;
 
+const modalMensaje = document.getElementById("modalMensaje");
+
+function mostrarMensaje(titulo,texto){
+
+    document.getElementById("tituloMensaje").textContent = titulo;
+
+    document.getElementById("textoMensaje").textContent = texto;
+
+    modalMensaje.classList.add("activo");
+
+}
+
+document.getElementById("cerrarMensaje").onclick=()=>{
+
+    modalMensaje.classList.remove("activo");
+
+}
+
 onAuthStateChanged(auth, (usuario) => {
 
     if (usuario) {
@@ -2270,7 +2302,10 @@ document.getElementById("btnUsuario").onclick = async ()=>{
 
         await signOut(auth);
 
-        alert("Sesión cerrada");
+        mostrarMensaje(
+"Hasta pronto",
+"Has cerrado sesión correctamente."
+);
 
     }else{
 
@@ -2298,13 +2333,19 @@ document.getElementById("registroBtn").onclick = async () => {
             password.value
         );
 
-        alert("Cuenta creada");
+        mostrarMensaje(
+"¡Éxito!",
+"Tu cuenta fue creada correctamente."
+);
 
         modal.classList.remove("activo");
 
     }catch(error){
 
-        alert(error.message);
+        mostrarMensaje(
+"Error",
+error.message
+);
 
     }
 
@@ -2324,7 +2365,10 @@ document.getElementById("loginBtn").onclick = async () => {
 
     }catch(error){
 
-        alert("Correo o contraseña incorrectos");
+        mostrarMensaje(
+"Error",
+"Correo o contraseña incorrectos."
+);
 
     }
 
@@ -2344,6 +2388,19 @@ document.getElementById("googleBtn").onclick = async () => {
     }
 
 };
+<div id="modalMensaje" class="modal">
+
+    <div class="contenidoModal" style="max-width:350px;text-align:center;">
+
+        <h2 id="tituloMensaje"></h2>
+
+        <p id="textoMensaje" style="margin:15px 0;color:#555;"></p>
+
+        <button id="cerrarMensaje">Aceptar</button>
+
+    </div>
+
+</div>
 </script>
 
 </body>
