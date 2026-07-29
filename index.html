@@ -1430,6 +1430,11 @@ font-size:26px;
 cursor:pointer;
 
 }
+#adminLink{
+
+display:none;
+
+}
 </style>
 
 </head>
@@ -1496,44 +1501,51 @@ American Style
     </button>
 
 
-    <div class="menuUsuario" id="menuUsuario">
+   <div class="menuUsuario" id="menuUsuario">
 
-        <a href="#">
-            <i class="fa-solid fa-user"></i>
-            Mi cuenta
-        </a>
-
-
-        <a href="#">
-            <i class="fa-solid fa-box"></i>
-            Mis pedidos
-        </a>
+    <a href="#" id="cuentaLink">
+        <i class="fa-solid fa-user"></i>
+        Mi cuenta
+    </a>
 
 
-        <a href="#">
-            <i class="fa-solid fa-heart"></i>
-            Mis favoritos
-        </a>
+    <a href="#" id="configuracionLink">
+        <i class="fa-solid fa-gear"></i>
+        Configuración
+    </a>
 
 
-        <a href="#" id="adminLink">
-            <i class="fa-solid fa-chart-line"></i>
-            Panel administrador
-        </a>
+    <a href="#" id="pedidosLink">
+        <i class="fa-solid fa-box"></i>
+        Mis pedidos
+    </a>
 
 
-        <hr>
+    <a href="#" id="favoritosLink">
+        <i class="fa-solid fa-heart"></i>
+        Mis favoritos
+    </a>
 
 
-        <button id="cerrarSesion">
+    <a href="#" id="adminLink">
 
-            <i class="fa-solid fa-right-from-bracket"></i>
+        <i class="fa-solid fa-chart-line"></i>
 
-            Cerrar sesión
+        Panel administrador
 
-        </button>
+    </a>
 
-    </div>
+
+    <hr>
+
+
+    <button id="cerrarSesion">
+
+        <i class="fa-solid fa-right-from-bracket"></i>
+
+        Cerrar sesión
+
+    </button>
 
 </div>
 
@@ -2006,7 +2018,18 @@ onAuthStateChanged(auth, (usuario) => {
     if (usuario) {
 
         usuarioActual = usuario;
+const adminLink = document.getElementById("adminLink");
 
+
+if(usuario.email === "willduran620@gmail.com"){
+
+    adminLink.style.display = "flex";
+
+}else{
+
+    adminLink.style.display = "none";
+
+}
         let nombre = usuario.email.split("@")[0];
 
 nombre = nombre.replace(/[^a-zA-ZáéíóúÁÉÍÓÚñÑ]/g,"");
