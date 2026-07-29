@@ -1743,7 +1743,13 @@ Continuar con Google
 <i class="fab fa-whatsapp"></i>
 
 </div>
-
+<div id="modalMensaje" class="modal">
+    <div class="contenidoModal" style="max-width:350px;text-align:center;">
+        <h2 id="tituloMensaje"></h2>
+        <p id="textoMensaje" style="margin:15px 0;color:#555;"></p>
+        <button id="cerrarMensaje">Aceptar</button>
+    </div>
+</div>
 <p>© 2026 American Style Store | Todos los derechos reservados.</p>
 
 </footer>
@@ -2399,19 +2405,7 @@ document.getElementById("googleBtn").onclick = async () => {
     }
 
 };
-<div id="modalMensaje" class="modal">
 
-    <div class="contenidoModal" style="max-width:350px;text-align:center;">
-
-        <h2 id="tituloMensaje"></h2>
-
-        <p id="textoMensaje" style="margin:15px 0;color:#555;"></p>
-
-        <button id="cerrarMensaje">Aceptar</button>
-
-    </div>
-
-</div>
 </script>
 
 </body>
