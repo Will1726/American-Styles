@@ -2101,17 +2101,15 @@ document.querySelectorAll(".card").forEach(card=>{
 }
     // BUSCADOR
 
-const buscador = document.getElementById("buscarProductos");
+function buscarProductos(){
 
-buscarProductos.addEventListener("keyup", function () {
+    const texto = buscador.value.toLowerCase();
 
-    const texto = this.value.toLowerCase();
-
-    document.querySelectorAll(".productos").forEach(seccion => {
+    document.querySelectorAll(".productos").forEach(seccion=>{
 
         let visibles = 0;
 
-        seccion.querySelectorAll(".card").forEach(card => {
+        seccion.querySelectorAll(".card").forEach(card=>{
 
             const nombre = card.querySelector("h3").textContent.toLowerCase();
             const categoria = card.dataset.categoria.toLowerCase();
@@ -2119,7 +2117,6 @@ buscarProductos.addEventListener("keyup", function () {
             if(nombre.includes(texto) || categoria.includes(texto)){
 
                 card.style.display = "";
-
                 visibles++;
 
             }else{
@@ -2130,19 +2127,13 @@ buscarProductos.addEventListener("keyup", function () {
 
         });
 
-        if(visibles === 0){
-
-            seccion.style.display = "none";
-
-        }else{
-
-            seccion.style.display = "";
-
-        }
+        seccion.style.display = visibles > 0 ? "" : "none";
 
     });
 
-});
+}
+
+buscador.addEventListener("input", buscarProductos);
 //borrar carrito
     document.getElementById("comprar").addEventListener("click",async ()=>{
 
