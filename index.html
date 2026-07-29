@@ -2107,21 +2107,36 @@ buscador.addEventListener("keyup", function () {
 
     const texto = this.value.toLowerCase();
 
-    const productos = document.querySelectorAll(".card");
+    document.querySelectorAll(".productos").forEach(seccion => {
 
-    productos.forEach(producto => {
+        let visibles = 0;
 
-        const nombre = producto.querySelector("h3").textContent.toLowerCase();
+        seccion.querySelectorAll(".card").forEach(card => {
 
-        const categoria = producto.dataset.categoria.toLowerCase();
+            const nombre = card.querySelector("h3").textContent.toLowerCase();
+            const categoria = card.dataset.categoria.toLowerCase();
 
-        if (nombre.includes(texto) || categoria.includes(texto)) {
+            if(nombre.includes(texto) || categoria.includes(texto)){
 
-            producto.style.display = "";
+                card.style.display = "";
 
-        } else {
+                visibles++;
 
-            producto.style.display = "none";
+            }else{
+
+                card.style.display = "none";
+
+            }
+
+        });
+
+        if(visibles === 0){
+
+            seccion.style.display = "none";
+
+        }else{
+
+            seccion.style.display = "";
 
         }
 
