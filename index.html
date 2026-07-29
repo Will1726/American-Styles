@@ -183,6 +183,139 @@ nav a:hover{
 white-space:nowrap;
 
 }
+.contenedorUsuario{
+
+    position:relative;
+
+}
+
+
+.menuUsuario{
+
+    position:absolute;
+
+    top:60px;
+
+    right:0;
+
+    width:240px;
+
+    background:white;
+
+    border-radius:15px;
+
+    box-shadow:0 15px 35px rgba(0,0,0,.15);
+
+    padding:15px;
+
+    display:none;
+
+    animation:menuEntrada .25s ease;
+
+}
+
+
+.menuUsuario.activo{
+
+    display:block;
+
+}
+
+
+.menuUsuario a{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    padding:12px;
+
+    text-decoration:none;
+
+    color:#333;
+
+    border-radius:10px;
+
+    transition:.3s;
+
+}
+
+
+.menuUsuario a:hover{
+
+    background:#f1f5ff;
+
+    color:#0F62FE;
+
+}
+
+
+.menuUsuario hr{
+
+    border:none;
+
+    border-top:1px solid #ddd;
+
+    margin:10px 0;
+
+}
+
+
+.menuUsuario button{
+
+    width:100%;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    padding:12px;
+
+    border:none;
+
+    background:none;
+
+    cursor:pointer;
+
+    color:#e53935;
+
+    font-size:15px;
+
+    border-radius:10px;
+
+}
+
+
+.menuUsuario button:hover{
+
+    background:#ffecec;
+
+}
+
+
+@keyframes menuEntrada{
+
+from{
+
+opacity:0;
+
+transform:translateY(-10px);
+
+}
+
+to{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+}
 
 #contador{
 
@@ -1348,13 +1481,61 @@ American Style
 
     </button>
 
+    <div class="contenedorUsuario">
+
     <button class="usuario" id="btnUsuario">
 
         <i class="fa-solid fa-user"></i>
 
-        <span id="textoUsuario">Iniciar sesión</span>
+        <span id="textoUsuario">
+            Iniciar sesión
+        </span>
+
+        <i class="fa-solid fa-chevron-down"></i>
 
     </button>
+
+
+    <div class="menuUsuario" id="menuUsuario">
+
+        <a href="#">
+            <i class="fa-solid fa-user"></i>
+            Mi cuenta
+        </a>
+
+
+        <a href="#">
+            <i class="fa-solid fa-box"></i>
+            Mis pedidos
+        </a>
+
+
+        <a href="#">
+            <i class="fa-solid fa-heart"></i>
+            Mis favoritos
+        </a>
+
+
+        <a href="#" id="adminLink">
+            <i class="fa-solid fa-chart-line"></i>
+            Panel administrador
+        </a>
+
+
+        <hr>
+
+
+        <button id="cerrarSesion">
+
+            <i class="fa-solid fa-right-from-bracket"></i>
+
+            Cerrar sesión
+
+        </button>
+
+    </div>
+
+</div>
 
 </div>
 
@@ -2336,16 +2517,16 @@ corazones.forEach(corazon => {
 });
 const modal = document.getElementById("modalLogin");
 
-document.getElementById("btnUsuario").onclick = async ()=>{
+const menuUsuario = document.getElementById("menuUsuario");
+const btnUsuario = document.getElementById("btnUsuario");
+const cerrarSesion = document.getElementById("cerrarSesion");
+
+
+btnUsuario.onclick = ()=>{
 
     if(usuarioActual){
 
-        await signOut(auth);
-
-        mostrarMensaje(
-"Hasta pronto",
-"Has cerrado sesión correctamente."
-);
+        menuUsuario.classList.toggle("activo");
 
     }else{
 
@@ -2353,8 +2534,34 @@ document.getElementById("btnUsuario").onclick = async ()=>{
 
     }
 
-}
+};
 
+
+cerrarSesion.onclick = async ()=>{
+
+    await signOut(auth);
+
+    menuUsuario.classList.remove("activo");
+
+
+    mostrarMensaje(
+        "Hasta pronto",
+        "Has cerrado sesión correctamente."
+    );
+
+};
+document.addEventListener("click",(e)=>{
+
+    if(
+        !btnUsuario.contains(e.target) &&
+        !menuUsuario.contains(e.target)
+    ){
+
+        menuUsuario.classList.remove("activo");
+
+    }
+
+});
 document.getElementById("cerrarModal").onclick = ()=>{
 
 modal.classList.remove("activo");
