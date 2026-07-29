@@ -2271,10 +2271,23 @@ async function guardarFavoritos(){
 
     if(!usuarioActual) return;
 
+
     await setDoc(
         doc(db,"favoritos",usuarioActual.uid),
         {
-            productos:favoritos
+
+            nombre: usuarioActual.displayName || 
+            usuarioActual.email.split("@")[0],
+
+
+            correo: usuarioActual.email,
+
+
+            productos:favoritos,
+
+
+            actualizado:new Date()
+
         }
     );
 
