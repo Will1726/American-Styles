@@ -1331,28 +1331,12 @@ American Style
 
 <div class="buscar">
 
-<i class="fa-solid fa-magnifying-glass"></i>
+    <i class="fa-solid fa-magnifying-glass"></i>
 
-<input
-type="search"
-id="buscarProducto"
-name="q"
-placeholder="Buscar productos..."
-autocomplete="new-password"
-autocorrect="off"
-autocapitalize="off"
-spellcheck="false"
-value="">
-
-</div>
-<input type="text" id="buscador" placeholder="Buscar productos...">
-<button class="carrito" id="abrirCarrito">
-    
-<i class="fa-solid fa-cart-shopping"></i>
-
-<span id="contador">0</span>
-
-</button>
+    <input
+        type="text"
+        id="buscador"
+        placeholder="Buscar productos...">
 
 </div>
 <button class="usuario" id="btnUsuario">
@@ -1712,17 +1696,17 @@ id="password"
 placeholder="Contraseña">
 
 <button id="loginBtn">
-Iniciar sesión
+    Iniciar sesión
 </button>
 
 <button id="registroBtn">
-Crear cuenta
-<button id="googleBtn">
-<i class="fa-brands fa-google"></i>
-Continuar con Google
-</button>
+    Crear cuenta
 </button>
 
+<button id="googleBtn">
+    <i class="fa-brands fa-google"></i>
+    Continuar con Google
+</button>
 </div>
 
 </div>
@@ -2137,37 +2121,51 @@ function buscarProductos(){
 
 buscador.addEventListener("input", buscarProductos);
 //borrar carrito
-    document.getElementById("comprar").addEventListener("click",async ()=>{
+ document.getElementById("comprar").addEventListener("click", async ()=>{
 
-if(carrito.length===0){
+    if(!usuarioActual){
 
-alert("Tu carrito está vacío");
+        mostrarMensaje(
+            "Inicia sesión",
+            "Debes iniciar sesión para realizar una compra."
+        );
 
-return;
+        return;
 
-}
+    }
 
-await addDoc(collection(db,"pedidos"),{
+    if(carrito.length===0){
 
-usuario:usuarioActual.uid,
+        mostrarMensaje(
+            "Carrito vacío",
+            "Agrega productos antes de comprar."
+        );
 
-productos:carrito,
+        return;
 
-total:carrito.reduce(
-(total,p)=>total+(p.precio*p.cantidad),0
-),
+    }
 
-fecha:new Date()
+    await addDoc(collection(db,"pedidos"),{
 
-});
+        usuario: usuarioActual.uid,
+        productos: carrito,
 
+        total: carrito.reduce(
+            (total,p)=>total+(p.precio*p.cantidad),0
+        ),
 
-alert("Compra realizada correctamente 🛍️");
+        fecha: new Date()
 
+    });
 
-carrito=[];
+    mostrarMensaje(
+        "¡Compra realizada!",
+        "Gracias por tu compra."
+    );
 
-actualizarCarrito();
+    carrito = [];
+
+    actualizarCarrito();
 
 });
 //================ SLIDER =================//
@@ -2367,16 +2365,27 @@ if(correo.value.trim()==="" || password.value.trim()===""){
 
     }catch(error){
 
-        mostrarMensaje(
-"Error",
-error.message
-);
+    mostrarMensaje(
+        "Error",
+        "No se pudo iniciar sesión con Google."
+    );
 
-    }
+}
 
 };
 
 document.getElementById("loginBtn").onclick = async () => {
+
+    if(correo.value.trim()==="" || password.value.trim()===""){
+
+        mostrarMensaje(
+            "Campos incompletos",
+            "Escribe tu correo y contraseña."
+        );
+
+        return;
+
+    }
 
     try{
 
@@ -2391,9 +2400,9 @@ document.getElementById("loginBtn").onclick = async () => {
     }catch(error){
 
         mostrarMensaje(
-"Error",
-"Correo o contraseña incorrectos."
-);
+            "Error",
+            "Correo o contraseña incorrectos."
+        );
 
     }
 
