@@ -2042,11 +2042,29 @@ nombre = nombre.charAt(0).toUpperCase() + nombre.slice(1).toLowerCase();
 
     } else {
 
-        usuarioActual = null;
+    usuarioActual = null;
 
-        document.getElementById("textoUsuario").textContent = "Iniciar sesión";
+    favoritos = [];
 
-    }
+    carrito = [];
+
+    actualizarCarrito();
+
+    document.getElementById("textoUsuario").textContent = "Iniciar sesión";
+
+    document.querySelectorAll(".favorito").forEach(corazon=>{
+
+        corazon.classList.remove("activo");
+
+        const icono = corazon.querySelector("i");
+
+        icono.classList.remove("fa-solid");
+
+        icono.classList.add("fa-regular");
+
+    });
+
+}
 
 });
 
@@ -2520,7 +2538,16 @@ window.eliminarProducto = eliminarProducto;
 corazones.forEach(corazon => {
 
     corazon.addEventListener("click", async () => {
+if(!usuarioActual){
 
+    mostrarMensaje(
+        "Inicia sesión",
+        "Debes iniciar sesión para guardar favoritos."
+    );
+
+    return;
+
+}
         const card = corazon.closest(".card");
         const id = Number(card.dataset.id);
         const icono = corazon.querySelector("i");
