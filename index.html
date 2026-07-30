@@ -1498,6 +1498,126 @@ border-radius:10px;
 cursor:pointer;
 
 }
+#listaFavoritos{
+
+    max-height:450px;
+
+    overflow-y:auto;
+
+    padding-right:8px;
+
+}
+/*============== MODAL FAVORITOS ==============*/
+
+.modalFavoritos{
+
+    background:white;
+
+    width:600px;
+
+    max-width:92%;
+
+    max-height:75vh;
+
+    border-radius:22px;
+
+    padding:30px;
+
+    position:relative;
+
+    animation:aparecer .3s;
+
+    display:flex;
+
+    flex-direction:column;
+
+}
+
+#listaFavoritos{
+
+    margin-top:20px;
+
+    overflow-y:auto;
+
+    max-height:480px;
+
+    padding-right:8px;
+
+}
+
+.itemFavorito{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:18px;
+
+    padding:15px 0;
+
+    border-bottom:1px solid #eee;
+
+}
+
+.itemFavorito img{
+
+    width:90px;
+
+    height:90px;
+
+    object-fit:cover;
+
+    border-radius:12px;
+
+}
+
+.infoFavorito{
+
+    flex:1;
+
+}
+
+.infoFavorito h3{
+
+    margin-bottom:8px;
+
+}
+
+.infoFavorito p{
+
+    color:#0F62FE;
+
+    font-weight:bold;
+
+}
+
+.quitarFavorito{
+
+    width:42px;
+
+    height:42px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:#ef4444;
+
+    color:white;
+
+    cursor:pointer;
+
+    font-size:18px;
+
+    transition:.3s;
+
+}
+
+.quitarFavorito:hover{
+
+    transform:scale(1.1);
+
+}
 </style>
 
 </head>
@@ -1639,15 +1759,16 @@ American Style
 </div>
 <div id="modalFavoritos" class="modal">
 
-    <div class="contenidoModal" style="width:700px;max-width:95%;">
+    <div class="modalFavoritos">
 
         <span id="cerrarFavoritos">&times;</span>
 
-        <h2>❤️ Mis favoritos</h2>
+        <h2>
+            ❤️ Mis favoritos
+            (<span id="contadorFavoritos">0</span>)
+        </h2>
 
         <div id="listaFavoritos">
-
-            <p>No tienes productos favoritos.</p>
 
         </div>
 
@@ -2826,6 +2947,8 @@ function mostrarFavoritos(){
 
     listaFavoritos.innerHTML="";
 
+    document.getElementById("contadorFavoritos").textContent=favoritos.length;
+
     const cards=document.querySelectorAll(".card");
 
     let encontrados=0;
@@ -2852,6 +2975,14 @@ function mostrarFavoritos(){
 
                 </div>
 
+                <button
+                    class="quitarFavorito"
+                    onclick="quitarFavorito(${id})">
+
+                    <i class="fa-solid fa-heart"></i>
+
+                </button>
+
             </div>
 
             `;
@@ -2862,9 +2993,36 @@ function mostrarFavoritos(){
 
     if(encontrados===0){
 
-        listaFavoritos.innerHTML="<p>No tienes productos favoritos.</p>";
+        listaFavoritos.innerHTML=`
+        <p style="text-align:center;padding:40px;">
+        No tienes productos favoritos ❤️
+        </p>
+        `;
 
     }
+
+}
+window.quitarFavorito = async function(id){
+
+    favoritos=favoritos.filter(item=>item!==id);
+
+    await guardarFavoritos();
+
+    const card=document.querySelector(`[data-id="${id}"]`);
+
+    if(card){
+
+        const corazon=card.querySelector(".favorito");
+
+        corazon.classList.remove("activo");
+
+        corazon.querySelector("i").classList.remove("fa-solid");
+
+        corazon.querySelector("i").classList.add("fa-regular");
+
+    }
+
+    mostrarFavoritos();
 
 }
 </script>
