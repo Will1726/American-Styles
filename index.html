@@ -1013,19 +1013,21 @@ transform:translateX(0);
 
     position:absolute;
 
-    top:55%;
+    top:50%;
 
     transform:translateY(-50%);
 
-    width:55px;
+    width:62px;
 
-    height:55px;
+    height:62px;
 
     border:none;
 
     border-radius:50%;
 
-    background:rgba(255,255,255,.8);
+    background:rgba(255,255,255,.92);
+
+    box-shadow:0 10px 25px rgba(0,0,0,.18);
 
     cursor:pointer;
 
@@ -1033,20 +1035,27 @@ transform:translateX(0);
 
     font-size:22px;
 
-}
+    transition:.3s;
 
+}
 .izquierda{
 
-    left:30px;
+    left:45px;
 
 }
 
 .derecha{
 
-    right:30px;
+    right:45px;
 
 }
+.flecha:hover{
 
+    transform:translateY(-50%) scale(1.08);
+
+    background:white;
+
+}
 .indicadores{
 
     position:absolute;
@@ -1661,6 +1670,121 @@ cursor:pointer;
     transform:rotate(90deg);
 
 }
+/*============== CONFIGURACIÓN ==============*/
+
+.modalConfiguracion{
+
+    width:430px;
+
+    max-width:92%;
+
+    background:white;
+
+    border-radius:22px;
+
+    padding:30px;
+
+    position:relative;
+
+    animation:aparecer .3s;
+
+}
+
+.modalConfiguracion h2{
+
+    margin-bottom:25px;
+
+    color:#0F62FE;
+
+}
+
+#cerrarConfiguracion{
+
+    position:absolute;
+
+    top:18px;
+
+    right:18px;
+
+    width:40px;
+
+    height:40px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    border-radius:50%;
+
+    background:#f3f4f6;
+
+    font-size:28px;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+#cerrarConfiguracion:hover{
+
+    background:#ef4444;
+
+    color:white;
+
+}
+
+.opcionConfig{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+    padding:16px;
+
+    border-radius:14px;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+    margin-bottom:10px;
+
+}
+
+.opcionConfig:hover{
+
+    background:#f4f7ff;
+
+}
+
+.opcionConfig i{
+
+    width:35px;
+
+    text-align:center;
+
+    color:#0F62FE;
+
+    font-size:20px;
+
+}
+
+.salir{
+
+    color:#ef4444;
+
+}
+
+.salir i{
+
+    color:#ef4444;
+
+}
 </style>
 
 </head>
@@ -1813,6 +1937,44 @@ American Style
 
         <div id="listaFavoritos">
 
+        </div>
+
+    </div>
+
+</div>
+<div id="modalConfiguracion" class="modal">
+
+    <div class="modalConfiguracion">
+
+        <span id="cerrarConfiguracion">&times;</span>
+
+        <h2>
+            ⚙️ Configuración
+        </h2>
+
+        <div class="opcionConfig" id="notificacionesBtn">
+            <i class="fa-solid fa-bell"></i>
+            <span>Notificaciones</span>
+        </div>
+
+        <div class="opcionConfig" id="modoOscuroBtn">
+            <i class="fa-solid fa-moon"></i>
+            <span>Modo oscuro</span>
+        </div>
+
+        <div class="opcionConfig" id="correoBtn">
+            <i class="fa-solid fa-envelope"></i>
+            <span>Cambiar correo</span>
+        </div>
+
+        <div class="opcionConfig" id="passwordBtn">
+            <i class="fa-solid fa-lock"></i>
+            <span>Cambiar contraseña</span>
+        </div>
+
+        <div class="opcionConfig salir" id="cerrarSesionBtn">
+            <i class="fa-solid fa-right-from-bracket"></i>
+            <span>Cerrar sesión</span>
         </div>
 
     </div>
@@ -2237,7 +2399,18 @@ const provider = new GoogleAuthProvider();
 const db = getFirestore(app);
 
 let usuarioActual = null;
+const modalConfiguracion = document.getElementById("modalConfiguracion");
+document.getElementById("configuracionLink").onclick = ()=>{
 
+    modalConfiguracion.classList.add("activo");
+
+}
+
+document.getElementById("cerrarConfiguracion").onclick = ()=>{
+
+    modalConfiguracion.classList.remove("activo");
+
+}
 const modalMensaje = document.getElementById("modalMensaje");
 
 function mostrarMensaje(titulo,texto){
@@ -2273,6 +2446,7 @@ document.getElementById("favoritosLink").onclick = ()=>{
     modalFavoritos.classList.add("activo");
 
 };
+
 document.getElementById("cerrarFavoritos").onclick=()=>{
 
     modalFavoritos.classList.remove("activo");
@@ -2332,6 +2506,49 @@ nombre = nombre.charAt(0).toUpperCase() + nombre.slice(1).toLowerCase();
 }
 
 });
+notificacionesBtn.onclick=()=>{
+
+    mostrarMensaje(
+        "Próximamente",
+        "Las notificaciones estarán disponibles muy pronto."
+    );
+
+}
+
+modoOscuroBtn.onclick=()=>{
+
+    mostrarMensaje(
+        "Próximamente",
+        "El modo oscuro estará disponible muy pronto."
+    );
+
+}
+
+correoBtn.onclick=()=>{
+
+    mostrarMensaje(
+        "Cambiar correo",
+        "Esta función será implementada con Firebase."
+    );
+
+}
+
+passwordBtn.onclick=()=>{
+
+    mostrarMensaje(
+        "Cambiar contraseña",
+        "Esta función será implementada con Firebase."
+    );
+
+}
+
+cerrarSesionBtn.onclick=async()=>{
+
+    await signOut(auth);
+
+    modalConfiguracion.classList.remove("activo");
+
+}
 
 console.log("🔥 Firebase conectado correctamente.");
 console.log("========== DIAGNÓSTICO ==========");
