@@ -1859,10 +1859,10 @@ American Style
     </a>
 
 
-    <a href="#" id="configuracionLink">
-        <i class="fa-solid fa-gear"></i>
-        Configuración
-    </a>
+    <a href="#" id="preferenciasLink">
+        <i class="fa-solid fa-preferences"></i>
+        ⚙️ Preferencias
+</a>
 
 
     <a href="#" id="pedidosLink">
@@ -1942,40 +1942,45 @@ American Style
     </div>
 
 </div>
-<div id="modalConfiguracion" class="modal">
+<div id="modalPreferencias" class="modal">
 
-    <div class="modalConfiguracion">
+    <div class="modalPreferencias">
 
-        <span id="cerrarConfiguracion">&times;</span>
+        <span id="cerrarPreferencias">&times;</span>
 
         <h2>
-            ⚙️ Configuración
+            ⚙️ Preferencias
         </h2>
 
-        <div class="opcionConfig" id="notificacionesBtn">
-            <i class="fa-solid fa-bell"></i>
-            <span>Notificaciones</span>
-        </div>
+<div class="opcionConfig" id="notificacionesBtn">
+    <i class="fa-solid fa-bell"></i>
+    <span>Notificaciones</span>
+</div>
 
-        <div class="opcionConfig" id="modoOscuroBtn">
-            <i class="fa-solid fa-moon"></i>
-            <span>Modo oscuro</span>
-        </div>
+<div class="opcionConfig" id="modoOscuroBtn">
+    <i class="fa-solid fa-moon"></i>
+    <span>Modo oscuro</span>
+</div>
 
-        <div class="opcionConfig" id="correoBtn">
-            <i class="fa-solid fa-envelope"></i>
-            <span>Cambiar correo</span>
-        </div>
+<div class="opcionConfig" id="preferenciasCompraBtn">
+    <i class="fa-solid fa-heart"></i>
+    <span>Preferencias de compra</span>
+</div>
 
-        <div class="opcionConfig" id="passwordBtn">
-            <i class="fa-solid fa-lock"></i>
-            <span>Cambiar contraseña</span>
-        </div>
+<div class="opcionConfig" id="soporteBtn">
+    <i class="fa-solid fa-headset"></i>
+    <span>Contacto y soporte</span>
+</div>
 
-        <div class="opcionConfig salir" id="cerrarSesionBtn">
-            <i class="fa-solid fa-right-from-bracket"></i>
-            <span>Cerrar sesión</span>
-        </div>
+<div class="opcionConfig" id="acercaBtn">
+    <i class="fa-solid fa-circle-info"></i>
+    <span>Acerca de American Style</span>
+</div>
+
+<div class="opcionConfig salir" id="cerrarSesionBtn">
+    <i class="fa-solid fa-right-from-bracket"></i>
+    <span>Cerrar sesión</span>
+</div>
 
     </div>
 
@@ -2399,16 +2404,16 @@ const provider = new GoogleAuthProvider();
 const db = getFirestore(app);
 
 let usuarioActual = null;
-const modalConfiguracion = document.getElementById("modalConfiguracion");
-document.getElementById("configuracionLink").onclick = ()=>{
+const modalPreferencias = document.getElementById("modalPreferencias");
+document.getElementById("PreferenciasLink")
 
-    modalConfiguracion.classList.add("activo");
+    modalPreferencias.classList.add("activo");
 
 }
 
-document.getElementById("cerrarConfiguracion").onclick = ()=>{
+document.getElementById("cerrarpreferencias").onclick = ()=>{
 
-    modalConfiguracion.classList.remove("activo");
+    modalPreferencias.classList.remove("activo");
 
 }
 const modalMensaje = document.getElementById("modalMensaje");
@@ -2510,7 +2515,7 @@ notificacionesBtn.onclick=()=>{
 
     mostrarMensaje(
         "Próximamente",
-        "Las notificaciones estarán disponibles muy pronto."
+        "Aquí podrás activar o desactivar las notificaciones."
     );
 
 }
@@ -2519,34 +2524,35 @@ modoOscuroBtn.onclick=()=>{
 
     mostrarMensaje(
         "Próximamente",
-        "El modo oscuro estará disponible muy pronto."
+        "El modo oscuro llegará en una próxima actualización."
     );
 
 }
 
-correoBtn.onclick=()=>{
+preferenciasCompraBtn.onclick=()=>{
 
     mostrarMensaje(
-        "Cambiar correo",
-        "Esta función será implementada con Firebase."
+        "Preferencias",
+        "Aquí podrás guardar tus marcas y categorías favoritas."
     );
 
 }
 
-passwordBtn.onclick=()=>{
+soporteBtn.onclick=()=>{
 
     mostrarMensaje(
-        "Cambiar contraseña",
-        "Esta función será implementada con Firebase."
+        "Soporte",
+        "Próximamente podrás contactar a American Style desde aquí."
     );
 
 }
 
-cerrarSesionBtn.onclick=async()=>{
+acercaBtn.onclick=()=>{
 
-    await signOut(auth);
-
-    modalConfiguracion.classList.remove("activo");
+    mostrarMensaje(
+        "American Style Store",
+        "Versión 1.0 • Gracias por visitar nuestra tienda."
+    );
 
 }
 
