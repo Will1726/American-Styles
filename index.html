@@ -1961,12 +1961,10 @@ American Style
         <i class="fa-solid fa-user"></i>
         Mi cuenta
     </a>
-
-
-    <h2 class="tituloPreferencias">
+    <div class="opcionConfig" id="PreferenciasLink">
     <i class="fa-solid fa-gear"></i>
     <span>Preferencias</span>
-</h2>
+</div>
 </a>
 
 
@@ -2053,9 +2051,10 @@ American Style
 
         <span id="cerrarPreferencias">&times;</span>
 
-        <h2>
-            ⚙️ Preferencias
-        </h2>
+        <h2 class="tituloPreferencias">
+    <i class="fa-solid fa-gear"></i>
+    <span>Preferencias</span>
+</h2>
 
 <div class="opcionConfig" id="notificacionesBtn">
     <i class="fa-solid fa-bell"></i>
@@ -2514,7 +2513,7 @@ const contador = document.getElementById("contador");
 const listaCarrito = document.getElementById("listaCarrito");
 const totalCarrito = document.getElementById("totalCarrito");
 const modalPreferencias = document.getElementById("modalPreferencias");
-document.getElementById("tituloPreferencias").onclick = ()=>{
+document.getElementById("PreferenciasLink").onclick = ()=>{
 
     modalPreferencias.classList.add("activo");
 };
@@ -2747,7 +2746,7 @@ console.log("menuUsuario:", document.getElementById("menuUsuario"));
 console.log("modalFavoritos:", document.getElementById("modalFavoritos"));
 console.log("listaFavoritos:", document.getElementById("listaFavoritos"));
 console.log("modalConfiguracion:", document.getElementById("modalConfiguracion"));
-console.log("tituloPreferencias:", document.getElementById("tituloPreferencias"));
+console.log("PreferenciasLink:", document.getElementById("PreferenciasLink"));
 console.log("cerrarPreferencias:", document.getElementById("cerrarPreferencias"));
 console.log("favoritosLink:", document.getElementById("favoritosLink"));
 console.log("cerrarFavoritos:", document.getElementById("cerrarFavoritos"));
