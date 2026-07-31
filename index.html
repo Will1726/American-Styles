@@ -2407,6 +2407,8 @@ const provider = new GoogleAuthProvider();
 const db = getFirestore(app);
 
 let usuarioActual = null;
+let carrito = [];
+let favoritos = [];
 const modalPreferencias = document.getElementById("modalPreferencias");
 document.getElementById("PreferenciasLink").onclick = ()=>{
 
@@ -2598,8 +2600,7 @@ cerrarCarrito.addEventListener("click", () => {
     panelCarrito.classList.remove("activo");
 
 });
-let carrito = [];
-let favoritos = [];
+
 const toast = document.getElementById("toast");
 const toastTexto = document.getElementById("toastTexto");
 const contador = document.getElementById("contador");
