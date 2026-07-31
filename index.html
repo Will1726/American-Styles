@@ -2405,10 +2405,12 @@ const auth = getAuth(app);
 const provider = new GoogleAuthProvider();
 
 const db = getFirestore(app);
-
 let usuarioActual = null;
 let carrito = [];
 let favoritos = [];
+const contador = document.getElementById("contador");
+const listaCarrito = document.getElementById("listaCarrito");
+const totalCarrito = document.getElementById("totalCarrito");
 const modalPreferencias = document.getElementById("modalPreferencias");
 document.getElementById("PreferenciasLink").onclick = ()=>{
 
@@ -2461,6 +2463,73 @@ document.getElementById("cerrarFavoritos").onclick=()=>{
     modalFavoritos.classList.remove("activo");
 
 }
+const panelCarrito = document.getElementById("panelCarrito");
+
+const abrirCarrito = document.getElementById("abrirCarrito");
+console.log(abrirCarrito);
+
+const cerrarCarrito = document.getElementById("cerrarCarrito");
+
+abrirCarrito.addEventListener("click", () => {
+
+    panelCarrito.classList.add("activo");
+
+});
+
+cerrarCarrito.addEventListener("click", () => {
+
+    panelCarrito.classList.remove("activo");
+
+});
+
+const toast = document.getElementById("toast");
+const toastTexto = document.getElementById("toastTexto");
+
+
+const botones = document.querySelectorAll(".card button");
+const corazones = document.querySelectorAll(".favorito");
+botones.forEach(boton => {
+
+    boton.addEventListener("click", () => {
+
+        const card = boton.parentElement;
+
+        const nombre = card.querySelector("h3").textContent;
+
+        const precio = Number(card.querySelector("p").dataset.precio);
+
+        const id = Number(card.dataset.id);
+
+        const imagen = card.querySelector("img").src;
+
+        const existe = carrito.find(producto => producto.id === id);
+
+        if(existe){
+
+            existe.cantidad++;
+
+        }else{
+
+            carrito.push({
+                id,
+                nombre,
+                precio,
+                imagen,
+                cantidad:1
+            });
+
+        }
+
+        actualizarCarrito();
+
+        mostrarToast(nombre);
+
+        panelCarrito.classList.add("activo");
+
+    });
+
+});
+
 onAuthStateChanged(auth, (usuario) => {
 
     if (usuario) {
@@ -2582,74 +2651,6 @@ console.log("========== FIN ==========");
 
 // ================= CARRITO =================
 
-const panelCarrito = document.getElementById("panelCarrito");
-
-const abrirCarrito = document.getElementById("abrirCarrito");
-console.log(abrirCarrito);
-
-const cerrarCarrito = document.getElementById("cerrarCarrito");
-
-abrirCarrito.addEventListener("click", () => {
-
-    panelCarrito.classList.add("activo");
-
-});
-
-cerrarCarrito.addEventListener("click", () => {
-
-    panelCarrito.classList.remove("activo");
-
-});
-
-const toast = document.getElementById("toast");
-const toastTexto = document.getElementById("toastTexto");
-const contador = document.getElementById("contador");
-const listaCarrito = document.getElementById("listaCarrito");
-const totalCarrito = document.getElementById("totalCarrito");
-
-const botones = document.querySelectorAll(".card button");
-const corazones = document.querySelectorAll(".favorito");
-botones.forEach(boton => {
-
-    boton.addEventListener("click", () => {
-
-        const card = boton.parentElement;
-
-        const nombre = card.querySelector("h3").textContent;
-
-        const precio = Number(card.querySelector("p").dataset.precio);
-
-        const id = Number(card.dataset.id);
-
-        const imagen = card.querySelector("img").src;
-
-        const existe = carrito.find(producto => producto.id === id);
-
-        if(existe){
-
-            existe.cantidad++;
-
-        }else{
-
-            carrito.push({
-                id,
-                nombre,
-                precio,
-                imagen,
-                cantidad:1
-            });
-
-        }
-
-        actualizarCarrito();
-
-        mostrarToast(nombre);
-
-        panelCarrito.classList.add("activo");
-
-    });
-
-});
 
 function actualizarCarrito() {
 
