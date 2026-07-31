@@ -27,7 +27,7 @@ body{
     background:#f4f4f4;
 }
 
-/*================ HEADER =================*/
+/*================ Inicio de Style =================*/
 
 header{
 
@@ -1672,7 +1672,7 @@ cursor:pointer;
 }
 /*============== CONFIGURACIÓN ==============*/
 
-.modalConfiguracion{
+.modalPreferencias{
 
     width:430px;
 
@@ -1690,7 +1690,7 @@ cursor:pointer;
 
 }
 
-.modalConfiguracion h2{
+.modalPreferencias h2{
 
     margin-bottom:25px;
 
@@ -1698,7 +1698,7 @@ cursor:pointer;
 
 }
 
-#cerrarConfiguracion{
+#cerrarPreferencias{
 
     position:absolute;
 
@@ -1728,7 +1728,7 @@ cursor:pointer;
 
 }
 
-#cerrarConfiguracion:hover{
+#cerrarPreferencias:hover{
 
     background:#ef4444;
 
@@ -1752,7 +1752,9 @@ cursor:pointer;
 
     transition:.25s;
 
-    margin-bottom:10px;
+    margin-bottom:6px;
+
+    border-bottom:1px solid #ececec;
 
 }
 
@@ -1785,6 +1787,7 @@ cursor:pointer;
     color:#ef4444;
 
 }
+/*================ Final de style ================*/
 </style>
 
 </head>
@@ -2356,7 +2359,7 @@ placeholder="Contraseña">
 
 </footer>
 <script type="module">
-
+//*================ Inicio de firebase ================*/
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
 
 import {
@@ -2409,7 +2412,7 @@ document.getElementById("PreferenciasLink")
 
     modalPreferencias.classList.add("activo");
 
-
+//*================ Final de firebase ================*/
 document.getElementById("cerrarpreferencias").onclick = ()=>{
 
     modalPreferencias.classList.remove("activo");
@@ -2510,8 +2513,7 @@ nombre = nombre.charAt(0).toUpperCase() + nombre.slice(1).toLowerCase();
 }
 
 });
-notificacionesBtn.onclick=()=>{
-
+document.getElementById("notificacionesBtn").onclick = ()=>{
     mostrarMensaje(
         "Próximamente",
         "Aquí podrás activar o desactivar las notificaciones."
@@ -2519,7 +2521,7 @@ notificacionesBtn.onclick=()=>{
 
 }
 
-modoOscuroBtn.onclick=()=>{
+document.getElementById("modoOscuroBtn").onclick = ()=>{
 
     mostrarMensaje(
         "Próximamente",
@@ -2528,7 +2530,7 @@ modoOscuroBtn.onclick=()=>{
 
 }
 
-preferenciasCompraBtn.onclick=()=>{
+document.getElementById("preferenciasComprasBtn").onclick = ()=>{
 
     mostrarMensaje(
         "Preferencias",
@@ -2537,7 +2539,7 @@ preferenciasCompraBtn.onclick=()=>{
 
 }
 
-soporteBtn.onclick=()=>{
+document.getElementById("soporteBtn").onclick = ()=>{
 
     mostrarMensaje(
         "Soporte",
@@ -2546,7 +2548,7 @@ soporteBtn.onclick=()=>{
 
 }
 
-acercaBtn.onclick=()=>{
+document.getElementById("acercaBtn").onclick = ()=>{
 
     mostrarMensaje(
         "American Style Store",
@@ -2567,10 +2569,16 @@ console.log("totalCarrito:", document.getElementById("totalCarrito"));
 console.log("buscador:", document.getElementById("buscador"));
 console.log("btnUsuario:", document.getElementById("btnUsuario"));
 console.log("modalLogin:", document.getElementById("modalLogin"));
+// NUEVOS
+console.log("menuUsuario:", document.getElementById("menuUsuario"));
+console.log("modalFavoritos:", document.getElementById("modalFavoritos"));
+console.log("listaFavoritos:", document.getElementById("listaFavoritos"));
+console.log("modalConfiguracion:", document.getElementById("modalConfiguracion"));
+console.log("preferenciasLink:", document.getElementById("preferenciasLink"));
 
 console.log("========== FIN ==========");
 
-// ================= CARRITO LATERAL =================
+// ================= CARRITO =================
 
 const panelCarrito = document.getElementById("panelCarrito");
 
