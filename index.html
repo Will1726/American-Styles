@@ -728,7 +728,21 @@ footer h2{
 /*================ RESPONSIVE =================*/
 
 @media(max-width:900px){
+#menuMovil{
 
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+}
+
+nav{
+
+    display:none;
+
+}
 nav{
 
 display:none;
@@ -1927,7 +1941,190 @@ nav{
 }
 
 }
+/*================ RESPONSIVE =================*/
 
+@media (max-width:1024px){
+
+    header{
+
+        padding:15px 30px;
+        flex-wrap:wrap;
+        gap:15px;
+
+    }
+
+    nav{
+
+        order:3;
+        width:100%;
+        justify-content:center;
+        flex-wrap:wrap;
+        gap:20px;
+
+    }
+
+    .acciones{
+
+        margin-left:auto;
+
+    }
+
+}
+@media (max-width:768px){
+
+    header{
+
+        padding:15px;
+
+    }
+
+    .logo{
+
+        font-size:22px;
+
+    }
+
+    nav{
+
+        display:none;
+
+    }
+
+    .acciones{
+
+        width:100%;
+        justify-content:space-between;
+
+    }
+
+    .buscar{
+
+        flex:1;
+        max-width:100%;
+
+    }
+
+    .usuario span{
+
+        display:none;
+
+    }
+
+    .usuario{
+
+        width:50px;
+        padding:0;
+        border-radius:50%;
+
+    }
+
+}
+#menuMovil{
+
+    display:none;
+
+    width:45px;
+    height:45px;
+
+    border:none;
+
+    border-radius:10px;
+
+    background:#0F62FE;
+
+    color:white;
+
+    font-size:20px;
+
+    cursor:pointer;
+
+}
+
+#menuLateral{
+
+    position:fixed;
+
+    top:0;
+    left:-280px;
+
+    width:260px;
+    height:100vh;
+
+    background:white;
+
+    box-shadow:0 0 25px rgba(0,0,0,.2);
+
+    transition:.35s;
+
+    z-index:5000;
+
+    display:flex;
+
+    flex-direction:column;
+
+    padding:80px 25px;
+
+}
+
+#menuLateral.activo{
+
+    left:0;
+
+}
+
+#menuLateral a{
+
+    text-decoration:none;
+
+    color:#333;
+
+    font-weight:600;
+
+    padding:18px 0;
+
+    border-bottom:1px solid #eee;
+
+}
+
+#cerrarMenu{
+
+    position:absolute;
+
+    right:18px;
+
+    top:15px;
+
+    font-size:35px;
+
+    cursor:pointer;
+
+}
+
+#fondoMenu{
+
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(0,0,0,.4);
+
+    opacity:0;
+
+    visibility:hidden;
+
+    transition:.3s;
+
+    z-index:4999;
+
+}
+
+#fondoMenu.activo{
+
+    opacity:1;
+
+    visibility:visible;
+
+}
 /*================ Final de style ================*/
 </style>
 
@@ -1935,7 +2132,9 @@ nav{
 <body>
 
 <header>
-
+<button id="menuMovil">
+    <i class="fa-solid fa-bars"></i>
+</button>
 <div class="logo">
 <i class="fa-solid fa-shirt"></i>
 American Style
@@ -2043,7 +2242,27 @@ American Style
 </div>
 
 </div>
+<div id="menuLateral">
 
+    <span id="cerrarMenu">&times;</span>
+
+    <a href="#inicio">Inicio</a>
+
+    <a href="#hombre">Hombre</a>
+
+    <a href="#mujer">Mujer</a>
+
+    <a href="#infantil">Infantil</a>
+
+    <a href="#accesorios">Accesorios</a>
+
+    <a href="#ofertas">Ofertas</a>
+
+    <a href="#contacto">Contacto</a>
+
+</div>
+
+<div id="fondoMenu"></div>
 </header>
 <div id="panelCarrito">
 
@@ -2549,6 +2768,33 @@ const db = getFirestore(app);
 let usuarioActual = null;
 let carrito = [];
 let favoritos = [];
+const menuMovil = document.getElementById("menuMovil");
+
+const menuLateral = document.getElementById("menuLateral");
+
+const fondoMenu = document.getElementById("fondoMenu");
+
+const cerrarMenu = document.getElementById("cerrarMenu");
+
+menuMovil.onclick = ()=>{
+
+    menuLateral.classList.add("activo");
+
+    fondoMenu.classList.add("activo");
+
+}
+
+cerrarMenu.onclick = cerrarMenuMovil;
+
+fondoMenu.onclick = cerrarMenuMovil;
+
+function cerrarMenuMovil(){
+
+    menuLateral.classList.remove("activo");
+
+    fondoMenu.classList.remove("activo");
+
+}
 const contador = document.getElementById("contador");
 const listaCarrito = document.getElementById("listaCarrito");
 const totalCarrito = document.getElementById("totalCarrito");
