@@ -1017,7 +1017,7 @@ transform:translateX(0);
 
     transform:translateY(-50%);
 
-    width:62px;
+    width:60px;
 
     height:62px;
 
@@ -1785,53 +1785,24 @@ cursor:pointer;
     color:#0F62FE;
     font-size:24px;
 }
-/*==========================
-RESPONSIVE - TABLET
-==========================*/
+/*==================== RESPONSIVE APP ====================*/
 
-@media (max-width:1024px){
+@media (max-width:768px){
 
 header{
 
-    padding:15px 25px;
-    gap:15px;
+    padding:15px;
+    display:flex;
     flex-wrap:wrap;
-
-}
-
-nav{
-
-    gap:18px;
-    flex-wrap:wrap;
-    justify-content:center;
-    width:100%;
-
-}
-
-.buscar{
-
-    width:220px;
-
-}
-
-}
-
-
-/*==================== RESPONSIVE ====================*/
-
-@media (max-width:900px){
-
-header{
-
-    padding:15px 20px;
-    flex-wrap:wrap;
+    align-items:center;
+    justify-content:space-between;
     gap:15px;
 
 }
 
 .logo{
 
-    font-size:22px;
+    font-size:24px;
 
 }
 
@@ -1844,188 +1815,116 @@ nav{
 .acciones{
 
     width:100%;
-    justify-content:space-between;
-    flex-wrap:wrap;
+    display:grid;
+    grid-template-columns:1fr auto auto;
     gap:12px;
+    align-items:center;
 
 }
 
 .buscar{
 
-    order:3;
     width:100%;
+    grid-column:1 / 4;
+    order:3;
 
 }
 
 .buscar input{
 
     width:100%;
+    font-size:16px;
 
 }
 
 .usuario{
 
-    padding:0 15px;
+    width:50px;
+    padding:0;
+    border-radius:50%;
+}
+
+.usuario span{
+
+    display:none;
+
+}
+
+.carrito{
+
+    width:50px;
+    height:50px;
 
 }
 
 }
-/*================ PRODUCTOS RESPONSIVE =================*/
-
-@media (max-width:1100px){
-
-    .productos{
-
-        grid-template-columns:repeat(3,1fr);
-
-    }
-
-}
+/*================ SLIDER RESPONSIVE =================*/
 
 @media (max-width:768px){
 
-    .productos{
+.hero{
 
-        grid-template-columns:repeat(2,1fr);
-
-        gap:20px;
-
-    }
-
-    .card{
-
-        padding:15px;
-
-    }
-
-    .card img{
-
-        height:220px;
-        object-fit:cover;
-
-    }
+    margin:20px 15px;
+    border-radius:20px;
+    overflow:hidden;
 
 }
 
-@media (max-width:480px){
+.slide{
 
-    .productos{
-
-        grid-template-columns:1fr;
-
-    }
-
-    .card{
-
-        max-width:360px;
-        margin:auto;
-
-    }
+    min-height:320px;
+    padding:35px 25px;
 
 }
-/*================ CARRITO RESPONSIVE =================*/
 
-@media (max-width:768px){
+.slide h1{
 
-    .panelCarrito{
-
-        width:100%;
-        max-width:none;
-        right:-100%;
-        border-radius:0;
-
-    }
-
-    .panelCarrito.activo{
-
-        right:0;
-
-    }
-
-    .itemCarrito{
-
-        gap:12px;
-
-    }
-
-    .imgCarrito{
-
-        width:75px;
-        height:75px;
-
-    }
-
-    .infoCarrito h4{
-
-        font-size:16px;
-
-    }
-
-    .infoCarrito p{
-
-        font-size:14px;
-
-    }
-
-    .controles{
-
-        flex-wrap:wrap;
-        gap:8px;
-
-    }
-
-    .controles button{
-
-        width:35px;
-        height:35px;
-
-    }
-
-    #comprar{
-
-        width:100%;
-        font-size:17px;
-
-    }
+    font-size:30px;
+    line-height:1.2;
 
 }
-/*================ MODALES RESPONSIVE =================*/
 
-@media (max-width:768px){
+.slide p{
 
-    .contenidoModal,
-    .modalFavoritos,
-    .modalPreferencias{
+    font-size:15px;
+    margin:15px 0;
 
-        width:92%;
-        max-width:none;
-        margin:20px;
+}
 
-    }
+.slide button{
+
+    width:100%;
+    max-width:220px;
+
+}
 
 }
 @media (max-width:768px){
 
-    .itemFavorito{
+#anterior,
+#siguiente{
 
-        flex-direction:column;
-        align-items:center;
-        text-align:center;
+    width:45px;
+    height:45px;
+    font-size:18px;
 
-    }
+}
 
-    .itemFavorito img{
+}
+@media (max-width:768px){
 
-        width:120px;
-        height:120px;
+.dots{
 
-    }
+    bottom:15px;
 
-    .quitarFavorito{
+}
 
-        width:100%;
+.dot{
 
-    }
+    width:10px;
+    height:10px;
+
+}
 
 }
 
