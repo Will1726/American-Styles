@@ -1737,25 +1737,14 @@ cursor:pointer;
 }
 
 .opcionConfig{
-
     display:flex;
-
     align-items:center;
-
     gap:15px;
-
     padding:16px;
-
     border-radius:14px;
-
     cursor:pointer;
-
     transition:.25s;
-
-    margin-bottom:6px;
-
-    border-bottom:1px solid #ececec;
-
+    margin-bottom:10px;
 }
 
 .opcionConfig:hover{
@@ -1765,17 +1754,12 @@ cursor:pointer;
 }
 
 .opcionConfig i{
-
     width:35px;
-
     text-align:center;
-
     color:#0F62FE;
-
     font-size:20px;
-
+    flex-shrink:0;
 }
-
 .salir{
 
     color:#ef4444;
@@ -1786,6 +1770,20 @@ cursor:pointer;
 
     color:#ef4444;
 
+}
+.tituloPreferencias{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    color:#111;
+    margin-bottom:25px;
+    font-size:28px;
+    font-weight:700;
+}
+
+.tituloPreferencias i{
+    color:#0F62FE;
+    font-size:24px;
 }
 /*================ Final de style ================*/
 </style>
@@ -1862,9 +1860,10 @@ American Style
     </a>
 
 
-    <a href="#" id="PreferenciasLink">
-        <i class="fa-solid fa-preferences"></i>
-        ⚙️ Preferencias
+    <h2 class="tituloPreferencias">
+    <i class="fa-solid fa-gear"></i>
+    <span>Preferencias</span>
+</h2>
 </a>
 
 
