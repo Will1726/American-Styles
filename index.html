@@ -2408,7 +2408,7 @@ const db = getFirestore(app);
 
 let usuarioActual = null;
 const modalPreferencias = document.getElementById("modalPreferencias");
-document.getElementById("PreferenciasLink")
+document.getElementById("PreferenciasLink").onclick = ()=>{
 
     modalPreferencias.classList.add("activo");
 
