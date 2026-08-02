@@ -2042,6 +2042,10 @@ nav{
 
 #menuLateral{
 
+    transition:
+        left .35s ease,
+        box-shadow .35s ease;
+
     position:fixed;
 
     top:0;
@@ -2074,18 +2078,17 @@ nav{
 
 #menuLateral a{
 
-    text-decoration:none;
-
-    color:#333;
-
-    font-weight:600;
-
-    padding:18px 0;
-
-    border-bottom:1px solid #eee;
+    transition:.25s;
 
 }
 
+#menuLateral a:hover{
+
+    color:#0F62FE;
+
+    padding-left:15px;
+
+}
 #cerrarMenu{
 
     position:absolute;
@@ -2123,6 +2126,31 @@ nav{
     opacity:1;
 
     visibility:visible;
+
+}
+.menuTitulo{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    margin-bottom:30px;
+
+}
+
+.menuTitulo i{
+
+    font-size:28px;
+
+    color:#0F62FE;
+
+}
+
+.menuTitulo h2{
+
+    font-size:22px;
 
 }
 /*================ Final de style ================*/
@@ -2795,6 +2823,22 @@ function cerrarMenuMovil(){
     fondoMenu.classList.remove("activo");
 
 }
+<div class="menuTitulo">
+
+    <i class="fa-solid fa-shirt"></i>
+
+    <h2>American Style</h2>
+
+</div>
+document.querySelectorAll("#menuLateral a").forEach(link=>{
+
+    link.addEventListener("click",()=>{
+
+        cerrarMenuMovil();
+
+    });
+
+});
 const contador = document.getElementById("contador");
 const listaCarrito = document.getElementById("listaCarrito");
 const totalCarrito = document.getElementById("totalCarrito");
