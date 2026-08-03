@@ -2897,6 +2897,163 @@ section{
 overflow:hidden;
 
 }
+/*================ MENU MOVIL =================*/
+
+#menuMovil{
+
+    display:none;
+
+    width:48px;
+    height:48px;
+
+    border:none;
+
+    border-radius:12px;
+
+    background:#0F62FE;
+
+    color:white;
+
+    font-size:22px;
+
+    cursor:pointer;
+
+}
+
+#menuLateral{
+
+    position:fixed;
+
+    top:0;
+    left:-280px;
+
+    width:270px;
+    height:100vh;
+
+    background:white;
+
+    box-shadow:0 0 30px rgba(0,0,0,.2);
+
+    padding:25px;
+
+    transition:.35s;
+
+    z-index:6000;
+
+}
+
+#menuLateral.activo{
+
+    left:0;
+
+}
+
+.menuTitulo{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    margin-top:20px;
+    margin-bottom:35px;
+
+}
+
+.menuTitulo i{
+
+    color:#0F62FE;
+
+    font-size:28px;
+
+}
+
+#menuLateral a{
+
+    display:block;
+
+    padding:16px 10px;
+
+    text-decoration:none;
+
+    color:#222;
+
+    font-size:18px;
+
+    border-radius:12px;
+
+    transition:.25s;
+
+}
+
+#menuLateral a:hover{
+
+    background:#f3f6ff;
+
+    color:#0F62FE;
+
+}
+
+#cerrarMenu{
+
+    position:absolute;
+
+    top:15px;
+
+    right:20px;
+
+    font-size:34px;
+
+    cursor:pointer;
+
+}
+
+#fondoMenu{
+
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(0,0,0,.45);
+
+    opacity:0;
+
+    visibility:hidden;
+
+    transition:.3s;
+
+    z-index:5999;
+
+}
+
+#fondoMenu.activo{
+
+    opacity:1;
+
+    visibility:visible;
+
+}
+
+@media(max-width:768px){
+
+    #menuMovil{
+
+        display:flex;
+
+        justify-content:center;
+
+        align-items:center;
+
+    }
+
+    nav{
+
+        display:none;
+
+    }
+
+}
 /*================ Final de style ================*/
 </style>
 
@@ -2908,7 +3065,9 @@ overflow:hidden;
 <i class="fa-solid fa-shirt"></i>
 American Style
 </div>
-
+<button id="menuMovil">
+    <i class="fa-solid fa-bars"></i>
+</button>
 <nav>
 
 <a href="#">Inicio</a>
@@ -3013,6 +3172,23 @@ American Style
 </div>
 
 </header>
+<div id="fondoMenu"></div>
+
+<div id="menuLateral">
+
+    <span id="cerrarMenu">&times;</span>
+
+    <div class="menuTitulo">
+        <i class="fa-solid fa-shirt"></i>
+        <h2>American Style</h2>
+    </div>
+
+    <a href="#">🏠 Inicio</a>
+    <a href="#productos">🛍 Productos</a>
+    <a href="#ofertas">🔥 Ofertas</a>
+    <a href="#contacto">📞 Contacto</a>
+
+</div>
 <div id="panelCarrito">
 
     <div class="encabezadoCarrito">
@@ -3518,7 +3694,31 @@ const db = getFirestore(app);
 let usuarioActual = null;
 let carrito = [];
 let favoritos = [];
+const menuMovil = document.getElementById("menuMovil");
+const menuLateral = document.getElementById("menuLateral");
+const fondoMenu = document.getElementById("fondoMenu");
+const cerrarMenu = document.getElementById("cerrarMenu");
 
+menuMovil.onclick = ()=>{
+
+    menuLateral.classList.add("activo");
+    fondoMenu.classList.add("activo");
+
+};
+
+cerrarMenu.onclick = ()=>{
+
+    menuLateral.classList.remove("activo");
+    fondoMenu.classList.remove("activo");
+
+};
+
+fondoMenu.onclick = ()=>{
+
+    menuLateral.classList.remove("activo");
+    fondoMenu.classList.remove("activo");
+
+};
 const contador = document.getElementById("contador");
 const listaCarrito = document.getElementById("listaCarrito");
 const totalCarrito = document.getElementById("totalCarrito");
