@@ -3054,6 +3054,235 @@ overflow:hidden;
     }
 
 }
+/*================ CORRECCIÓN MENU USUARIO =================*/
+
+.menuUsuario a{
+    color:#333 !important;
+}
+
+.menuUsuario a i{
+    color:#333;
+}
+
+.menuUsuario a:hover{
+    color:#0F62FE !important;
+}
+
+.menuUsuario a:hover i{
+    color:#0F62FE;
+}
+
+/* Preferencias solo se pinta azul al pasar el mouse */
+.menuUsuario a#tituloPreferencias{
+    color:#333 !important;
+}
+
+.menuUsuario a#tituloPreferencias i{
+    color:#333;
+}
+
+.menuUsuario a#tituloPreferencias:hover{
+    color:#0F62FE !important;
+}
+
+.menuUsuario a#tituloPreferencias:hover i{
+    color:#0F62FE;
+}
+/*==================================================
+        HEADER MOBILE DEFINITIVO
+==================================================*/
+
+@media (max-width:768px){
+
+    header{
+
+        height:auto;
+        min-height:72px;
+
+        padding:10px 14px;
+
+        display:flex;
+        align-items:center;
+
+        gap:10px;
+
+        flex-wrap:nowrap;
+
+    }
+
+    /* LOGO */
+
+    .logo{
+
+        order:2;
+
+        flex:1;
+
+        min-width:0;
+
+        font-size:21px;
+
+        gap:7px;
+
+        overflow:hidden;
+
+    }
+
+    .logo i{
+
+        font-size:25px;
+
+        flex-shrink:0;
+
+    }
+
+    .logo span{
+
+        overflow:hidden;
+
+        text-overflow:ellipsis;
+
+    }
+
+    /* MENU */
+
+    #menuMovil{
+
+        order:1;
+
+        display:flex;
+
+        align-items:center;
+        justify-content:center;
+
+        width:44px;
+        height:44px;
+
+        min-width:44px;
+
+        border:none;
+
+        border-radius:12px;
+
+        background:#0F62FE;
+
+        color:white;
+
+        font-size:19px;
+
+        cursor:pointer;
+
+    }
+
+    /* ACCIONES */
+
+    .acciones{
+
+        order:3;
+
+        width:auto;
+
+        margin:0;
+
+        display:flex;
+
+        align-items:center;
+
+        gap:7px;
+
+        flex-shrink:0;
+
+    }
+
+    /* BUSCADOR */
+
+    .buscar{
+
+        position:absolute;
+
+        top:82px;
+
+        left:14px;
+        right:14px;
+
+        width:auto;
+        max-width:none;
+
+        height:50px;
+
+        padding:0 16px;
+
+        border-radius:28px;
+
+        background:#f1f1f1;
+
+        z-index:900;
+
+    }
+
+    .buscar input{
+
+        width:100%;
+
+        font-size:15px;
+
+    }
+
+    /* CARRITO */
+
+    .carrito{
+
+        width:44px;
+        height:44px;
+
+        min-width:44px;
+
+        font-size:17px;
+
+    }
+
+    /* USUARIO */
+
+    .usuario{
+
+        width:44px;
+        height:44px;
+
+        min-width:44px;
+
+        padding:0;
+
+        border-radius:50%;
+
+        gap:0;
+
+    }
+
+    .usuario span{
+
+        display:none;
+
+    }
+
+    .usuario i{
+
+        font-size:17px;
+
+    }
+
+    /* MENU LATERAL */
+
+    #menuLateral{
+
+        width:280px;
+
+        max-width:82vw;
+
+        padding:75px 22px 30px;
+
+    }
+
+}
 /*================ Final de style ================*/
 </style>
 
@@ -3233,8 +3462,6 @@ American Style
 
     <div class="modalPreferencias">
 
-        <span id="cerrarPreferencias">&times;</span>
-
         <h2 class="tituloPreferencias">
     <i class="fa-solid fa-gear"></i>
     <span>Preferencias</span>
@@ -3264,12 +3491,6 @@ American Style
     <i class="fa-solid fa-circle-info"></i>
     <span>Acerca de American Style</span>
 </div>
-
-<div class="opcionConfig salir" id="cerrarSesionBtn">
-    <i class="fa-solid fa-right-from-bracket"></i>
-    <span>Cerrar sesión</span>
-</div>
-
     </div>
 
 </div>
