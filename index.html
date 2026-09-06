@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>American Style Store</title>
@@ -12,9 +14,9 @@
 
 <style>
 
-/* =========================================================
-   RESET
-========================================================= */
+/*======================================================
+                    RESET
+======================================================*/
 
 *{
     margin:0;
@@ -41,21 +43,21 @@ button{
     touch-action:manipulation;
 }
 
-section{
-    overflow:hidden;
-}
 
-
-/* =========================================================
-   HEADER
-========================================================= */
+/*======================================================
+                    HEADER
+======================================================*/
 
 header{
+
     position:fixed;
+
     top:0;
     left:0;
+
     width:100%;
     height:80px;
+
     background:white;
 
     display:flex;
@@ -67,17 +69,21 @@ header{
     box-shadow:0 3px 10px rgba(0,0,0,.08);
 
     z-index:1000;
+
 }
 
 .logo{
+
     display:flex;
     align-items:center;
+
     gap:10px;
 
     font-size:28px;
     font-weight:700;
 
     white-space:nowrap;
+
 }
 
 .logo i{
@@ -85,15 +91,23 @@ header{
 }
 
 nav{
+
     display:flex;
+
     gap:30px;
+
 }
 
 nav a{
+
     text-decoration:none;
+
     color:#333;
+
     font-weight:500;
+
     transition:.3s;
+
 }
 
 nav a:hover{
@@ -101,88 +115,108 @@ nav a:hover{
 }
 
 
-/* =========================================================
-   ACCIONES HEADER
-========================================================= */
+/*======================================================
+                    ACCIONES
+======================================================*/
 
 .acciones{
+
     display:flex;
+
     align-items:center;
+
     gap:15px;
+
 }
 
 .buscar{
+
     display:flex;
+
     align-items:center;
+
     width:260px;
 
     background:#f2f2f2;
+
     border-radius:30px;
 
     padding:10px 18px;
+
 }
 
 .buscar i{
-    margin-right:10px;
+    margin-right:8px;
     color:#555;
 }
 
 .buscar input{
-    width:100%;
+
     border:none;
     outline:none;
+
     background:none;
+
+    width:100%;
+
 }
 
 .carrito{
+
     width:50px;
     height:50px;
 
     border:none;
+
     border-radius:50%;
 
     background:#0F62FE;
+
     color:white;
 
     cursor:pointer;
+
     position:relative;
 
     font-size:18px;
+
+    transition:.3s;
+
 }
 
 .carrito:hover{
     background:#0049c9;
-}
-
-
-/* =========================================================
-   USUARIO
-========================================================= */
-
-.contenedorUsuario{
-    position:relative;
+    transform:scale(1.05);
 }
 
 .usuario{
+
     display:flex;
+
     align-items:center;
+
     justify-content:center;
 
     gap:8px;
 
     height:50px;
+
     padding:0 20px;
 
     border:none;
+
     border-radius:30px;
 
     background:#0F62FE;
+
     color:white;
 
     font-weight:600;
+
     cursor:pointer;
 
     transition:.3s;
+
 }
 
 .usuario:hover{
@@ -193,12 +227,17 @@ nav a:hover{
     white-space:nowrap;
 }
 
+.contenedorUsuario{
+    position:relative;
+}
 
-/* =========================================================
-   CONTADOR CARRITO
-========================================================= */
+
+/*======================================================
+                    CONTADOR
+======================================================*/
 
 #contador{
+
     position:absolute;
 
     top:-5px;
@@ -208,24 +247,25 @@ nav a:hover{
     height:22px;
 
     background:red;
-    color:white;
 
     border-radius:50%;
 
     display:flex;
+
     justify-content:center;
     align-items:center;
 
     font-size:12px;
-    font-weight:600;
+
 }
 
 
-/* =========================================================
-   MENU USUARIO
-========================================================= */
+/*======================================================
+                    MENU USUARIO
+======================================================*/
 
 .menuUsuario{
+
     position:absolute;
 
     top:60px;
@@ -244,15 +284,17 @@ nav a:hover{
     display:none;
 
     animation:menuEntrada .25s ease;
+
 }
 
 .menuUsuario.activo{
     display:block;
 }
 
-.menuUsuario a,
-.menuUsuario .opcionConfig{
+.menuUsuario a{
+
     display:flex;
+
     align-items:center;
 
     gap:12px;
@@ -266,37 +308,41 @@ nav a:hover{
     border-radius:10px;
 
     transition:.3s;
+
 }
 
-.menuUsuario a:hover,
-.menuUsuario .opcionConfig:hover{
+.menuUsuario a:hover{
+
     background:#f1f5ff;
+
     color:#0F62FE;
+
 }
 
-.menuUsuario a i,
-.menuUsuario .opcionConfig i{
+.menuUsuario a i{
     color:#333;
-    width:20px;
-    text-align:center;
 }
 
-.menuUsuario a:hover i,
-.menuUsuario .opcionConfig:hover i{
+.menuUsuario a:hover i{
     color:#0F62FE;
 }
 
 .menuUsuario hr{
+
     border:none;
+
     border-top:1px solid #ddd;
 
     margin:10px 0;
+
 }
 
 .menuUsuario button{
+
     width:100%;
 
     display:flex;
+
     align-items:center;
 
     gap:12px;
@@ -304,6 +350,7 @@ nav a:hover{
     padding:12px;
 
     border:none;
+
     background:none;
 
     cursor:pointer;
@@ -314,7 +361,6 @@ nav a:hover{
 
     border-radius:10px;
 
-    transition:.3s;
 }
 
 .menuUsuario button:hover{
@@ -336,60 +382,51 @@ nav a:hover{
 }
 
 
-/* =========================================================
-   MENU MOVIL
-========================================================= */
+/*======================================================
+                    MENU MOVIL
+======================================================*/
 
 #menuMovil{
+
     display:none;
 
     width:48px;
     height:48px;
 
     border:none;
+
     border-radius:12px;
 
     background:#0F62FE;
+
     color:white;
 
     font-size:22px;
 
     cursor:pointer;
 
-    transition:.3s;
 }
-
-#menuMovil:hover{
-    transform:scale(1.05);
-}
-
-#menuMovil:active{
-    transform:scale(.95);
-}
-
-
-/* =========================================================
-   MENU LATERAL
-========================================================= */
 
 #menuLateral{
+
     position:fixed;
 
     top:0;
-    left:-300px;
+    left:-280px;
 
-    width:280px;
+    width:270px;
     height:100vh;
 
     background:white;
 
     box-shadow:0 0 30px rgba(0,0,0,.2);
 
-    padding:75px 22px 30px;
+    padding:25px;
 
-    transition:left .35s ease;
+    transition:.35s;
 
     z-index:6000;
+
 }
 
 #menuLateral.activo{
@@ -397,24 +434,28 @@ nav a:hover{
 }
 
 .menuTitulo{
+
     display:flex;
+
     align-items:center;
 
     gap:12px;
 
+    margin-top:20px;
     margin-bottom:35px;
+
 }
 
 .menuTitulo i{
-    color:#0F62FE;
-    font-size:28px;
-}
 
-.menuTitulo h2{
-    font-size:22px;
+    color:#0F62FE;
+
+    font-size:28px;
+
 }
 
 #menuLateral a{
+
     display:block;
 
     padding:16px 10px;
@@ -428,14 +469,19 @@ nav a:hover{
     border-radius:12px;
 
     transition:.25s;
+
 }
 
 #menuLateral a:hover{
+
     background:#f3f6ff;
+
     color:#0F62FE;
+
 }
 
 #cerrarMenu{
+
     position:absolute;
 
     top:15px;
@@ -445,15 +491,10 @@ nav a:hover{
 
     cursor:pointer;
 
-    transition:.3s;
-}
-
-#cerrarMenu:hover{
-    color:#0F62FE;
-    transform:rotate(90deg);
 }
 
 #fondoMenu{
+
     position:fixed;
 
     inset:0;
@@ -461,79 +502,64 @@ nav a:hover{
     background:rgba(0,0,0,.45);
 
     opacity:0;
+
     visibility:hidden;
 
     transition:.3s;
 
     z-index:5999;
+
 }
 
 #fondoMenu.activo{
+
     opacity:1;
+
     visibility:visible;
+
 }
 
 
-/* =========================================================
-   HERO / SLIDER
-========================================================= */
+/*======================================================
+                    HERO / SLIDER
+======================================================*/
 
 .hero{
-    position:relative;
 
-    height:100vh;
+    position:relative;
 
     overflow:hidden;
 
-    display:flex;
-    align-items:center;
+    height:100vh;
 
-    padding:0 10%;
-}
-
-.hero::before{
-    content:"";
-
-    position:absolute;
-
-    left:0;
-    top:0;
-
-    width:100%;
-    height:100%;
-
-    background:linear-gradient(
-        90deg,
-        rgba(0,0,0,.65),
-        rgba(0,0,0,.25)
-    );
-
-    z-index:3;
-
-    pointer-events:none;
 }
 
 .slide{
+
     position:absolute;
 
     inset:0;
 
     opacity:0;
+
     visibility:hidden;
 
-    transition:
-        opacity .8s ease,
-        visibility .8s ease;
+    transition:opacity .8s ease, visibility .8s ease;
+
 }
 
 .slide.activo{
+
     opacity:1;
+
     visibility:visible;
 
     z-index:2;
+
 }
 
 .slide img{
+
     width:100%;
     height:100%;
 
@@ -544,54 +570,76 @@ nav a:hover{
     transform:scale(1);
 
     transition:transform 6s ease;
+
 }
 
 .slide.activo img{
     transform:scale(1.08);
 }
 
+.hero::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:linear-gradient(
+        90deg,
+        rgba(0,0,0,.65),
+        rgba(0,0,0,.25)
+    );
+
+    z-index:3;
+
+}
+
 .hero-texto{
+
     position:absolute;
 
     top:50%;
     left:10%;
 
-    transform:
-        translateY(-50%)
-        translateX(-40px);
-
-    max-width:600px;
-
-    color:white;
+    transform:translateY(-50%) translateX(-40px);
 
     opacity:0;
 
     z-index:5;
 
+    color:white;
+
+    max-width:600px;
+
     transition:all .8s ease;
 
-    user-select:none;
 }
 
 .slide.activo .hero-texto{
+
     opacity:1;
 
-    transform:
-        translateY(-50%)
-        translateX(0);
+    transform:translateY(-50%) translateX(0);
+
 }
 
 .hero h1{
+
     font-size:65px;
-    line-height:1.1;
+
 }
 
 .hero p{
+
     margin:20px 0;
+
     font-size:20px;
+
 }
 
 .hero button{
+
     background:#0F62FE;
 
     color:white;
@@ -607,6 +655,7 @@ nav a:hover{
     font-size:18px;
 
     transition:.3s;
+
 }
 
 .hero button:hover{
@@ -614,11 +663,12 @@ nav a:hover{
 }
 
 
-/* =========================================================
-   FLECHAS SLIDER
-========================================================= */
+/*======================================================
+                    FLECHAS
+======================================================*/
 
 .flecha{
+
     position:absolute;
 
     top:50%;
@@ -629,6 +679,7 @@ nav a:hover{
     height:62px;
 
     border:none;
+
     border-radius:50%;
 
     background:rgba(255,255,255,.92);
@@ -642,12 +693,7 @@ nav a:hover{
     font-size:22px;
 
     transition:.3s;
-}
 
-.flecha:hover{
-    transform:translateY(-50%) scale(1.08);
-
-    background:white;
 }
 
 .izquierda{
@@ -658,15 +704,25 @@ nav a:hover{
     right:45px;
 }
 
+.flecha:hover{
 
-/* =========================================================
-   INDICADORES
-========================================================= */
+    transform:translateY(-50%) scale(1.08);
+
+    background:white;
+
+}
+
+
+/*======================================================
+                    INDICADORES
+======================================================*/
 
 .indicadores{
+
     position:absolute;
 
     bottom:35px;
+
     left:50%;
 
     transform:translateX(-50%);
@@ -676,9 +732,11 @@ nav a:hover{
     gap:12px;
 
     z-index:10;
+
 }
 
 .dot{
+
     width:14px;
     height:14px;
 
@@ -690,20 +748,23 @@ nav a:hover{
 
     cursor:pointer;
 
-    transition:.3s;
 }
 
 .dot.activo{
+
     opacity:1;
+
     background:#0F62FE;
+
 }
 
 
-/* =========================================================
-   CATEGORIAS
-========================================================= */
+/*======================================================
+                    CATEGORIAS
+======================================================*/
 
 .categorias{
+
     padding:80px 10%;
 
     display:flex;
@@ -713,9 +774,11 @@ nav a:hover{
     flex-wrap:wrap;
 
     gap:30px;
+
 }
 
 .categoria{
+
     width:250px;
 
     background:white;
@@ -731,36 +794,42 @@ nav a:hover{
     text-decoration:none;
 
     color:#111;
+
 }
 
 .categoria:hover{
+
     transform:translateY(-10px);
 
     box-shadow:0 10px 25px rgba(0,0,0,.15);
+
 }
 
 .categoria i{
+
     font-size:45px;
 
     color:#0F62FE;
 
     margin-bottom:20px;
-}
 
-.categoria h3{
-    font-size:20px;
 }
 
 
-/* =========================================================
-   PRODUCTOS
-========================================================= */
+/*======================================================
+                    PRODUCTOS
+======================================================*/
 
 .productos{
-    padding:40px 8%;
+
+    padding:50px 8%;
+
+    scroll-margin-top:90px;
+
 }
 
 .productos h2{
+
     text-align:center;
 
     font-size:36px;
@@ -770,9 +839,11 @@ nav a:hover{
     margin-bottom:45px;
 
     position:relative;
+
 }
 
 .productos h2::after{
+
     content:"";
 
     width:70px;
@@ -785,47 +856,51 @@ nav a:hover{
     margin:12px auto;
 
     border-radius:20px;
+
 }
 
 .grid{
+
     display:grid;
 
-    grid-template-columns:
-        repeat(auto-fit,minmax(260px,1fr));
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
 
     gap:30px;
+
 }
 
 .card{
+
     background:white;
 
     border-radius:22px;
 
     overflow:hidden;
 
-    transition:.3s;
+    transition:.3s ease;
 
     position:relative;
+
 }
 
 .card:hover{
+
     transform:translateY(-8px);
 
-    box-shadow:
-        0 18px 40px rgba(15,98,254,.15);
+    box-shadow:0 18px 40px rgba(15,98,254,.15);
+
 }
 
 .card img{
+
     width:100%;
+
     height:320px;
 
     object-fit:cover;
 
-    position:relative;
-
-    z-index:1;
-
     transition:.45s;
+
 }
 
 .card:hover img{
@@ -834,11 +909,10 @@ nav a:hover{
 
 .card h3{
     margin:15px;
-
-    font-size:20px;
 }
 
 .card p{
+
     margin:0 15px;
 
     color:#0F62FE;
@@ -846,9 +920,11 @@ nav a:hover{
     font-weight:bold;
 
     font-size:20px;
+
 }
 
 .card button{
+
     width:90%;
 
     margin:18px auto;
@@ -867,60 +943,100 @@ nav a:hover{
 
     cursor:pointer;
 
+    transition:.35s;
+
     font-size:15px;
 
     font-weight:600;
 
-    transition:.35s;
 }
 
 .card button:hover{
-    background:#0049c9;
 
     transform:translateY(-2px);
 
-    box-shadow:
-        0 12px 25px rgba(15,98,254,.35);
+    box-shadow:0 12px 25px rgba(15,98,254,.35);
+
+}
+
+.card button:active{
+    transform:scale(.96);
 }
 
 
-/* =========================================================
-   BADGES
-========================================================= */
+/*======================================================
+                    BADGES
+======================================================*/
 
 .badge{
+
     position:absolute;
 
     top:12px;
     left:12px;
 
-    padding:6px 12px;
+    padding:7px 13px;
 
     border-radius:20px;
 
     font-size:12px;
 
-    font-weight:600;
+    font-weight:700;
 
     color:white;
 
     z-index:20;
+
+    animation:badgeEntrada .7s ease,
+              badgeFlotante 2s ease-in-out infinite;
+
 }
 
 .nuevo{
+
     background:#2563eb;
+
 }
 
 .oferta{
+
     background:#ef4444;
+
+}
+
+@keyframes badgeEntrada{
+
+    0%{
+        opacity:0;
+        transform:translateY(-15px) scale(.7);
+    }
+
+    100%{
+        opacity:1;
+        transform:translateY(0) scale(1);
+    }
+
+}
+
+@keyframes badgeFlotante{
+
+    0%,100%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-3px);
+    }
+
 }
 
 
-/* =========================================================
-   FAVORITOS EN PRODUCTOS
-========================================================= */
+/*======================================================
+                    FAVORITO
+======================================================*/
 
 .favorito{
+
     position:absolute;
 
     top:12px;
@@ -938,20 +1054,22 @@ nav a:hover{
     justify-content:center;
     align-items:center;
 
-    box-shadow:
-        0 8px 20px rgba(0,0,0,.15);
-
     cursor:pointer;
 
     transition:.3s;
 
+    box-shadow:0 8px 20px rgba(0,0,0,.15);
+
     z-index:20;
+
 }
 
 .favorito:hover{
+
     background:#ef4444;
 
     transform:scale(1.1);
+
 }
 
 .favorito:hover i{
@@ -959,7 +1077,9 @@ nav a:hover{
 }
 
 .favorito.activo{
+
     background:#ef4444;
+
 }
 
 .favorito.activo i{
@@ -971,31 +1091,137 @@ nav a:hover{
 }
 
 
-/* =========================================================
-   CARRITO
-========================================================= */
+/*======================================================
+                    OFERTAS
+======================================================*/
+
+#ofertas{
+
+    background:#eef4ff;
+
+    scroll-margin-top:90px;
+
+}
+
+.seccionOfertas{
+
+    padding:60px 8% 80px;
+
+}
+
+.tituloOfertas{
+
+    text-align:center;
+
+    margin-bottom:45px;
+
+}
+
+.tituloOfertas h2{
+
+    font-size:38px;
+
+    color:#111;
+
+}
+
+.tituloOfertas p{
+
+    color:#666;
+
+    margin-top:10px;
+
+}
+
+.precioOferta{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    flex-wrap:wrap;
+
+    margin:0 15px;
+
+}
+
+.precioAnterior{
+
+    text-decoration:line-through;
+
+    color:#999 !important;
+
+    font-size:15px !important;
+
+    margin:0 !important;
+
+    font-weight:400 !important;
+
+}
+
+.precioNuevo{
+
+    color:#ef4444 !important;
+
+    font-size:22px !important;
+
+    margin:0 !important;
+
+    font-weight:700 !important;
+
+}
+
+.descuento{
+
+    display:inline-block;
+
+    margin:12px 15px 0;
+
+    background:#fee2e2;
+
+    color:#dc2626;
+
+    padding:5px 10px;
+
+    border-radius:20px;
+
+    font-size:12px;
+
+    font-weight:700;
+
+}
+
+
+/*======================================================
+                    CARRITO
+======================================================*/
 
 #panelCarrito{
+
     position:fixed;
 
     top:0;
     right:-400px;
 
-    width:350px;
+    width:370px;
+    max-width:100%;
+
     height:100vh;
 
     background:white;
 
-    box-shadow:
-        -5px 0 20px rgba(0,0,0,.2);
+    box-shadow:-5px 0 20px rgba(0,0,0,.2);
 
     z-index:3000;
 
-    transition:right .4s ease;
+    transition:.4s;
 
     display:flex;
 
     flex-direction:column;
+
 }
 
 #panelCarrito.activo{
@@ -1003,6 +1229,7 @@ nav a:hover{
 }
 
 .encabezadoCarrito{
+
     display:flex;
 
     justify-content:space-between;
@@ -1013,14 +1240,14 @@ nav a:hover{
 
     border-bottom:1px solid #ddd;
 
-    flex-shrink:0;
 }
 
 .encabezadoCarrito h2{
-    font-size:24px;
+    font-size:22px;
 }
 
 #cerrarCarrito{
+
     border:none;
 
     background:#f3f4f6;
@@ -1030,28 +1257,24 @@ nav a:hover{
 
     border-radius:50%;
 
-    font-size:20px;
+    font-size:18px;
 
     cursor:pointer;
 
-    transition:.3s;
-}
-
-#cerrarCarrito:hover{
-    background:#ef4444;
-
-    color:white;
 }
 
 #listaCarrito{
+
     flex:1;
 
     overflow-y:auto;
 
     padding:20px;
+
 }
 
 .itemCarrito{
+
     display:flex;
 
     gap:15px;
@@ -1063,9 +1286,11 @@ nav a:hover{
     border-bottom:1px solid #ddd;
 
     animation:aparecer .3s;
+
 }
 
 .imgCarrito{
+
     width:80px;
     height:80px;
 
@@ -1074,47 +1299,51 @@ nav a:hover{
     object-fit:cover;
 
     flex-shrink:0;
+
 }
 
 .infoCarrito{
     flex:1;
-
-    min-width:0;
 }
 
 .infoCarrito h4{
-    font-size:17px;
+
+    font-size:16px;
 
     font-weight:600;
 
     color:#222;
 
-    margin-bottom:8px;
+    margin-bottom:6px;
 
     line-height:1.3;
+
 }
 
 .infoCarrito p{
+
     color:#0F62FE;
 
-    font-size:18px;
+    font-size:17px;
 
     font-weight:700;
 
-    margin-bottom:12px;
+    margin-bottom:10px;
+
 }
 
 .controles{
+
     display:flex;
 
     align-items:center;
 
     gap:8px;
 
-    flex-wrap:wrap;
 }
 
 .controles button{
+
     width:32px;
     height:32px;
 
@@ -1129,45 +1358,53 @@ nav a:hover{
     color:white;
 
     transition:.2s;
+
 }
 
 .controles button:hover{
-    background:#0049c9;
-
-    transform:scale(1.05);
+    transform:scale(1.08);
 }
 
 .controles span{
+
     min-width:24px;
 
     text-align:center;
 
     font-weight:600;
+
 }
 
-.eliminar{
-    background:#e53935!important;
-}
+.controles .eliminar{
 
-.eliminar:hover{
-    background:#c62828!important;
+    background:#e53935 !important;
+
+    margin-left:auto;
+
 }
 
 .pieCarrito{
+
     border-top:1px solid #ddd;
 
     padding:20px;
 
-    flex-shrink:0;
+    background:#fff;
 
-    background:white;
 }
 
-.pieCarrito h3{
-    font-size:20px;
+.totalCarritoFila{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
 }
 
 #comprar{
+
     width:100%;
 
     margin-top:15px;
@@ -1186,43 +1423,57 @@ nav a:hover{
 
     font-size:16px;
 
-    font-weight:600;
-
-    transition:.3s;
 }
 
 #comprar:hover{
     background:#0049c9;
 }
 
+#vaciarCarrito{
 
-/* =========================================================
-   ANIMACION
-========================================================= */
+    width:100%;
 
-@keyframes aparecer{
+    margin-top:10px;
 
-    from{
-        opacity:0;
-        transform:translateX(40px);
-    }
+    padding:12px;
 
-    to{
-        opacity:1;
-        transform:translateX(0);
-    }
+    border:1px solid #ef4444;
+
+    background:white;
+
+    color:#ef4444;
+
+    border-radius:10px;
+
+    cursor:pointer;
+
+    font-size:15px;
+
+    font-weight:600;
+
+    transition:.3s;
+
+}
+
+#vaciarCarrito:hover{
+
+    background:#ef4444;
+
+    color:white;
 
 }
 
 
-/* =========================================================
-   TOAST
-========================================================= */
+/*======================================================
+                    TOAST
+======================================================*/
 
 .toast{
+
     position:fixed;
 
     top:25px;
+
     right:-420px;
 
     background:white;
@@ -1239,72 +1490,63 @@ nav a:hover{
 
     border-radius:22px;
 
-    box-shadow:
-        0 15px 40px rgba(0,0,0,.18);
+    box-shadow:0 15px 40px rgba(0,0,0,.18);
 
-    transition:
-        right .45s ease,
-        opacity .3s ease;
+    transition:.45s;
 
     z-index:7000;
 
-    opacity:0;
-
-    pointer-events:none;
 }
 
 .toast i{
+
     color:#16a34a;
 
     font-size:30px;
 
-    flex-shrink:0;
 }
 
 .toast strong{
+
     display:block;
 
     margin-bottom:4px;
+
 }
 
 .toast p{
+
     color:#666;
 
     font-size:14px;
 
-    word-break:break-word;
 }
 
 .toast.mostrar{
     right:25px;
-
-    opacity:1;
 }
 
 
-/* =========================================================
-   MODALES
-========================================================= */
+/*======================================================
+                    MODALES
+======================================================*/
 
 .modal{
+
     display:none;
 
     position:fixed;
 
-    left:0;
-    top:0;
-
-    width:100%;
-    height:100%;
+    inset:0;
 
     background:rgba(0,0,0,.55);
 
-    z-index:6000;
+    z-index:8000;
 
     justify-content:center;
+
     align-items:center;
 
-    padding:20px;
 }
 
 .modal.activo{
@@ -1312,6 +1554,7 @@ nav a:hover{
 }
 
 .contenidoModal{
+
     background:white;
 
     padding:40px;
@@ -1320,7 +1563,7 @@ nav a:hover{
 
     width:380px;
 
-    max-width:100%;
+    max-width:92%;
 
     display:flex;
 
@@ -1331,9 +1574,15 @@ nav a:hover{
     position:relative;
 
     animation:aparecer .35s;
+
+}
+
+.contenidoModal h2{
+    color:#0F62FE;
 }
 
 .contenidoModal input{
+
     padding:14px;
 
     border:1px solid #ddd;
@@ -1343,13 +1592,17 @@ nav a:hover{
     font-size:15px;
 
     outline:none;
+
 }
 
 .contenidoModal input:focus{
+
     border-color:#0F62FE;
+
 }
 
 .contenidoModal button{
+
     padding:15px;
 
     border:none;
@@ -1364,14 +1617,10 @@ nav a:hover{
 
     font-size:16px;
 
-    transition:.3s;
-}
-
-.contenidoModal button:hover{
-    background:#0049c9;
 }
 
 #cerrarModal{
+
     position:absolute;
 
     right:18px;
@@ -1380,31 +1629,42 @@ nav a:hover{
     font-size:26px;
 
     cursor:pointer;
+
 }
 
+
+/*======================================================
+              MODAL MENSAJES
+======================================================*/
+
 #tituloMensaje{
+
     color:#0F62FE;
 
     margin-bottom:10px;
+
 }
 
 #textoMensaje{
+
     font-size:16px;
 
     line-height:1.5;
+
 }
 
 
-/* =========================================================
-   FAVORITOS MODAL
-========================================================= */
+/*======================================================
+              MODAL FAVORITOS
+======================================================*/
 
 .modalFavoritos{
+
     background:white;
 
     width:600px;
 
-    max-width:100%;
+    max-width:92%;
 
     max-height:75vh;
 
@@ -1419,13 +1679,17 @@ nav a:hover{
     display:flex;
 
     flex-direction:column;
+
 }
 
 .modalFavoritos h2{
-    padding-right:45px;
+
+    color:#0F62FE;
+
 }
 
 #listaFavoritos{
+
     margin-top:20px;
 
     overflow-y:auto;
@@ -1433,9 +1697,11 @@ nav a:hover{
     max-height:480px;
 
     padding-right:8px;
+
 }
 
 .itemFavorito{
+
     display:flex;
 
     align-items:center;
@@ -1445,9 +1711,11 @@ nav a:hover{
     padding:15px 0;
 
     border-bottom:1px solid #eee;
+
 }
 
 .itemFavorito img{
+
     width:90px;
     height:90px;
 
@@ -1455,28 +1723,26 @@ nav a:hover{
 
     border-radius:12px;
 
-    flex-shrink:0;
 }
 
 .infoFavorito{
     flex:1;
-
-    min-width:0;
 }
 
 .infoFavorito h3{
     margin-bottom:8px;
-
-    font-size:18px;
 }
 
 .infoFavorito p{
+
     color:#0F62FE;
 
     font-weight:bold;
+
 }
 
 .quitarFavorito{
+
     width:42px;
     height:42px;
 
@@ -1494,14 +1760,17 @@ nav a:hover{
 
     transition:.3s;
 
-    flex-shrink:0;
 }
 
 .quitarFavorito:hover{
+
     transform:scale(1.1);
+
 }
 
-#cerrarFavoritos{
+#cerrarFavoritos,
+#cerrarPreferencias{
+
     position:absolute;
 
     top:18px;
@@ -1528,25 +1797,30 @@ nav a:hover{
     cursor:pointer;
 
     transition:.3s;
+
 }
 
-#cerrarFavoritos:hover{
+#cerrarFavoritos:hover,
+#cerrarPreferencias:hover{
+
     background:#ef4444;
 
     color:white;
 
     transform:rotate(90deg);
+
 }
 
 
-/* =========================================================
-   PREFERENCIAS
-========================================================= */
+/*======================================================
+              PREFERENCIAS
+======================================================*/
 
 .modalPreferencias{
+
     width:430px;
 
-    max-width:100%;
+    max-width:92%;
 
     background:white;
 
@@ -1557,9 +1831,11 @@ nav a:hover{
     position:relative;
 
     animation:aparecer .3s;
+
 }
 
 .tituloPreferencias{
+
     display:flex;
 
     align-items:center;
@@ -1574,47 +1850,18 @@ nav a:hover{
 
     font-weight:700;
 
-    padding-right:40px;
 }
 
 .tituloPreferencias i{
+
     color:#0F62FE;
 
     font-size:24px;
-}
 
-#cerrarPreferencias{
-    position:absolute;
-
-    top:18px;
-    right:18px;
-
-    width:40px;
-    height:40px;
-
-    display:flex;
-
-    justify-content:center;
-    align-items:center;
-
-    border-radius:50%;
-
-    background:#f3f4f6;
-
-    font-size:28px;
-
-    cursor:pointer;
-
-    transition:.3s;
-}
-
-#cerrarPreferencias:hover{
-    background:#ef4444;
-
-    color:white;
 }
 
 .opcionConfig{
+
     display:flex;
 
     align-items:center;
@@ -1630,15 +1877,15 @@ nav a:hover{
     transition:.25s;
 
     margin-bottom:10px;
+
 }
 
 .opcionConfig:hover{
     background:#f4f7ff;
-
-    color:#0F62FE;
 }
 
 .opcionConfig i{
+
     width:35px;
 
     text-align:center;
@@ -1648,23 +1895,16 @@ nav a:hover{
     font-size:20px;
 
     flex-shrink:0;
+
 }
 
 
-/* =========================================================
-   ADMIN
-========================================================= */
-
-#adminLink{
-    display:none;
-}
-
-
-/* =========================================================
-   FOOTER
-========================================================= */
+/*======================================================
+                    FOOTER
+======================================================*/
 
 footer{
+
     margin-top:80px;
 
     background:#111;
@@ -1674,6 +1914,7 @@ footer{
     text-align:center;
 
     padding:50px;
+
 }
 
 footer h2{
@@ -1685,6 +1926,7 @@ footer h2{
 }
 
 .redes i{
+
     margin:0 15px;
 
     font-size:28px;
@@ -1692,6 +1934,7 @@ footer h2{
     cursor:pointer;
 
     transition:.3s;
+
 }
 
 .redes i:hover{
@@ -1699,9 +1942,43 @@ footer h2{
 }
 
 
-/* =========================================================
-   TABLETS
-========================================================= */
+/*======================================================
+                    ANIMACIONES
+======================================================*/
+
+@keyframes aparecer{
+
+    from{
+
+        opacity:0;
+
+        transform:translateX(40px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateX(0);
+
+    }
+
+}
+
+
+/*======================================================
+                    ADMIN
+======================================================*/
+
+#adminLink{
+    display:none;
+}
+
+
+/*======================================================
+                    RESPONSIVE
+======================================================*/
 
 @media screen and (max-width:1200px){
 
@@ -1732,46 +2009,27 @@ footer h2{
 }
 
 
-/* =========================================================
-   TABLET / MOBILE
-========================================================= */
-
-@media screen and (max-width:900px){
-
-    nav{
-        display:none;
-    }
-
-    #menuMovil{
-        display:flex;
-        justify-content:center;
-        align-items:center;
-    }
+@media screen and (max-width:992px){
 
     header{
-        padding:10px 20px;
-        min-height:72px;
+        padding:15px 20px;
+        height:auto;
     }
 
     .logo{
         font-size:24px;
     }
 
+    .buscar{
+        width:220px;
+    }
+
     .hero{
         height:650px;
     }
 
-    .hero-texto{
-        left:8%;
-        max-width:500px;
-    }
-
     .hero h1{
         font-size:46px;
-    }
-
-    .hero p{
-        font-size:18px;
     }
 
     .grid{
@@ -1782,15 +2040,13 @@ footer h2{
 }
 
 
-/* =========================================================
-   CELULAR
-========================================================= */
-
 @media screen and (max-width:768px){
 
+    /* HEADER */
+
     header{
-        height:auto;
-        min-height:72px;
+
+        height:72px;
 
         padding:10px 14px;
 
@@ -1801,39 +2057,10 @@ footer h2{
         gap:10px;
 
         flex-wrap:nowrap;
+
     }
-
-    .logo{
-        order:2;
-
-        flex:1;
-
-        min-width:0;
-
-        font-size:21px;
-
-        gap:7px;
-
-        overflow:hidden;
-    }
-
-    .logo i{
-        font-size:25px;
-
-        flex-shrink:0;
-    }
-
-    .logo span{
-        overflow:hidden;
-
-        text-overflow:ellipsis;
-    }
-
-
-    /* MENU */
 
     #menuMovil{
-        order:1;
 
         display:flex;
 
@@ -1856,17 +2083,38 @@ footer h2{
         font-size:19px;
 
         cursor:pointer;
+
     }
 
+    .logo{
 
-    /* ACCIONES */
+        order:2;
+
+        flex:1;
+
+        min-width:0;
+
+        font-size:21px;
+
+        gap:7px;
+
+        overflow:hidden;
+
+    }
+
+    .logo i{
+
+        font-size:25px;
+
+        flex-shrink:0;
+
+    }
 
     .acciones{
+
         order:3;
 
         width:auto;
-
-        margin:0;
 
         display:flex;
 
@@ -1875,59 +2123,57 @@ footer h2{
         gap:7px;
 
         flex-shrink:0;
+
     }
 
-
-    /* BUSCADOR */
+    nav{
+        display:none;
+    }
 
     .buscar{
+
         position:absolute;
 
-        top:82px;
+        top:80px;
 
         left:14px;
         right:14px;
 
         width:auto;
-        max-width:none;
 
-        height:50px;
+        height:46px;
 
         padding:0 16px;
 
-        border-radius:28px;
+        border-radius:25px;
 
         background:#f1f1f1;
 
         z-index:900;
 
-        display:flex;
-
-        align-items:center;
     }
 
     .buscar input{
+
         width:100%;
 
         font-size:15px;
+
     }
 
-
-    /* CARRITO */
-
     .carrito{
+
         width:44px;
         height:44px;
 
         min-width:44px;
 
         font-size:17px;
+
     }
 
-
-    /* USUARIO */
-
     .usuario{
+
         width:44px;
         height:44px;
 
@@ -1937,7 +2183,6 @@ footer h2{
 
         border-radius:50%;
 
-        gap:0;
     }
 
     .usuario span{
@@ -1949,93 +2194,81 @@ footer h2{
     }
 
 
-    /* MENU LATERAL */
-
-    #menuLateral{
-        width:280px;
-
-        max-width:82vw;
-
-        padding:75px 22px 30px;
-    }
-
-
     /* HERO */
 
     .hero{
+
         height:520px;
 
         margin-top:120px;
 
         border-radius:18px;
 
-        overflow:hidden;
-
-        padding:0;
-    }
-
-    .hero::before{
-        background:rgba(0,0,0,.55);
     }
 
     .hero-texto{
-        left:25px;
 
+        left:25px;
         right:25px;
 
         max-width:none;
+
     }
 
     .hero h1{
+
         font-size:34px;
 
         line-height:1.15;
+
     }
 
     .hero p{
+
         font-size:16px;
 
         margin:18px 0;
+
     }
 
     .hero button{
+
         padding:14px 28px;
 
         font-size:16px;
+
     }
 
 
-    /* SLIDER */
-
-    .slide img{
-        object-position:center;
-    }
-
-    /*
-       Las flechas se ocultan en celular.
-       El usuario podrá cambiar de slide
-       deslizando con el dedo.
-    */
+    /* FLECHAS OCULTAS */
 
     .flecha{
         display:none;
     }
 
+
+    /* INDICADORES */
+
     .indicadores{
+
         bottom:18px;
 
         gap:8px;
+
     }
 
     .dot{
+
         width:10px;
         height:10px;
+
     }
 
 
     /* CATEGORIAS */
 
     .categorias{
+
         padding:40px 20px;
 
         display:grid;
@@ -2043,45 +2276,52 @@ footer h2{
         grid-template-columns:1fr;
 
         gap:18px;
+
     }
 
     .categoria{
+
         width:100%;
 
         padding:25px;
 
         border-radius:18px;
+
     }
 
     .categoria i{
+
         font-size:38px;
 
         margin-bottom:15px;
-    }
 
-    .categoria h3{
-        font-size:20px;
     }
 
 
     /* PRODUCTOS */
 
     .productos{
+
         padding:40px 15px;
+
+        scroll-margin-top:85px;
+
     }
 
     .productos h2{
+
         font-size:30px;
 
         margin-bottom:30px;
+
     }
 
     .grid{
-        display:grid;
 
         grid-template-columns:1fr;
 
         gap:25px;
+
     }
 
     .card{
@@ -2100,46 +2340,26 @@ footer h2{
         font-size:22px;
     }
 
-    .card button{
-        width:92%;
 
-        padding:16px;
+    /* OFERTAS */
 
-        font-size:16px;
+    .tituloOfertas h2{
+        font-size:30px;
     }
 
-
-    /* BADGES */
-
-    .badge{
-        font-size:11px;
-
-        padding:6px 10px;
-    }
-
-
-    /* FAVORITO */
-
-    .favorito{
-        width:42px;
-        height:42px;
-    }
-
-    .favorito i{
-        font-size:18px;
+    .seccionOfertas{
+        padding:45px 15px 60px;
     }
 
 
     /* CARRITO */
 
     #panelCarrito{
+
         width:100%;
 
         right:-100%;
 
-        max-width:100%;
-
-        height:100dvh;
     }
 
     #panelCarrito.activo{
@@ -2150,20 +2370,12 @@ footer h2{
         padding:18px;
     }
 
-    .encabezadoCarrito h2{
-        font-size:22px;
-    }
-
     #listaCarrito{
         padding:15px;
-
-        padding-bottom:10px;
     }
 
     .itemCarrito{
         gap:12px;
-
-        margin-bottom:16px;
     }
 
     .imgCarrito{
@@ -2179,40 +2391,60 @@ footer h2{
         font-size:17px;
     }
 
-    .controles{
-        gap:7px;
-    }
-
     .controles button{
         width:36px;
         height:36px;
-
-        font-size:15px;
     }
 
     .pieCarrito{
-        padding:16px;
-
-        padding-bottom:
-            calc(16px + env(safe-area-inset-bottom));
+        padding:18px;
     }
 
     #comprar{
         padding:17px;
+    }
 
-        font-size:17px;
+
+    /* TOAST */
+
+    .toast{
+
+        top:135px;
+
+        left:15px;
+        right:15px;
+
+        width:auto;
+
+        border-radius:18px;
+
+        padding:15px;
+
+        transform:translateY(-20px);
+
+        opacity:0;
+
+        pointer-events:none;
+
+    }
+
+    .toast.mostrar{
+
+        right:15px;
+
+        transform:translateY(0);
+
+        opacity:1;
+
     }
 
 
     /* MODALES */
 
-    .modal{
-        padding:15px;
-    }
-
     .contenidoModal,
     .modalFavoritos,
     .modalPreferencias{
+
         width:94%;
 
         max-width:none;
@@ -2221,33 +2453,26 @@ footer h2{
 
         border-radius:20px;
 
-        margin:0;
+        margin:20px;
 
-        max-height:90vh;
-
-        overflow-y:auto;
-    }
-
-    .contenidoModal h2,
-    .modalFavoritos h2,
-    .modalPreferencias h2{
-        font-size:25px;
     }
 
     .contenidoModal input{
+
         width:100%;
 
         font-size:16px;
 
         padding:15px;
+
     }
 
     .contenidoModal button{
+
         width:100%;
 
         padding:15px;
 
-        font-size:16px;
     }
 
 
@@ -2255,123 +2480,69 @@ footer h2{
 
     #listaFavoritos{
         max-height:55vh;
-
-        overflow:auto;
     }
 
     .itemFavorito{
+
         display:flex;
 
         align-items:center;
 
         gap:15px;
 
-        padding:15px 0;
     }
 
     .itemFavorito img{
+
         width:85px;
         height:85px;
 
-        border-radius:12px;
-
-        object-fit:cover;
-    }
-
-    .infoFavorito{
-        flex:1;
-    }
-
-    .infoFavorito h3{
-        font-size:17px;
-
-        margin-bottom:6px;
-    }
-
-    .infoFavorito p{
-        font-size:18px;
-    }
-
-    .quitarFavorito{
-        width:45px;
-        height:45px;
-
-        font-size:18px;
     }
 
 
     /* PREFERENCIAS */
 
     .opcionConfig{
+
         padding:16px;
 
         font-size:16px;
-    }
 
-    .opcionConfig i{
-        font-size:21px;
-
-        width:35px;
-    }
-
-    .tituloPreferencias{
-        font-size:24px;
-
-        text-align:left!important;
-    }
-
-
-    /* TOAST */
-
-    .toast{
-        top:85px;
-
-        left:10px;
-        right:10px;
-
-        width:auto;
-
-        max-width:none;
-
-        border-radius:18px;
-
-        padding:16px;
-
-        transform:translateY(-10px);
-    }
-
-    .toast.mostrar{
-        right:10px;
-
-        transform:translateY(0);
-    }
-
-    .toast strong{
-        font-size:15px;
-    }
-
-    .toast p{
-        font-size:14px;
     }
 
 
     /* MENU USUARIO */
 
     .menuUsuario{
+
         width:230px;
 
         right:0;
 
         top:55px;
 
-        max-width:calc(100vw - 20px);
+    }
+
+
+    /* MENU LATERAL */
+
+    #menuLateral{
+
+        width:280px;
+
+        max-width:82vw;
+
+        padding:75px 22px 30px;
+
     }
 
 
     /* FOOTER */
 
     footer{
+
         padding:40px 20px;
+
     }
 
     footer h2{
@@ -2383,6 +2554,7 @@ footer h2{
     }
 
     .redes{
+
         display:flex;
 
         justify-content:center;
@@ -2390,33 +2562,19 @@ footer h2{
         gap:18px;
 
         flex-wrap:wrap;
+
     }
 
     .redes i{
+
         font-size:28px;
 
         margin:0;
-    }
 
-
-    /* SCROLL */
-
-    ::-webkit-scrollbar{
-        width:6px;
-    }
-
-    ::-webkit-scrollbar-thumb{
-        background:#0F62FE;
-
-        border-radius:20px;
     }
 
 }
 
-
-/* =========================================================
-   CELULARES PEQUEÑOS
-========================================================= */
 
 @media screen and (max-width:480px){
 
@@ -2424,14 +2582,11 @@ footer h2{
         font-size:18px;
     }
 
-    .logo i{
-        font-size:22px;
-    }
-
     .buscar{
-        top:82px;
-
-        padding:10px 15px;
+        top:80px;
+        left:10px;
+        right:10px;
+        height:44px;
     }
 
     .hero{
@@ -2463,26 +2618,23 @@ footer h2{
     }
 
     .itemCarrito{
-        flex-direction:column;
 
-        align-items:center;
+        flex-direction:row;
 
-        text-align:center;
-    }
+        align-items:flex-start;
 
-    .imgCarrito{
-        width:85px;
-        height:85px;
     }
 
     .infoCarrito{
-        width:100%;
+        min-width:0;
     }
 
     .controles{
-        justify-content:center;
-
         flex-wrap:wrap;
+    }
+
+    .controles .eliminar{
+        margin-left:0;
     }
 
     .contenidoModal,
@@ -2492,27 +2644,26 @@ footer h2{
     }
 
     .itemFavorito{
+
         flex-direction:column;
 
         text-align:center;
+
     }
 
     .itemFavorito img{
-        width:120px;
-        height:120px;
+
+        width:110px;
+        height:110px;
+
     }
 
     .infoFavorito{
         width:100%;
     }
 
-    .quitarFavorito{
-        margin-top:10px;
-    }
-
     .menuUsuario{
         width:210px;
-
         right:5px;
     }
 
@@ -2530,52 +2681,33 @@ footer h2{
 
 }
 
-
-/* =========================================================
-   ANIMACIONES GENERALES
-========================================================= */
-
-.card,
-.categoria,
-.usuario,
-.carrito,
-button,
-.favorito{
-    transition:.3s ease;
-}
-
-button:active{
-    transform:scale(.96);
-}
-
-.usuario:active{
-    transform:scale(.97);
-}
-
-.carrito:active{
-    transform:scale(.95);
-}
-
 </style>
 </head>
 
 <body>
 
 
-<!-- =======================================================
-     HEADER
-======================================================= -->
+<!--==================================================
+                    HEADER
+===================================================-->
 
 <header>
 
     <div class="logo">
+
         <i class="fa-solid fa-shirt"></i>
+
         American Style
+
     </div>
 
-    <button id="menuMovil" aria-label="Abrir menú">
+
+    <button id="menuMovil">
+
         <i class="fa-solid fa-bars"></i>
+
     </button>
+
 
     <nav>
 
@@ -2595,7 +2727,9 @@ button:active{
 
     </nav>
 
+
     <div class="acciones">
+
 
         <div class="buscar">
 
@@ -2609,11 +2743,8 @@ button:active{
 
         </div>
 
-        <button
-            class="carrito"
-            id="abrirCarrito"
-            aria-label="Abrir carrito"
-        >
+
+        <button class="carrito" id="abrirCarrito">
 
             <i class="fa-solid fa-cart-shopping"></i>
 
@@ -2621,13 +2752,11 @@ button:active{
 
         </button>
 
+
         <div class="contenedorUsuario">
 
-            <button
-                class="usuario"
-                id="btnUsuario"
-                aria-label="Cuenta de usuario"
-            >
+
+            <button class="usuario" id="btnUsuario">
 
                 <i class="fa-solid fa-user"></i>
 
@@ -2639,24 +2768,20 @@ button:active{
 
             </button>
 
+
             <div class="menuUsuario" id="menuUsuario">
+
 
                 <a href="#" id="cuentaLink">
 
                     <i class="fa-solid fa-user"></i>
 
-                    <span>Mi cuenta</span>
+                    Mi cuenta
 
                 </a>
 
-                <!-- PREFERENCIAS: MISMO ESTILO QUE LAS DEMÁS OPCIONES -->
 
-                <div
-                    class="opcionConfig"
-                    id="PreferenciasLink"
-                    role="button"
-                    tabindex="0"
-                >
+                <div class="opcionConfig" id="PreferenciasLink">
 
                     <i class="fa-solid fa-gear"></i>
 
@@ -2664,41 +2789,45 @@ button:active{
 
                 </div>
 
+
                 <a href="#" id="pedidosLink">
 
                     <i class="fa-solid fa-box"></i>
 
-                    <span>Mis pedidos</span>
+                    Mis pedidos
 
                 </a>
+
 
                 <a href="#" id="favoritosLink">
 
                     <i class="fa-solid fa-heart"></i>
 
-                    <span>Mis favoritos</span>
+                    Mis favoritos
 
                 </a>
+
 
                 <a href="#" id="adminLink">
 
                     <i class="fa-solid fa-chart-line"></i>
 
-                    <span>Panel administrador</span>
+                    Panel administrador
 
                 </a>
 
+
                 <hr>
 
-                <!-- CERRAR SESIÓN SOLO AQUÍ -->
 
                 <button id="cerrarSesion">
 
                     <i class="fa-solid fa-right-from-bracket"></i>
 
-                    <span>Cerrar sesión</span>
+                    Cerrar sesión
 
                 </button>
+
 
             </div>
 
@@ -2709,15 +2838,18 @@ button:active{
 </header>
 
 
-<!-- =======================================================
-     MENU LATERAL MOVIL
-======================================================= -->
+<!--==================================================
+                    MENU LATERAL
+===================================================-->
 
 <div id="fondoMenu"></div>
 
+
 <div id="menuLateral">
 
+
     <span id="cerrarMenu">&times;</span>
+
 
     <div class="menuTitulo">
 
@@ -2727,32 +2859,47 @@ button:active{
 
     </div>
 
-    <a href="#" class="linkMenuMovil">🏠 Inicio</a>
 
-    <a href="#productos" class="linkMenuMovil">🛍 Productos</a>
+    <a href="#">
+        🏠 Inicio
+    </a>
 
-    <a href="#ofertas" class="linkMenuMovil">🔥 Ofertas</a>
 
-    <a href="#contacto" class="linkMenuMovil">📞 Contacto</a>
+    <a href="#productos">
+        🛍 Productos
+    </a>
+
+
+    <a href="#ofertas">
+        🔥 Ofertas
+    </a>
+
+
+    <a href="#contacto">
+        📞 Contacto
+    </a>
+
 
 </div>
 
 
-<!-- =======================================================
-     CARRITO
-======================================================= -->
+<!--==================================================
+                    CARRITO
+===================================================-->
 
 <div id="panelCarrito">
+
 
     <div class="encabezadoCarrito">
 
         <h2>🛒 Mi carrito</h2>
 
-        <button id="cerrarCarrito" aria-label="Cerrar carrito">
+        <button id="cerrarCarrito">
             ✖
         </button>
 
     </div>
+
 
     <div id="listaCarrito">
 
@@ -2760,52 +2907,88 @@ button:active{
 
     </div>
 
+
     <div class="pieCarrito">
 
-        <h3>
-            Total: $<span id="totalCarrito">0</span> MXN
-        </h3>
+
+        <div class="totalCarritoFila">
+
+            <h3>Total:</h3>
+
+            <h3>
+                $<span id="totalCarrito">0</span> MXN
+            </h3>
+
+        </div>
+
 
         <button id="comprar">
+
             Finalizar compra
+
         </button>
+
+
+        <button id="vaciarCarrito">
+
+            <i class="fa-solid fa-trash"></i>
+
+            Vaciar carrito
+
+        </button>
+
 
     </div>
 
 </div>
 
 
-<!-- =======================================================
-     FAVORITOS
-======================================================= -->
+<!--==================================================
+                    MODAL FAVORITOS
+===================================================-->
 
 <div id="modalFavoritos" class="modal">
 
+
     <div class="modalFavoritos">
 
-        <span id="cerrarFavoritos">&times;</span>
+
+        <span id="cerrarFavoritos">
+            &times;
+        </span>
+
 
         <h2>
+
             ❤️ Mis favoritos
+
             (<span id="contadorFavoritos">0</span>)
+
         </h2>
 
+
         <div id="listaFavoritos"></div>
+
 
     </div>
 
 </div>
 
 
-<!-- =======================================================
-     PREFERENCIAS
-======================================================= -->
+<!--==================================================
+                    PREFERENCIAS
+===================================================-->
 
 <div id="modalPreferencias" class="modal">
 
+
     <div class="modalPreferencias">
 
-        <span id="cerrarPreferencias">&times;</span>
+
+        <span id="cerrarPreferencias">
+            &times;
+        </span>
+
 
         <h2 class="tituloPreferencias">
 
@@ -2815,12 +2998,8 @@ button:active{
 
         </h2>
 
-        <div
-            class="opcionConfig"
-            id="notificacionesBtn"
-            role="button"
-            tabindex="0"
-        >
+
+        <div class="opcionConfig" id="notificacionesBtn">
 
             <i class="fa-solid fa-bell"></i>
 
@@ -2828,12 +3007,8 @@ button:active{
 
         </div>
 
-        <div
-            class="opcionConfig"
-            id="modoOscuroBtn"
-            role="button"
-            tabindex="0"
-        >
+
+        <div class="opcionConfig" id="modoOscuroBtn">
 
             <i class="fa-solid fa-moon"></i>
 
@@ -2841,12 +3016,8 @@ button:active{
 
         </div>
 
-        <div
-            class="opcionConfig"
-            id="preferenciasComprasBtn"
-            role="button"
-            tabindex="0"
-        >
+
+        <div class="opcionConfig" id="preferenciasComprasBtn">
 
             <i class="fa-solid fa-heart"></i>
 
@@ -2854,12 +3025,8 @@ button:active{
 
         </div>
 
-        <div
-            class="opcionConfig"
-            id="soporteBtn"
-            role="button"
-            tabindex="0"
-        >
+
+        <div class="opcionConfig" id="soporteBtn">
 
             <i class="fa-solid fa-headset"></i>
 
@@ -2867,12 +3034,8 @@ button:active{
 
         </div>
 
-        <div
-            class="opcionConfig"
-            id="acercaBtn"
-            role="button"
-            tabindex="0"
-        >
+
+        <div class="opcionConfig" id="acercaBtn">
 
             <i class="fa-solid fa-circle-info"></i>
 
@@ -2880,31 +3043,37 @@ button:active{
 
         </div>
 
+
     </div>
 
 </div>
 
 
-<!-- =======================================================
-     HERO SLIDER
-======================================================= -->
+<!--==================================================
+                    HERO
+===================================================-->
 
 <section class="hero">
 
+
     <div class="slide activo">
 
-        <img src="https://picsum.photos/1600/900?11" alt="Nueva colección">
+        <img src="https://picsum.photos/1600/900?11">
 
         <div class="hero-texto">
 
-            <h1>Nueva Colección 2026</h1>
+            <h1>
+                Nueva Colección 2026
+            </h1>
 
             <p>
                 Las mejores marcas americanas con precios increíbles.
             </p>
 
-            <button>
+            <button onclick="document.getElementById('hombre').scrollIntoView()">
+
                 Comprar ahora
+
             </button>
 
         </div>
@@ -2914,18 +3083,22 @@ button:active{
 
     <div class="slide">
 
-        <img src="https://picsum.photos/1600/900?22" alt="Ofertas">
+        <img src="https://picsum.photos/1600/900?22">
 
         <div class="hero-texto">
 
-            <h1>Hasta 50% OFF</h1>
+            <h1>
+                Hasta 50% OFF
+            </h1>
 
             <p>
                 Ofertas por tiempo limitado.
             </p>
 
-            <button>
+            <button onclick="document.getElementById('ofertas').scrollIntoView()">
+
                 Ver ofertas
+
             </button>
 
         </div>
@@ -2935,18 +3108,22 @@ button:active{
 
     <div class="slide">
 
-        <img src="https://picsum.photos/1600/900?33" alt="Accesorios">
+        <img src="https://picsum.photos/1600/900?33">
 
         <div class="hero-texto">
 
-            <h1>Accesorios Originales</h1>
+            <h1>
+                Accesorios Originales
+            </h1>
 
             <p>
                 Gorras, mochilas y mucho más.
             </p>
 
-            <button>
+            <button onclick="document.getElementById('accesorios').scrollIntoView()">
+
                 Comprar
+
             </button>
 
         </div>
@@ -2954,22 +3131,14 @@ button:active{
     </div>
 
 
-    <button
-        id="anterior"
-        class="flecha izquierda"
-        aria-label="Slide anterior"
-    >
+    <button id="anterior" class="flecha izquierda">
 
         <i class="fa-solid fa-chevron-left"></i>
 
     </button>
 
 
-    <button
-        id="siguiente"
-        class="flecha derecha"
-        aria-label="Siguiente slide"
-    >
+    <button id="siguiente" class="flecha derecha">
 
         <i class="fa-solid fa-chevron-right"></i>
 
@@ -2986,14 +3155,16 @@ button:active{
 
     </div>
 
+
 </section>
 
 
-<!-- =======================================================
-     CATEGORIAS
-======================================================= -->
+<!--==================================================
+                    CATEGORIAS
+===================================================-->
 
-<section class="categorias">
+<section class="categorias" id="productos">
+
 
     <a href="#hombre" class="categoria">
 
@@ -3003,6 +3174,7 @@ button:active{
 
     </a>
 
+
     <a href="#mujer" class="categoria">
 
         <i class="fa-solid fa-person-dress"></i>
@@ -3010,6 +3182,7 @@ button:active{
         <h3>Mujer</h3>
 
     </a>
+
 
     <a href="#infantil" class="categoria">
 
@@ -3019,6 +3192,7 @@ button:active{
 
     </a>
 
+
     <a href="#accesorios" class="categoria">
 
         <i class="fa-solid fa-hat-cowboy"></i>
@@ -3027,18 +3201,24 @@ button:active{
 
     </a>
 
+
 </section>
 
 
-<!-- =======================================================
-     PRODUCTOS HOMBRE
-======================================================= -->
+<!--==================================================
+                    HOMBRE
+===================================================-->
 
 <section class="productos" id="hombre">
 
-    <h2>Ropa para Hombre</h2>
+
+    <h2>
+        Ropa para Hombre
+    </h2>
+
 
     <div class="grid">
+
 
         <div
             class="card"
@@ -3046,9 +3226,14 @@ button:active{
             data-categoria="hombre"
         >
 
-            <span class="badge nuevo">
+            <span
+                class="badge nuevo"
+                data-nuevo="true"
+                data-producto-nuevo="1"
+            >
                 NUEVO
             </span>
+
 
             <div class="favorito">
 
@@ -3056,20 +3241,24 @@ button:active{
 
             </div>
 
-            <img
-                src="https://picsum.photos/400/500?1"
-                alt="Sudadera Nike"
-            >
 
-            <h3>Sudadera Nike</h3>
+            <img src="https://picsum.photos/400/500?1">
+
+
+            <h3>
+                Sudadera Nike
+            </h3>
+
 
             <p data-precio="750">
                 $750 MXN
             </p>
 
+
             <button>
                 Agregar al carrito
             </button>
+
 
         </div>
 
@@ -3080,9 +3269,14 @@ button:active{
             data-categoria="hombre"
         >
 
-            <span class="badge nuevo">
+            <span
+                class="badge nuevo"
+                data-nuevo="true"
+                data-producto-nuevo="2"
+            >
                 NUEVO
             </span>
+
 
             <div class="favorito">
 
@@ -3090,37 +3284,47 @@ button:active{
 
             </div>
 
-            <img
-                src="https://picsum.photos/400/500?2"
-                alt="Jeans Levi's"
-            >
 
-            <h3>Jeans Levi's</h3>
+            <img src="https://picsum.photos/400/500?2">
+
+
+            <h3>
+                Jeans Levi's
+            </h3>
+
 
             <p data-precio="650">
                 $650 MXN
             </p>
 
+
             <button>
                 Agregar al carrito
             </button>
 
+
         </div>
+
 
     </div>
 
 </section>
 
 
-<!-- =======================================================
-     PRODUCTOS MUJER
-======================================================= -->
+<!--==================================================
+                    MUJER
+===================================================-->
 
 <section class="productos" id="mujer">
 
-    <h2>Ropa para Mujer</h2>
+
+    <h2>
+        Ropa para Mujer
+    </h2>
+
 
     <div class="grid">
+
 
         <div
             class="card"
@@ -3128,9 +3332,14 @@ button:active{
             data-categoria="mujer"
         >
 
-            <span class="badge nuevo">
+            <span
+                class="badge nuevo"
+                data-nuevo="true"
+                data-producto-nuevo="3"
+            >
                 NUEVO
             </span>
+
 
             <div class="favorito">
 
@@ -3138,20 +3347,24 @@ button:active{
 
             </div>
 
-            <img
-                src="https://picsum.photos/400/500?3"
-                alt="Playera Adidas Mujer"
-            >
 
-            <h3>Playera Adidas Mujer</h3>
+            <img src="https://picsum.photos/400/500?3">
+
+
+            <h3>
+                Playera Adidas Mujer
+            </h3>
+
 
             <p data-precio="420">
                 $420 MXN
             </p>
 
+
             <button>
                 Agregar al carrito
             </button>
+
 
         </div>
 
@@ -3162,9 +3375,14 @@ button:active{
             data-categoria="mujer"
         >
 
-            <span class="badge nuevo">
+            <span
+                class="badge nuevo"
+                data-nuevo="true"
+                data-producto-nuevo="4"
+            >
                 NUEVO
             </span>
+
 
             <div class="favorito">
 
@@ -3172,37 +3390,47 @@ button:active{
 
             </div>
 
-            <img
-                src="https://picsum.photos/400/500?4"
-                alt="Chamarra Tommy Mujer"
-            >
 
-            <h3>Chamarra Tommy Mujer</h3>
+            <img src="https://picsum.photos/400/500?4">
+
+
+            <h3>
+                Chamarra Tommy Mujer
+            </h3>
+
 
             <p data-precio="1250">
                 $1,250 MXN
             </p>
 
+
             <button>
                 Agregar al carrito
             </button>
 
+
         </div>
+
 
     </div>
 
 </section>
 
 
-<!-- =======================================================
-     PRODUCTOS INFANTIL
-======================================================= -->
+<!--==================================================
+                    INFANTIL
+===================================================-->
 
 <section class="productos" id="infantil">
 
-    <h2>Ropa Infantil</h2>
+
+    <h2>
+        Ropa Infantil
+    </h2>
+
 
     <div class="grid">
+
 
         <div
             class="card"
@@ -3210,9 +3438,14 @@ button:active{
             data-categoria="infantil"
         >
 
-            <span class="badge nuevo">
+            <span
+                class="badge nuevo"
+                data-nuevo="true"
+                data-producto-nuevo="5"
+            >
                 NUEVO
             </span>
+
 
             <div class="favorito">
 
@@ -3220,20 +3453,24 @@ button:active{
 
             </div>
 
-            <img
-                src="https://picsum.photos/400/500?5"
-                alt="Sudadera Infantil"
-            >
 
-            <h3>Sudadera Infantil</h3>
+            <img src="https://picsum.photos/400/500?5">
+
+
+            <h3>
+                Sudadera Infantil
+            </h3>
+
 
             <p data-precio="350">
                 $350 MXN
             </p>
 
+
             <button>
                 Agregar al carrito
             </button>
+
 
         </div>
 
@@ -3244,9 +3481,14 @@ button:active{
             data-categoria="infantil"
         >
 
-            <span class="badge nuevo">
+            <span
+                class="badge nuevo"
+                data-nuevo="true"
+                data-producto-nuevo="6"
+            >
                 NUEVO
             </span>
+
 
             <div class="favorito">
 
@@ -3254,37 +3496,47 @@ button:active{
 
             </div>
 
-            <img
-                src="https://picsum.photos/400/500?6"
-                alt="Playera Infantil"
-            >
 
-            <h3>Playera Infantil</h3>
+            <img src="https://picsum.photos/400/500?6">
+
+
+            <h3>
+                Playera Infantil
+            </h3>
+
 
             <p data-precio="250">
                 $250 MXN
             </p>
 
+
             <button>
                 Agregar al carrito
             </button>
 
+
         </div>
+
 
     </div>
 
 </section>
 
 
-<!-- =======================================================
-     ACCESORIOS
-======================================================= -->
+<!--==================================================
+                    ACCESORIOS
+===================================================-->
 
 <section class="productos" id="accesorios">
 
-    <h2>Accesorios</h2>
+
+    <h2>
+        Accesorios
+    </h2>
+
 
     <div class="grid">
+
 
         <div
             class="card"
@@ -3292,9 +3544,14 @@ button:active{
             data-categoria="accesorios"
         >
 
-            <span class="badge nuevo">
+            <span
+                class="badge nuevo"
+                data-nuevo="true"
+                data-producto-nuevo="7"
+            >
                 NUEVO
             </span>
+
 
             <div class="favorito">
 
@@ -3302,20 +3559,24 @@ button:active{
 
             </div>
 
-            <img
-                src="https://picsum.photos/400/500?7"
-                alt="Gorra New Era"
-            >
 
-            <h3>Gorra New Era</h3>
+            <img src="https://picsum.photos/400/500?7">
+
+
+            <h3>
+                Gorra New Era
+            </h3>
+
 
             <p data-precio="480">
                 $480 MXN
             </p>
 
+
             <button>
                 Agregar al carrito
             </button>
+
 
         </div>
 
@@ -3326,9 +3587,14 @@ button:active{
             data-categoria="accesorios"
         >
 
-            <span class="badge nuevo">
+            <span
+                class="badge nuevo"
+                data-nuevo="true"
+                data-producto-nuevo="8"
+            >
                 NUEVO
             </span>
+
 
             <div class="favorito">
 
@@ -3336,58 +3602,220 @@ button:active{
 
             </div>
 
-            <img
-                src="https://picsum.photos/400/500?8"
-                alt="Mochila Nike"
-            >
 
-            <h3>Mochila Nike</h3>
+            <img src="https://picsum.photos/400/500?8">
+
+
+            <h3>
+                Mochila Nike
+            </h3>
+
 
             <p data-precio="890">
                 $890 MXN
             </p>
 
+
             <button>
                 Agregar al carrito
             </button>
 
+
         </div>
+
 
     </div>
 
 </section>
 
 
-<!-- =======================================================
-     TOAST
-======================================================= -->
+<!--==================================================
+                    OFERTAS
+===================================================-->
+
+<section id="ofertas" class="seccionOfertas">
+
+
+    <div class="tituloOfertas">
+
+        <h2>
+            🔥 Ofertas especiales
+        </h2>
+
+        <p>
+            Aprovecha nuestros descuentos por tiempo limitado.
+        </p>
+
+    </div>
+
+
+    <div class="grid">
+
+
+        <!-- OFERTA 1 -->
+
+        <div
+            class="card"
+            data-id="9"
+            data-categoria="ofertas"
+            data-oferta="true"
+        >
+
+            <span class="badge oferta">
+                OFERTA
+            </span>
+
+
+            <div class="favorito">
+
+                <i class="fa-regular fa-heart"></i>
+
+            </div>
+
+
+            <img src="https://picsum.photos/400/500?9">
+
+
+            <h3>
+                Sudadera American Style
+            </h3>
+
+
+            <div class="precioOferta">
+
+                <p class="precioAnterior">
+                    $900 MXN
+                </p>
+
+                <p
+                    class="precioNuevo"
+                    data-precio="720"
+                >
+                    $720 MXN
+                </p>
+
+            </div>
+
+
+            <span class="descuento">
+                20% OFF
+            </span>
+
+
+            <button>
+                Agregar al carrito
+            </button>
+
+
+        </div>
+
+
+        <!-- OFERTA 2 -->
+
+        <div
+            class="card"
+            data-id="10"
+            data-categoria="ofertas"
+            data-oferta="true"
+        >
+
+            <span class="badge oferta">
+                OFERTA
+            </span>
+
+
+            <div class="favorito">
+
+                <i class="fa-regular fa-heart"></i>
+
+            </div>
+
+
+            <img src="https://picsum.photos/400/500?10">
+
+
+            <h3>
+                Chamarra American Style
+            </h3>
+
+
+            <div class="precioOferta">
+
+                <p class="precioAnterior">
+                    $1,500 MXN
+                </p>
+
+                <p
+                    class="precioNuevo"
+                    data-precio="1125"
+                >
+                    $1,125 MXN
+                </p>
+
+            </div>
+
+
+            <span class="descuento">
+                25% OFF
+            </span>
+
+
+            <button>
+                Agregar al carrito
+            </button>
+
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+<!--==================================================
+                    TOAST
+===================================================-->
 
 <div id="toast" class="toast">
 
+
     <i class="fa-solid fa-circle-check"></i>
+
 
     <div>
 
-        <strong>Producto agregado</strong>
+        <strong>
+            Producto agregado
+        </strong>
 
         <p id="toastTexto"></p>
 
     </div>
 
+
 </div>
 
 
-<!-- =======================================================
-     LOGIN
-======================================================= -->
+<!--==================================================
+                    LOGIN
+===================================================-->
 
 <div id="modalLogin" class="modal">
 
+
     <div class="contenidoModal">
 
-        <span id="cerrarModal">&times;</span>
 
-        <h2>Bienvenido</h2>
+        <span id="cerrarModal">
+            &times;
+        </span>
+
+
+        <h2>
+            Bienvenido
+        </h2>
+
 
         <input
             type="email"
@@ -3395,19 +3823,23 @@ button:active{
             placeholder="Correo electrónico"
         >
 
+
         <input
             type="password"
             id="password"
             placeholder="Contraseña"
         >
 
+
         <button id="loginBtn">
             Iniciar sesión
         </button>
 
+
         <button id="registroBtn">
             Crear cuenta
         </button>
+
 
         <button id="googleBtn">
 
@@ -3417,50 +3849,18 @@ button:active{
 
         </button>
 
+
     </div>
 
 </div>
 
 
-<!-- =======================================================
-     FOOTER
-======================================================= -->
-
-<footer id="contacto">
-
-    <h2>
-        American Style Store
-    </h2>
-
-    <p>
-        Moda americana original para todos.
-    </p>
-
-    <div class="redes">
-
-        <i class="fab fa-facebook"></i>
-
-        <i class="fab fa-instagram"></i>
-
-        <i class="fab fa-tiktok"></i>
-
-        <i class="fab fa-whatsapp"></i>
-
-    </div>
-
-    <p>
-        © 2026 American Style Store |
-        Todos los derechos reservados.
-    </p>
-
-</footer>
-
-
-<!-- =======================================================
-     MENSAJES
-======================================================= -->
+<!--==================================================
+                    MENSAJES
+===================================================-->
 
 <div id="modalMensaje" class="modal">
+
 
     <div
         class="contenidoModal"
@@ -3480,67 +3880,125 @@ button:active{
 
     </div>
 
+
 </div>
 
 
-<!-- =======================================================
-     FIREBASE + JAVASCRIPT
-======================================================= -->
+<!--==================================================
+                    FOOTER
+===================================================-->
+
+<footer id="contacto">
+
+
+    <h2>
+        American Style Store
+    </h2>
+
+
+    <p>
+        Moda americana original para todos.
+    </p>
+
+
+    <div class="redes">
+
+        <i class="fab fa-facebook"></i>
+
+        <i class="fab fa-instagram"></i>
+
+        <i class="fab fa-tiktok"></i>
+
+        <i class="fab fa-whatsapp"></i>
+
+    </div>
+
+
+    <p>
+        © 2026 American Style Store | Todos los derechos reservados.
+    </p>
+
+
+</footer>
+
+
+<!--==================================================
+                    FIREBASE + JS
+===================================================-->
 
 <script type="module">
 
-/* =========================================================
-   FIREBASE
-========================================================= */
+
+/*======================================================
+                    FIREBASE
+======================================================*/
 
 import {
     initializeApp
 } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
 
-import {
-    getAuth,
-    createUserWithEmailAndPassword,
-    signInWithEmailAndPassword,
-    signOut,
-    onAuthStateChanged,
-    GoogleAuthProvider,
-    signInWithPopup
-} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
 
 import {
+
+    getAuth,
+
+    createUserWithEmailAndPassword,
+
+    signInWithEmailAndPassword,
+
+    signOut,
+
+    onAuthStateChanged,
+
+    GoogleAuthProvider,
+
+    signInWithPopup
+
+} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
+
+
+import {
+
     getFirestore,
+
     doc,
+
     setDoc,
+
     getDoc,
+
     addDoc,
+
     collection
+
 } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
 
 
 const firebaseConfig = {
 
     apiKey:
-        "AIzaSyAfJ8vGvEy7HCi9PaiA6hmv6yhlm-JDDBE",
+    "AIzaSyAfJ8vGvEy7HCi9PaiA6hmv6yhlm-JDDBE",
 
     authDomain:
-        "american-styless.firebaseapp.com",
+    "american-styless.firebaseapp.com",
 
     projectId:
-        "american-styless",
+    "american-styless",
 
     storageBucket:
-        "american-styless.firebasestorage.app",
+    "american-styless.firebasestorage.app",
 
     messagingSenderId:
-        "599897055313",
+    "599897055313",
 
     appId:
-        "1:599897055313:web:d97d7c0d849f09b1671870",
+    "1:599897055313:web:d97d7c0d849f09b1671870",
 
     measurementId:
-        "G-MN6MXW6PZN"
+    "G-MN6MXW6PZN"
 
 };
+
 
 const app = initializeApp(firebaseConfig);
 
@@ -3550,6 +4008,7 @@ const provider = new GoogleAuthProvider();
 
 const db = getFirestore(app);
 
+
 let usuarioActual = null;
 
 let carrito = [];
@@ -3557,21 +4016,9 @@ let carrito = [];
 let favoritos = [];
 
 
-/* =========================================================
-   ELEMENTOS
-========================================================= */
-
-const menuMovil =
-    document.getElementById("menuMovil");
-
-const menuLateral =
-    document.getElementById("menuLateral");
-
-const fondoMenu =
-    document.getElementById("fondoMenu");
-
-const cerrarMenu =
-    document.getElementById("cerrarMenu");
+/*======================================================
+                    ELEMENTOS
+======================================================*/
 
 const contador =
     document.getElementById("contador");
@@ -3591,6 +4038,12 @@ const abrirCarrito =
 const cerrarCarrito =
     document.getElementById("cerrarCarrito");
 
+const toast =
+    document.getElementById("toast");
+
+const toastTexto =
+    document.getElementById("toastTexto");
+
 const modalLogin =
     document.getElementById("modalLogin");
 
@@ -3603,6 +4056,9 @@ const modalPreferencias =
 const modalMensaje =
     document.getElementById("modalMensaje");
 
+const listaFavoritos =
+    document.getElementById("listaFavoritos");
+
 const menuUsuario =
     document.getElementById("menuUsuario");
 
@@ -3612,78 +4068,10 @@ const btnUsuario =
 const cerrarSesion =
     document.getElementById("cerrarSesion");
 
-const toast =
-    document.getElementById("toast");
 
-const toastTexto =
-    document.getElementById("toastTexto");
-
-const buscador =
-    document.getElementById("buscador");
-
-let toastTimeout;
-
-
-/* =========================================================
-   MENU MOVIL
-========================================================= */
-
-function abrirMenuMovil(){
-
-    menuLateral.classList.add("activo");
-
-    fondoMenu.classList.add("activo");
-
-    document.body.style.overflow = "hidden";
-
-}
-
-function cerrarMenuMovil(){
-
-    menuLateral.classList.remove("activo");
-
-    fondoMenu.classList.remove("activo");
-
-    document.body.style.overflow = "";
-
-}
-
-menuMovil.addEventListener(
-    "click",
-    abrirMenuMovil
-);
-
-cerrarMenu.addEventListener(
-    "click",
-    cerrarMenuMovil
-);
-
-fondoMenu.addEventListener(
-    "click",
-    cerrarMenuMovil
-);
-
-
-/*
-   Cerrar automáticamente el menú lateral
-   al tocar cualquiera de sus enlaces.
-*/
-
-document
-    .querySelectorAll(".linkMenuMovil")
-    .forEach(link => {
-
-        link.addEventListener(
-            "click",
-            cerrarMenuMovil
-        );
-
-    });
-
-
-/* =========================================================
-   MENSAJES
-========================================================= */
+/*======================================================
+                MODAL DE MENSAJES
+======================================================*/
 
 function mostrarMensaje(titulo,texto){
 
@@ -3691,524 +4079,212 @@ function mostrarMensaje(titulo,texto){
         "tituloMensaje"
     ).textContent = titulo;
 
+
     document.getElementById(
         "textoMensaje"
     ).textContent = texto;
+
 
     modalMensaje.classList.add("activo");
 
 }
 
-document
-    .getElementById("cerrarMensaje")
-    .onclick = () => {
 
-        modalMensaje.classList.remove(
-            "activo"
-        );
+document.getElementById(
+    "cerrarMensaje"
+).onclick = ()=>{
 
-    };
+    modalMensaje.classList.remove("activo");
 
-
-/* =========================================================
-   PREFERENCIAS
-========================================================= */
-
-document
-    .getElementById("PreferenciasLink")
-    .onclick = () => {
-
-        menuUsuario.classList.remove("activo");
-
-        modalPreferencias.classList.add(
-            "activo"
-        );
-
-    };
-
-document
-    .getElementById("cerrarPreferencias")
-    .onclick = () => {
-
-        modalPreferencias.classList.remove(
-            "activo"
-        );
-
-    };
+};
 
 
-document
-    .getElementById("notificacionesBtn")
-    .onclick = () => {
+/*======================================================
+                MENU MOVIL
+======================================================*/
 
-        mostrarMensaje(
-            "Próximamente",
-            "Aquí podrás activar o desactivar las notificaciones."
-        );
+const menuMovil =
+    document.getElementById("menuMovil");
 
-    };
+const menuLateral =
+    document.getElementById("menuLateral");
 
+const fondoMenu =
+    document.getElementById("fondoMenu");
 
-document
-    .getElementById("modoOscuroBtn")
-    .onclick = () => {
-
-        mostrarMensaje(
-            "Próximamente",
-            "El modo oscuro llegará en una próxima actualización."
-        );
-
-    };
+const cerrarMenu =
+    document.getElementById("cerrarMenu");
 
 
-document
-    .getElementById("preferenciasComprasBtn")
-    .onclick = () => {
+function cerrarMenuMovil(){
 
-        mostrarMensaje(
-            "Preferencias",
-            "Aquí podrás guardar tus marcas y categorías favoritas."
-        );
+    menuLateral.classList.remove("activo");
 
-    };
+    fondoMenu.classList.remove("activo");
+
+}
 
 
-document
-    .getElementById("soporteBtn")
-    .onclick = () => {
+menuMovil.onclick = ()=>{
 
-        mostrarMensaje(
-            "Soporte",
-            "Próximamente podrás contactar a American Style desde aquí."
-        );
+    menuLateral.classList.add("activo");
 
-    };
+    fondoMenu.classList.add("activo");
+
+};
 
 
-document
-    .getElementById("acercaBtn")
-    .onclick = () => {
-
-        mostrarMensaje(
-            "American Style Store",
-            "Versión 1.0 • Gracias por visitar nuestra tienda."
-        );
-
-    };
+cerrarMenu.onclick =
+cerrarMenuMovil;
 
 
-/* =========================================================
-   CARRITO ABRIR / CERRAR
-========================================================= */
-
-abrirCarrito.addEventListener(
-    "click",
-    () => {
-
-        panelCarrito.classList.add(
-            "activo"
-        );
-
-    }
-);
-
-cerrarCarrito.addEventListener(
-    "click",
-    () => {
-
-        panelCarrito.classList.remove(
-            "activo"
-        );
-
-    }
-);
+fondoMenu.onclick =
+cerrarMenuMovil;
 
 
-/* =========================================================
-   FAVORITOS
-========================================================= */
+/* Cerrar menú cuando se toca una opción */
 
-document
-    .getElementById("favoritosLink")
-    .onclick = (e) => {
+document.querySelectorAll(
+    "#menuLateral a"
+).forEach(enlace=>{
 
-        e.preventDefault();
-
-        if(!usuarioActual){
-
-            mostrarMensaje(
-                "Inicia sesión",
-                "Debes iniciar sesión para ver tus favoritos."
-            );
-
-            return;
-
-        }
-
-        menuUsuario.classList.remove(
-            "activo"
-        );
-
-        mostrarFavoritos();
-
-        modalFavoritos.classList.add(
-            "activo"
-        );
-
-    };
-
-
-document
-    .getElementById("cerrarFavoritos")
-    .onclick = () => {
-
-        modalFavoritos.classList.remove(
-            "activo"
-        );
-
-    };
-
-
-/* =========================================================
-   AGREGAR PRODUCTOS
-========================================================= */
-
-const botones =
-    document.querySelectorAll(".card button");
-
-const corazones =
-    document.querySelectorAll(".favorito");
-
-
-botones.forEach(boton => {
-
-    boton.addEventListener(
+    enlace.addEventListener(
         "click",
-        () => {
-
-            const card =
-                boton.parentElement;
-
-            const nombre =
-                card.querySelector("h3")
-                    .textContent;
-
-            const precio =
-                Number(
-                    card.querySelector("p")
-                        .dataset.precio
-                );
-
-            const id =
-                Number(card.dataset.id);
-
-            const imagen =
-                card.querySelector("img").src;
-
-            const existe =
-                carrito.find(
-                    producto =>
-                        producto.id === id
-                );
-
-            if(existe){
-
-                existe.cantidad++;
-
-            }else{
-
-                carrito.push({
-
-                    id,
-                    nombre,
-                    precio,
-                    imagen,
-                    cantidad:1
-
-                });
-
-            }
-
-            actualizarCarrito();
-
-            mostrarToast(nombre);
-
-            panelCarrito.classList.add(
-                "activo"
-            );
-
-        }
+        cerrarMenuMovil
     );
 
 });
 
 
-/* =========================================================
-   AUTH STATE
-========================================================= */
+/*======================================================
+                    PREFERENCIAS
+======================================================*/
 
-onAuthStateChanged(
-    auth,
-    async (usuario) => {
+document.getElementById(
+    "PreferenciasLink"
+).onclick = ()=>{
 
-        if(usuario){
+    menuUsuario.classList.remove("activo");
 
-            usuarioActual = usuario;
+    modalPreferencias.classList.add("activo");
 
-            const adminLink =
-                document.getElementById(
-                    "adminLink"
-                );
-
-            if(
-                usuario.email ===
-                "willduran620@gmail.com"
-            ){
-
-                adminLink.style.display =
-                    "flex";
-
-            }else{
-
-                adminLink.style.display =
-                    "none";
-
-            }
+};
 
 
-            let nombre =
-                usuario.displayName ||
-                usuario.email.split("@")[0];
+document.getElementById(
+    "cerrarPreferencias"
+).onclick = ()=>{
 
-            nombre =
-                nombre.replace(
-                    /[^a-zA-ZáéíóúÁÉÍÓÚñÑ\s]/g,
-                    ""
-                );
+    modalPreferencias.classList.remove("activo");
 
-            nombre =
-                nombre.trim();
-
-            if(!nombre){
-
-                nombre = "Usuario";
-
-            }
-
-            nombre =
-                nombre.charAt(0)
-                    .toUpperCase() +
-                nombre.slice(1);
+};
 
 
-            document
-                .getElementById(
-                    "textoUsuario"
-                )
-                .textContent = nombre;
+/*======================================================
+                    CARRITO ABRIR/CERRAR
+======================================================*/
 
-
-            await cargarCarrito();
-
-            await cargarFavoritos();
-
-        }else{
-
-            usuarioActual = null;
-
-            favoritos = [];
-
-            carrito = [];
-
-            actualizarCarrito();
-
-            document
-                .getElementById(
-                    "textoUsuario"
-                )
-                .textContent =
-                    "Iniciar sesión";
-
-
-            document
-                .querySelectorAll(".favorito")
-                .forEach(corazon => {
-
-                    corazon.classList.remove(
-                        "activo"
-                    );
-
-                    const icono =
-                        corazon.querySelector(
-                            "i"
-                        );
-
-                    icono.classList.remove(
-                        "fa-solid"
-                    );
-
-                    icono.classList.add(
-                        "fa-regular"
-                    );
-
-                });
-
-        }
-
+abrirCarrito.addEventListener(
+    "click",
+    ()=>{
+        panelCarrito.classList.add("activo");
     }
 );
 
 
-/* =========================================================
-   CARRITO
-========================================================= */
-
-function actualizarCarrito(){
-
-    contador.textContent =
-        carrito.reduce(
-            (total, producto) =>
-                total + producto.cantidad,
-            0
-        );
-
-    listaCarrito.innerHTML = "";
-
-    if(carrito.length === 0){
-
-        listaCarrito.innerHTML =
-            "<p>No hay productos.</p>";
-
-        totalCarrito.textContent = "0";
-
-        guardarCarrito();
-
-        return;
-
+cerrarCarrito.addEventListener(
+    "click",
+    ()=>{
+        panelCarrito.classList.remove("activo");
     }
-
-    let total = 0;
-
-
-    carrito.forEach(producto => {
-
-        const subtotal =
-            producto.precio *
-            producto.cantidad;
-
-        total += subtotal;
+);
 
 
-        listaCarrito.innerHTML += `
+/*======================================================
+                    NUEVO 7 DIAS
+======================================================*/
 
-            <div class="itemCarrito">
+function revisarProductosNuevos(){
 
-                <img
-                    src="${producto.imagen}"
-                    class="imgCarrito"
-                    alt="${producto.nombre}"
-                >
-
-                <div class="infoCarrito">
-
-                    <h4>
-                        ${producto.nombre}
-                    </h4>
-
-                    <p>
-                        $${producto.precio} MXN
-                    </p>
-
-                    <div class="controles">
-
-                        <button
-                            onclick="cambiarCantidad(${producto.id},-1)"
-                            aria-label="Disminuir cantidad"
-                        >
-                            <i class="fa-solid fa-minus"></i>
-                        </button>
-
-                        <span>
-                            ${producto.cantidad}
-                        </span>
-
-                        <button
-                            onclick="cambiarCantidad(${producto.id},1)"
-                            aria-label="Aumentar cantidad"
-                        >
-                            <i class="fa-solid fa-plus"></i>
-                        </button>
-
-                        <button
-                            class="eliminar"
-                            onclick="eliminarProducto(${producto.id})"
-                            aria-label="Eliminar producto"
-                        >
-                            <i class="fa-solid fa-trash"></i>
-                        </button>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        `;
-
-    });
-
-
-    totalCarrito.textContent =
-        total.toLocaleString(
-            "es-MX"
+    const etiquetas =
+        document.querySelectorAll(
+            '[data-producto-nuevo]'
         );
 
-    guardarCarrito();
 
-}
+    const ahora =
+        Date.now();
 
 
-async function cargarCarrito(){
+    const unaSemana =
+        7 * 24 * 60 * 60 * 1000;
 
-    if(!usuarioActual) return;
 
-    try{
+    etiquetas.forEach(etiqueta=>{
 
-        const referencia =
-            doc(
-                db,
-                "carritos",
-                usuarioActual.uid
+        const id =
+            etiqueta.dataset.productoNuevo;
+
+
+        const clave =
+            "american_nuevo_" + id;
+
+
+        let fecha =
+            localStorage.getItem(clave);
+
+
+        if(!fecha){
+
+            fecha = ahora;
+
+            localStorage.setItem(
+                clave,
+                fecha
             );
-
-        const datos =
-            await getDoc(
-                referencia
-            );
-
-        if(datos.exists()){
-
-            const productos =
-                datos.data().productos;
-
-            carrito =
-                Array.isArray(productos)
-                    ? productos
-                    : [];
-
-        }else{
-
-            carrito = [];
 
         }
 
-        actualizarCarrito();
 
-    }catch(error){
+        const transcurrido =
+            ahora - Number(fecha);
 
-        console.error(
-            "Error cargando carrito:",
-            error
+
+        if(transcurrido >= unaSemana){
+
+            etiqueta.remove();
+
+        }
+
+    });
+
+}
+
+
+revisarProductosNuevos();
+
+
+/*======================================================
+                FAVORITOS - MODAL
+======================================================*/
+
+function mostrarModalFavorito(
+    nombre,
+    agregado
+){
+
+    if(agregado){
+
+        mostrarMensaje(
+            "❤️ Favorito agregado",
+            `"${nombre}" fue agregado a tus favoritos.`
+        );
+
+    }else{
+
+        mostrarMensaje(
+            "💔 Favorito eliminado",
+            `"${nombre}" fue eliminado de tus favoritos.`
         );
 
     }
@@ -4216,149 +4292,46 @@ async function cargarCarrito(){
 }
 
 
-function cambiarCantidad(id,cambio){
-
-    const producto =
-        carrito.find(
-            p => p.id === id
-        );
-
-    if(!producto) return;
-
-    producto.cantidad += cambio;
-
-    if(producto.cantidad <= 0){
-
-        carrito =
-            carrito.filter(
-                p => p.id !== id
-            );
-
-    }
-
-    actualizarCarrito();
-
-}
-
-
-function eliminarProducto(id){
-
-    carrito =
-        carrito.filter(
-            p => p.id !== id
-        );
-
-    actualizarCarrito();
-
-}
-
-
-async function guardarCarrito(){
-
-    if(!usuarioActual) return;
-
-    try{
-
-        await setDoc(
-            doc(
-                db,
-                "carritos",
-                usuarioActual.uid
-            ),
-            {
-                productos:carrito
-            }
-        );
-
-    }catch(error){
-
-        console.error(
-            "Error guardando carrito:",
-            error
-        );
-
-    }
-
-}
-
-
-/* =========================================================
-   TOAST
-========================================================= */
-
-function mostrarToast(nombre){
-
-    clearTimeout(toastTimeout);
-
-    toastTexto.textContent = nombre;
-
-    toast.classList.remove(
-        "mostrar"
-    );
-
-    /*
-       Forzamos un pequeño reflow para que
-       una nueva notificación vuelva a animarse
-       correctamente incluso en celular.
-    */
-
-    void toast.offsetWidth;
-
-    toast.classList.add(
-        "mostrar"
-    );
-
-    toastTimeout =
-        setTimeout(
-            () => {
-
-                toast.classList.remove(
-                    "mostrar"
-                );
-
-            },
-            2500
-        );
-
-}
-
-
-/* =========================================================
-   FAVORITOS FIRESTORE
-========================================================= */
+/*======================================================
+                    FAVORITOS
+======================================================*/
 
 async function guardarFavoritos(){
 
-    if(!usuarioActual) return;
+    if(!usuarioActual)
+        return;
+
 
     try{
 
         await setDoc(
+
             doc(
                 db,
                 "favoritos",
                 usuarioActual.uid
             ),
+
             {
 
                 uid:
-                    usuarioActual.uid,
+                usuarioActual.uid,
 
                 nombre:
-                    usuarioActual.displayName ||
-                    usuarioActual.email
-                        .split("@")[0],
+                usuarioActual.displayName ||
+                usuarioActual.email.split("@")[0],
 
                 correo:
-                    usuarioActual.email,
+                usuarioActual.email,
 
                 productos:
-                    favoritos,
+                favoritos,
 
                 ultimaActualizacion:
-                    new Date()
+                new Date()
 
             }
+
         );
 
     }catch(error){
@@ -4375,7 +4348,9 @@ async function guardarFavoritos(){
 
 async function cargarFavoritos(){
 
-    if(!usuarioActual) return;
+    if(!usuarioActual)
+        return;
+
 
     try{
 
@@ -4386,20 +4361,21 @@ async function cargarFavoritos(){
                 usuarioActual.uid
             );
 
+
         const datos =
-            await getDoc(
-                referencia
-            );
+            await getDoc(referencia);
+
 
         if(datos.exists()){
 
-            const productos =
-                datos.data().productos;
-
             favoritos =
-                Array.isArray(productos)
-                    ? productos
-                    : [];
+                Array.isArray(
+                    datos.data().productos
+                )
+                ?
+                datos.data().productos
+                :
+                [];
 
         }else{
 
@@ -4408,58 +4384,7 @@ async function cargarFavoritos(){
         }
 
 
-        document
-            .querySelectorAll(".card")
-            .forEach(card => {
-
-                const id =
-                    Number(
-                        card.dataset.id
-                    );
-
-                const corazon =
-                    card.querySelector(
-                        ".favorito"
-                    );
-
-                const icono =
-                    corazon.querySelector(
-                        "i"
-                    );
-
-                if(
-                    favoritos.includes(id)
-                ){
-
-                    corazon.classList.add(
-                        "activo"
-                    );
-
-                    icono.classList.remove(
-                        "fa-regular"
-                    );
-
-                    icono.classList.add(
-                        "fa-solid"
-                    );
-
-                }else{
-
-                    corazon.classList.remove(
-                        "activo"
-                    );
-
-                    icono.classList.remove(
-                        "fa-solid"
-                    );
-
-                    icono.classList.add(
-                        "fa-regular"
-                    );
-
-                }
-
-            });
+        actualizarIconosFavoritos();
 
     }catch(error){
 
@@ -4473,15 +4398,72 @@ async function cargarFavoritos(){
 }
 
 
-/* =========================================================
-   FAVORITOS CLICK
-========================================================= */
+function actualizarIconosFavoritos(){
 
-corazones.forEach(corazon => {
+    document.querySelectorAll(
+        ".card"
+    ).forEach(card=>{
+
+        const id =
+            Number(card.dataset.id);
+
+
+        const corazon =
+            card.querySelector(".favorito");
+
+
+        if(!corazon)
+            return;
+
+
+        const icono =
+            corazon.querySelector("i");
+
+
+        if(favoritos.includes(id)){
+
+            corazon.classList.add("activo");
+
+            icono.classList.remove(
+                "fa-regular"
+            );
+
+            icono.classList.add(
+                "fa-solid"
+            );
+
+        }else{
+
+            corazon.classList.remove(
+                "activo"
+            );
+
+            icono.classList.remove(
+                "fa-solid"
+            );
+
+            icono.classList.add(
+                "fa-regular"
+            );
+
+        }
+
+    });
+
+}
+
+
+/*======================================================
+                CLIC EN CORAZONES
+======================================================*/
+
+document.querySelectorAll(
+    ".favorito"
+).forEach(corazon=>{
 
     corazon.addEventListener(
         "click",
-        async () => {
+        async ()=>{
 
             if(!usuarioActual){
 
@@ -4494,35 +4476,38 @@ corazones.forEach(corazon => {
 
             }
 
+
             const card =
-                corazon.closest(
-                    ".card"
-                );
+                corazon.closest(".card");
+
 
             const id =
-                Number(
-                    card.dataset.id
-                );
+                Number(card.dataset.id);
+
+
+            const nombre =
+                card.querySelector(
+                    "h3"
+                ).textContent;
+
 
             const icono =
-                corazon.querySelector(
-                    "i"
-                );
+                corazon.querySelector("i");
 
 
-            if(
-                favoritos.includes(id)
-            ){
+            if(favoritos.includes(id)){
 
                 favoritos =
                     favoritos.filter(
-                        item => item !== id
+                        item=>item!==id
                     );
+
 
                 corazon.classList.remove(
                     "activo"
                 );
 
+
                 icono.classList.remove(
                     "fa-solid"
                 );
@@ -4530,14 +4515,26 @@ corazones.forEach(corazon => {
                 icono.classList.add(
                     "fa-regular"
                 );
+
+
+                await guardarFavoritos();
+
+
+                mostrarModalFavorito(
+                    nombre,
+                    false
+                );
+
 
             }else{
 
                 favoritos.push(id);
 
+
                 corazon.classList.add(
                     "activo"
                 );
+
 
                 icono.classList.remove(
                     "fa-regular"
@@ -4547,9 +4544,16 @@ corazones.forEach(corazon => {
                     "fa-solid"
                 );
 
-            }
 
-            await guardarFavoritos();
+                await guardarFavoritos();
+
+
+                mostrarModalFavorito(
+                    nombre,
+                    true
+                );
+
+            }
 
         }
     );
@@ -4557,41 +4561,31 @@ corazones.forEach(corazon => {
 });
 
 
-/* =========================================================
-   MOSTRAR FAVORITOS
-========================================================= */
+/*======================================================
+                MOSTRAR FAVORITOS
+======================================================*/
 
 function mostrarFavoritos(){
 
-    const listaFavoritos =
-        document.getElementById(
-            "listaFavoritos"
-        );
-
     listaFavoritos.innerHTML = "";
 
-    document
-        .getElementById(
-            "contadorFavoritos"
-        )
-        .textContent =
-            favoritos.length;
 
+    document.getElementById(
+        "contadorFavoritos"
+    ).textContent =
+        favoritos.length;
 
-    const cards =
-        document.querySelectorAll(
-            ".card"
-        );
 
     let encontrados = 0;
 
 
-    cards.forEach(card => {
+    document.querySelectorAll(
+        ".card"
+    ).forEach(card=>{
 
         const id =
-            Number(
-                card.dataset.id
-            );
+            Number(card.dataset.id);
+
 
         if(
             favoritos.includes(id)
@@ -4600,31 +4594,53 @@ function mostrarFavoritos(){
             encontrados++;
 
 
+            const imagen =
+                card.querySelector(
+                    "img"
+                ).src;
+
+
+            const nombre =
+                card.querySelector(
+                    "h3"
+                ).textContent;
+
+
+            const precio =
+                card.querySelector(
+                    "[data-precio]"
+                );
+
+
+            const precioTexto =
+                precio
+                ?
+                precio.textContent
+                :
+                "";
+
+
             listaFavoritos.innerHTML += `
 
                 <div class="itemFavorito">
 
-                    <img
-                        src="${card.querySelector("img").src}"
-                        alt="${card.querySelector("h3").textContent}"
-                    >
+                    <img src="${imagen}">
 
                     <div class="infoFavorito">
 
                         <h3>
-                            ${card.querySelector("h3").textContent}
+                            ${nombre}
                         </h3>
 
                         <p>
-                            ${card.querySelector("p").textContent}
+                            ${precioTexto}
                         </p>
 
                     </div>
 
                     <button
                         class="quitarFavorito"
-                        onclick="quitarFavorito(${id})"
-                        aria-label="Quitar favorito"
+                        data-id="${id}"
                     >
 
                         <i class="fa-solid fa-heart"></i>
@@ -4640,131 +4656,675 @@ function mostrarFavoritos(){
     });
 
 
-    if(encontrados === 0){
+    if(encontrados===0){
 
         listaFavoritos.innerHTML = `
 
             <p
                 style="
-                    text-align:center;
-                    padding:40px;
+                text-align:center;
+                padding:40px;
+                color:#666;
                 "
             >
+
                 No tienes productos favoritos ❤️
+
             </p>
 
         `;
 
     }
 
+
+    listaFavoritos
+        .querySelectorAll(
+            ".quitarFavorito"
+        )
+        .forEach(boton=>{
+
+            boton.onclick = async ()=>{
+
+                const id =
+                    Number(
+                        boton.dataset.id
+                    );
+
+
+                favoritos =
+                    favoritos.filter(
+                        item=>item!==id
+                    );
+
+
+                await guardarFavoritos();
+
+
+                actualizarIconosFavoritos();
+
+
+                mostrarFavoritos();
+
+
+                mostrarMensaje(
+                    "💔 Favorito eliminado",
+                    "El producto fue eliminado de tus favoritos."
+                );
+
+            };
+
+        });
+
 }
 
 
-window.quitarFavorito =
-    async function(id){
+document.getElementById(
+    "favoritosLink"
+).onclick = ()=>{
 
-        favoritos =
-            favoritos.filter(
-                item => item !== id
+    if(!usuarioActual){
+
+        mostrarMensaje(
+            "Inicia sesión",
+            "Debes iniciar sesión para ver tus favoritos."
+        );
+
+        return;
+
+    }
+
+
+    menuUsuario.classList.remove(
+        "activo"
+    );
+
+
+    mostrarFavoritos();
+
+
+    modalFavoritos.classList.add(
+        "activo"
+    );
+
+};
+
+
+document.getElementById(
+    "cerrarFavoritos"
+).onclick = ()=>{
+
+    modalFavoritos.classList.remove(
+        "activo"
+    );
+
+};
+
+
+/*======================================================
+                    CARRITO
+======================================================*/
+
+function actualizarCarrito(){
+
+    contador.textContent =
+        carrito.reduce(
+            (total,producto)=>
+                total + producto.cantidad,
+            0
+        );
+
+
+    listaCarrito.innerHTML = "";
+
+
+    if(carrito.length === 0){
+
+        listaCarrito.innerHTML = `
+
+            <div
+                style="
+                text-align:center;
+                padding:50px 15px;
+                color:#777;
+                "
+            >
+
+                <i
+                    class="fa-solid fa-cart-shopping"
+                    style="
+                    font-size:45px;
+                    margin-bottom:15px;
+                    color:#ccc;
+                    "
+                ></i>
+
+                <p>
+                    No hay productos en tu carrito.
+                </p>
+
+            </div>
+
+        `;
+
+
+        totalCarrito.textContent = "0";
+
+
+        guardarCarrito();
+
+        return;
+
+    }
+
+
+    let total = 0;
+
+
+    carrito.forEach(producto=>{
+
+        const subtotal =
+            producto.precio *
+            producto.cantidad;
+
+
+        total += subtotal;
+
+
+        listaCarrito.innerHTML += `
+
+            <div class="itemCarrito">
+
+                <img
+                    src="${producto.imagen}"
+                    class="imgCarrito"
+                >
+
+
+                <div class="infoCarrito">
+
+                    <h4>
+                        ${producto.nombre}
+                    </h4>
+
+
+                    <p>
+                        $${producto.precio.toLocaleString("es-MX")}
+                        MXN
+                    </p>
+
+
+                    <div class="controles">
+
+                        <button
+                            onclick="cambiarCantidad(${producto.id},-1)"
+                        >
+
+                            <i
+                                class="fa-solid fa-minus"
+                            ></i>
+
+                        </button>
+
+
+                        <span>
+                            ${producto.cantidad}
+                        </span>
+
+
+                        <button
+                            onclick="cambiarCantidad(${producto.id},1)"
+                        >
+
+                            <i
+                                class="fa-solid fa-plus"
+                            ></i>
+
+                        </button>
+
+
+                        <button
+                            class="eliminar"
+                            onclick="eliminarProducto(${producto.id})"
+                        >
+
+                            <i
+                                class="fa-solid fa-trash"
+                            ></i>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        `;
+
+    });
+
+
+    totalCarrito.textContent =
+        total.toLocaleString("es-MX");
+
+
+    guardarCarrito();
+
+}
+
+
+async function cargarCarrito(){
+
+    if(!usuarioActual)
+        return;
+
+
+    try{
+
+        const referencia =
+            doc(
+                db,
+                "carritos",
+                usuarioActual.uid
             );
 
-        await guardarFavoritos();
+
+        const datos =
+            await getDoc(referencia);
 
 
-        const card =
-            document.querySelector(
-                `[data-id="${id}"]`
-            );
+        if(datos.exists()){
 
-        if(card){
+            const productos =
+                datos.data().productos;
 
-            const corazon =
-                card.querySelector(
-                    ".favorito"
-                );
 
-            corazon.classList.remove(
-                "activo"
-            );
+            carrito =
+                Array.isArray(productos)
+                ?
+                productos
+                :
+                [];
 
-            const icono =
-                corazon.querySelector(
-                    "i"
-                );
+        }else{
 
-            icono.classList.remove(
-                "fa-solid"
-            );
-
-            icono.classList.add(
-                "fa-regular"
-            );
+            carrito = [];
 
         }
 
-        mostrarFavoritos();
 
-    };
+        actualizarCarrito();
+
+    }catch(error){
+
+        console.error(
+            "Error cargando carrito:",
+            error
+        );
+
+    }
+
+}
 
 
-/* =========================================================
-   BUSCADOR
-========================================================= */
+async function guardarCarrito(){
+
+    if(!usuarioActual)
+        return;
+
+
+    try{
+
+        await setDoc(
+
+            doc(
+                db,
+                "carritos",
+                usuarioActual.uid
+            ),
+
+            {
+                productos:carrito
+            }
+
+        );
+
+    }catch(error){
+
+        console.error(
+            "Error guardando carrito:",
+            error
+        );
+
+    }
+
+}
+
+
+function cambiarCantidad(
+    id,
+    cambio
+){
+
+    const producto =
+        carrito.find(
+            p=>p.id===id
+        );
+
+
+    if(!producto)
+        return;
+
+
+    producto.cantidad += cambio;
+
+
+    if(producto.cantidad <= 0){
+
+        carrito =
+            carrito.filter(
+                p=>p.id!==id
+            );
+
+    }
+
+
+    actualizarCarrito();
+
+}
+
+
+function eliminarProducto(id){
+
+    const producto =
+        carrito.find(
+            p=>p.id===id
+        );
+
+
+    if(!producto)
+        return;
+
+
+    carrito =
+        carrito.filter(
+            p=>p.id!==id
+        );
+
+
+    actualizarCarrito();
+
+
+    mostrarMensaje(
+        "Producto eliminado",
+        `"${producto.nombre}" fue eliminado del carrito.`
+    );
+
+}
+
+
+window.cambiarCantidad =
+    cambiarCantidad;
+
+
+window.eliminarProducto =
+    eliminarProducto;
+
+
+/*======================================================
+                    VACIAR CARRITO
+======================================================*/
+
+document.getElementById(
+    "vaciarCarrito"
+).onclick = ()=>{
+
+    if(carrito.length === 0){
+
+        mostrarMensaje(
+            "Carrito vacío",
+            "No hay productos para eliminar."
+        );
+
+        return;
+
+    }
+
+
+    carrito = [];
+
+
+    actualizarCarrito();
+
+
+    mostrarMensaje(
+        "Carrito vaciado",
+        "Todos los productos fueron eliminados del carrito."
+    );
+
+};
+
+
+/*======================================================
+                    TOAST
+======================================================*/
+
+let toastTimeout;
+
+
+function mostrarToast(nombre){
+
+    toastTexto.textContent =
+        nombre;
+
+
+    clearTimeout(
+        toastTimeout
+    );
+
+
+    toast.classList.remove(
+        "mostrar"
+    );
+
+
+    void toast.offsetWidth;
+
+
+    toast.classList.add(
+        "mostrar"
+    );
+
+
+    toastTimeout =
+        setTimeout(()=>{
+
+            toast.classList.remove(
+                "mostrar"
+            );
+
+        },2500);
+
+}
+
+
+/*======================================================
+                AGREGAR AL CARRITO
+======================================================*/
+
+document.querySelectorAll(
+    ".card button"
+).forEach(boton=>{
+
+    boton.addEventListener(
+        "click",
+        ()=>{
+
+            const card =
+                boton.closest(".card");
+
+
+            const nombre =
+                card.querySelector(
+                    "h3"
+                ).textContent;
+
+
+            const precioElemento =
+                card.querySelector(
+                    "[data-precio]"
+                );
+
+
+            const precio =
+                Number(
+                    precioElemento.dataset.precio
+                );
+
+
+            const id =
+                Number(card.dataset.id);
+
+
+            const imagen =
+                card.querySelector(
+                    "img"
+                ).src;
+
+
+            const existe =
+                carrito.find(
+                    producto=>
+                        producto.id===id
+                );
+
+
+            if(existe){
+
+                existe.cantidad++;
+
+            }else{
+
+                carrito.push({
+
+                    id:id,
+
+                    nombre:nombre,
+
+                    precio:precio,
+
+                    imagen:imagen,
+
+                    cantidad:1
+
+                });
+
+            }
+
+
+            actualizarCarrito();
+
+
+            mostrarToast(nombre);
+
+
+            panelCarrito.classList.add(
+                "activo"
+            );
+
+        }
+    );
+
+});
+
+
+/*======================================================
+                    BUSCADOR
+======================================================*/
+
+const buscador =
+    document.getElementById(
+        "buscador"
+    );
+
 
 function buscarProductos(){
 
     const texto =
         buscador.value
-            .toLowerCase()
-            .trim();
+        .toLowerCase()
+        .trim();
 
 
-    document
-        .querySelectorAll(".productos")
-        .forEach(seccion => {
+    document.querySelectorAll(
+        ".productos, #ofertas"
+    ).forEach(seccion=>{
 
-            let visibles = 0;
+        let visibles = 0;
 
 
-            seccion
-                .querySelectorAll(".card")
-                .forEach(card => {
+        seccion
+            .querySelectorAll(
+                ".card"
+            )
+            .forEach(card=>{
 
-                    const nombre =
-                        card.querySelector("h3")
-                            .textContent
-                            .toLowerCase();
+                const nombre =
+                    card.querySelector(
+                        "h3"
+                    ).textContent.toLowerCase();
 
-                    const categoria =
+
+                const categoria =
+                    (
                         card.dataset.categoria
-                            .toLowerCase();
+                        || ""
+                    ).toLowerCase();
 
 
-                    if(
-                        nombre.includes(texto) ||
-                        categoria.includes(texto)
-                    ){
+                if(
+                    nombre.includes(texto)
+                    ||
+                    categoria.includes(texto)
+                ){
 
-                        card.style.display = "";
+                    card.style.display = "";
 
-                        visibles++;
+                    visibles++;
 
-                    }else{
+                }else{
 
-                        card.style.display =
-                            "none";
+                    card.style.display =
+                        "none";
 
-                    }
+                }
 
-                });
+            });
 
+
+        if(
+            seccion.id !== "ofertas"
+        ){
 
             seccion.style.display =
                 visibles > 0
-                    ? ""
-                    : "none";
+                ?
+                ""
+                :
+                "none";
 
-        });
+        }else{
+
+            seccion.style.display =
+                visibles > 0
+                ?
+                ""
+                :
+                "none";
+
+        }
+
+    });
 
 }
 
@@ -4775,412 +5335,117 @@ buscador.addEventListener(
 );
 
 
-/* =========================================================
-   COMPRA
-========================================================= */
+/*======================================================
+                    COMPRA
+======================================================*/
 
-document
-    .getElementById("comprar")
-    .addEventListener(
-        "click",
-        async () => {
+document.getElementById(
+    "comprar"
+).addEventListener(
+    "click",
+    async ()=>{
 
-            if(!usuarioActual){
+        if(!usuarioActual){
 
-                mostrarMensaje(
-                    "Inicia sesión",
-                    "Debes iniciar sesión para realizar una compra."
-                );
+            mostrarMensaje(
+                "Inicia sesión",
+                "Debes iniciar sesión para realizar una compra."
+            );
 
-                return;
-
-            }
-
-
-            if(carrito.length === 0){
-
-                mostrarMensaje(
-                    "Carrito vacío",
-                    "Agrega productos antes de comprar."
-                );
-
-                return;
-
-            }
-
-
-            try{
-
-                await addDoc(
-                    collection(
-                        db,
-                        "pedidos"
-                    ),
-                    {
-
-                        usuario:
-                            usuarioActual.uid,
-
-                        productos:
-                            carrito,
-
-                        total:
-                            carrito.reduce(
-                                (total,p) =>
-                                    total +
-                                    (
-                                        p.precio *
-                                        p.cantidad
-                                    ),
-                                0
-                            ),
-
-                        fecha:
-                            new Date()
-
-                    }
-                );
-
-
-                carrito = [];
-
-                actualizarCarrito();
-
-                panelCarrito.classList.remove(
-                    "activo"
-                );
-
-
-                mostrarMensaje(
-                    "¡Compra realizada!",
-                    "Gracias por tu compra."
-                );
-
-            }catch(error){
-
-                console.error(
-                    "Error realizando compra:",
-                    error
-                );
-
-                mostrarMensaje(
-                    "Error",
-                    "No se pudo completar la compra. Inténtalo nuevamente."
-                );
-
-            }
+            return;
 
         }
-    );
 
 
-/* =========================================================
-   SLIDER
-========================================================= */
+        if(carrito.length===0){
 
-const slides =
-    document.querySelectorAll(
-        ".slide"
-    );
+            mostrarMensaje(
+                "Carrito vacío",
+                "Agrega productos antes de comprar."
+            );
 
-const dots =
-    document.querySelectorAll(
-        ".dot"
-    );
+            return;
 
-let indice = 0;
-
-let intervalo = null;
+        }
 
 
-/* =========================================================
-   MOSTRAR SLIDE
-========================================================= */
+        try{
 
-function mostrarSlide(i){
+            const total =
+                carrito.reduce(
+                    (total,p)=>
+                        total +
+                        (
+                            p.precio *
+                            p.cantidad
+                        ),
+                    0
+                );
 
-    slides.forEach(
-        slide =>
-            slide.classList.remove(
+
+            await addDoc(
+                collection(
+                    db,
+                    "pedidos"
+                ),
+                {
+
+                    usuario:
+                        usuarioActual.uid,
+
+                    productos:
+                        carrito,
+
+                    total:
+                        total,
+
+                    fecha:
+                        new Date()
+
+                }
+            );
+
+
+            carrito = [];
+
+
+            actualizarCarrito();
+
+
+            panelCarrito.classList.remove(
                 "activo"
-            )
-    );
-
-    dots.forEach(
-        dot =>
-            dot.classList.remove(
-                "activo"
-            )
-    );
+            );
 
 
-    slides[i].classList.add(
-        "activo"
-    );
-
-    dots[i].classList.add(
-        "activo"
-    );
+            mostrarMensaje(
+                "¡Compra realizada!",
+                "Gracias por tu compra."
+            );
 
 
-    indice = i;
+        }catch(error){
 
-}
-
-
-/* =========================================================
-   SIGUIENTE
-========================================================= */
-
-function siguienteSlide(){
-
-    indice++;
-
-    if(
-        indice >= slides.length
-    ){
-
-        indice = 0;
-
-    }
-
-    mostrarSlide(indice);
-
-}
+            console.error(
+                error
+            );
 
 
-/* =========================================================
-   ANTERIOR
-========================================================= */
-
-function anteriorSlide(){
-
-    indice--;
-
-    if(indice < 0){
-
-        indice =
-            slides.length - 1;
-
-    }
-
-    mostrarSlide(indice);
-
-}
-
-
-/* =========================================================
-   TIMER SLIDER
-========================================================= */
-
-function iniciarSlider(){
-
-    detenerSlider();
-
-    intervalo =
-        setInterval(
-            siguienteSlide,
-            5000
-        );
-
-}
-
-
-function detenerSlider(){
-
-    if(intervalo){
-
-        clearInterval(
-            intervalo
-        );
-
-        intervalo = null;
-
-    }
-
-}
-
-
-/* =========================================================
-   FLECHAS
-========================================================= */
-
-document
-    .getElementById("siguiente")
-    .addEventListener(
-        "click",
-        () => {
-
-            siguienteSlide();
-
-            iniciarSlider();
+            mostrarMensaje(
+                "Error",
+                "No se pudo completar la compra."
+            );
 
         }
-    );
-
-
-document
-    .getElementById("anterior")
-    .addEventListener(
-        "click",
-        () => {
-
-            anteriorSlide();
-
-            iniciarSlider();
-
-        }
-    );
-
-
-/* =========================================================
-   DOTS
-========================================================= */
-
-dots.forEach(
-    (dot,i) => {
-
-        dot.addEventListener(
-            "click",
-            () => {
-
-                mostrarSlide(i);
-
-                iniciarSlider();
-
-            }
-        );
 
     }
 );
 
 
-/* =========================================================
-   PAUSAR AL PASAR MOUSE
-========================================================= */
+/*======================================================
+                    LOGIN
+======================================================*/
 
-const hero =
-    document.querySelector(
-        ".hero"
-    );
-
-hero.addEventListener(
-    "mouseenter",
-    detenerSlider
-);
-
-hero.addEventListener(
-    "mouseleave",
-    iniciarSlider
-);
-
-
-/* =========================================================
-   SWIPE EN CELULAR
-========================================================= */
-
-let touchStartX = 0;
-
-let touchEndX = 0;
-
-let touchStartY = 0;
-
-let touchEndY = 0;
-
-
-hero.addEventListener(
-    "touchstart",
-    (e) => {
-
-        if(!e.touches.length) return;
-
-        touchStartX =
-            e.touches[0].clientX;
-
-        touchStartY =
-            e.touches[0].clientY;
-
-        detenerSlider();
-
-    },
-    {passive:true}
-);
-
-
-hero.addEventListener(
-    "touchmove",
-    (e) => {
-
-        if(!e.touches.length) return;
-
-        touchEndX =
-            e.touches[0].clientX;
-
-        touchEndY =
-            e.touches[0].clientY;
-
-    },
-    {passive:true}
-);
-
-
-hero.addEventListener(
-    "touchend",
-    () => {
-
-        const diferenciaX =
-            touchEndX -
-            touchStartX;
-
-        const diferenciaY =
-            touchEndY -
-            touchStartY;
-
-
-        /*
-           Solo consideramos swipe horizontal.
-           Así evitamos cambiar el slide cuando
-           el usuario simplemente está haciendo scroll.
-        */
-
-        if(
-            Math.abs(diferenciaX) > 50 &&
-            Math.abs(diferenciaX) >
-            Math.abs(diferenciaY)
-        ){
-
-            if(diferenciaX < 0){
-
-                siguienteSlide();
-
-            }else{
-
-                anteriorSlide();
-
-            }
-
-        }
-
-
-        touchStartX = 0;
-        touchEndX = 0;
-
-        touchStartY = 0;
-        touchEndY = 0;
-
-
-        iniciarSlider();
-
-    },
-    {passive:true}
-);
-
-
-/* =========================================================
-   MENU USUARIO
-========================================================= */
-
-btnUsuario.onclick = () => {
+btnUsuario.onclick = ()=>{
 
     if(usuarioActual){
 
@@ -5199,45 +5464,22 @@ btnUsuario.onclick = () => {
 };
 
 
-cerrarSesion.onclick =
-    async () => {
-
-        try{
-
-            await signOut(auth);
-
-            menuUsuario.classList.remove(
-                "activo"
-            );
-
-            mostrarMensaje(
-                "Hasta pronto",
-                "Has cerrado sesión correctamente."
-            );
-
-        }catch(error){
-
-            console.error(
-                "Error cerrando sesión:",
-                error
-            );
-
-        }
-
-    };
-
-
-/*
-   Cerrar menú usuario al tocar fuera.
-*/
-
 document.addEventListener(
     "click",
-    (e) => {
+    e=>{
 
         if(
-            !btnUsuario.contains(e.target) &&
-            !menuUsuario.contains(e.target)
+
+            !btnUsuario.contains(
+                e.target
+            )
+
+            &&
+
+            !menuUsuario.contains(
+                e.target
+            )
+
         ){
 
             menuUsuario.classList.remove(
@@ -5250,20 +5492,20 @@ document.addEventListener(
 );
 
 
-/* =========================================================
-   LOGIN MODAL
-========================================================= */
+document.getElementById(
+    "cerrarModal"
+).onclick = ()=>{
 
-document
-    .getElementById("cerrarModal")
-    .onclick = () => {
+    modalLogin.classList.remove(
+        "activo"
+    );
 
-        modalLogin.classList.remove(
-            "activo"
-        );
+};
 
-    };
 
+/*======================================================
+                REGISTRO / LOGIN
+======================================================*/
 
 const correo =
     document.getElementById(
@@ -5276,319 +5518,689 @@ const password =
     );
 
 
-/* =========================================================
-   REGISTRO
-========================================================= */
+document.getElementById(
+    "registroBtn"
+).onclick = async ()=>{
 
-document
-    .getElementById("registroBtn")
-    .onclick =
-    async () => {
+    if(
+
+        correo.value.trim()===""
+        ||
+        password.value.trim()===""
+
+    ){
+
+        mostrarMensaje(
+            "Campos incompletos",
+            "Escribe tu correo y contraseña."
+        );
+
+        return;
+
+    }
+
+
+    try{
+
+        await createUserWithEmailAndPassword(
+
+            auth,
+
+            correo.value.trim(),
+
+            password.value
+
+        );
+
+
+        modalLogin.classList.remove(
+            "activo"
+        );
+
+
+        mostrarMensaje(
+            "¡Cuenta creada!",
+            "Tu cuenta fue creada correctamente."
+        );
+
+
+        correo.value = "";
+
+        password.value = "";
+
+
+    }catch(error){
+
+        let mensaje =
+            "No se pudo crear la cuenta.";
+
 
         if(
-            correo.value.trim() === "" ||
-            password.value.trim() === ""
+            error.code ===
+            "auth/email-already-in-use"
         ){
 
-            mostrarMensaje(
-                "Campos incompletos",
-                "Escribe tu correo y contraseña."
-            );
-
-            return;
+            mensaje =
+                "Ese correo ya está registrado.";
 
         }
 
-
-        try{
-
-            await createUserWithEmailAndPassword(
-                auth,
-                correo.value.trim(),
-                password.value
-            );
-
-
-            mostrarMensaje(
-                "¡Éxito!",
-                "Tu cuenta fue creada correctamente."
-            );
-
-
-            modalLogin.classList.remove(
-                "activo"
-            );
-
-
-            correo.value = "";
-
-            password.value = "";
-
-        }catch(error){
-
-            console.error(
-                "Error creando cuenta:",
-                error
-            );
-
-            mostrarMensaje(
-                "Error",
-                "No se pudo crear la cuenta. Verifica tus datos e inténtalo nuevamente."
-            );
-
-        }
-
-    };
-
-
-/* =========================================================
-   LOGIN
-========================================================= */
-
-document
-    .getElementById("loginBtn")
-    .onclick =
-    async () => {
 
         if(
-            correo.value.trim() === "" ||
-            password.value.trim() === ""
+            error.code ===
+            "auth/invalid-email"
         ){
 
-            mostrarMensaje(
-                "Campos incompletos",
-                "Escribe tu correo y contraseña."
-            );
-
-            return;
+            mensaje =
+                "El correo electrónico no es válido.";
 
         }
 
 
-        try{
+        if(
+            error.code ===
+            "auth/weak-password"
+        ){
 
-            await signInWithEmailAndPassword(
-                auth,
-                correo.value.trim(),
-                password.value
+            mensaje =
+                "La contraseña debe tener al menos 6 caracteres.";
+
+        }
+
+
+        mostrarMensaje(
+            "Error",
+            mensaje
+        );
+
+    }
+
+};
+
+
+document.getElementById(
+    "loginBtn"
+).onclick = async ()=>{
+
+    if(
+
+        correo.value.trim()===""
+        ||
+        password.value.trim()===""
+
+    ){
+
+        mostrarMensaje(
+            "Campos incompletos",
+            "Escribe tu correo y contraseña."
+        );
+
+        return;
+
+    }
+
+
+    try{
+
+        await signInWithEmailAndPassword(
+
+            auth,
+
+            correo.value.trim(),
+
+            password.value
+
+        );
+
+
+        modalLogin.classList.remove(
+            "activo"
+        );
+
+
+        correo.value = "";
+
+        password.value = "";
+
+
+    }catch(error){
+
+        mostrarMensaje(
+            "Error",
+            "Correo o contraseña incorrectos."
+        );
+
+    }
+
+};
+
+
+/*======================================================
+                    GOOGLE
+======================================================*/
+
+document.getElementById(
+    "googleBtn"
+).onclick = async ()=>{
+
+    try{
+
+        await signInWithPopup(
+            auth,
+            provider
+        );
+
+
+        modalLogin.classList.remove(
+            "activo"
+        );
+
+
+    }catch(error){
+
+        console.error(error);
+
+
+        mostrarMensaje(
+            "Error",
+            "No se pudo iniciar sesión con Google."
+        );
+
+    }
+
+};
+
+
+/*======================================================
+                    SESION
+======================================================*/
+
+onAuthStateChanged(
+    auth,
+    usuario=>{
+
+        const adminLink =
+            document.getElementById(
+                "adminLink"
             );
 
 
-            modalLogin.classList.remove(
+        if(usuario){
+
+            usuarioActual =
+                usuario;
+
+
+            if(
+                usuario.email ===
+                "willduran620@gmail.com"
+            ){
+
+                adminLink.style.display =
+                    "flex";
+
+            }else{
+
+                adminLink.style.display =
+                    "none";
+
+            }
+
+
+            let nombre =
+                usuario.displayName
+                ||
+                usuario.email.split("@")[0];
+
+
+            nombre =
+                nombre
+                .replace(
+                    /[^a-zA-ZáéíóúÁÉÍÓÚñÑ ]/g,
+                    ""
+                )
+                .trim();
+
+
+            if(!nombre){
+
+                nombre =
+                    "Usuario";
+
+            }
+
+
+            nombre =
+                nombre.charAt(0)
+                .toUpperCase()
+                +
+                nombre.slice(1);
+
+
+            document.getElementById(
+                "textoUsuario"
+            ).textContent =
+                nombre;
+
+
+            cargarCarrito();
+
+            cargarFavoritos();
+
+
+        }else{
+
+            usuarioActual =
+                null;
+
+
+            favoritos = [];
+
+            carrito = [];
+
+
+            actualizarCarrito();
+
+
+            document.getElementById(
+                "textoUsuario"
+            ).textContent =
+                "Iniciar sesión";
+
+
+            adminLink.style.display =
+                "none";
+
+
+            actualizarIconosFavoritos();
+
+        }
+
+    }
+);
+
+
+/*======================================================
+                    CERRAR SESION
+======================================================*/
+
+cerrarSesion.onclick =
+async ()=>{
+
+    try{
+
+        await signOut(auth);
+
+
+        menuUsuario.classList.remove(
+            "activo"
+        );
+
+
+        mostrarMensaje(
+            "Hasta pronto 👋",
+            "Has cerrado sesión correctamente."
+        );
+
+    }catch(error){
+
+        console.error(error);
+
+    }
+
+};
+
+
+/*======================================================
+                PREFERENCIAS
+======================================================*/
+
+document.getElementById(
+    "notificacionesBtn"
+).onclick = ()=>{
+
+    mostrarMensaje(
+        "Próximamente",
+        "Aquí podrás activar o desactivar las notificaciones."
+    );
+
+};
+
+
+document.getElementById(
+    "modoOscuroBtn"
+).onclick = ()=>{
+
+    mostrarMensaje(
+        "Próximamente",
+        "El modo oscuro llegará en una próxima actualización."
+    );
+
+};
+
+
+document.getElementById(
+    "preferenciasComprasBtn"
+).onclick = ()=>{
+
+    mostrarMensaje(
+        "Preferencias",
+        "Aquí podrás guardar tus marcas y categorías favoritas."
+    );
+
+};
+
+
+document.getElementById(
+    "soporteBtn"
+).onclick = ()=>{
+
+    mostrarMensaje(
+        "Soporte",
+        "Próximamente podrás contactar a American Style desde aquí."
+    );
+
+};
+
+
+document.getElementById(
+    "acercaBtn"
+).onclick = ()=>{
+
+    mostrarMensaje(
+        "American Style Store",
+        "Versión 1.1 • Gracias por visitar nuestra tienda."
+    );
+
+};
+
+
+/*======================================================
+                    SLIDER
+======================================================*/
+
+const slides =
+    document.querySelectorAll(
+        ".slide"
+    );
+
+const dots =
+    document.querySelectorAll(
+        ".dot"
+    );
+
+
+let indice = 0;
+
+let intervalo;
+
+
+function mostrarSlide(i){
+
+    slides.forEach(
+        slide=>
+            slide.classList.remove(
                 "activo"
-            );
+            )
+    );
 
 
-            correo.value = "";
-
-            password.value = "";
-
-        }catch(error){
-
-            console.error(
-                "Error iniciando sesión:",
-                error
-            );
-
-            mostrarMensaje(
-                "Error",
-                "Correo o contraseña incorrectos."
-            );
-
-        }
-
-    };
-
-
-/* =========================================================
-   GOOGLE
-========================================================= */
-
-document
-    .getElementById("googleBtn")
-    .onclick =
-    async () => {
-
-        try{
-
-            await signInWithPopup(
-                auth,
-                provider
-            );
-
-            modalLogin.classList.remove(
+    dots.forEach(
+        dot=>
+            dot.classList.remove(
                 "activo"
-            );
+            )
+    );
 
-        }catch(error){
 
-            console.error(
-                "Error con Google:",
-                error
-            );
+    slides[i].classList.add(
+        "activo"
+    );
 
-            mostrarMensaje(
-                "Error",
-                "No se pudo iniciar sesión con Google."
-            );
+
+    dots[i].classList.add(
+        "activo"
+    );
+
+
+    indice = i;
+
+}
+
+
+function siguienteSlide(){
+
+    indice++;
+
+    if(
+        indice >= slides.length
+    ){
+
+        indice = 0;
+
+    }
+
+
+    mostrarSlide(indice);
+
+}
+
+
+function anteriorSlide(){
+
+    indice--;
+
+    if(indice < 0){
+
+        indice =
+            slides.length - 1;
+
+    }
+
+
+    mostrarSlide(indice);
+
+}
+
+
+function iniciarSlider(){
+
+    clearInterval(intervalo);
+
+    intervalo =
+        setInterval(
+            siguienteSlide,
+            5000
+        );
+
+}
+
+
+function detenerSlider(){
+
+    clearInterval(intervalo);
+
+}
+
+
+document.getElementById(
+    "siguiente"
+).addEventListener(
+    "click",
+    ()=>{
+
+        siguienteSlide();
+
+        iniciarSlider();
+
+    }
+);
+
+
+document.getElementById(
+    "anterior"
+).addEventListener(
+    "click",
+    ()=>{
+
+        anteriorSlide();
+
+        iniciarSlider();
+
+    }
+);
+
+
+dots.forEach(
+    (dot,i)=>{
+
+        dot.addEventListener(
+            "click",
+            ()=>{
+
+                mostrarSlide(i);
+
+                iniciarSlider();
+
+            }
+        );
+
+    }
+);
+
+
+/*======================================================
+                PAUSA EN COMPUTADORA
+======================================================*/
+
+const hero =
+    document.querySelector(
+        ".hero"
+    );
+
+
+hero.addEventListener(
+    "mouseenter",
+    detenerSlider
+);
+
+
+hero.addEventListener(
+    "mouseleave",
+    iniciarSlider
+);
+
+
+/*======================================================
+                    SWIPE MOVIL
+======================================================*/
+
+let touchInicioX = 0;
+
+let touchFinalX = 0;
+
+
+hero.addEventListener(
+    "touchstart",
+    e=>{
+
+        touchInicioX =
+            e.changedTouches[0].screenX;
+
+        detenerSlider();
+
+    },
+    {
+        passive:true
+    }
+);
+
+
+hero.addEventListener(
+    "touchend",
+    e=>{
+
+        touchFinalX =
+            e.changedTouches[0].screenX;
+
+
+        const diferencia =
+            touchFinalX -
+            touchInicioX;
+
+
+        const minimo =
+            50;
+
+
+        if(
+            Math.abs(diferencia)
+            >= minimo
+        ){
+
+            if(
+                diferencia < 0
+            ){
+
+                siguienteSlide();
+
+            }else{
+
+                anteriorSlide();
+
+            }
 
         }
 
-    };
+
+        iniciarSlider();
+
+    },
+    {
+        passive:true
+    }
+);
 
 
-/* =========================================================
-   INICIAR SLIDER
-========================================================= */
+/*======================================================
+                INICIAR SLIDER
+======================================================*/
 
 iniciarSlider();
 
 
-/* =========================================================
-   DIAGNOSTICO
-========================================================= */
+/*======================================================
+                DIAGNOSTICO
+======================================================*/
 
 console.log(
     "🔥 Firebase conectado correctamente."
 );
 
 console.log(
-    "========== DIAGNÓSTICO =========="
+    "🛍 American Style Store cargado."
 );
 
 console.log(
-    "panelCarrito:",
-    panelCarrito
+    "❤️ Sistema de favoritos listo."
 );
 
 console.log(
-    "abrirCarrito:",
-    abrirCarrito
+    "🛒 Sistema de carrito listo."
 );
 
 console.log(
-    "cerrarCarrito:",
-    cerrarCarrito
+    "🔥 Sistema de ofertas listo."
 );
 
 console.log(
-    "contador:",
-    contador
+    "📱 Sistema responsive listo."
 );
 
 console.log(
-    "listaCarrito:",
-    listaCarrito
+    "👆 Swipe del slider listo."
 );
 
-console.log(
-    "totalCarrito:",
-    totalCarrito
-);
-
-console.log(
-    "buscador:",
-    buscador
-);
-
-console.log(
-    "btnUsuario:",
-    btnUsuario
-);
-
-console.log(
-    "modalLogin:",
-    modalLogin
-);
-
-console.log(
-    "menuUsuario:",
-    menuUsuario
-);
-
-console.log(
-    "modalFavoritos:",
-    modalFavoritos
-);
-
-console.log(
-    "listaFavoritos:",
-    document.getElementById(
-        "listaFavoritos"
-    )
-);
-
-console.log(
-    "modalPreferencias:",
-    modalPreferencias
-);
-
-console.log(
-    "PreferenciasLink:",
-    document.getElementById(
-        "PreferenciasLink"
-    )
-);
-
-console.log(
-    "cerrarPreferencias:",
-    document.getElementById(
-        "cerrarPreferencias"
-    )
-);
-
-console.log(
-    "favoritosLink:",
-    document.getElementById(
-        "favoritosLink"
-    )
-);
-
-console.log(
-    "cerrarFavoritos:",
-    document.getElementById(
-        "cerrarFavoritos"
-    )
-);
-
-console.log(
-    "notificacionesBtn:",
-    document.getElementById(
-        "notificacionesBtn"
-    )
-);
-
-console.log(
-    "modoOscuroBtn:",
-    document.getElementById(
-        "modoOscuroBtn"
-    )
-);
-
-console.log(
-    "preferenciasComprasBtn:",
-    document.getElementById(
-        "preferenciasComprasBtn"
-    )
-);
-
-console.log(
-    "soporteBtn:",
-    document.getElementById(
-        "soporteBtn"
-    )
-);
-
-console.log(
-    "acercaBtn:",
-    document.getElementById(
-        "acercaBtn"
-    )
-);
-
-console.log(
-    "========== FIN =========="
-);
 
 </script>
 
