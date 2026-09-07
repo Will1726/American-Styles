@@ -168,6 +168,22 @@ nav a:hover::after{width:100%}
 .resumenBox{padding:15px;text-align:center;border:1px solid #eee;border-radius:14px;background:#fff}.resumenBox strong{display:block;font-size:21px;color:#0F62FE}.resumenBox span{font-size:11px;color:#777}
 .cuentaOpciones{display:grid;grid-template-columns:1fr 1fr;gap:10px}.cuentaOpcion{padding:14px;border-radius:12px;background:#f7f8fa;display:flex;align-items:center;gap:10px;font-size:13px;font-weight:600;cursor:pointer;transition:.2s}.cuentaOpcion:hover{background:#f2f6ff;color:#0F62FE}.cuentaOpcion i{color:#0F62FE}
 
+/* BUSCADOR SIN RESULTADOS */
+#mensajeBusqueda{display:none;padding:35px 20px;text-align:center;font-size:18px;font-weight:600;color:#777}
+#mensajeBusqueda i{display:block;font-size:42px;color:#0F62FE;margin-bottom:12px}
+#mensajeBusqueda small{display:block;margin-top:7px;font-size:13px;font-weight:400;color:#999}
+
+/* ADMIN */
+.adminPanel{margin-top:18px;padding:18px;border:1px solid #e5e7eb;border-radius:16px;background:#f8fafc}
+.adminPanel h3{margin-bottom:14px}
+.adminStats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:15px}
+.adminStat{padding:14px;border-radius:12px;background:#fff;border:1px solid #eee;text-align:center}
+.adminStat strong{display:block;font-size:22px;color:#0F62FE}.adminStat span{font-size:11px;color:#777}
+.adminLista{max-height:230px;overflow:auto}.adminPedido{padding:10px 0;border-bottom:1px solid #eee;font-size:12px}.adminPedido:last-child{border-bottom:0}
+body.modoOscuro .adminPanel{background:#202630;border-color:#394150}
+body.modoOscuro .adminStat{background:#181c24;border-color:#394150}
+body.modoOscuro .adminPedido{border-color:#394150}
+
 /* PEDIDOS */
 .pedido{padding:15px;border:1px solid #eee;border-radius:15px;margin-bottom:10px;background:#fafafa}
 .pedidoCabecera{display:flex;justify-content:space-between;gap:10px;margin-bottom:8px;font-size:13px}.pedidoTotal{color:#0F62FE;font-weight:800}
@@ -193,12 +209,17 @@ footer h2{margin-bottom:8px;font-size:25px}footer>p{color:#bbb;font-size:14px;ma
 /* OSCURO REAL */
 body.modoOscuro{background:#10131a;color:#eee}
 body.modoOscuro header,body.modoOscuro .card,body.modoOscuro .categoria,body.modoOscuro .modalFavoritos,body.modoOscuro .modalCuenta,body.modoOscuro .modalPedidos,body.modoOscuro .modalPreferencias,body.modoOscuro .contenidoModal{background:#181c24;color:#eee}
-body.modoOscuro nav a,body.modoOscuro .card h3,body.modoOscuro .productos h2,body.modoOscuro .categoria,body.modoOscuro .infoFavorito h3,body.modoOscuro .modalFavoritos h2,body.modoOscuro .modalCuenta h2,body.modoOscuro .modalPedidos h2,body.modoOscuro .modalPreferencias{color:#eee}
+body.modoOscuro .logo,body.modoOscuro .logo i,body.modoOscuro nav a,body.modoOscuro .buscar input,body.modoOscuro .buscar i,body.modoOscuro .card h3,body.modoOscuro .productos h2,body.modoOscuro .categoria,body.modoOscuro .infoFavorito h3,body.modoOscuro .modalFavoritos h2,body.modoOscuro .modalCuenta h2,body.modoOscuro .modalPedidos h2,body.modoOscuro .modalPreferencias{color:#eee}
 body.modoOscuro .buscar,body.modoOscuro .categoria,body.modoOscuro .itemFavorito,body.modoOscuro .pedido,body.modoOscuro .cuentaPerfil,body.modoOscuro .cuentaOpcion{background:#202630;color:#eee}
 body.modoOscuro .contenidoModal input{background:#202630;color:#fff;border-color:#394150}
 body.modoOscuro .precioAnterior,body.modoOscuro .cuentaDatos p,body.modoOscuro .pedidoProductos,body.modoOscuro .subtituloSeccion{color:#aaa}
 body.modoOscuro .productos:nth-of-type(even){background:#141820}
 body.modoOscuro .pieCarrito{background:#181c24;color:#eee}
+body.modoOscuro .menuUsuario{background:#181c24;color:#eee}
+body.modoOscuro .menuUsuario a,body.modoOscuro .menuUsuario .opcionConfig{color:#eee}
+body.modoOscuro .menuUsuario hr{border-color:#394150}
+body.modoOscuro .carritoVacio{color:#aaa}
+body.modoOscuro #mensajeBusqueda{color:#c8ced8}
 
 /* RESPONSIVE DESKTOP/TABLET */
 @media(max-width:1200px){
@@ -270,7 +291,7 @@ body.modoOscuro .pieCarrito{background:#181c24;color:#eee}
 <div class="opcionConfig" id="PreferenciasLink"><i class="fa-solid fa-gear"></i><span>Preferencias</span></div>
 <a href="#" id="pedidosLink"><i class="fa-solid fa-box"></i>Mis pedidos</a>
 <a href="#" id="favoritosLink"><i class="fa-solid fa-heart"></i>Mis favoritos</a>
-<a href="#" id="adminLink"><i class="fa-solid fa-chart-line"></i>Panel administrador</a>
+
 <hr>
 <button id="cerrarSesion"><i class="fa-solid fa-right-from-bracket"></i>Cerrar sesión</button>
 </div>
@@ -310,6 +331,8 @@ body.modoOscuro .pieCarrito{background:#181c24;color:#eee}
 <div id="contenidoCuenta"></div>
 </div>
 </div>
+
+<div id="modalAdmin" class="modal"><div class="modalCuenta"><span id="cerrarAdmin">&times;</span><h2>🛠️ Panel administrador</h2><div id="contenidoAdmin"></div></div></div>
 
 <div id="modalPedidos" class="modal">
 <div class="modalPedidos">
@@ -380,6 +403,8 @@ body.modoOscuro .pieCarrito{background:#181c24;color:#eee}
 <div class="card" data-id="102" data-categoria="ofertas" data-precio-original="1250" data-descuento="30"><span class="badge oferta">OFERTA</span><div class="favorito"><i class="fa-regular fa-heart"></i></div><img src="https://picsum.photos/400/500?4" alt="Chamarra Tommy Mujer en oferta"><h3>Chamarra Tommy Mujer</h3><p data-precio="875" class="precioOferta"><span class="precioAnterior">$1,250 MXN</span><span class="precioFinal">$875 MXN</span><span class="descuentoTexto">30% OFF</span></p><button class="agregarCarrito">Agregar al carrito</button></div>
 </div></section>
 
+<div id="mensajeBusqueda"><i class="fa-solid fa-box-open"></i>No existe ese producto<small>Prueba con otro nombre o categoría.</small></div>
+
 <div id="toast" class="toast"><i class="fa-solid fa-circle-check"></i><div><strong id="toastTitulo">Producto agregado</strong><p id="toastTexto"></p></div></div>
 
 <div id="modalLogin" class="modal"><div class="contenidoModal"><span id="cerrarModal">&times;</span><h2>Bienvenido</h2><input type="email" id="correo" placeholder="Correo electrónico"><input type="password" id="password" placeholder="Contraseña"><button id="loginBtn">Iniciar sesión</button><button id="registroBtn">Crear cuenta</button><button id="googleBtn"><i class="fa-brands fa-google"></i>Continuar con Google</button></div></div>
@@ -425,6 +450,7 @@ $("cerrarFavoritos").onclick=()=>cerrarModal("modalFavoritos");
 $("cerrarCuenta").onclick=()=>cerrarModal("modalCuenta");
 $("cerrarPedidos").onclick=()=>cerrarModal("modalPedidos");
 $("cerrarPreferencias").onclick=()=>cerrarModal("modalPreferencias");
+$("cerrarAdmin").onclick=()=>cerrarModal("modalAdmin");
 
 document.querySelectorAll(".modal").forEach(m=>m.addEventListener("click",e=>{if(e.target===m)m.classList.remove("activo")}));
 
@@ -439,21 +465,31 @@ function inicialNombre(){
 function mostrarCuenta(){
  if(!usuarioActual){mostrarMensaje("Inicia sesión","Debes iniciar sesión para consultar tu cuenta.");return}
  const totalCarritoItems=carrito.reduce((s,p)=>s+Number(p.cantidad||0),0);
+ const esAdmin=usuarioActual.email?.toLowerCase()==="willduran620@gmail.com";
  $("contenidoCuenta").innerHTML=`
  <div class="cuentaPerfil"><div class="avatarCuenta">${inicialNombre()}</div><div class="cuentaDatos"><h3>${obtenerNombreUsuario()}</h3><p>${usuarioActual.email||"Sin correo"}</p></div></div>
  <div class="cuentaResumen"><div class="resumenBox"><strong>${totalCarritoItems}</strong><span>Productos en carrito</span></div><div class="resumenBox"><strong>${favoritos.length}</strong><span>Favoritos</span></div><div class="resumenBox"><strong>${pedidosUsuario.length}</strong><span>Pedidos</span></div></div>
  <div class="cuentaOpciones">
- <div class="cuentaOpcion" id="cuentaVerPedidos"><i class="fa-solid fa-box"></i>Mis pedidos</div>
- <div class="cuentaOpcion" id="cuentaVerFavoritos"><i class="fa-solid fa-heart"></i>Mis favoritos</div>
- <div class="cuentaOpcion" id="cuentaVerCarrito"><i class="fa-solid fa-cart-shopping"></i>Mi carrito</div>
- <div class="cuentaOpcion" id="cuentaCerrarSesion"><i class="fa-solid fa-right-from-bracket"></i>Cerrar sesión</div>
+  <div class="cuentaOpcion" id="cuentaVerPedidos"><i class="fa-solid fa-box"></i>Mis pedidos</div>
+  <div class="cuentaOpcion" id="cuentaVerFavoritos"><i class="fa-solid fa-heart"></i>Mis favoritos</div>
+  <div class="cuentaOpcion" id="cuentaVerCarrito"><i class="fa-solid fa-cart-shopping"></i>Mi carrito</div>
+  <div class="cuentaOpcion" id="cuentaAdmin" style="display:${esAdmin?"flex":"none"}"><i class="fa-solid fa-chart-line"></i>Panel administrador</div>
+  <div class="cuentaOpcion" id="cuentaCerrarSesion"><i class="fa-solid fa-right-from-bracket"></i>Cerrar sesión</div>
  </div>`;
  $("cuentaVerPedidos").onclick=()=>{cerrarModal("modalCuenta");mostrarPedidos()};
- $("cuentaVerFavoritos").onclick=()=>{cerrarModal("modalCuenta");mostrarFavoritos()};
+ $("cuentaVerFavoritos").onclick=()=>{cerrarModal("modalCuenta");mostrarFavoritos();$("modalFavoritos").classList.add("activo")};
  $("cuentaVerCarrito").onclick=()=>{cerrarModal("modalCuenta");$("panelCarrito").classList.add("activo")};
  $("cuentaCerrarSesion").onclick=async()=>{cerrarModal("modalCuenta");await cerrarSesionFn()};
+ if(esAdmin) $("cuentaAdmin").onclick=()=>{cerrarModal("modalCuenta");mostrarAdmin()};
 }
-$("cuentaLink").onclick=e=>{e.preventDefault();$("menuUsuario").classList.remove("activo");mostrarCuenta()};
+$("cuentaLink").onclick=e=>{e.preventDefault();$("menuUsuario").classList.remove("activo");mostrarCuenta();$("modalCuenta").classList.add("activo")};
+
+function mostrarAdmin(){
+ if(!usuarioActual||usuarioActual.email?.toLowerCase()!=="willduran620@gmail.com")return mostrarMensaje("Acceso restringido","El panel administrador solo está disponible para el administrador.");
+ const totalVentas=pedidosUsuario.reduce((s,p)=>s+Number(p.total||0),0);
+ $("contenidoAdmin").innerHTML=`<div class="adminPanel"><h3>Resumen de administrador</h3><div class="adminStats"><div class="adminStat"><strong>${pedidosUsuario.length}</strong><span>Pedidos registrados</span></div><div class="adminStat"><strong>$${formatearPrecio(totalVentas)}</strong><span>Ventas</span></div><div class="adminStat"><strong>${document.querySelectorAll(".card").length}</strong><span>Productos publicados</span></div></div><div class="adminLista">${pedidosUsuario.length?pedidosUsuario.map(p=>{const fecha=p.fecha?.seconds?new Date(p.fecha.seconds*1000).toLocaleDateString("es-MX"):"Sin fecha";const productos=(p.productos||[]).map(x=>`${x.nombre} × ${x.cantidad}`).join(", ");return `<div class="adminPedido"><strong>${fecha} · $${formatearPrecio(p.total)} MXN</strong><br>${productos||"Sin productos"}</div>`}).join(""):"<p style='color:#777;text-align:center;padding:20px'>No hay pedidos registrados.</p>"}</div></div>`;
+ $("modalAdmin").classList.add("activo");
+}
 
 /* PREFERENCIAS FUNCIONALES */
 const PREF_KEY="americanStyle_preferencias";
@@ -596,7 +632,6 @@ $("cerrarSesion").onclick=cerrarSesionFn;
 
 onAuthStateChanged(auth,async u=>{
  usuarioActual=u;
- $("adminLink").style.display=u?.email==="willduran620@gmail.com"?"flex":"none";
  $("textoUsuario").textContent=u?obtenerNombreUsuario():"Iniciar sesión";
  if(u){await cargarCarrito();await cargarFavoritos();await cargarPedidos()}else{carrito=[];favoritos=[];pedidosUsuario=[];pintarFavoritos();actualizarCarrito()}
  actualizarPreferenciasUI();
@@ -626,12 +661,16 @@ $("comprar").onclick=async()=>{
 /* BUSCADOR */
 $("buscador").addEventListener("input",()=>{
  const t=$("buscador").value.trim().toLowerCase();
+ let encontrados=0;
  document.querySelectorAll(".productos").forEach(s=>{
-  let n=0;s.querySelectorAll(".card").forEach(c=>{
-   const ok=c.querySelector("h3").textContent.toLowerCase().includes(t)||(c.dataset.categoria||"").includes(t);
+  let n=0;
+  s.querySelectorAll(".card").forEach(c=>{
+   const ok=!t||c.querySelector("h3").textContent.toLowerCase().includes(t)||(c.dataset.categoria||"").includes(t);
    c.style.display=ok?"":"none";if(ok)n++;
-  });s.style.display=n?"":"none";
+  });
+  s.style.display=n?"":"none";encontrados+=n;
  });
+ $("mensajeBusqueda").style.display=t&&!encontrados?"block":"none";
 });
 
 /* NUEVO 7 DIAS */
