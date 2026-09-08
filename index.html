@@ -4,701 +4,126 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>American Style Store</title>
-
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{font-family:"Poppins",sans-serif;background:#fff;color:#222;overflow-x:hidden}
-button,input{font-family:inherit}
-button{border:none;cursor:pointer}
-a{text-decoration:none;color:inherit}
-
-/* HEADER */
-header{position:fixed;top:0;left:0;width:100%;height:80px;background:#fff;z-index:4000;display:flex;align-items:center;gap:24px;padding:0 32px;box-shadow:0 2px 15px rgba(0,0,0,.08)}
-.logo{display:flex;align-items:center;gap:12px;font-size:28px;font-weight:800;color:#111;white-space:nowrap}
-.logo i{color:#0F62FE;font-size:34px}
-nav{display:flex;align-items:center;gap:24px;flex:1}
-nav a{font-size:15px;font-weight:500;color:#333;position:relative;transition:.25s}
-nav a::after{content:"";position:absolute;left:0;bottom:-7px;width:0;height:2px;background:#0F62FE;transition:.25s}
-nav a:hover{color:#0F62FE}
-nav a:hover::after{width:100%}
-.acciones{display:flex;align-items:center;gap:13px}
-.buscar{width:270px;height:46px;display:flex;align-items:center;background:#f2f2f2;border-radius:30px;padding:0 17px;transition:.25s}
-.buscar:focus-within{background:#eaeaea;box-shadow:0 0 0 2px rgba(15,98,254,.15)}
-.buscar i{color:#666;margin-right:9px}
-.buscar input{width:100%;border:none;outline:none;background:transparent;font-size:14px;color:#222}
-.carrito{width:54px;height:54px;border-radius:50%;background:#0F62FE;color:#fff;font-size:20px;position:relative;display:flex;align-items:center;justify-content:center;transition:.25s;flex-shrink:0}
-.carrito:hover{background:#0754e8;transform:translateY(-2px)}
-#contador{position:absolute;top:-5px;right:-3px;min-width:26px;height:26px;padding:0 6px;border-radius:50%;background:#e53935;color:#fff;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;border:2px solid #fff}
-.contenedorUsuario{position:relative}
-.usuario{min-width:190px;height:54px;padding:0 17px;border-radius:30px;background:#0F62FE;color:#fff;display:flex;align-items:center;justify-content:center;gap:9px;font-size:14px;font-weight:600;transition:.25s;white-space:nowrap}
-.usuario:hover{background:#0754e8}
-.usuario i:first-child{font-size:16px}.usuario i:last-child{font-size:12px;margin-left:3px}
-.menuUsuario{position:absolute;top:64px;right:0;width:235px;background:#fff;border-radius:15px;padding:10px;box-shadow:0 12px 35px rgba(0,0,0,.15);opacity:0;visibility:hidden;transform:translateY(-10px);transition:.25s;z-index:5000}
-.menuUsuario.activo{opacity:1;visibility:visible;transform:translateY(0)}
-.menuUsuario a,.menuUsuario .opcionConfig{width:100%;display:flex;align-items:center;gap:12px;padding:12px;border-radius:10px;color:#333;font-size:14px;cursor:pointer;transition:.2s}
-.menuUsuario a:hover,.menuUsuario .opcionConfig:hover{background:#f2f6ff;color:#0F62FE}
-.menuUsuario hr{border:none;border-top:1px solid #eee;margin:7px 0}
-#cerrarSesion{width:100%;padding:12px;border-radius:10px;background:transparent;color:#e53935;text-align:left;font-size:14px;display:flex;align-items:center;gap:12px;transition:.2s}
-#cerrarSesion:hover{background:#fff0f0}
-#menuMovil{display:none;width:44px;height:44px;border-radius:10px;background:#0F62FE;color:#fff;font-size:19px}
-
-/* HERO */
-.hero{position:relative;width:100%;height:calc(100vh - 80px);min-height:620px;margin-top:80px;overflow:hidden;background:#111;touch-action:pan-y}
-.slide{position:absolute;inset:0;opacity:0;visibility:hidden;transition:opacity .8s ease}
-.slide.activo{opacity:1;visibility:visible}
-.slide img{width:100%;height:100%;object-fit:cover;display:block;transform:scale(1.04);transition:transform 6s ease}
-.slide.activo img{transform:scale(1)}
-.slide::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.58) 0%,rgba(0,0,0,.38) 42%,rgba(0,0,0,.16) 75%,rgba(0,0,0,.22) 100%);z-index:1}
-.hero-texto{position:absolute;z-index:2;top:50%;left:10%;transform:translateY(-50%);max-width:700px;color:#fff;opacity:1!important;filter:none!important}
-.hero-texto::before{content:"AMERICAN STYLE";display:block;margin-bottom:15px;color:#72a4ff;font-size:14px;font-weight:700;letter-spacing:4px;text-shadow:0 3px 12px rgba(0,0,0,.6)}
-.hero-texto h1{margin:0 0 20px;font-size:clamp(48px,5vw,78px);line-height:1.04;font-weight:800;letter-spacing:-2px;color:#fff;text-shadow:0 4px 18px rgba(0,0,0,.65),0 2px 4px rgba(0,0,0,.7);opacity:1!important}
-.hero-texto h1::after{content:"";display:block;width:80px;height:5px;margin-top:22px;border-radius:10px;background:#0F62FE;box-shadow:0 5px 18px rgba(15,98,254,.55)}
-.hero-texto p{max-width:590px;margin:0 0 30px;color:rgba(255,255,255,.97);font-size:20px;line-height:1.6;text-shadow:0 3px 12px rgba(0,0,0,.75);opacity:1!important}
-.hero-texto button{padding:16px 34px;border-radius:50px;background:#0F62FE;color:#fff;font-size:16px;font-weight:600;box-shadow:0 8px 25px rgba(15,98,254,.4),0 4px 12px rgba(0,0,0,.3);transition:.25s;opacity:1!important}
-.hero-texto button:hover{background:#2874ff;transform:translateY(-3px)}
-.flecha{position:absolute;top:50%;transform:translateY(-50%);z-index:3;width:68px;height:68px;border-radius:50%;background:rgba(15,98,254,.96);color:#fff;display:flex;align-items:center;justify-content:center;font-size:23px;box-shadow:0 8px 25px rgba(0,0,0,.25);transition:.25s}
-.flecha:hover{background:#2874ff;transform:translateY(-50%) scale(1.08)}
-.flecha.izquierda{left:3%}.flecha.derecha{right:3%}
-.indicadores{position:absolute;left:50%;bottom:28px;transform:translateX(-50%);z-index:3;display:flex;gap:10px}
-.dot{width:11px;height:11px;border-radius:50%;background:rgba(255,255,255,.55);cursor:pointer;transition:.3s}
-.dot.activo{width:32px;border-radius:20px;background:#0F62FE}.dot:hover{transform:scale(1.15)}
-
-/* CATEGORIAS */
-.categorias{width:100%;padding:70px 7%;display:grid;grid-template-columns:repeat(4,1fr);gap:25px;scroll-margin-top:90px}
-.categoria{min-height:170px;border-radius:20px;background:#f7f8fa;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:15px;color:#222;box-shadow:0 5px 20px rgba(0,0,0,.06);transition:.3s}
-.categoria i{font-size:42px;color:#0F62FE}.categoria h3{font-size:19px}
-.categoria:hover{transform:translateY(-7px);background:#0F62FE;color:#fff;box-shadow:0 12px 30px rgba(15,98,254,.2)}
-.categoria:hover i{color:#fff}
-
-/* PRODUCTOS */
-.productos{padding:80px 7%;scroll-margin-top:90px}
-.productos h2{margin-bottom:35px;font-size:34px;font-weight:700;color:#111}
-.subtituloSeccion{margin-top:-20px;margin-bottom:30px;color:#777}
-.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:28px}
-.card{position:relative;background:#fff;border-radius:20px;padding:15px;overflow:hidden;box-shadow:0 6px 25px rgba(0,0,0,.08);transition:.3s}
-.card:hover{transform:translateY(-7px);box-shadow:0 15px 35px rgba(0,0,0,.13)}
-.card img{width:100%;height:300px;object-fit:cover;border-radius:14px;display:block;margin-bottom:17px}
-.card h3{font-size:18px;margin-bottom:8px;color:#222}.card>p{margin-bottom:15px;font-size:17px;font-weight:700;color:#0F62FE}
-.card>button{width:100%;padding:13px;border-radius:10px;background:#0F62FE;color:#fff;font-size:14px;font-weight:600;transition:.25s}
-.card>button:hover{background:#0754e8}
-.precioOferta{display:flex;align-items:center;flex-wrap:wrap;gap:9px}
-.precioAnterior{color:#999;text-decoration:line-through;font-size:14px;font-weight:500}
-.precioOferta .precioFinal{color:#e53935;font-size:19px;font-weight:800}
-.descuentoTexto{display:inline-block;margin-left:3px;padding:3px 7px;border-radius:6px;background:#fff0f0;color:#e53935;font-size:11px;font-weight:700}
-
-/* BADGES */
-.badge{position:absolute;top:25px;left:25px;z-index:5;padding:7px 12px;border-radius:8px;color:#fff;font-size:11px;font-weight:800;letter-spacing:.5px;box-shadow:0 5px 15px rgba(0,0,0,.2);animation:badgeEntrada .6s ease both,badgePulso 2.2s ease-in-out .7s infinite}
-.badge.nuevo{background:#0F62FE}
-.badge.oferta{background:#e53935;animation:badgeEntrada .6s ease both,ofertaPulso 1.8s ease-in-out .7s infinite}
-@keyframes badgeEntrada{0%{opacity:0;transform:translateY(-12px) scale(.75)}70%{transform:translateY(3px) scale(1.06)}100%{opacity:1;transform:translateY(0) scale(1)}}
-@keyframes badgePulso{0%,100%{box-shadow:0 5px 15px rgba(0,0,0,.2)}50%{box-shadow:0 7px 22px rgba(15,98,254,.4)}}
-@keyframes ofertaPulso{0%,100%{transform:scale(1);box-shadow:0 5px 15px rgba(229,57,53,.25)}50%{transform:scale(1.08);box-shadow:0 8px 24px rgba(229,57,53,.45)}}
-
-/* FAVORITOS */
-.favorito{position:absolute;top:25px;right:25px;z-index:6;width:42px;height:42px;border-radius:50%;background:rgba(255,255,255,.95);display:flex;align-items:center;justify-content:center;color:#555;font-size:19px;cursor:pointer;box-shadow:0 5px 15px rgba(0,0,0,.12);transition:.25s}
-.favorito:hover{transform:scale(1.1);color:#e53935}.favorito.activo{background:#fff0f0;color:#e53935}.favorito.activo i{animation:corazonPop .3s ease}
-@keyframes corazonPop{0%{transform:scale(.5)}70%{transform:scale(1.25)}100%{transform:scale(1)}}
-
-/* CARRITO */
-#panelCarrito{position:fixed;top:0;right:-390px;width:370px;height:100vh;background:#fff;z-index:4500;box-shadow:-10px 0 30px rgba(0,0,0,.15);display:flex;flex-direction:column;transition:.35s}
-#panelCarrito.activo{right:0}
-.encabezadoCarrito{height:80px;padding:0 20px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #eee}
-.encabezadoCarrito h2{font-size:21px}
-#cerrarCarrito{width:40px;height:40px;border-radius:50%;background:#f3f3f3;color:#333;font-size:17px;transition:.2s}
-#cerrarCarrito:hover{background:#eee;transform:rotate(90deg)}
-#listaCarrito{flex:1;overflow-y:auto;padding:18px}.carritoVacio{padding:50px 10px;text-align:center;color:#888}
-.itemCarrito{display:flex;align-items:center;gap:12px;padding:12px;margin-bottom:12px;background:#fafafa;border-radius:14px}
-.imgCarrito{width:70px;height:80px;object-fit:cover;border-radius:10px;flex-shrink:0}
-.infoCarrito{flex:1;min-width:0}.infoCarrito h4{margin-bottom:4px;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.infoCarrito>p{margin-bottom:8px;color:#0F62FE;font-size:13px;font-weight:700}
-.precioOriginalCarrito{display:block;color:#999;font-size:11px;text-decoration:line-through}.ofertaCarrito{display:inline-block;margin-left:5px;color:#e53935;font-size:10px;font-weight:700}
-.controles{display:flex;align-items:center;gap:6px}.controles button{width:31px;height:31px;border-radius:8px;background:#0F62FE;color:#fff;display:flex;align-items:center;justify-content:center;transition:.2s}
-.controles button:hover{background:#0754e8;transform:scale(1.05)}.controles span{min-width:24px;text-align:center;font-size:14px;font-weight:600}
-.controles .eliminar{margin-left:4px;background:#fff0f0;color:#e53935}.controles .eliminar:hover{background:#e53935;color:#fff}
-.pieCarrito{padding:18px;border-top:1px solid #eee;background:#fff}.pieCarrito h3{margin-bottom:14px;font-size:20px}#totalCarrito{color:#0F62FE}
-#vaciarCarrito{width:100%;padding:11px;margin-bottom:10px;border-radius:10px;background:#fff;color:#e53935;border:1px solid #f0b4b4;font-size:13px;font-weight:600;transition:.2s}
-#vaciarCarrito:hover{background:#fff0f0}
-#comprar{width:100%;padding:14px;border-radius:10px;background:#0F62FE;color:#fff;font-size:15px;font-weight:700;transition:.2s}#comprar:hover{background:#0754e8}
-
-/* TOASTS */
-.toast{position:fixed;right:25px;bottom:25px;z-index:8000;width:330px;padding:16px 18px;border-radius:14px;background:#fff;box-shadow:0 10px 35px rgba(0,0,0,.18);display:flex;align-items:center;gap:13px;transform:translateY(130px);opacity:0;pointer-events:none;transition:.35s}
-.toast.mostrar{transform:translateY(0);opacity:1}.toast>i{color:#27ae60;font-size:25px}.toast strong{font-size:14px}.toast p{margin-top:2px;color:#777;font-size:12px}
-
-/* MODALES */
-.modal{position:fixed;inset:0;z-index:7000;background:rgba(0,0,0,.55);display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;visibility:hidden;transition:.25s}
-.modal.activo{opacity:1;visibility:visible}
-.contenidoModal{position:relative;width:100%;max-width:430px;padding:35px;background:#fff;border-radius:20px;box-shadow:0 20px 50px rgba(0,0,0,.2);transform:translateY(20px);transition:.3s}
-.modal.activo .contenidoModal{transform:translateY(0)}
-.contenidoModal h2{margin-bottom:25px;font-size:27px;text-align:center}
-.contenidoModal input{width:100%;height:50px;padding:0 15px;margin-bottom:13px;border:1px solid #ddd;border-radius:10px;outline:none;font-size:14px}
-.contenidoModal input:focus{border-color:#0F62FE;box-shadow:0 0 0 3px rgba(15,98,254,.1)}
-.contenidoModal>button{width:100%;padding:13px;margin-top:8px;border-radius:10px;background:#0F62FE;color:#fff;font-weight:600;transition:.2s}
-.contenidoModal>button:hover{background:#0754e8}
-#googleBtn{background:#fff;color:#333;border:1px solid #ddd}#googleBtn:hover{background:#f7f7f7}#googleBtn i{margin-right:7px}
-#cerrarModal,#cerrarFavoritos,#cerrarPreferencias,#cerrarCuenta,#cerrarPedidos{position:absolute;top:15px;right:20px;font-size:27px;color:#777;cursor:pointer;transition:.2s}
-#cerrarModal:hover,#cerrarFavoritos:hover,#cerrarPreferencias:hover,#cerrarCuenta:hover,#cerrarPedidos:hover{color:#111;transform:rotate(90deg)}
-
-/* FAVORITOS MODAL MEJORADO */
-.modalFavoritos,.modalCuenta,.modalPedidos{position:relative;width:100%;max-width:620px;max-height:82vh;overflow-y:auto;padding:30px;background:#fff;border-radius:22px;box-shadow:0 20px 50px rgba(0,0,0,.2)}
-.modalFavoritos h2,.modalCuenta h2,.modalPedidos h2{margin-bottom:20px;font-size:24px}
-.itemFavorito{display:flex;align-items:center;gap:15px;padding:14px;margin-bottom:11px;border-radius:15px;background:#fff;box-shadow:0 5px 18px rgba(0,0,0,.07);border:1px solid #eee}
-.itemFavorito img{width:70px;height:82px;object-fit:cover;border-radius:11px}
-.infoFavorito{flex:1;min-width:0}.infoFavorito h3{font-size:15px;margin-bottom:4px}.infoFavorito p{color:#0F62FE;font-size:13px;font-weight:600;margin-bottom:9px}
-.accionesFavorito{display:flex;gap:8px;flex-wrap:wrap}
-.btnModal{padding:9px 12px;border-radius:9px;background:#0F62FE;color:#fff;font-size:12px;font-weight:600;transition:.2s}
-.btnModal:hover{background:#0754e8}.btnModal.secundario{background:#f2f6ff;color:#0F62FE}.btnModal.peligro{background:#fff0f0;color:#e53935}.btnModal.peligro:hover{background:#e53935;color:#fff}
-.itemFavorito .quitarFavorito{width:40px;height:40px;border-radius:50%;background:#fff0f0;color:#e53935;transition:.2s;flex-shrink:0}.itemFavorito .quitarFavorito:hover{background:#e53935;color:#fff}
-
-/* PREFERENCIAS */
-.modalPreferencias{position:relative;width:100%;max-width:450px;padding:30px;background:#fff;border-radius:20px;box-shadow:0 20px 50px rgba(0,0,0,.2)}
-.tituloPreferencias{display:flex;align-items:center;gap:10px;margin-bottom:20px}.tituloPreferencias i{color:#0F62FE}
-.modalPreferencias .opcionConfig{display:flex;align-items:center;gap:14px;padding:15px;margin-bottom:8px;border-radius:12px;cursor:pointer;transition:.2s}
-.modalPreferencias .opcionConfig:hover{background:#f2f6ff;color:#0F62FE}.modalPreferencias .opcionConfig i{width:22px;text-align:center}
-.prefEstado{margin-left:auto;font-size:11px;font-weight:700;color:#0F62FE}
-
-/* CUENTA */
-.cuentaPerfil{display:flex;align-items:center;gap:15px;padding:18px;background:#f7f9fc;border-radius:16px;margin-bottom:18px}
-.avatarCuenta{width:64px;height:64px;border-radius:50%;background:#0F62FE;color:#fff;display:flex;align-items:center;justify-content:center;font-size:25px;font-weight:700;flex-shrink:0}
-.cuentaDatos h3{font-size:18px;margin-bottom:3px}.cuentaDatos p{font-size:13px;color:#777;word-break:break-word}
-.cuentaResumen{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:18px}
-.resumenBox{padding:15px;text-align:center;border:1px solid #eee;border-radius:14px;background:#fff}.resumenBox strong{display:block;font-size:21px;color:#0F62FE}.resumenBox span{font-size:11px;color:#777}
-.cuentaOpciones{display:grid;grid-template-columns:1fr 1fr;gap:10px}.cuentaOpcion{padding:14px;border-radius:12px;background:#f7f8fa;display:flex;align-items:center;gap:10px;font-size:13px;font-weight:600;cursor:pointer;transition:.2s}.cuentaOpcion:hover{background:#f2f6ff;color:#0F62FE}.cuentaOpcion i{color:#0F62FE}
-
-/* BUSCADOR SIN RESULTADOS */
-#mensajeBusqueda{display:none;padding:35px 20px;text-align:center;font-size:18px;font-weight:600;color:#777}
-#mensajeBusqueda i{display:block;font-size:42px;color:#0F62FE;margin-bottom:12px}
-#mensajeBusqueda small{display:block;margin-top:7px;font-size:13px;font-weight:400;color:#999}
-
-/* ADMIN */
-.adminPanel{margin-top:18px;padding:18px;border:1px solid #e5e7eb;border-radius:16px;background:#f8fafc}
-.adminPanel h3{margin-bottom:14px}
-.adminStats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:15px}
-.adminStat{padding:14px;border-radius:12px;background:#fff;border:1px solid #eee;text-align:center}
-.adminStat strong{display:block;font-size:22px;color:#0F62FE}.adminStat span{font-size:11px;color:#777}
-.adminLista{max-height:230px;overflow:auto}.adminPedido{padding:10px 0;border-bottom:1px solid #eee;font-size:12px}.adminPedido:last-child{border-bottom:0}
-body.modoOscuro .adminPanel{background:#202630;border-color:#394150}
-body.modoOscuro .adminStat{background:#181c24;border-color:#394150}
-body.modoOscuro .adminPedido{border-color:#394150}
-
-/* PEDIDOS */
-.pedido{padding:15px;border:1px solid #eee;border-radius:15px;margin-bottom:10px;background:#fafafa}
-.pedidoCabecera{display:flex;justify-content:space-between;gap:10px;margin-bottom:8px;font-size:13px}.pedidoTotal{color:#0F62FE;font-weight:800}
-.pedidoProductos{font-size:12px;color:#666;line-height:1.6}
-
-/* MENU MOVIL */
-#fondoMenu{position:fixed;inset:0;z-index:5500;background:rgba(0,0,0,.5);opacity:0;visibility:hidden;transition:.3s}
-#fondoMenu.activo{opacity:1;visibility:visible}
-#menuLateral{position:fixed;top:0;left:-310px;width:290px;height:100vh;padding:25px 18px;background:#fff;z-index:5600;box-shadow:10px 0 30px rgba(0,0,0,.15);transition:.35s}
-#menuLateral.activo{left:0}
-#cerrarMenu{position:absolute;top:15px;right:20px;font-size:32px;color:#555;cursor:pointer}
-.menuTitulo{display:flex;align-items:center;gap:10px;margin:30px 0;color:#111}.menuTitulo i{color:#0F62FE;font-size:27px}.menuTitulo h2{font-size:21px}
-#menuLateral>a{display:block;padding:15px;margin-bottom:5px;border-radius:10px;font-size:15px;transition:.2s}
-#menuLateral>a:hover{background:#f2f6ff;color:#0F62FE}
-
-/* FOOTER */
-footer{padding:60px 20px 25px;background:#111827;color:#fff;text-align:center}
-footer h2{margin-bottom:8px;font-size:25px}footer>p{color:#bbb;font-size:14px;margin-bottom:20px}
-.redes{display:flex;justify-content:center;gap:15px;margin:20px 0 30px}
-.redes a{width:42px;height:42px;border-radius:50%;background:#222b3a;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:.25s}
-.redes a:hover{background:#0F62FE;transform:translateY(-3px)}
-
-/* OSCURO REAL */
-body.modoOscuro{background:#10131a;color:#eee}
-body.modoOscuro header,body.modoOscuro .card,body.modoOscuro .categoria,body.modoOscuro .modalFavoritos,body.modoOscuro .modalCuenta,body.modoOscuro .modalPedidos,body.modoOscuro .modalPreferencias,body.modoOscuro .contenidoModal{background:#181c24;color:#eee}
-body.modoOscuro .logo,body.modoOscuro .logo i,body.modoOscuro nav a,body.modoOscuro .buscar input,body.modoOscuro .buscar i,body.modoOscuro .card h3,body.modoOscuro .productos h2,body.modoOscuro .categoria,body.modoOscuro .infoFavorito h3,body.modoOscuro .modalFavoritos h2,body.modoOscuro .modalCuenta h2,body.modoOscuro .modalPedidos h2,body.modoOscuro .modalPreferencias{color:#eee}
-body.modoOscuro .buscar,body.modoOscuro .categoria,body.modoOscuro .itemFavorito,body.modoOscuro .pedido,body.modoOscuro .cuentaPerfil,body.modoOscuro .cuentaOpcion{background:#202630;color:#eee}
-body.modoOscuro .contenidoModal input{background:#202630;color:#fff;border-color:#394150}
-body.modoOscuro .precioAnterior,body.modoOscuro .cuentaDatos p,body.modoOscuro .pedidoProductos,body.modoOscuro .subtituloSeccion{color:#aaa}
-body.modoOscuro .productos:nth-of-type(even){background:#141820}
-body.modoOscuro .pieCarrito{background:#181c24;color:#eee}
-body.modoOscuro .menuUsuario{background:#181c24;color:#eee}
-body.modoOscuro .menuUsuario a,body.modoOscuro .menuUsuario .opcionConfig{color:#eee}
-body.modoOscuro .menuUsuario hr{border-color:#394150}
-body.modoOscuro .carritoVacio{color:#aaa}
-body.modoOscuro #mensajeBusqueda{color:#c8ced8}
-
-/* RESPONSIVE DESKTOP/TABLET */
-@media(max-width:1200px){
- header{gap:15px;padding:0 20px}
- nav{gap:16px}nav a{font-size:14px}
- .buscar{width:225px}.usuario{min-width:165px}
- .grid{grid-template-columns:repeat(3,1fr)}
-}
-@media(max-width:1050px){
- header{gap:10px}.logo{font-size:23px}.logo i{font-size:29px}
- nav{gap:11px}nav a{font-size:13px}
- .buscar{width:190px}.usuario{min-width:150px;padding:0 12px}
- .grid{grid-template-columns:repeat(2,1fr)}
-}
-@media(max-width:850px){
- nav{display:none}#menuMovil{display:flex;align-items:center;justify-content:center}
- .acciones{margin-left:auto}.buscar{width:200px}
- .logo{font-size:21px}.logo i{font-size:27px}
-}
-@media(max-width:768px){
- header{height:auto;min-height:112px;display:grid;grid-template-columns:44px minmax(0,1fr) 44px 44px;grid-template-rows:44px 48px;gap:8px;padding:10px 14px}
- #menuMovil{grid-column:1;grid-row:1}
- .logo{grid-column:2;grid-row:1;font-size:19px;gap:7px;min-width:0}.logo i{font-size:25px}
- .acciones{display:contents}
- .buscar{grid-column:1/5;grid-row:2;width:100%;height:48px;position:static;margin:0}
- .carrito{grid-column:3;grid-row:1;width:44px;height:44px;font-size:17px}
- #contador{min-width:23px;height:23px;font-size:11px;top:-5px;right:-5px}
- .contenedorUsuario{grid-column:4;grid-row:1;width:44px}
- .usuario{min-width:44px;width:44px;height:44px;padding:0;border-radius:50%}.usuario span,.usuario i:last-child{display:none}
- .menuUsuario{top:52px;right:0;width:230px}
- .hero{margin-top:112px;height:calc(100vh - 112px);min-height:570px}
- .hero-texto{left:7%;right:7%;max-width:none}
- .hero-texto::before{font-size:11px;letter-spacing:3px;margin-bottom:12px}
- .hero-texto h1{font-size:clamp(38px,10vw,54px);line-height:1.05;letter-spacing:-1px;margin-bottom:16px}
- .hero-texto h1::after{width:55px;height:4px;margin-top:16px}.hero-texto p{font-size:16px;line-height:1.5;margin-bottom:25px}
- .hero-texto button{padding:14px 27px;font-size:15px}.flecha{display:none}.indicadores{bottom:22px}
- .categorias{padding:50px 6%;grid-template-columns:repeat(2,1fr);gap:15px}.categoria{min-height:140px}.categoria i{font-size:32px}.categoria h3{font-size:16px}
- .productos{padding:55px 6%}.productos h2{font-size:27px;margin-bottom:25px}.grid{grid-template-columns:repeat(2,1fr);gap:15px}
- .card{padding:10px;border-radius:15px}.card img{height:240px;border-radius:11px}.card h3{font-size:15px}.card>p{font-size:14px}.card>button{padding:11px 7px;font-size:12px}
- .badge{top:18px;left:18px;padding:6px 9px;font-size:9px}.favorito{top:18px;right:18px;width:36px;height:36px;font-size:16px}
- #panelCarrito{width:100%;right:-100%}.itemCarrito{padding:10px}.imgCarrito{width:65px;height:75px}
- .toast{left:12px;right:12px;bottom:18px;width:auto}
- .cuentaOpciones{grid-template-columns:1fr}
-}
-@media(max-width:480px){
- .logo{font-size:16px}.logo i{font-size:22px}.buscar input{font-size:13px}.hero-texto h1{font-size:38px}.hero-texto p{font-size:14px}
- .grid{grid-template-columns:1fr}.card img{height:330px}.categorias{grid-template-columns:1fr 1fr}.categoria{min-height:125px}
- .modal{padding:12px}.contenidoModal,.modalFavoritos,.modalCuenta,.modalPedidos,.modalPreferencias{padding:25px 20px}
- .cuentaResumen{grid-template-columns:1fr 1fr 1fr}.resumenBox{padding:10px}.resumenBox strong{font-size:18px}
-}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}body{font-family:Poppins,sans-serif;background:#fff;color:#222;overflow-x:hidden}button,input,select{font-family:inherit}button{border:0;cursor:pointer}a{text-decoration:none;color:inherit}
+header{position:fixed;top:0;left:0;width:100%;height:80px;background:#fff;z-index:4000;display:flex;align-items:center;gap:22px;padding:0 30px;box-shadow:0 2px 15px rgba(0,0,0,.08)}
+.logo{display:flex;align-items:center;gap:11px;font-size:27px;font-weight:800;color:#111;white-space:nowrap}.logo i{color:#0F62FE;font-size:33px}nav{display:flex;align-items:center;gap:20px;flex:1}nav a{font-size:14px;font-weight:600;color:#333;position:relative;white-space:nowrap}nav a:after{content:"";position:absolute;left:0;bottom:-7px;width:0;height:2px;background:#0F62FE;transition:.25s}nav a:hover{color:#0F62FE}nav a:hover:after{width:100%}
+.acciones{display:flex;align-items:center;gap:12px}.buscar{width:250px;height:46px;display:flex;align-items:center;background:#f2f2f2;border-radius:30px;padding:0 16px}.buscar:focus-within{box-shadow:0 0 0 2px rgba(15,98,254,.15)}.buscar i{color:#666;margin-right:9px}.buscar input{width:100%;border:0;outline:0;background:transparent;color:#222}.carrito{width:52px;height:52px;border-radius:50%;background:#0F62FE;color:#fff;font-size:19px;position:relative;display:flex;align-items:center;justify-content:center;flex-shrink:0}.carrito:hover{background:#0754e8;transform:translateY(-2px)}#contador{position:absolute;top:-5px;right:-4px;min-width:25px;height:25px;padding:0 6px;border-radius:50%;background:#e53935;color:#fff;font-size:11px;font-weight:800;display:flex;align-items:center;justify-content:center;border:2px solid #fff}.contenedorUsuario{position:relative}.usuario{min-width:175px;height:52px;padding:0 16px;border-radius:28px;background:#0F62FE;color:#fff;display:flex;align-items:center;justify-content:center;gap:9px;font-size:13px;font-weight:700;white-space:nowrap}.usuario:hover{background:#0754e8}.usuario i:first-child{font-size:15px}.usuario i:last-child{font-size:11px}
+.menuUsuario{position:absolute;top:62px;right:0;width:245px;background:#fff;border-radius:15px;padding:10px;box-shadow:0 12px 35px rgba(0,0,0,.16);opacity:0;visibility:hidden;transform:translateY(-10px);transition:.25s;z-index:5000}.menuUsuario.activo{opacity:1;visibility:visible;transform:translateY(0)}.menuUsuario a,.menuUsuario .opcionConfig{width:100%;display:flex;align-items:center;gap:12px;padding:12px;border-radius:10px;color:#333;font-size:14px;cursor:pointer}.menuUsuario a:hover,.menuUsuario .opcionConfig:hover{background:#f2f6ff;color:#0F62FE}.menuUsuario hr{border:0;border-top:1px solid #eee;margin:7px 0}#cerrarSesion{width:100%;padding:12px;border-radius:10px;background:transparent;color:#e53935;text-align:left;font-size:14px;display:flex;align-items:center;gap:12px}#cerrarSesion:hover{background:#fff0f0}#menuMovil{display:none;width:44px;height:44px;border-radius:10px;background:#0F62FE;color:#fff;font-size:19px}
+.hero{position:relative;width:100%;height:calc(100vh - 80px);min-height:620px;margin-top:80px;overflow:hidden;background:#111;touch-action:pan-y}.slide{position:absolute;inset:0;opacity:0;visibility:hidden;transition:opacity .8s ease}.slide.activo{opacity:1;visibility:visible}.slide img{width:100%;height:100%;object-fit:cover;display:block;transform:scale(1.04);transition:transform 6s ease}.slide.activo img{transform:scale(1)}.slide:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.56),rgba(0,0,0,.34) 45%,rgba(0,0,0,.14) 78%,rgba(0,0,0,.2));z-index:1}.hero-texto{position:absolute;z-index:2;top:50%;left:10%;transform:translateY(-50%);max-width:720px;color:#fff}.hero-texto:before{content:"AMERICAN STYLE";display:block;margin-bottom:14px;color:#8db5ff;font-size:14px;font-weight:800;letter-spacing:4px;text-shadow:0 3px 12px rgba(0,0,0,.7)}.hero-texto h1{margin-bottom:20px;font-size:clamp(48px,5vw,78px);line-height:1.02;font-weight:800;letter-spacing:-2px;color:#fff;text-shadow:0 4px 18px rgba(0,0,0,.7)}.hero-texto h1:after{content:"";display:block;width:82px;height:5px;margin-top:22px;border-radius:10px;background:#0F62FE;box-shadow:0 5px 18px rgba(15,98,254,.6)}.hero-texto p{max-width:600px;margin-bottom:30px;color:#fff;font-size:20px;line-height:1.55;text-shadow:0 3px 12px rgba(0,0,0,.8)}.hero-texto button{padding:16px 34px;border-radius:50px;background:#0F62FE;color:#fff;font-size:16px;font-weight:700;box-shadow:0 8px 25px rgba(15,98,254,.4)}.hero-texto button:hover{background:#2874ff;transform:translateY(-3px)}.flecha{position:absolute;top:50%;transform:translateY(-50%);z-index:3;width:62px;height:62px;border-radius:50%;background:rgba(15,98,254,.96);color:#fff;font-size:22px}.flecha.izquierda{left:3%}.flecha.derecha{right:3%}.indicadores{position:absolute;left:50%;bottom:28px;transform:translateX(-50%);z-index:3;display:flex;gap:10px}.dot{width:11px;height:11px;border-radius:50%;background:rgba(255,255,255,.55);cursor:pointer}.dot.activo{width:32px;border-radius:20px;background:#0F62FE}
+.categorias{width:100%;padding:70px 7%;display:grid;grid-template-columns:repeat(4,1fr);gap:25px;scroll-margin-top:90px}.categoria{min-height:170px;border-radius:20px;background:#f7f8fa;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:15px;color:#222;box-shadow:0 5px 20px rgba(0,0,0,.06);transition:.3s}.categoria i{font-size:42px;color:#0F62FE}.categoria:hover{transform:translateY(-7px);background:#0F62FE;color:#fff}.categoria:hover i{color:#fff}
+.productos{padding:80px 7%;scroll-margin-top:90px}.productos h2{margin-bottom:35px;font-size:34px;color:#111}.subtituloSeccion{margin-top:-20px;margin-bottom:30px;color:#777}.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:28px}.card{position:relative;background:#fff;border-radius:20px;padding:15px;overflow:hidden;box-shadow:0 6px 25px rgba(0,0,0,.08);transition:.3s}.card:hover{transform:translateY(-7px);box-shadow:0 15px 35px rgba(0,0,0,.13)}.card img{width:100%;height:300px;object-fit:cover;border-radius:14px;display:block;margin-bottom:17px}.card h3{font-size:18px;margin-bottom:8px;color:#222}.card>p{margin-bottom:15px;font-size:17px;font-weight:700;color:#0F62FE}.card>button{width:100%;padding:13px;border-radius:10px;background:#0F62FE;color:#fff;font-size:14px;font-weight:700}.precioOferta{display:flex;align-items:center;flex-wrap:wrap;gap:8px}.precioAnterior{color:#999;text-decoration:line-through;font-size:14px;font-weight:500}.precioFinal{color:#e53935;font-size:19px;font-weight:800}.descuentoTexto{padding:3px 7px;border-radius:6px;background:#fff0f0;color:#e53935;font-size:11px;font-weight:800}
+.badges{position:absolute;top:25px;left:25px;z-index:5;display:flex;gap:6px;flex-wrap:wrap}.badge{position:static;padding:7px 11px;border-radius:8px;color:#fff;font-size:10px;font-weight:900;letter-spacing:.5px;box-shadow:0 5px 15px rgba(0,0,0,.2);animation:badgeEntrada .6s ease both,badgePulso 2.2s ease-in-out .7s infinite}.badge.nuevo{background:#0F62FE}.badge.oferta{background:#e53935;animation:badgeEntrada .6s ease both,ofertaPulso 1.8s ease-in-out .7s infinite}@keyframes badgeEntrada{0%{opacity:0;transform:translateY(-12px) scale(.75)}70%{transform:translateY(3px) scale(1.06)}100%{opacity:1;transform:translateY(0) scale(1)}}@keyframes badgePulso{50%{box-shadow:0 7px 22px rgba(15,98,254,.5)}}@keyframes ofertaPulso{0%,100%{transform:scale(1) rotate(0)}25%{transform:scale(1.07) rotate(-2deg)}50%{transform:scale(1.12) rotate(2deg);box-shadow:0 8px 24px rgba(229,57,53,.55)}75%{transform:scale(1.06) rotate(-1deg)}}
+#ofertas{position:relative;overflow:hidden;background:linear-gradient(135deg,#fff 0%,#fff8f8 50%,#f2f6ff 100%)}#ofertas:before{content:"";position:absolute;width:380px;height:380px;border-radius:50%;background:rgba(229,57,53,.08);top:-180px;right:-120px;animation:ofertaOrb 5s ease-in-out infinite alternate}@keyframes ofertaOrb{to{transform:translate(-30px,30px) scale(1.15)}}.tituloOfertas{position:relative;display:flex;align-items:center;gap:14px;flex-wrap:wrap}.tituloOfertas .fuego{display:inline-block;animation:fuego 1s ease-in-out infinite alternate}@keyframes fuego{to{transform:scale(1.25) rotate(7deg);filter:drop-shadow(0 0 12px rgba(229,57,53,.55))}}.tituloOfertas .textoOferta{font-size:clamp(34px,4vw,48px);font-weight:900;background:linear-gradient(90deg,#e53935,#ff7a00,#e53935);background-size:200% auto;-webkit-background-clip:text;background-clip:text;color:transparent;animation:brilloOferta 2.4s linear infinite}@keyframes brilloOferta{to{background-position:200% center}}.ofertaLinea{height:5px;width:100px;background:#e53935;border-radius:20px;animation:lineaOferta 1.4s ease-in-out infinite alternate}@keyframes lineaOferta{to{width:170px;box-shadow:0 0 18px rgba(229,57,53,.5)}}
+.favorito{position:absolute;top:25px;right:25px;z-index:6;width:42px;height:42px;border-radius:50%;background:rgba(255,255,255,.95);display:flex;align-items:center;justify-content:center;color:#555;font-size:19px;cursor:pointer;box-shadow:0 5px 15px rgba(0,0,0,.12)}.favorito:hover{transform:scale(1.1);color:#e53935}.favorito.activo{background:#fff0f0;color:#e53935}.favorito.activo i{animation:corazonPop .3s ease}@keyframes corazonPop{0%{transform:scale(.5)}70%{transform:scale(1.25)}100%{transform:scale(1)}}
+#panelCarrito{position:fixed;top:0;right:-390px;width:370px;height:100vh;background:#fff;z-index:4500;box-shadow:-10px 0 30px rgba(0,0,0,.15);display:flex;flex-direction:column;transition:.35s}#panelCarrito.activo{right:0}.encabezadoCarrito{height:80px;padding:0 20px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #eee}.encabezadoCarrito h2{font-size:21px}#cerrarCarrito{width:40px;height:40px;border-radius:50%;background:#f3f3f3}.listaCarrito{flex:1;overflow-y:auto;padding:18px}.carritoVacio{padding:50px 10px;text-align:center;color:#888}.itemCarrito{display:flex;align-items:center;gap:12px;padding:12px;margin-bottom:12px;background:#fafafa;border-radius:14px}.imgCarrito{width:70px;height:80px;object-fit:cover;border-radius:10px}.infoCarrito{flex:1;min-width:0}.infoCarrito h4{margin-bottom:4px;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.infoCarrito>p{margin-bottom:8px;color:#0F62FE;font-size:13px;font-weight:700}.precioOriginalCarrito{display:block;color:#999;font-size:11px;text-decoration:line-through}.ofertaCarrito{color:#e53935;font-size:10px;font-weight:800}.controles{display:flex;align-items:center;gap:6px}.controles button{width:31px;height:31px;border-radius:8px;background:#0F62FE;color:#fff}.controles span{min-width:24px;text-align:center;font-weight:700}.controles .eliminar{background:#fff0f0;color:#e53935}.pieCarrito{padding:18px;border-top:1px solid #eee;background:#fff}.pieCarrito h3{margin-bottom:14px;font-size:20px}.pieCarrito h3 span{color:#0F62FE}#vaciarCarrito{width:100%;padding:11px;margin-bottom:10px;border-radius:10px;background:#fff;color:#e53935;border:1px solid #f0b4b4;font-weight:700}#comprar{width:100%;padding:14px;border-radius:10px;background:#0F62FE;color:#fff;font-weight:800}
+.toast{position:fixed;right:25px;bottom:25px;z-index:9000;width:340px;padding:16px 18px;border-radius:14px;background:#fff;box-shadow:0 10px 35px rgba(0,0,0,.18);display:flex;align-items:center;gap:13px;transform:translateY(130px);opacity:0;pointer-events:none;transition:.35s}.toast.mostrar{transform:translateY(0);opacity:1}.toast>i{color:#27ae60;font-size:25px}.toast strong{font-size:14px}.toast p{margin-top:2px;color:#777;font-size:12px}
+.modal{position:fixed;inset:0;z-index:7000;background:rgba(0,0,0,.55);display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;visibility:hidden;transition:.25s}.modal.activo{opacity:1;visibility:visible}.contenidoModal,.modalFavoritos,.modalCuenta,.modalPedidos,.modalPreferencias,.modalAdmin{position:relative;width:100%;max-width:650px;max-height:88vh;overflow-y:auto;padding:30px;background:#fff;border-radius:22px;box-shadow:0 20px 50px rgba(0,0,0,.25);transform:translateY(20px);transition:.3s}.modal.activo .contenidoModal,.modal.activo .modalFavoritos,.modal.activo .modalCuenta,.modal.activo .modalPedidos,.modal.activo .modalPreferencias,.modal.activo .modalAdmin{transform:translateY(0)}.contenidoModal{max-width:430px}.contenidoModal h2,.modalFavoritos h2,.modalCuenta h2,.modalPedidos h2,.modalPreferencias h2,.modalAdmin h2{margin-bottom:20px}.contenidoModal input{width:100%;height:50px;padding:0 15px;margin-bottom:13px;border:1px solid #ddd;border-radius:10px;outline:0}.contenidoModal>button{width:100%;padding:13px;margin-top:8px;border-radius:10px;background:#0F62FE;color:#fff;font-weight:700}#googleBtn{background:#fff;color:#333;border:1px solid #ddd}.cerrarX{position:absolute;top:15px;right:20px;font-size:28px;color:#777;cursor:pointer}.itemFavorito,.pedido{padding:14px;margin-bottom:10px;border-radius:15px;background:#fafafa;border:1px solid #eee}.itemFavorito{display:flex;align-items:center;gap:14px}.itemFavorito img{width:70px;height:82px;object-fit:cover;border-radius:10px}.infoFavorito{flex:1}.infoFavorito h3{font-size:15px;margin-bottom:4px}.infoFavorito p{color:#0F62FE;font-weight:700;font-size:13px;margin-bottom:8px}.accionesFavorito{display:flex;gap:8px;flex-wrap:wrap}.btnModal{padding:9px 12px;border-radius:9px;background:#0F62FE;color:#fff;font-size:12px;font-weight:700}.btnModal.peligro{background:#fff0f0;color:#e53935}.cuentaPerfil{display:flex;align-items:center;gap:15px;padding:18px;background:#f7f9fc;border-radius:16px;margin-bottom:18px}.avatarCuenta{width:64px;height:64px;border-radius:50%;background:#0F62FE;color:#fff;display:flex;align-items:center;justify-content:center;font-size:25px;font-weight:800}.cuentaDatos h3{font-size:18px}.cuentaDatos p{font-size:13px;color:#777;word-break:break-word}.cuentaResumen{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:18px}.resumenBox{padding:15px;text-align:center;border:1px solid #eee;border-radius:14px}.resumenBox strong{display:block;font-size:21px;color:#0F62FE}.resumenBox span{font-size:11px;color:#777}.cuentaOpciones{display:grid;grid-template-columns:1fr 1fr;gap:10px}.cuentaOpcion{padding:14px;border-radius:12px;background:#f7f8fa;display:flex;align-items:center;gap:10px;font-size:13px;font-weight:700;cursor:pointer}.cuentaOpcion i{color:#0F62FE}.pedidoCabecera{display:flex;justify-content:space-between;gap:10px;margin-bottom:8px;font-size:13px}.pedidoTotal{color:#0F62FE;font-weight:800}.pedidoProductos{font-size:12px;color:#666;line-height:1.6}
+.modalPreferencias{max-width:480px}.opcionConfig{display:flex;align-items:center;gap:13px;padding:15px;margin-bottom:8px;border-radius:12px;cursor:pointer}.opcionConfig:hover{background:#f2f6ff;color:#0F62FE}.prefEstado{margin-left:auto;font-size:11px;font-weight:800;color:#0F62FE}.prefSelectWrap{display:flex;flex-direction:column;gap:7px;margin:5px 0 12px;padding:0 15px}.prefSelectWrap label{font-size:12px;color:#777;font-weight:700}.prefSelect{height:42px;border:1px solid #ddd;border-radius:10px;padding:0 10px;background:#fff;color:#222;outline:0}.prefChecks{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:6px}.prefCheck{padding:11px;border-radius:10px;background:#f6f7f9;font-size:12px;font-weight:700}.prefCheck input{accent-color:#0F62FE;margin-right:7px}
+.adminPanel{display:grid;gap:16px}.adminStats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.adminStat{padding:15px;border-radius:14px;background:#f5f7fb;text-align:center}.adminStat strong{display:block;font-size:23px;color:#0F62FE}.adminStat span{font-size:11px;color:#777}.adminForm{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:16px;border:1px solid #eee;border-radius:15px;background:#fafafa}.adminForm h3{grid-column:1/-1}.adminForm input,.adminForm select{height:43px;border:1px solid #ddd;border-radius:9px;padding:0 10px;background:#fff;outline:0}.adminForm .full{grid-column:1/-1}.adminForm label{font-size:11px;font-weight:700;color:#777;display:flex;flex-direction:column;gap:5px}.adminBtn{padding:12px;border-radius:9px;background:#0F62FE;color:#fff;font-weight:800}.adminList{display:grid;gap:8px}.adminProduct{display:flex;align-items:center;gap:10px;padding:10px;border:1px solid #eee;border-radius:12px}.adminProduct img{width:52px;height:62px;object-fit:cover;border-radius:8px}.adminProductInfo{flex:1;min-width:0}.adminProductInfo strong{font-size:13px}.adminProductInfo small{display:block;color:#777;font-size:11px}.adminProductActions{display:flex;gap:5px;flex-wrap:wrap}.miniBtn{padding:8px 9px;border-radius:8px;font-size:11px;font-weight:800;background:#eef4ff;color:#0F62FE}.miniBtn.red{background:#fff0f0;color:#e53935}.adminToggle{display:flex;gap:8px;flex-wrap:wrap}.adminToggle button{padding:9px 12px;border-radius:9px;background:#eee;font-weight:700}.adminToggle button.activo{background:#0F62FE;color:#fff}
+#mensajeBusqueda{display:none;padding:60px 20px;text-align:center;font-size:20px;font-weight:800;color:#555}#mensajeBusqueda i{display:block;font-size:48px;color:#0F62FE;margin-bottom:12px}#mensajeBusqueda small{display:block;margin-top:7px;font-size:12px;font-weight:500;color:#888}
+#menuLateral,#fondoMenu{display:none}footer{padding:60px 20px 25px;background:#111827;color:#fff;text-align:center}footer h2{margin-bottom:8px}footer>p{color:#bbb;font-size:14px;margin-bottom:20px}.redes{display:flex;justify-content:center;gap:15px;margin:20px 0 30px}.redes a{width:42px;height:42px;border-radius:50%;background:#222b3a;display:flex;align-items:center;justify-content:center}.redes a:hover{background:#0F62FE}
+body.modoOscuro{background:#10131a;color:#eee}body.modoOscuro header,body.modoOscuro .card,body.modoOscuro .categoria,body.modoOscuro .modalFavoritos,body.modoOscuro .modalCuenta,body.modoOscuro .modalPedidos,body.modoOscuro .modalPreferencias,body.modoOscuro .contenidoModal,body.modoOscuro .modalAdmin,body.modoOscuro #panelCarrito{background:#181c24;color:#eee}body.modoOscuro .logo,body.modoOscuro .logo i,body.modoOscuro nav a,body.modoOscuro .card h3,body.modoOscuro .productos h2,body.modoOscuro .categoria,body.modoOscuro .modal h2,body.modoOscuro .infoFavorito h3{color:#eee}body.modoOscuro .buscar,body.modoOscuro .categoria,body.modoOscuro .itemFavorito,body.modoOscuro .pedido,body.modoOscuro .cuentaPerfil,body.modoOscuro .cuentaOpcion,body.modoOscuro .adminStat,body.modoOscuro .adminForm,body.modoOscuro .adminProduct{background:#202630;color:#eee}body.modoOscuro .buscar input,body.modoOscuro .prefSelect,body.modoOscuro .adminForm input,body.modoOscuro .adminForm select{color:#fff;background:#202630;border-color:#394150}body.modoOscuro .menuUsuario{background:#181c24;color:#eee}body.modoOscuro .menuUsuario a,body.modoOscuro .menuUsuario .opcionConfig{color:#eee}body.modoOscuro .pieCarrito{background:#181c24}body.modoOscuro .subtituloSeccion,body.modoOscuro .precioAnterior,body.modoOscuro .cuentaDatos p,body.modoOscuro .pedidoProductos,body.modoOscuro .prefSelectWrap label{color:#aaa}body.modoOscuro #mensajeBusqueda{color:#ddd}
+@media(max-width:1200px){header{gap:14px;padding:0 20px}nav{gap:14px}.buscar{width:210px}.usuario{min-width:155px}.grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:1050px){.logo{font-size:23px}.logo i{font-size:28px}nav{gap:9px}nav a{font-size:12px}.buscar{width:180px}.usuario{min-width:140px}.grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:850px){nav{display:none}#menuMovil{display:flex;align-items:center;justify-content:center}.acciones{margin-left:auto}.buscar{width:190px}.logo{font-size:21px}.logo i{font-size:27px}}
+@media(max-width:768px){header{height:auto;min-height:112px;display:grid;grid-template-columns:44px minmax(0,1fr) 44px 44px;grid-template-rows:44px 48px;gap:8px;padding:10px 14px}#menuMovil{grid-column:1;grid-row:1}.logo{grid-column:2;grid-row:1;font-size:19px;gap:7px;min-width:0}.logo i{font-size:25px}.acciones{display:contents}.buscar{grid-column:1/5;grid-row:2;width:100%;height:48px;margin:0}.carrito{grid-column:3;grid-row:1;width:44px;height:44px}.contenedorUsuario{grid-column:4;grid-row:1;width:44px}.usuario{min-width:44px;width:44px;height:44px;padding:0;border-radius:50%}.usuario span,.usuario i:last-child{display:none}.menuUsuario{top:52px;right:0;width:235px}.hero{margin-top:112px;height:calc(100vh - 112px);min-height:570px}.hero-texto{left:7%;right:7%;max-width:none}.hero-texto h1{font-size:clamp(38px,10vw,54px)}.hero-texto p{font-size:16px}.flecha{display:none}.categorias{padding:50px 6%;grid-template-columns:repeat(2,1fr);gap:15px}.productos{padding:55px 6%}.productos h2{font-size:27px}.grid{grid-template-columns:repeat(2,1fr);gap:15px}.card{padding:10px}.card img{height:240px}.badge{font-size:9px;padding:6px 8px}.badges{top:18px;left:18px}.favorito{top:18px;right:18px;width:36px;height:36px}.toast{left:12px;right:12px;width:auto}.cuentaOpciones{grid-template-columns:1fr}.adminForm{grid-template-columns:1fr}.adminForm h3,.adminForm .full{grid-column:1}.adminStats{grid-template-columns:1fr 1fr 1fr}}
+@media(max-width:480px){.logo{font-size:16px}.logo i{font-size:22px}.hero-texto h1{font-size:38px}.hero-texto p{font-size:14px}.grid{grid-template-columns:1fr}.card img{height:330px}.cuentaResumen{grid-template-columns:1fr 1fr 1fr}.modal{padding:12px}.contenidoModal,.modalFavoritos,.modalCuenta,.modalPedidos,.modalPreferencias,.modalAdmin{padding:24px 18px}.prefChecks{grid-template-columns:1fr}.adminStats{grid-template-columns:1fr 1fr 1fr}.adminProduct{align-items:flex-start}.adminProductActions{flex-direction:column}}
 </style>
 </head>
-
 <body>
-
 <header>
 <div class="logo"><i class="fa-solid fa-shirt"></i>American Style</div>
 <button id="menuMovil"><i class="fa-solid fa-bars"></i></button>
-<nav>
-<a href="#">Inicio</a><a href="#hombre">Hombre</a><a href="#mujer">Mujer</a><a href="#infantil">Infantil</a><a href="#accesorios">Accesorios</a><a href="#contacto">Contacto</a><a href="#ofertas">Ofertas</a>
-</nav>
-<div class="acciones">
-<div class="buscar"><i class="fa-solid fa-magnifying-glass"></i><input type="text" id="buscador" placeholder="Buscar productos..."></div>
-<button class="carrito" id="abrirCarrito"><i class="fa-solid fa-cart-shopping"></i><span id="contador">0</span></button>
-<div class="contenedorUsuario">
-<button class="usuario" id="btnUsuario"><i class="fa-solid fa-user"></i><span id="textoUsuario">Iniciar sesión</span><i class="fa-solid fa-chevron-down"></i></button>
-<div class="menuUsuario" id="menuUsuario">
-<a href="#" id="cuentaLink"><i class="fa-solid fa-user"></i>Mi cuenta</a>
-<div class="opcionConfig" id="PreferenciasLink"><i class="fa-solid fa-gear"></i><span>Preferencias</span></div>
-<a href="#" id="pedidosLink"><i class="fa-solid fa-box"></i>Mis pedidos</a>
-<a href="#" id="favoritosLink"><i class="fa-solid fa-heart"></i>Mis favoritos</a>
-
-<hr>
-<button id="cerrarSesion"><i class="fa-solid fa-right-from-bracket"></i>Cerrar sesión</button>
-</div>
-</div>
-</div>
+<nav><a href="#">Inicio</a><a href="#hombre">Hombre</a><a href="#mujer">Mujer</a><a href="#infantil">Infantil</a><a href="#accesorios">Accesorios</a><a href="#ofertas">Ofertas</a><a href="#contacto">Contacto</a></nav>
+<div class="acciones"><div class="buscar"><i class="fa-solid fa-magnifying-glass"></i><input id="buscador" type="text" placeholder="Buscar productos..."></div><button class="carrito" id="abrirCarrito"><i class="fa-solid fa-cart-shopping"></i><span id="contador">0</span></button><div class="contenedorUsuario"><button class="usuario" id="btnUsuario"><i class="fa-solid fa-user"></i><span id="textoUsuario">Iniciar sesión</span><i class="fa-solid fa-chevron-down"></i></button><div class="menuUsuario" id="menuUsuario"><a href="#" id="cuentaLink"><i class="fa-solid fa-user"></i>Mi cuenta</a><div class="opcionConfig" id="PreferenciasLink"><i class="fa-solid fa-gear"></i>Preferencias</div><a href="#" id="pedidosLink"><i class="fa-solid fa-box"></i>Mis pedidos</a><a href="#" id="favoritosLink"><i class="fa-solid fa-heart"></i>Mis favoritos</a><a href="#" id="adminLink" style="display:none"><i class="fa-solid fa-chart-line"></i>Panel administrador</a><hr><button id="cerrarSesion"><i class="fa-solid fa-right-from-bracket"></i>Cerrar sesión</button></div></div></div>
 </header>
-
-<div id="fondoMenu"></div>
-<div id="menuLateral">
-<span id="cerrarMenu">&times;</span>
-<div class="menuTitulo"><i class="fa-solid fa-shirt"></i><h2>American Style</h2></div>
-<a href="#">🏠 Inicio</a><a href="#productos">🛍 Productos</a><a href="#ofertas">🔥 Ofertas</a><a href="#contacto">📞 Contacto</a>
-</div>
-
-<div id="panelCarrito">
-<div class="encabezadoCarrito"><h2>🛒 Mi carrito</h2><button id="cerrarCarrito">✖</button></div>
-<div id="listaCarrito"><p class="carritoVacio">No hay productos.</p></div>
-<div class="pieCarrito">
-<h3>Total: $<span id="totalCarrito">0</span> MXN</h3>
-<button id="vaciarCarrito"><i class="fa-solid fa-trash"></i> Quitar todo</button>
-<button id="comprar">Finalizar compra</button>
-</div>
-</div>
-
-<div id="modalFavoritos" class="modal">
-<div class="modalFavoritos">
-<span id="cerrarFavoritos">&times;</span>
-<h2>❤️ Mis favoritos (<span id="contadorFavoritos">0</span>)</h2>
-<div id="listaFavoritos"></div>
-</div>
-</div>
-
-<div id="modalCuenta" class="modal">
-<div class="modalCuenta">
-<span id="cerrarCuenta">&times;</span>
-<h2>👤 Mi cuenta</h2>
-<div id="contenidoCuenta"></div>
-</div>
-</div>
-
-<div id="modalAdmin" class="modal"><div class="modalCuenta"><span id="cerrarAdmin">&times;</span><h2>🛠️ Panel administrador</h2><div id="contenidoAdmin"></div></div></div>
-
-<div id="modalPedidos" class="modal">
-<div class="modalPedidos">
-<span id="cerrarPedidos">&times;</span>
-<h2>📦 Mis pedidos</h2>
-<div id="listaPedidos"></div>
-</div>
-</div>
-
-<div id="modalPreferencias" class="modal">
-<div class="modalPreferencias">
-<span id="cerrarPreferencias">&times;</span>
-<h2 class="tituloPreferencias"><i class="fa-solid fa-gear"></i><span>Preferencias</span></h2>
-<div class="opcionConfig" id="notificacionesBtn"><i class="fa-solid fa-bell"></i><span>Notificaciones</span><span class="prefEstado" id="estadoNotificaciones">Activadas</span></div>
-<div class="opcionConfig" id="modoOscuroBtn"><i class="fa-solid fa-moon"></i><span>Modo oscuro</span><span class="prefEstado" id="estadoOscuro">Desactivado</span></div>
-<div class="opcionConfig" id="preferenciasComprasBtn"><i class="fa-solid fa-heart"></i><span>Preferencias de compra</span></div>
-<div class="opcionConfig" id="soporteBtn"><i class="fa-solid fa-headset"></i><span>Contacto y soporte</span></div>
-<div class="opcionConfig" id="acercaBtn"><i class="fa-solid fa-circle-info"></i><span>Acerca de American Style</span></div>
-</div>
-</div>
-
-<section class="hero">
-<div class="slide activo"><img src="https://picsum.photos/1600/900?11" alt="Nueva colección"><div class="hero-texto"><h1>Nueva Colección 2026</h1><p>Las mejores marcas americanas con precios increíbles.</p><button data-scroll="#hombre">Comprar ahora</button></div></div>
-<div class="slide"><img src="https://picsum.photos/1600/900?22" alt="Ofertas"><div class="hero-texto"><h1>Hasta 50% OFF</h1><p>Ofertas por tiempo limitado.</p><button data-scroll="#ofertas">Ver ofertas</button></div></div>
-<div class="slide"><img src="https://picsum.photos/1600/900?33" alt="Accesorios"><div class="hero-texto"><h1>Accesorios Originales</h1><p>Gorras, mochilas y mucho más.</p><button data-scroll="#accesorios">Comprar</button></div></div>
-<button id="anterior" class="flecha izquierda"><i class="fa-solid fa-chevron-left"></i></button>
-<button id="siguiente" class="flecha derecha"><i class="fa-solid fa-chevron-right"></i></button>
-<div class="indicadores"><span class="dot activo"></span><span class="dot"></span><span class="dot"></span></div>
-</section>
-
-<section class="categorias" id="productos">
-<a href="#hombre" class="categoria"><i class="fa-solid fa-shirt"></i><h3>Hombre</h3></a>
-<a href="#mujer" class="categoria"><i class="fa-solid fa-person-dress"></i><h3>Mujer</h3></a>
-<a href="#infantil" class="categoria"><i class="fa-solid fa-child"></i><h3>Infantil</h3></a>
-<a href="#accesorios" class="categoria"><i class="fa-solid fa-hat-cowboy"></i><h3>Accesorios</h3></a>
-</section>
-
-<section class="productos" id="hombre"><h2>Ropa para Hombre</h2><div class="grid">
-<div class="card" data-id="1" data-categoria="hombre"><span class="badge nuevo">NUEVO</span><div class="favorito"><i class="fa-regular fa-heart"></i></div><img src="https://picsum.photos/400/500?1" alt="Sudadera Nike"><h3>Sudadera Nike</h3><p data-precio="750">$750 MXN</p><button class="agregarCarrito">Agregar al carrito</button></div>
-<div class="card" data-id="2" data-categoria="hombre"><span class="badge nuevo">NUEVO</span><div class="favorito"><i class="fa-regular fa-heart"></i></div><img src="https://picsum.photos/400/500?2" alt="Jeans Levi's"><h3>Jeans Levi's</h3><p data-precio="650">$650 MXN</p><button class="agregarCarrito">Agregar al carrito</button></div>
-<div class="card" data-id="9" data-categoria="hombre"><span class="badge nuevo">NUEVO</span><div class="favorito"><i class="fa-regular fa-heart"></i></div><img src="https://picsum.photos/400/500?9" alt="Chamarra Nike Hombre"><h3>Chamarra Nike Hombre</h3><p data-precio="1100">$1,100 MXN</p><button class="agregarCarrito">Agregar al carrito</button></div>
-<div class="card" data-id="10" data-categoria="hombre"><span class="badge nuevo">NUEVO</span><div class="favorito"><i class="fa-regular fa-heart"></i></div><img src="https://picsum.photos/400/500?10" alt="Playera Tommy Hombre"><h3>Playera Tommy Hombre</h3><p data-precio="580">$580 MXN</p><button class="agregarCarrito">Agregar al carrito</button></div>
-</div></section>
-
-<section class="productos" id="mujer"><h2>Ropa para Mujer</h2><div class="grid">
-<div class="card" data-id="3" data-categoria="mujer"><span class="badge nuevo">NUEVO</span><div class="favorito"><i class="fa-regular fa-heart"></i></div><img src="https://picsum.photos/400/500?3" alt="Playera Adidas Mujer"><h3>Playera Adidas Mujer</h3><p data-precio="420">$420 MXN</p><button class="agregarCarrito">Agregar al carrito</button></div>
-<div class="card" data-id="4" data-categoria="mujer"><span class="badge nuevo">NUEVO</span><div class="favorito"><i class="fa-regular fa-heart"></i></div><img src="https://picsum.photos/400/500?4" alt="Chamarra Tommy Mujer"><h3>Chamarra Tommy Mujer</h3><p data-precio="1250">$1,250 MXN</p><button class="agregarCarrito">Agregar al carrito</button></div>
-<div class="card" data-id="11" data-categoria="mujer"><span class="badge nuevo">NUEVO</span><div class="favorito"><i class="fa-regular fa-heart"></i></div><img src="https://picsum.photos/400/500?11" alt="Sudadera Adidas Mujer"><h3>Sudadera Adidas Mujer</h3><p data-precio="790">$790 MXN</p><button class="agregarCarrito">Agregar al carrito</button></div>
-<div class="card" data-id="12" data-categoria="mujer"><span class="badge nuevo">NUEVO</span><div class="favorito"><i class="fa-regular fa-heart"></i></div><img src="https://picsum.photos/400/500?12" alt="Jeans Calvin Klein Mujer"><h3>Jeans Calvin Klein Mujer</h3><p data-precio="920">$920 MXN</p><button class="agregarCarrito">Agregar al carrito</button></div>
-</div></section>
-
-<section class="productos" id="infantil"><h2>Ropa Infantil</h2><div class="grid">
-<div class="card" data-id="5" data-categoria="infantil"><span class="badge nuevo">NUEVO</span><div class="favorito"><i class="fa-regular fa-heart"></i></div><img src="https://picsum.photos/400/500?5" alt="Sudadera Infantil"><h3>Sudadera Infantil</h3><p data-precio="350">$350 MXN</p><button class="agregarCarrito">Agregar al carrito</button></div>
-<div class="card" data-id="6" data-categoria="infantil"><span class="badge nuevo">NUEVO</span><div class="favorito"><i class="fa-regular fa-heart"></i></div><img src="https://picsum.photos/400/500?6" alt="Playera Infantil"><h3>Playera Infantil</h3><p data-precio="250">$250 MXN</p><button class="agregarCarrito">Agregar al carrito</button></div>
-<div class="card" data-id="13" data-categoria="infantil"><span class="badge nuevo">NUEVO</span><div class="favorito"><i class="fa-regular fa-heart"></i></div><img src="https://picsum.photos/400/500?13" alt="Conjunto Infantil"><h3>Conjunto Infantil</h3><p data-precio="490">$490 MXN</p><button class="agregarCarrito">Agregar al carrito</button></div>
-<div class="card" data-id="14" data-categoria="infantil"><span class="badge nuevo">NUEVO</span><div class="favorito"><i class="fa-regular fa-heart"></i></div><img src="https://picsum.photos/400/500?14" alt="Sudadera Kids Adidas"><h3>Sudadera Kids Adidas</h3><p data-precio="620">$620 MXN</p><button class="agregarCarrito">Agregar al carrito</button></div>
-</div></section>
-
-<section class="productos" id="accesorios"><h2>Accesorios</h2><div class="grid">
-<div class="card" data-id="7" data-categoria="accesorios"><span class="badge nuevo">NUEVO</span><div class="favorito"><i class="fa-regular fa-heart"></i></div><img src="https://picsum.photos/400/500?7" alt="Gorra New Era"><h3>Gorra New Era</h3><p data-precio="480">$480 MXN</p><button class="agregarCarrito">Agregar al carrito</button></div>
-<div class="card" data-id="8" data-categoria="accesorios"><span class="badge nuevo">NUEVO</span><div class="favorito"><i class="fa-regular fa-heart"></i></div><img src="https://picsum.photos/400/500?8" alt="Mochila Nike"><h3>Mochila Nike</h3><p data-precio="890">$890 MXN</p><button class="agregarCarrito">Agregar al carrito</button></div>
-<div class="card" data-id="15" data-categoria="accesorios"><span class="badge nuevo">NUEVO</span><div class="favorito"><i class="fa-regular fa-heart"></i></div><img src="https://picsum.photos/400/500?15" alt="Gorra Adidas"><h3>Gorra Adidas</h3><p data-precio="450">$450 MXN</p><button class="agregarCarrito">Agregar al carrito</button></div>
-<div class="card" data-id="16" data-categoria="accesorios"><span class="badge nuevo">NUEVO</span><div class="favorito"><i class="fa-regular fa-heart"></i></div><img src="https://picsum.photos/400/500?16" alt="Mochila Tommy"><h3>Mochila Tommy</h3><p data-precio="980">$980 MXN</p><button class="agregarCarrito">Agregar al carrito</button></div>
-</div></section>
-
-<section class="productos" id="ofertas"><h2>🔥 Ofertas</h2><p class="subtituloSeccion">Aprovecha nuestros descuentos por tiempo limitado.</p><div class="grid">
-<div class="card" data-id="101" data-categoria="ofertas" data-precio-original="750" data-descuento="20"><span class="badge oferta">OFERTA</span><div class="favorito"><i class="fa-regular fa-heart"></i></div><img src="https://picsum.photos/400/500?1" alt="Sudadera Nike en oferta"><h3>Sudadera Nike</h3><p data-precio="600" class="precioOferta"><span class="precioAnterior">$750 MXN</span><span class="precioFinal">$600 MXN</span><span class="descuentoTexto">20% OFF</span></p><button class="agregarCarrito">Agregar al carrito</button></div>
-<div class="card" data-id="102" data-categoria="ofertas" data-precio-original="1250" data-descuento="30"><span class="badge oferta">OFERTA</span><div class="favorito"><i class="fa-regular fa-heart"></i></div><img src="https://picsum.photos/400/500?4" alt="Chamarra Tommy Mujer en oferta"><h3>Chamarra Tommy Mujer</h3><p data-precio="875" class="precioOferta"><span class="precioAnterior">$1,250 MXN</span><span class="precioFinal">$875 MXN</span><span class="descuentoTexto">30% OFF</span></p><button class="agregarCarrito">Agregar al carrito</button></div>
-</div></section>
-
+<div id="fondoMenu"></div><div id="menuLateral"><span id="cerrarMenu" class="cerrarX">&times;</span><div class="menuTitulo"><i class="fa-solid fa-shirt"></i><h2>American Style</h2></div><a href="#">🏠 Inicio</a><a href="#productos">🛍 Productos</a><a href="#ofertas">🔥 Ofertas</a><a href="#contacto">📞 Contacto</a></div>
+<div id="panelCarrito"><div class="encabezadoCarrito"><h2>🛒 Mi carrito</h2><button id="cerrarCarrito">✖</button></div><div id="listaCarrito" class="listaCarrito"></div><div class="pieCarrito"><h3>Total: $<span id="totalCarrito">0</span> MXN</h3><button id="vaciarCarrito"><i class="fa-solid fa-trash"></i> Quitar todo</button><button id="comprar">Finalizar compra</button></div></div>
+<div id="modalFavoritos" class="modal"><div class="modalFavoritos"><span id="cerrarFavoritos" class="cerrarX">&times;</span><h2>❤️ Mis favoritos (<span id="contadorFavoritos">0</span>)</h2><div id="listaFavoritos"></div></div></div>
+<div id="modalCuenta" class="modal"><div class="modalCuenta"><span id="cerrarCuenta" class="cerrarX">&times;</span><h2>👤 Mi cuenta</h2><div id="contenidoCuenta"></div></div></div>
+<div id="modalPedidos" class="modal"><div class="modalPedidos"><span id="cerrarPedidos" class="cerrarX">&times;</span><h2>📦 Mis pedidos</h2><div id="listaPedidos"></div></div></div>
+<div id="modalPreferencias" class="modal"><div class="modalPreferencias"><span id="cerrarPreferencias" class="cerrarX">&times;</span><h2>⚙️ Preferencias</h2><div class="opcionConfig" id="notificacionesBtn"><i class="fa-solid fa-bell"></i><span>Notificaciones</span><span class="prefEstado" id="estadoNotificaciones">Activadas</span></div><div class="opcionConfig" id="modoOscuroBtn"><i class="fa-solid fa-moon"></i><span>Modo oscuro</span><span class="prefEstado" id="estadoOscuro">Desactivado</span></div><div class="prefSelectWrap"><label for="prefCategoria">Preferencia de compra</label><select id="prefCategoria" class="prefSelect"><option value="Todas">Todas las categorías</option><option value="Hombre">Hombre</option><option value="Mujer">Mujer</option><option value="Infantil">Infantil</option><option value="Accesorios">Accesorios</option></select></div><div class="prefSelectWrap"><label for="prefCaracteristica">También quiero ver</label><select id="prefCaracteristica" class="prefSelect"><option value="Todas">Todos los productos</option><option value="Nuevos">Solo nuevos</option><option value="Ofertas">Solo ofertas</option><option value="Nuevos y ofertas">Nuevos y ofertas</option></select></div><div class="prefChecks"><label class="prefCheck"><input type="checkbox" id="prefAvisosNuevos" checked> Avisos de productos nuevos</label><label class="prefCheck"><input type="checkbox" id="prefAvisosOfertas" checked> Avisos de ofertas</label></div><div class="opcionConfig" id="soporteBtn"><i class="fa-solid fa-headset"></i>Contacto y soporte</div><div class="opcionConfig" id="acercaBtn"><i class="fa-solid fa-circle-info"></i>Acerca de American Style</div></div></div>
+<div id="modalAdmin" class="modal"><div class="modalAdmin"><span id="cerrarAdmin" class="cerrarX">&times;</span><h2>🛠️ Panel administrador</h2><div id="contenidoAdmin" class="adminPanel"></div></div></div>
+<div id="modalLogin" class="modal"><div class="contenidoModal"><span id="cerrarModal" class="cerrarX">&times;</span><h2>Bienvenido</h2><input type="email" id="correo" placeholder="Correo electrónico"><input type="password" id="password" placeholder="Contraseña"><button id="loginBtn">Iniciar sesión</button><button id="registroBtn">Crear cuenta</button><button id="googleBtn"><i class="fa-brands fa-google"></i> Continuar con Google</button></div></div>
+<div id="modalMensaje" class="modal"><div class="contenidoModal" style="max-width:370px;text-align:center"><h2 id="tituloMensaje"></h2><p id="textoMensaje" style="margin:15px 0;color:#666"></p><button id="cerrarMensaje">Aceptar</button></div></div>
+<section class="hero"><div class="slide activo"><img src="https://picsum.photos/1600/900?11"><div class="hero-texto"><h1>Nueva Colección 2026</h1><p>Las mejores marcas americanas con precios increíbles.</p><button data-scroll="#hombre">Comprar ahora</button></div></div><div class="slide"><img src="https://picsum.photos/1600/900?22"><div class="hero-texto"><h1>Ofertas que sí sorprenden</h1><p>Descuentos especiales por tiempo limitado.</p><button data-scroll="#ofertas">Ver ofertas</button></div></div><div class="slide"><img src="https://picsum.photos/1600/900?33"><div class="hero-texto"><h1>Accesorios Originales</h1><p>Gorras, mochilas y mucho más.</p><button data-scroll="#accesorios">Comprar</button></div></div><button id="anterior" class="flecha izquierda"><i class="fa-solid fa-chevron-left"></i></button><button id="siguiente" class="flecha derecha"><i class="fa-solid fa-chevron-right"></i></button><div class="indicadores"><span class="dot activo"></span><span class="dot"></span><span class="dot"></span></div></section>
+<section class="categorias" id="productos"><a href="#hombre" class="categoria"><i class="fa-solid fa-shirt"></i><h3>Hombre</h3></a><a href="#mujer" class="categoria"><i class="fa-solid fa-person-dress"></i><h3>Mujer</h3></a><a href="#infantil" class="categoria"><i class="fa-solid fa-child"></i><h3>Infantil</h3></a><a href="#accesorios" class="categoria"><i class="fa-solid fa-hat-cowboy"></i><h3>Accesorios</h3></a></section>
+<div id="catalogo"></div>
+<section class="productos" id="ofertas"><h2 class="tituloOfertas"><span class="fuego">🔥</span><span class="textoOferta">OFERTAS IMPERDIBLES</span></h2><div class="ofertaLinea"></div><p class="subtituloSeccion">Descuentos especiales y oportunidades por tiempo limitado.</p><div class="grid" id="gridOfertas"></div></section>
 <div id="mensajeBusqueda"><i class="fa-solid fa-box-open"></i>No existe ese producto<small>Prueba con otro nombre o categoría.</small></div>
-
-<div id="toast" class="toast"><i class="fa-solid fa-circle-check"></i><div><strong id="toastTitulo">Producto agregado</strong><p id="toastTexto"></p></div></div>
-
-<div id="modalLogin" class="modal"><div class="contenidoModal"><span id="cerrarModal">&times;</span><h2>Bienvenido</h2><input type="email" id="correo" placeholder="Correo electrónico"><input type="password" id="password" placeholder="Contraseña"><button id="loginBtn">Iniciar sesión</button><button id="registroBtn">Crear cuenta</button><button id="googleBtn"><i class="fa-brands fa-google"></i>Continuar con Google</button></div></div>
-
-<div id="modalMensaje" class="modal"><div class="contenidoModal" style="max-width:350px;text-align:center"><h2 id="tituloMensaje"></h2><p id="textoMensaje" style="margin:15px 0;color:#555"></p><button id="cerrarMensaje">Aceptar</button></div></div>
-
-<footer id="contacto">
-<h2>American Style Store</h2><p>Moda americana original para todos.</p>
-<div class="redes">
-<a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
-<a href="https://www.instagram.com/american_styless_store?utm_source=qr" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-<a href="https://www.tiktok.com/@american.style235?_r=1&_t=ZS-98Qhm3MMXun" target="_blank" rel="noopener noreferrer" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
-<a href="https://wa.me/" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-</div>
-<p>© 2026 American Style Store | Todos los derechos reservados.</p>
-</footer>
-
+<div id="toast" class="toast"><i class="fa-solid fa-circle-check"></i><div><strong id="toastTitulo">Listo</strong><p id="toastTexto"></p></div></div>
+<footer id="contacto"><h2>American Style Store</h2><p>Moda americana original para todos.</p><div class="redes"><a href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook"></i></a><a href="https://www.instagram.com/american_styless_store/" target="_blank"><i class="fab fa-instagram"></i></a><a href="https://www.tiktok.com/@american.style235" target="_blank"><i class="fab fa-tiktok"></i></a><a href="https://wa.me/" target="_blank"><i class="fab fa-whatsapp"></i></a></div><p>© 2026 American Style Store | Todos los derechos reservados.</p></footer>
 <script type="module">
-import {initializeApp} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
-import {getAuth,createUserWithEmailAndPassword,signInWithEmailAndPassword,signOut,onAuthStateChanged,GoogleAuthProvider,signInWithPopup} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
-import {getFirestore,doc,setDoc,getDoc,addDoc,collection,getDocs,query,where,orderBy} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
-
+import{initializeApp}from"https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+import{getAuth,createUserWithEmailAndPassword,signInWithEmailAndPassword,signOut,onAuthStateChanged,GoogleAuthProvider,signInWithPopup}from"https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
+import{getFirestore,doc,setDoc,getDoc,addDoc,collection,getDocs,deleteDoc,onSnapshot,query,where}from"https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
 const firebaseConfig={apiKey:"AIzaSyAfJ8vGvEy7HCi9PaiA6hmv6yhlm-JDDBE",authDomain:"american-styless.firebaseapp.com",projectId:"american-styless",storageBucket:"american-styless.firebasestorage.app",messagingSenderId:"599897055313",appId:"1:599897055313:web:d97d7c0d849f09b1671870",measurementId:"G-MN6MXW6PZN"};
-const app=initializeApp(firebaseConfig),auth=getAuth(app),provider=new GoogleAuthProvider(),db=getFirestore(app);
-
-let usuarioActual=null,carrito=[],favoritos=[],pedidosUsuario=[];
-const $=id=>document.getElementById(id);
-const formatearPrecio=v=>Number(v).toLocaleString("es-MX",{minimumFractionDigits:0,maximumFractionDigits:2});
-
-function mostrarMensaje(titulo,texto){$("tituloMensaje").textContent=titulo;$("textoMensaje").textContent=texto;$("modalMensaje").classList.add("activo")}
-$("cerrarMensaje").onclick=()=>$("modalMensaje").classList.remove("activo");
-
-/* MENU */
-function cerrarMenuMovil(){$("menuLateral").classList.remove("activo");$("fondoMenu").classList.remove("activo")}
-$("menuMovil").onclick=()=>{$("menuLateral").classList.add("activo");$("fondoMenu").classList.add("activo")};
-$("cerrarMenu").onclick=cerrarMenuMovil;$("fondoMenu").onclick=cerrarMenuMovil;
-document.querySelectorAll("#menuLateral a").forEach(a=>a.onclick=cerrarMenuMovil);
-
-/* MODALES Y CUENTA */
+const app=initializeApp(firebaseConfig),auth=getAuth(app),provider=new GoogleAuthProvider(),db=getFirestore(app);const ADMIN_EMAIL="willduran620@gmail.com";
+let usuarioActual=null,carrito=[],favoritos=[],pedidosUsuario=[],productos=[],unsubscribeCatalogo=null,ultimaNotificacionCatalogo=JSON.parse(localStorage.getItem("americanStyle_catalogoConocido")||"{}"),ofertasVisibles=true;
+const $=id=>document.getElementById(id),money=v=>Number(v||0).toLocaleString("es-MX");
+function esAdmin(){return !!usuarioActual&&String(usuarioActual.email||"").toLowerCase()===ADMIN_EMAIL}
+function mostrarMensaje(t,texto){$("tituloMensaje").textContent=t;$("textoMensaje").textContent=texto;$("modalMensaje").classList.add("activo")}
 function cerrarModal(id){$(id).classList.remove("activo")}
-$("cerrarModal").onclick=()=>cerrarModal("modalLogin");
-$("cerrarFavoritos").onclick=()=>cerrarModal("modalFavoritos");
-$("cerrarCuenta").onclick=()=>cerrarModal("modalCuenta");
-$("cerrarPedidos").onclick=()=>cerrarModal("modalPedidos");
-$("cerrarPreferencias").onclick=()=>cerrarModal("modalPreferencias");
-$("cerrarAdmin").onclick=()=>cerrarModal("modalAdmin");
-
-document.querySelectorAll(".modal").forEach(m=>m.addEventListener("click",e=>{if(e.target===m)m.classList.remove("activo")}));
-
-function obtenerNombreUsuario(){
- if(!usuarioActual)return "Invitado";
- if(usuarioActual.displayName)return usuarioActual.displayName;
- return (usuarioActual.email||"usuario").split("@")[0];
-}
-function inicialNombre(){
- const n=obtenerNombreUsuario().trim();return n?n.charAt(0).toUpperCase():"U";
-}
-function mostrarCuenta(){
- if(!usuarioActual){mostrarMensaje("Inicia sesión","Debes iniciar sesión para consultar tu cuenta.");return}
- const totalCarritoItems=carrito.reduce((s,p)=>s+Number(p.cantidad||0),0);
- const esAdmin=usuarioActual.email?.toLowerCase()==="willduran620@gmail.com";
- $("contenidoCuenta").innerHTML=`
- <div class="cuentaPerfil"><div class="avatarCuenta">${inicialNombre()}</div><div class="cuentaDatos"><h3>${obtenerNombreUsuario()}</h3><p>${usuarioActual.email||"Sin correo"}</p></div></div>
- <div class="cuentaResumen"><div class="resumenBox"><strong>${totalCarritoItems}</strong><span>Productos en carrito</span></div><div class="resumenBox"><strong>${favoritos.length}</strong><span>Favoritos</span></div><div class="resumenBox"><strong>${pedidosUsuario.length}</strong><span>Pedidos</span></div></div>
- <div class="cuentaOpciones">
-  <div class="cuentaOpcion" id="cuentaVerPedidos"><i class="fa-solid fa-box"></i>Mis pedidos</div>
-  <div class="cuentaOpcion" id="cuentaVerFavoritos"><i class="fa-solid fa-heart"></i>Mis favoritos</div>
-  <div class="cuentaOpcion" id="cuentaVerCarrito"><i class="fa-solid fa-cart-shopping"></i>Mi carrito</div>
-  <div class="cuentaOpcion" id="cuentaAdmin" style="display:${esAdmin?"flex":"none"}"><i class="fa-solid fa-chart-line"></i>Panel administrador</div>
-  <div class="cuentaOpcion" id="cuentaCerrarSesion"><i class="fa-solid fa-right-from-bracket"></i>Cerrar sesión</div>
- </div>`;
- $("cuentaVerPedidos").onclick=()=>{cerrarModal("modalCuenta");mostrarPedidos()};
- $("cuentaVerFavoritos").onclick=()=>{cerrarModal("modalCuenta");mostrarFavoritos();$("modalFavoritos").classList.add("activo")};
- $("cuentaVerCarrito").onclick=()=>{cerrarModal("modalCuenta");$("panelCarrito").classList.add("activo")};
- $("cuentaCerrarSesion").onclick=async()=>{cerrarModal("modalCuenta");await cerrarSesionFn()};
- if(esAdmin) $("cuentaAdmin").onclick=()=>{cerrarModal("modalCuenta");mostrarAdmin()};
-}
-$("cuentaLink").onclick=e=>{e.preventDefault();$("menuUsuario").classList.remove("activo");mostrarCuenta();$("modalCuenta").classList.add("activo")};
-
-function mostrarAdmin(){
- if(!usuarioActual||usuarioActual.email?.toLowerCase()!=="willduran620@gmail.com")return mostrarMensaje("Acceso restringido","El panel administrador solo está disponible para el administrador.");
- const totalVentas=pedidosUsuario.reduce((s,p)=>s+Number(p.total||0),0);
- $("contenidoAdmin").innerHTML=`<div class="adminPanel"><h3>Resumen de administrador</h3><div class="adminStats"><div class="adminStat"><strong>${pedidosUsuario.length}</strong><span>Pedidos registrados</span></div><div class="adminStat"><strong>$${formatearPrecio(totalVentas)}</strong><span>Ventas</span></div><div class="adminStat"><strong>${document.querySelectorAll(".card").length}</strong><span>Productos publicados</span></div></div><div class="adminLista">${pedidosUsuario.length?pedidosUsuario.map(p=>{const fecha=p.fecha?.seconds?new Date(p.fecha.seconds*1000).toLocaleDateString("es-MX"):"Sin fecha";const productos=(p.productos||[]).map(x=>`${x.nombre} × ${x.cantidad}`).join(", ");return `<div class="adminPedido"><strong>${fecha} · $${formatearPrecio(p.total)} MXN</strong><br>${productos||"Sin productos"}</div>`}).join(""):"<p style='color:#777;text-align:center;padding:20px'>No hay pedidos registrados.</p>"}</div></div>`;
- $("modalAdmin").classList.add("activo");
-}
-
-/* PREFERENCIAS FUNCIONALES */
-const PREF_KEY="americanStyle_preferencias";
-let preferencias={notificaciones:true,modoOscuro:false,compras:"Todas"};
-try{preferencias={...preferencias,...JSON.parse(localStorage.getItem(PREF_KEY)||"{}")}}catch(e){}
-function guardarPreferencias(){localStorage.setItem(PREF_KEY,JSON.stringify(preferencias))}
-function actualizarPreferenciasUI(){
- $("estadoNotificaciones").textContent=preferencias.notificaciones?"Activadas":"Desactivadas";
- $("estadoOscuro").textContent=preferencias.modoOscuro?"Activado":"Desactivado";
- document.body.classList.toggle("modoOscuro",preferencias.modoOscuro);
-}
-$("PreferenciasLink").onclick=()=>{$("menuUsuario").classList.remove("activo");actualizarPreferenciasUI();$("modalPreferencias").classList.add("activo")};
-$("notificacionesBtn").onclick=()=>{preferencias.notificaciones=!preferencias.notificaciones;guardarPreferencias();actualizarPreferenciasUI();mostrarMensaje("Notificaciones",preferencias.notificaciones?"Notificaciones activadas.":"Notificaciones desactivadas.")};
-$("modoOscuroBtn").onclick=()=>{preferencias.modoOscuro=!preferencias.modoOscuro;guardarPreferencias();actualizarPreferenciasUI();mostrarMensaje("Modo oscuro",preferencias.modoOscuro?"Modo oscuro activado.":"Modo oscuro desactivado.")};
-$("preferenciasComprasBtn").onclick=()=>{
- const opciones=["Todas","Hombre","Mujer","Infantil","Accesorios"];let actual=opciones.indexOf(preferencias.compras);preferencias.compras=opciones[(actual+1)%opciones.length];guardarPreferencias();mostrarMensaje("Preferencias de compra",`Preferencia actual: ${preferencias.compras}.`);};
-$("soporteBtn").onclick=()=>mostrarMensaje("Contacto y soporte","Puedes comunicarte con American Style Store mediante nuestras redes sociales del pie de página.");
-$("acercaBtn").onclick=()=>mostrarMensaje("American Style Store","Versión 2.0 • Tienda de moda americana.");
-
+$("cerrarMensaje").onclick=()=>cerrarModal("modalMensaje");document.querySelectorAll(".modal").forEach(m=>m.onclick=e=>{if(e.target===m)m.classList.remove("activo")});
+function cerrarMenu(){document.body.classList.remove("menuAbierto");$("menuLateral").style.display="none";$("fondoMenu").style.display="none";$("menuLateral").classList.remove("activo");$("fondoMenu").classList.remove("activo")}
+$("menuMovil").onclick=()=>{$("menuLateral").style.display="block";$('fondoMenu').style.display="block";requestAnimationFrame(()=>{$("menuLateral").classList.add("activo");$("fondoMenu").classList.add("activo")})};$("cerrarMenu").onclick=cerrarMenu;$("fondoMenu").onclick=cerrarMenu;document.querySelectorAll("#menuLateral a").forEach(a=>a.onclick=cerrarMenu);
+$("cerrarModal").onclick=()=>cerrarModal("modalLogin");$("cerrarFavoritos").onclick=()=>cerrarModal("modalFavoritos");$("cerrarCuenta").onclick=()=>cerrarModal("modalCuenta");$("cerrarPedidos").onclick=()=>cerrarModal("modalPedidos");$("cerrarPreferencias").onclick=()=>cerrarModal("modalPreferencias");$("cerrarAdmin").onclick=()=>cerrarModal("modalAdmin");
+function nombreUsuario(){return usuarioActual?.displayName||((usuarioActual?.email||"usuario").split("@")[0])}function inicial(){return nombreUsuario().trim().charAt(0).toUpperCase()||"U"}
+/* PREFERENCIAS */
+const PREF_KEY="americanStyle_preferencias_v3";let preferencias={notificaciones:true,modoOscuro:false,categoria:"Todas",caracteristica:"Todas",avisosNuevos:true,avisosOfertas:true};try{preferencias={...preferencias,...JSON.parse(localStorage.getItem(PREF_KEY)||"{}")}}catch(e){}function guardarPrefs(){localStorage.setItem(PREF_KEY,JSON.stringify(preferencias))}
+function actualizarPrefsUI(){document.body.classList.toggle("modoOscuro",!!preferencias.modoOscuro);$("estadoNotificaciones").textContent=preferencias.notificaciones?"Activadas":"Desactivadas";$("estadoOscuro").textContent=preferencias.modoOscuro?"Activado":"Desactivado";$('prefCategoria').value=preferencias.categoria||"Todas";$('prefCaracteristica').value=preferencias.caracteristica||"Todas";$('prefAvisosNuevos').checked=preferencias.avisosNuevos!==false;$('prefAvisosOfertas').checked=preferencias.avisosOfertas!==false}
+$("PreferenciasLink").onclick=()=>{$("menuUsuario").classList.remove("activo");actualizarPrefsUI();$("modalPreferencias").classList.add("activo")};$("notificacionesBtn").onclick=async()=>{preferencias.notificaciones=!preferencias.notificaciones;if(preferencias.notificaciones&&"Notification"in window){try{await Notification.requestPermission()}catch(e){}}guardarPrefs();actualizarPrefsUI();mostrarMensaje("Notificaciones",preferencias.notificaciones?"Las notificaciones están activadas.":"Las notificaciones están desactivadas.")};$("modoOscuroBtn").onclick=()=>{preferencias.modoOscuro=!preferencias.modoOscuro;guardarPrefs();actualizarPrefsUI()};$("prefCategoria").onchange=e=>{preferencias.categoria=e.target.value;guardarPrefs();aplicarPreferencias()};$("prefCaracteristica").onchange=e=>{preferencias.caracteristica=e.target.value;guardarPrefs();aplicarPreferencias()};$("prefAvisosNuevos").onchange=e=>{preferencias.avisosNuevos=e.target.checked;guardarPrefs()};$("prefAvisosOfertas").onchange=e=>{preferencias.avisosOfertas=e.target.checked;guardarPrefs()};$("soporteBtn").onclick=()=>mostrarMensaje("Contacto y soporte","Puedes comunicarte mediante nuestras redes sociales del pie de página.");$("acercaBtn").onclick=()=>mostrarMensaje("American Style Store","Tienda de moda americana • Catálogo dinámico • Firebase");
+/* CATALOGO */
+const iniciales=[{id:"1",nombre:"Sudadera Nike",precio:750,categoria:"Hombre",imagen:"https://picsum.photos/400/500?1",nuevo:true,nuevoAt:Date.now(),oferta:true,descuento:20,creado:Date.now()},{id:"2",nombre:"Jeans Levi's",precio:650,categoria:"Hombre",imagen:"https://picsum.photos/400/500?2",nuevo:true,nuevoAt:Date.now(),oferta:true,descuento:25,creado:Date.now()},{id:"3",nombre:"Playera Adidas Mujer",precio:420,categoria:"Mujer",imagen:"https://picsum.photos/400/500?3",nuevo:true,nuevoAt:Date.now(),oferta:true,descuento:15,creado:Date.now()},{id:"4",nombre:"Chamarra Tommy Mujer",precio:1250,categoria:"Mujer",imagen:"https://picsum.photos/400/500?4",nuevo:true,nuevoAt:Date.now(),oferta:true,descuento:30,creado:Date.now()},{id:"5",nombre:"Sudadera Infantil",precio:350,categoria:"Infantil",imagen:"https://picsum.photos/400/500?5",nuevo:true,oferta:false,descuento:0,creado:Date.now()},{id:"6",nombre:"Playera Infantil",precio:250,categoria:"Infantil",imagen:"https://picsum.photos/400/500?6",nuevo:true,oferta:false,descuento:0,creado:Date.now()},{id:"7",nombre:"Gorra New Era",precio:480,categoria:"Accesorios",imagen:"https://picsum.photos/400/500?7",nuevo:true,oferta:false,descuento:0,creado:Date.now()},{id:"8",nombre:"Mochila Nike",precio:890,categoria:"Accesorios",imagen:"https://picsum.photos/400/500?8",nuevo:true,oferta:false,descuento:0,creado:Date.now()},{id:"9",nombre:"Chamarra Nike Hombre",precio:1100,categoria:"Hombre",imagen:"https://picsum.photos/400/500?9",nuevo:true,oferta:false,descuento:0,creado:Date.now()},{id:"10",nombre:"Playera Tommy Hombre",precio:580,categoria:"Hombre",imagen:"https://picsum.photos/400/500?10",nuevo:true,oferta:false,descuento:0,creado:Date.now()},{id:"11",nombre:"Sudadera Adidas Mujer",precio:790,categoria:"Mujer",imagen:"https://picsum.photos/400/500?11",nuevo:true,oferta:false,descuento:0,creado:Date.now()},{id:"12",nombre:"Jeans Calvin Klein Mujer",precio:920,categoria:"Mujer",imagen:"https://picsum.photos/400/500?12",nuevo:true,oferta:false,descuento:0,creado:Date.now()},{id:"13",nombre:"Conjunto Infantil",precio:490,categoria:"Infantil",imagen:"https://picsum.photos/400/500?13",nuevo:true,oferta:false,descuento:0,creado:Date.now()},{id:"14",nombre:"Sudadera Kids Adidas",precio:620,categoria:"Infantil",imagen:"https://picsum.photos/400/500?14",nuevo:true,oferta:false,descuento:0,creado:Date.now()},{id:"15",nombre:"Gorra Adidas",precio:450,categoria:"Accesorios",imagen:"https://picsum.photos/400/500?15",nuevo:true,oferta:false,descuento:0,creado:Date.now()},{id:"16",nombre:"Mochila Tommy",precio:980,categoria:"Accesorios",imagen:"https://picsum.photos/400/500?16",nuevo:true,oferta:false,descuento:0,creado:Date.now()}];
+const NUEVO_DURACION=7*24*60*60*1000;function esNuevoActivo(p){return !!p.nuevo&&(!p.nuevoAt||Date.now()-Number(p.nuevoAt)<NUEVO_DURACION)}function normalizarProducto(p){return{...p,id:String(p.id),precio:Number(p.precio)||0,descuento:Number(p.descuento)||0,nuevo:esNuevoActivo(p),nuevoAt:Number(p.nuevoAt||p.creado||Date.now()),oferta:!!p.oferta,categoria:p.categoria||"Accesorios",imagen:p.imagen||"https://picsum.photos/400/500?99"}}
+async function sembrarCatalogo(){const snap=await getDocs(collection(db,"catalogo"));if(!snap.empty)return;for(const p of iniciales)await setDoc(doc(db,"catalogo",String(p.id)),p)}
+function precioActual(p){return p.oferta?Math.round(p.precio*(1-p.descuento/100)):p.precio}
+function badgesHTML(p){let h="";if(esNuevoActivo(p))h+='<span class="badge nuevo">NUEVO</span>';if(p.oferta)h+='<span class="badge oferta">OFERTA</span>';return h?`<div class="badges">${h}</div>`:""}
+function cardHTML(p){const precio=precioActual(p),precioHtml=p.oferta?`<p class="precioOferta"><span class="precioAnterior">$${money(p.precio)} MXN</span><span class="precioFinal">$${money(precio)} MXN</span><span class="descuentoTexto">${p.descuento}% OFF</span></p>`:`<p>$${money(precio)} MXN</p>`;return `<div class="card" data-id="${p.id}" data-categoria="${p.categoria.toLowerCase()}" data-nuevo="${esNuevoActivo(p)}" data-oferta="${p.oferta}">${badgesHTML(p)}<div class="favorito"><i class="fa-regular fa-heart"></i></div><img src="${p.imagen}" alt="${p.nombre}"><h3>${p.nombre}</h3>${precioHtml}<button class="agregarCarrito">Agregar al carrito</button></div>`}
+function renderCatalogo(){const cats=["Hombre","Mujer","Infantil","Accesorios"],icons={Hombre:"fa-shirt",Mujer:"fa-person-dress",Infantil:"fa-child",Accesorios:"fa-hat-cowboy"};$("catalogo").innerHTML=cats.map(cat=>{const arr=productos.filter(p=>p.categoria===cat);return `<section class="productos" id="${cat.toLowerCase()}"><h2>${cat==="Hombre"?"Ropa para Hombre":cat==="Mujer"?"Ropa para Mujer":cat==="Infantil"?"Ropa Infantil":"Accesorios"}</h2><div class="grid">${arr.map(cardHTML).join("")}</div></section>`}).join("");$("gridOfertas").innerHTML=productos.filter(p=>p.oferta).map(cardHTML).join("");$("ofertas").style.display=ofertasVisibles?"block":"none";bindCards();aplicarPreferencias();pintarFavoritos()}
+function bindCards(){document.querySelectorAll(".agregarCarrito").forEach(b=>b.onclick=()=>agregarAlCarrito(b.closest(".card")));document.querySelectorAll(".favorito").forEach(c=>c.onclick=()=>toggleFavorito(c.closest(".card")))}
+function aplicarPreferencias(){const q=$("buscador").value.trim().toLowerCase();let visible=0;const cat=preferencias.categoria||"Todas",feat=preferencias.caracteristica||"Todas";document.querySelectorAll(".productos").forEach(s=>{if(s.id==="ofertas")return;let n=0;s.querySelectorAll(".card").forEach(c=>{const p=productos.find(x=>String(x.id)===String(c.dataset.id));if(!p)return;let ok=!q||p.nombre.toLowerCase().includes(q)||p.categoria.toLowerCase().includes(q);if(cat!=="Todas")ok=ok&&p.categoria===cat;if(feat==="Nuevos")ok=ok&&esNuevoActivo(p);if(feat==="Ofertas")ok=ok&&p.oferta;if(feat==="Nuevos y ofertas")ok=ok&&esNuevoActivo(p)&&p.oferta;c.style.display=ok?"":"none";if(ok)n++});s.style.display=n?"":"none";visible+=n});let ofertasVis=productos.filter(p=>p.oferta).length;if(q){$("ofertas").style.display="none";if(!visible)$("mensajeBusqueda").style.display="block";else $("mensajeBusqueda").style.display="none"}else{$("mensajeBusqueda").style.display="none";$('ofertas').style.display=feat==="Ofertas"||feat==="Nuevos y ofertas"||feat==="Todas"?"block":"block";if(cat!=="Todas"){document.querySelectorAll("#gridOfertas .card").forEach(c=>{const p=productos.find(x=>String(x.id)===String(c.dataset.id));c.style.display=p&&p.categoria===cat?"":"none"})}}}
+$("buscador").oninput=aplicarPreferencias;
 /* CARRITO */
-$("abrirCarrito").onclick=()=>$("panelCarrito").classList.add("activo");
-$("cerrarCarrito").onclick=()=>$("panelCarrito").classList.remove("activo");
-
-async function guardarCarrito(){
- if(!usuarioActual)return;
- try{await setDoc(doc(db,"carritos",usuarioActual.uid),{productos:carrito})}catch(e){console.error("Error guardando carrito:",e)}
-}
-function actualizarCarrito(){
- $("contador").textContent=carrito.reduce((s,p)=>s+Number(p.cantidad||0),0);
- $("listaCarrito").innerHTML="";
- let total=0;
- if(!carrito.length)$("listaCarrito").innerHTML='<p class="carritoVacio">No hay productos.</p>';
- carrito.forEach(p=>{
-  total+=Number(p.precio)*Number(p.cantidad);
-  const oferta=p.descuento>0?`<span class="precioOriginalCarrito">Precio normal: $${formatearPrecio(p.precioOriginal)} MXN</span><span class="ofertaCarrito">${p.descuento}% OFF</span>`:"";
-  $("listaCarrito").innerHTML+=`<div class="itemCarrito"><img src="${p.imagen}" class="imgCarrito" alt="${p.nombre}"><div class="infoCarrito"><h4>${p.nombre}</h4><p>$${formatearPrecio(p.precio)} MXN ${oferta}</p><div class="controles"><button data-cambio="-1" data-id="${p.id}"><i class="fa-solid fa-minus"></i></button><span>${p.cantidad}</span><button data-cambio="1" data-id="${p.id}"><i class="fa-solid fa-plus"></i></button><button class="eliminar" data-eliminar="${p.id}"><i class="fa-solid fa-trash"></i></button></div></div></div>`;
- });
- $("totalCarrito").textContent=formatearPrecio(total);
- guardarCarrito();
- mostrarCuentaSiAbierta();
-}
-$("listaCarrito").addEventListener("click",e=>{
- const btn=e.target.closest("button");if(!btn)return;
- if(btn.dataset.cambio)cambiarCantidad(Number(btn.dataset.id),Number(btn.dataset.cambio));
- if(btn.dataset.eliminar)eliminarProducto(Number(btn.dataset.eliminar));
-});
-function cambiarCantidad(id,cambio){
- const p=carrito.find(x=>x.id===Number(id));if(!p)return;
- p.cantidad=Number(p.cantidad)+Number(cambio);
- if(p.cantidad<=0)carrito=carrito.filter(x=>x.id!==Number(id));
- actualizarCarrito();
-}
-function eliminarProducto(id){carrito=carrito.filter(x=>x.id!==Number(id));actualizarCarrito()}
-$("vaciarCarrito").onclick=()=>{if(!carrito.length)return mostrarMensaje("Carrito vacío","No hay productos para quitar.");carrito=[];actualizarCarrito();mostrarMensaje("Carrito limpiado","Se eliminaron todos los productos de tu carrito.")};
-
-function agregarAlCarrito(card){
- const id=Number(card.dataset.id),nombre=card.querySelector("h3").textContent.trim(),precio=Number(card.querySelector("p").dataset.precio),imagen=card.querySelector("img").src,precioOriginal=Number(card.dataset.precioOriginal||precio),descuento=Number(card.dataset.descuento||0);
- const existe=carrito.find(p=>p.id===id);if(existe)existe.cantidad++;else carrito.push({id,nombre,precio,precioOriginal,descuento,imagen,cantidad:1});
- actualizarCarrito();mostrarToast("Producto agregado",nombre);$("panelCarrito").classList.add("activo");
-}
-document.querySelectorAll(".agregarCarrito").forEach(b=>b.onclick=()=>agregarAlCarrito(b.closest(".card")));
-
-/* TOAST */
-let toastTimer;
-function mostrarToast(titulo,texto){
- $("toastTitulo").textContent=titulo;$("toastTexto").textContent=texto;$("toast").classList.add("mostrar");clearTimeout(toastTimer);toastTimer=setTimeout(()=>$("toast").classList.remove("mostrar"),2500);
-}
-
+async function guardarCarrito(){if(!usuarioActual)return;try{await setDoc(doc(db,"carritos",usuarioActual.uid),{productos:carrito,actualizado:new Date()})}catch(e){console.error(e)}}
+function actualizarCarrito(){let total=0;$("contador").textContent=carrito.reduce((s,p)=>s+Number(p.cantidad||0),0);$("listaCarrito").innerHTML="";if(!carrito.length)$("listaCarrito").innerHTML='<p class="carritoVacio">No hay productos.</p>';carrito.forEach(p=>{total+=Number(p.precio)*Number(p.cantidad);$("listaCarrito").innerHTML+=`<div class="itemCarrito"><img src="${p.imagen}" class="imgCarrito"><div class="infoCarrito"><h4>${p.nombre}</h4><p>$${money(p.precio)} MXN ${p.descuento?`<span class="precioOriginalCarrito">Normal: $${money(p.precioOriginal)} MXN</span><span class="ofertaCarrito">${p.descuento}% OFF</span>`:""}</p><div class="controles"><button data-cambio="-1" data-id="${p.id}">−</button><span>${p.cantidad}</span><button data-cambio="1" data-id="${p.id}">+</button><button class="eliminar" data-eliminar="${p.id}"><i class="fa-solid fa-trash"></i></button></div></div></div>`});$("totalCarrito").textContent=money(total);guardarCarrito();if($("modalCuenta").classList.contains("activo"))mostrarCuenta()}
+$("listaCarrito").onclick=e=>{const b=e.target.closest("button");if(!b)return;if(b.dataset.cambio)cambiarCantidad(b.dataset.id,Number(b.dataset.cambio));if(b.dataset.eliminar)eliminarProducto(b.dataset.eliminar)};function cambiarCantidad(id,c){const p=carrito.find(x=>String(x.id)===String(id));if(!p)return;p.cantidad=Number(p.cantidad)+c;if(p.cantidad<=0)carrito=carrito.filter(x=>String(x.id)!==String(id));actualizarCarrito()}function eliminarProducto(id){carrito=carrito.filter(x=>String(x.id)!==String(id));actualizarCarrito()}$("abrirCarrito").onclick=()=>$("panelCarrito").classList.add("activo");$("cerrarCarrito").onclick=()=>$("panelCarrito").classList.remove("activo");$("vaciarCarrito").onclick=()=>{if(!carrito.length)return mostrarMensaje("Carrito vacío","No hay productos para quitar.");carrito=[];actualizarCarrito();mostrarMensaje("Carrito limpiado","Se eliminaron todos los productos del carrito.")};
+function agregarAlCarrito(card){const p=productos.find(x=>String(x.id)===String(card.dataset.id));if(!p)return;const existe=carrito.find(x=>String(x.id)===String(p.id));const item={id:p.id,nombre:p.nombre,precio:precioActual(p),precioOriginal:p.precio,descuento:p.oferta?p.descuento:0,imagen:p.imagen,cantidad:1};if(existe)existe.cantidad++;else carrito.push(item);actualizarCarrito();mostrarToast("Producto agregado",p.nombre);$("panelCarrito").classList.add("activo")}
 /* FAVORITOS */
-async function guardarFavoritos(){
- if(!usuarioActual)return;
- try{await setDoc(doc(db,"favoritos",usuarioActual.uid),{uid:usuarioActual.uid,nombre:obtenerNombreUsuario(),correo:usuarioActual.email||"",productos:favoritos,ultimaActualizacion:new Date()})}catch(e){console.error("Error guardando favoritos:",e)}
-}
-function pintarFavoritos(){
- document.querySelectorAll(".favorito").forEach(c=>{
-  const icon=c.querySelector("i"),activo=favoritos.includes(Number(c.closest(".card").dataset.id));
-  c.classList.toggle("activo",activo);icon.classList.toggle("fa-solid",activo);icon.classList.toggle("fa-regular",!activo);
- });
-}
-async function cargarFavoritos(){
- if(!usuarioActual)return;
- try{const d=await getDoc(doc(db,"favoritos",usuarioActual.uid));favoritos=d.exists()&&Array.isArray(d.data().productos)?d.data().productos:[];pintarFavoritos()}catch(e){favoritos=[]}
-}
-document.querySelectorAll(".favorito").forEach(c=>c.onclick=async()=>{
- if(!usuarioActual)return mostrarMensaje("Inicia sesión","Debes iniciar sesión para guardar favoritos.");
- const card=c.closest(".card"),id=Number(card.dataset.id),nombre=card.querySelector("h3").textContent.trim(),icon=c.querySelector("i");
- if(favoritos.includes(id)){favoritos=favoritos.filter(x=>x!==id);c.classList.remove("activo");icon.classList.replace("fa-solid","fa-regular");await guardarFavoritos();mostrarToast("Favorito eliminado",nombre)}
- else{favoritos.push(id);c.classList.add("activo");icon.classList.replace("fa-regular","fa-solid");await guardarFavoritos();mostrarToast("❤️ Favorito agregado",nombre)}
-});
-
-function mostrarFavoritos(){
- $("contadorFavoritos").textContent=favoritos.length;$("listaFavoritos").innerHTML="";
- const cards=[...document.querySelectorAll(".card")].filter(c=>favoritos.includes(Number(c.dataset.id)));
- if(!cards.length){$("listaFavoritos").innerHTML='<p style="text-align:center;padding:40px 10px;color:#777">No tienes productos favoritos ❤️</p>'}
- cards.forEach(card=>{
-  const id=Number(card.dataset.id),nombre=card.querySelector("h3").textContent.trim(),imagen=card.querySelector("img").src,precio=card.querySelector("p").textContent.trim();
-  $("listaFavoritos").innerHTML+=`<div class="itemFavorito"><img src="${imagen}" alt="${nombre}"><div class="infoFavorito"><h3>${nombre}</h3><p>${precio}</p><div class="accionesFavorito"><button class="btnModal" data-fav-cart="${id}"><i class="fa-solid fa-cart-plus"></i> Agregar al carrito</button><button class="btnModal peligro" data-fav-remove="${id}"><i class="fa-solid fa-heart-crack"></i> Quitar</button></div></div></div>`;
- });
- $("listaFavoritos").querySelectorAll("[data-fav-cart]").forEach(b=>b.onclick=()=>{const card=document.querySelector(`.card[data-id="${b.dataset.favCart}"]`);if(card){agregarAlCarrito(card);cerrarModal("modalFavoritos")}});
- $("listaFavoritos").querySelectorAll("[data-fav-remove]").forEach(b=>b.onclick=async()=>{await quitarFavorito(Number(b.dataset.favRemove))});
-}
-async function quitarFavorito(id){favoritos=favoritos.filter(x=>x!==id);await guardarFavoritos();pintarFavoritos();mostrarFavoritos();mostrarToast("Favorito eliminado","Producto quitado de favoritos.")}
-$("favoritosLink").onclick=e=>{e.preventDefault();if(!usuarioActual)return mostrarMensaje("Inicia sesión","Debes iniciar sesión para ver tus favoritos.");mostrarFavoritos();$("modalFavoritos").classList.add("activo");$("menuUsuario").classList.remove("activo")};
-
-/* CUENTA ABIERTA */
-function mostrarCuentaSiAbierta(){if($("modalCuenta").classList.contains("activo"))mostrarCuenta()}
-
+async function guardarFavoritos(){if(!usuarioActual)return;try{await setDoc(doc(db,"favoritos",usuarioActual.uid),{productos:favoritos,actualizado:new Date()})}catch(e){console.error(e)}}
+function pintarFavoritos(){document.querySelectorAll(".favorito").forEach(c=>{const activo=favoritos.map(String).includes(String(c.closest(".card").dataset.id)),i=c.querySelector("i");c.classList.toggle("activo",activo);i.classList.toggle("fa-solid",activo);i.classList.toggle("fa-regular",!activo)})}
+async function toggleFavorito(card){if(!usuarioActual)return mostrarMensaje("Inicia sesión","Debes iniciar sesión para guardar favoritos.");const id=String(card.dataset.id),p=productos.find(x=>String(x.id)===id);if(favoritos.map(String).includes(id)){favoritos=favoritos.filter(x=>String(x)!==id);mostrarToast("Favorito eliminado",p?.nombre||"")}else{favoritos.push(id);mostrarToast("❤️ Favorito agregado",p?.nombre||"")}pintarFavoritos();await guardarFavoritos()}
+function mostrarFavoritos(){if(!usuarioActual)return mostrarMensaje("Inicia sesión","Debes iniciar sesión para ver tus favoritos.");$("contadorFavoritos").textContent=favoritos.length;const arr=productos.filter(p=>favoritos.map(String).includes(String(p.id)));$("listaFavoritos").innerHTML=arr.length?arr.map(p=>`<div class="itemFavorito"><img src="${p.imagen}"><div class="infoFavorito"><h3>${p.nombre}</h3><p>${p.oferta?`$${money(precioActual(p))} MXN • ${p.descuento}% OFF`:`$${money(p.precio)} MXN`}</p><div class="accionesFavorito"><button class="btnModal" data-favcart="${p.id}">Agregar al carrito</button><button class="btnModal peligro" data-favremove="${p.id}">Quitar</button></div></div></div>`).join(""):'<p style="text-align:center;padding:40px;color:#777">No tienes productos favoritos ❤️</p>';$("modalFavoritos").classList.add("activo");$("listaFavoritos").querySelectorAll("[data-favcart]").forEach(b=>b.onclick=()=>{const c=document.querySelector(`.card[data-id="${b.dataset.favcart}"]`);if(c){agregarAlCarrito(c);cerrarModal("modalFavoritos")}});$("listaFavoritos").querySelectorAll("[data-favremove]").forEach(b=>b.onclick=async()=>{favoritos=favoritos.filter(x=>String(x)!==String(b.dataset.favremove));await guardarFavoritos();pintarFavoritos();mostrarFavoritos()})}
+$("favoritosLink").onclick=e=>{e.preventDefault();$("menuUsuario").classList.remove("activo");mostrarFavoritos()};
 /* PEDIDOS */
-async function cargarPedidos(){
- if(!usuarioActual){pedidosUsuario=[];return}
- try{
-  const q=query(collection(db,"pedidos"),where("usuario","==",usuarioActual.uid));
-  const snap=await getDocs(q);
-  pedidosUsuario=snap.docs.map(d=>({id:d.id,...d.data()})).sort((a,b)=>{
-   const ta=a.fecha?.seconds||0,tb=b.fecha?.seconds||0;return tb-ta;
-  });
- }catch(e){console.error("Error cargando pedidos:",e);pedidosUsuario=[]}
-}
-function mostrarPedidos(){
- if(!usuarioActual)return mostrarMensaje("Inicia sesión","Debes iniciar sesión para consultar tus pedidos.");
- $("listaPedidos").innerHTML="";
- if(!pedidosUsuario.length){$("listaPedidos").innerHTML='<p style="text-align:center;padding:40px 10px;color:#777">Todavía no tienes pedidos.</p>'}
- pedidosUsuario.forEach(p=>{
-  const fecha=p.fecha?.seconds?new Date(p.fecha.seconds*1000).toLocaleDateString("es-MX"):new Date().toLocaleDateString("es-MX");
-  const productos=(p.productos||[]).map(x=>`${x.nombre} × ${x.cantidad}`).join(", ");
-  $("listaPedidos").innerHTML+=`<div class="pedido"><div class="pedidoCabecera"><strong>${fecha}</strong><span class="pedidoTotal">$${formatearPrecio(p.total)} MXN</span></div><div class="pedidoProductos">${productos}</div></div>`;
- });
- $("modalPedidos").classList.add("activo");$("menuUsuario").classList.remove("activo");
-}
+async function cargarPedidos(){if(!usuarioActual){pedidosUsuario=[];return}try{const s=await getDocs(query(collection(db,"pedidos"),where("usuario","==",usuarioActual.uid)));pedidosUsuario=s.docs.map(d=>({id:d.id,...d.data()})).sort((a,b)=>(b.fecha?.seconds||0)-(a.fecha?.seconds||0))}catch(e){pedidosUsuario=[]}}
+function mostrarPedidos(){if(!usuarioActual)return mostrarMensaje("Inicia sesión","Debes iniciar sesión para consultar tus pedidos.");$("listaPedidos").innerHTML=pedidosUsuario.length?pedidosUsuario.map(p=>`<div class="pedido"><div class="pedidoCabecera"><strong>${p.fecha?.seconds?new Date(p.fecha.seconds*1000).toLocaleDateString("es-MX"):"Reciente"}</strong><span class="pedidoTotal">$${money(p.total)} MXN</span></div><div class="pedidoProductos">${(p.productos||[]).map(x=>`${x.nombre} × ${x.cantidad}`).join(", ")}</div></div>`).join(""):'<p style="text-align:center;padding:40px;color:#777">Todavía no tienes pedidos.</p>';$('modalPedidos').classList.add('activo');$("menuUsuario").classList.remove("activo")}
 $("pedidosLink").onclick=e=>{e.preventDefault();mostrarPedidos()};
-
-/* AUTH: se conserva */
-async function cargarCarrito(){
- if(!usuarioActual)return;
- try{const d=await getDoc(doc(db,"carritos",usuarioActual.uid));carrito=d.exists()&&Array.isArray(d.data().productos)?d.data().productos:[];actualizarCarrito()}catch(e){carrito=[];actualizarCarrito()}
-}
-async function cerrarSesionFn(){try{await signOut(auth);$("menuUsuario").classList.remove("activo");mostrarMensaje("Hasta pronto","Has cerrado sesión correctamente.")}catch(e){console.error(e)}}
-$("btnUsuario").onclick=()=>{if(usuarioActual)$("menuUsuario").classList.toggle("activo");else $("modalLogin").classList.add("activo")};
-$("cerrarSesion").onclick=cerrarSesionFn;
-
-onAuthStateChanged(auth,async u=>{
- usuarioActual=u;
- $("textoUsuario").textContent=u?obtenerNombreUsuario():"Iniciar sesión";
- if(u){await cargarCarrito();await cargarFavoritos();await cargarPedidos()}else{carrito=[];favoritos=[];pedidosUsuario=[];pintarFavoritos();actualizarCarrito()}
- actualizarPreferenciasUI();
-});
-
-/* LOGIN: se conserva */
-$("registroBtn").onclick=async()=>{
- if(!$("correo").value.trim()||!$("password").value.trim())return mostrarMensaje("Campos incompletos","Escribe tu correo y contraseña.");
- try{await createUserWithEmailAndPassword(auth,$("correo").value.trim(),$("password").value);cerrarModal("modalLogin");mostrarMensaje("¡Éxito!","Tu cuenta fue creada correctamente.")}catch(e){let m=e.code==="auth/email-already-in-use"?"Ese correo ya está registrado.":e.code==="auth/weak-password"?"La contraseña debe tener al menos 6 caracteres.":"No se pudo crear la cuenta.";mostrarMensaje("Error",m)}
-};
-$("loginBtn").onclick=async()=>{
- if(!$("correo").value.trim()||!$("password").value.trim())return mostrarMensaje("Campos incompletos","Escribe tu correo y contraseña.");
- try{await signInWithEmailAndPassword(auth,$("correo").value.trim(),$("password").value);cerrarModal("modalLogin")}catch(e){mostrarMensaje("Error","Correo o contraseña incorrectos.")}
-};
-$("googleBtn").onclick=async()=>{try{await signInWithPopup(auth,provider);cerrarModal("modalLogin")}catch(e){mostrarMensaje("No se pudo iniciar sesión","No fue posible completar el inicio de sesión con Google.")}};
-/* COMPRA */
-$("comprar").onclick=async()=>{
- if(!usuarioActual)return mostrarMensaje("Inicia sesión","Debes iniciar sesión para realizar una compra.");
- if(!carrito.length)return mostrarMensaje("Carrito vacío","Agrega productos antes de comprar.");
- try{
-  const total=carrito.reduce((s,p)=>s+Number(p.precio)*Number(p.cantidad),0);
-  await addDoc(collection(db,"pedidos"),{usuario:usuarioActual.uid,productos:carrito,total,fecha:new Date()});
-  carrito=[];actualizarCarrito();$("panelCarrito").classList.remove("activo");await cargarPedidos();mostrarMensaje("¡Compra realizada!","Gracias por tu compra.");
- }catch(e){console.error(e);mostrarMensaje("Error","No se pudo completar la compra. Intenta nuevamente.")}
-};
-
-/* BUSCADOR */
-$("buscador").addEventListener("input",()=>{
- const t=$("buscador").value.trim().toLowerCase();
- let encontrados=0;
- document.querySelectorAll(".productos").forEach(s=>{
-  let n=0;
-  s.querySelectorAll(".card").forEach(c=>{
-   const ok=!t||c.querySelector("h3").textContent.toLowerCase().includes(t)||(c.dataset.categoria||"").includes(t);
-   c.style.display=ok?"":"none";if(ok)n++;
-  });
-  s.style.display=n?"":"none";encontrados+=n;
- });
- $("mensajeBusqueda").style.display=t&&!encontrados?"block":"none";
-});
-
-/* NUEVO 7 DIAS */
-const CLAVE_NUEVOS="americanStyle_fechas_nuevos",DURACION_NUEVO=7*24*60*60*1000;
-let fechasNuevos={};try{fechasNuevos=JSON.parse(localStorage.getItem(CLAVE_NUEVOS)||"{}")}catch(e){}
-function revisarBadgesNuevo(){
- let cambios=false;
- document.querySelectorAll(".card").forEach(card=>{
-  const badge=card.querySelector(".badge.nuevo");if(!badge)return;
-  const id=card.dataset.id;if(!fechasNuevos[id]){fechasNuevos[id]=Date.now();cambios=true}
-  if(Date.now()-Number(fechasNuevos[id])>=DURACION_NUEVO){badge.remove();cambios=true}
- });
- if(cambios)localStorage.setItem(CLAVE_NUEVOS,JSON.stringify(fechasNuevos));
-}
-revisarBadgesNuevo();setInterval(revisarBadgesNuevo,60000);
-
-/* HERO */
-document.querySelectorAll("[data-scroll]").forEach(b=>b.onclick=()=>document.querySelector(b.dataset.scroll)?.scrollIntoView({behavior:"smooth"}));
-const slides=document.querySelectorAll(".slide"),dots=document.querySelectorAll(".dot"),hero=document.querySelector(".hero");let indice=0,intervalo=null;
-function mostrarSlide(i){slides.forEach(s=>s.classList.remove("activo"));dots.forEach(d=>d.classList.remove("activo"));slides[i].classList.add("activo");dots[i].classList.add("activo");indice=i}
-function siguienteSlide(){mostrarSlide((indice+1)%slides.length)}
-function anteriorSlide(){mostrarSlide((indice-1+slides.length)%slides.length)}
-function detenerSlider(){if(intervalo){clearInterval(intervalo);intervalo=null}}
-function iniciarSlider(){detenerSlider();intervalo=setInterval(siguienteSlide,5000)}
-$("siguiente").onclick=()=>{siguienteSlide();iniciarSlider()};$("anterior").onclick=()=>{anteriorSlide();iniciarSlider()};dots.forEach((d,i)=>d.onclick=()=>{mostrarSlide(i);iniciarSlider()});
-hero.onmouseenter=detenerSlider;hero.onmouseleave=iniciarSlider;
-let touchStartX=0;hero.addEventListener("touchstart",e=>touchStartX=e.changedTouches[0].screenX,{passive:true});hero.addEventListener("touchend",e=>{const diff=touchStartX-e.changedTouches[0].screenX;if(Math.abs(diff)>=50){diff>0?siguienteSlide():anteriorSlide();iniciarSlider()}},{passive:true});
-iniciarSlider();
+/* CUENTA: sin duplicados, solo resumen y accesos */
+function mostrarCuenta(){if(!usuarioActual)return mostrarMensaje("Inicia sesión","Debes iniciar sesión para consultar tu cuenta.");const n=carrito.reduce((s,p)=>s+Number(p.cantidad||0),0);$("contenidoCuenta").innerHTML=`<div class="cuentaPerfil"><div class="avatarCuenta">${inicial()}</div><div class="cuentaDatos"><h3>${nombreUsuario()}</h3><p>${usuarioActual.email||""}</p></div></div><div class="cuentaResumen"><div class="resumenBox"><strong>${n}</strong><span>En carrito</span></div><div class="resumenBox"><strong>${favoritos.length}</strong><span>Favoritos</span></div><div class="resumenBox"><strong>${pedidosUsuario.length}</strong><span>Pedidos</span></div></div><div class="cuentaOpciones"><div class="cuentaOpcion" id="cuentaCarrito"><i class="fa-solid fa-cart-shopping"></i>Mi carrito</div><div class="cuentaOpcion" id="cuentaFav"><i class="fa-solid fa-heart"></i>Mis favoritos</div><div class="cuentaOpcion" id="cuentaPedidos"><i class="fa-solid fa-box"></i>Mis pedidos</div>${esAdmin()?'<div class="cuentaOpcion" id="cuentaAdmin"><i class="fa-solid fa-chart-line"></i>Panel administrador</div>':''}<div class="cuentaOpcion" id="cuentaSalir"><i class="fa-solid fa-right-from-bracket"></i>Cerrar sesión</div></div>`;$("cuentaCarrito").onclick=()=>{cerrarModal("modalCuenta");$("panelCarrito").classList.add("activo")};$("cuentaFav").onclick=()=>{cerrarModal("modalCuenta");mostrarFavoritos()};$("cuentaPedidos").onclick=()=>{cerrarModal("modalCuenta");mostrarPedidos()};if(esAdmin())$("cuentaAdmin").onclick=()=>{cerrarModal("modalCuenta");mostrarAdmin()};$("cuentaSalir").onclick=()=>cerrarSesionFn();$("modalCuenta").classList.add("activo")}
+$("cuentaLink").onclick=e=>{e.preventDefault();$("menuUsuario").classList.remove("activo");mostrarCuenta()};
+/* ADMIN */
+function adminFormulario(){return `<div class="adminForm"><h3>➕ Agregar producto</h3><label>Nombre<input id="adminNombre" placeholder="Ej. Sudadera Nike"></label><label>Precio normal<input id="adminPrecio" type="number" min="0" placeholder="750"></label><label>Categoría<select id="adminCategoria"><option>Hombre</option><option>Mujer</option><option>Infantil</option><option>Accesorios</option></select></label><label>Imagen (URL)<input id="adminImagen" placeholder="https://..."></label><label>Descuento %<input id="adminDescuento" type="number" min="0" max="90" value="20"></label><label>Características<div class="adminToggle"><button type="button" id="adminNuevo" class="activo">NUEVO</button><button type="button" id="adminOferta">OFERTA</button></div></label><button class="adminBtn full" id="adminAgregar">Guardar producto</button></div>`}
+async function mostrarAdmin(){if(!esAdmin())return mostrarMensaje("Acceso denegado","Solo el administrador puede entrar aquí.");const oferta=productos.filter(p=>p.oferta).length,nuevo=productos.filter(p=>esNuevoActivo(p)).length;$("contenidoAdmin").innerHTML=`<div class="adminStats"><div class="adminStat"><strong>${productos.length}</strong><span>Productos</span></div><div class="adminStat"><strong>${nuevo}</strong><span>Nuevos</span></div><div class="adminStat"><strong>${oferta}</strong><span>Ofertas</span></div></div><div class="adminForm"><h3>🔥 Sección Ofertas</h3><button class="adminBtn full" id="adminToggleOfertas">${ofertasVisibles?"Quitar tarjeta/sección de Ofertas":"Poner tarjeta/sección de Ofertas"}</button></div>${adminFormulario()}<div class="adminList">${productos.map(p=>`<div class="adminProduct"><img src="${p.imagen}"><div class="adminProductInfo"><strong>${p.nombre}</strong><small>${p.categoria} • $${money(p.precio)} ${p.oferta?`• OFERTA ${p.descuento}%`:""} ${esNuevoActivo(p)?"• NUEVO":""}</small></div><div class="adminProductActions"><button class="miniBtn" data-admin-new="${p.id}">${p.nuevo?"Quitar NUEVO":"Poner NUEVO"}</button><button class="miniBtn" data-admin-offer="${p.id}">${p.oferta?"Quitar OFERTA":"Poner OFERTA"}</button><button class="miniBtn red" data-admin-delete="${p.id}">Eliminar</button></div></div>`).join("")}</div>`;$("adminToggleOfertas").onclick=()=>{ofertasVisibles=!ofertasVisibles;localStorage.setItem("americanStyle_ofertasVisibles",ofertasVisibles?"1":"0");$("ofertas").style.display=ofertasVisibles?"block":"none";mostrarAdmin()};let nuevoOn=true,ofertaOn=false;$("adminNuevo").onclick=()=>{nuevoOn=!nuevoOn;$("adminNuevo").classList.toggle("activo",nuevoOn)};$("adminOferta").onclick=()=>{ofertaOn=!ofertaOn;$("adminOferta").classList.toggle("activo",ofertaOn)};$("adminAgregar").onclick=async()=>{if(!esAdmin())return;const nombre=$("adminNombre").value.trim(),precio=Number($("adminPrecio").value),categoria=$("adminCategoria").value,imagen=$("adminImagen").value.trim()||`https://picsum.photos/400/500?${Date.now()}`,descuento=Math.min(90,Math.max(0,Number($("adminDescuento").value)||0));if(!nombre||!precio)return mostrarMensaje("Faltan datos","Escribe nombre y precio.");const id="p_"+Date.now();const p={id,nombre,precio,categoria,imagen,nuevo:nuevoOn,nuevoAt:nuevoOn?Date.now():0,oferta:ofertaOn,descuento:ofertaOn?descuento:0,creado:Date.now()};try{await setDoc(doc(db,"catalogo",id),p);mostrarToast("Producto creado",nombre);mostrarAdmin()}catch(e){mostrarMensaje("Error","No se pudo guardar el producto.")}};$("contenidoAdmin").querySelectorAll("[data-admin-new]").forEach(b=>b.onclick=async()=>{const p=productos.find(x=>String(x.id)===String(b.dataset.adminNew));if(p){await setDoc(doc(db,"catalogo",p.id),{...p,nuevo:!p.nuevo,nuevoAt:!p.nuevo?Date.now():0});mostrarAdmin()}});$("contenidoAdmin").querySelectorAll("[data-admin-offer]").forEach(b=>b.onclick=async()=>{const p=productos.find(x=>String(x.id)===String(b.dataset.adminOffer));if(p){let descuento=p.descuento||20;if(!p.oferta)descuento=prompt("¿Qué porcentaje de descuento quieres?",String(descuento));if(descuento!==null){descuento=Math.min(90,Math.max(1,Number(descuento)||20));await setDoc(doc(db,"catalogo",p.id),{...p,oferta:!p.oferta,descuento:!p.oferta?descuento:0});mostrarAdmin()}}});$("contenidoAdmin").querySelectorAll("[data-admin-delete]").forEach(b=>b.onclick=async()=>{const p=productos.find(x=>String(x.id)===String(b.dataset.adminDelete));if(p&&confirm(`¿Eliminar ${p.nombre}?`)){await deleteDoc(doc(db,"catalogo",p.id));mostrarAdmin()}});$("modalAdmin").classList.add("activo")}
+$("adminLink").onclick=e=>{e.preventDefault();$("menuUsuario").classList.remove("activo");mostrarAdmin()};
+/* NOTIFICACIONES: navegador + cambios del catálogo */
+async function pedirPermisoNotificaciones(){if(!preferencias.notificaciones||!("Notification"in window))return;if(Notification.permission==="default"){try{await Notification.requestPermission()}catch(e){}}}
+function notificar(t,c,icon){if(!preferencias.notificaciones||!("Notification"in window)||Notification.permission!=="granted")return;try{new Notification(t,{body:c,icon:icon||"https://picsum.photos/96/96?americanstyle"})}catch(e){}}
+function revisarNovedades(arr){const actual={};arr.forEach(p=>actual[p.id]={nuevo:esNuevoActivo(p),oferta:p.oferta,precio:p.precio,descuento:p.descuento,nombre:p.nombre});const primera=!Object.keys(ultimaNotificacionCatalogo).length;if(!primera&&usuarioActual){const antes=ultimaNotificacionCatalogo;arr.forEach(p=>{const old=antes[p.id];if(!old)return;if(esNuevoActivo(p)&&!old.nuevo&&preferencias.avisosNuevos)notificar("🆕 Nuevo en American Style",`${p.nombre} ya está disponible.`);if(p.oferta&&!old.oferta&&preferencias.avisosOfertas)notificar("🔥 Nueva oferta",`${p.nombre} ahora tiene ${p.descuento}% de descuento.`);});const idsAntes=Object.keys(antes);arr.forEach(p=>{if(!idsAntes.includes(p.id)){if(esNuevoActivo(p)&&preferencias.avisosNuevos)notificar("🆕 Producto nuevo",`${p.nombre} acaba de llegar.`);else if(p.oferta&&preferencias.avisosOfertas)notificar("🔥 Nueva oferta",`${p.nombre} tiene ${p.descuento}% OFF.`)}})}ultimaNotificacionCatalogo=actual;localStorage.setItem("americanStyle_catalogoConocido",JSON.stringify(actual))}
+async function cargarCatalogo(){try{await sembrarCatalogo();if(unsubscribeCatalogo)unsubscribeCatalogo();unsubscribeCatalogo=onSnapshot(collection(db,"catalogo"),snap=>{productos=snap.docs.map(d=>normalizarProducto(d.data()));productos.sort((a,b)=>String(a.id).localeCompare(String(b.id),undefined,{numeric:true}));renderCatalogo();revisarNovedades(productos);if(esAdmin()&&$("modalAdmin").classList.contains("activo"))mostrarAdmin()})}catch(e){console.error(e);productos=iniciales.map(normalizarProducto);renderCatalogo()}}
+/* AUTH */
+async function cargarCarrito(){if(!usuarioActual)return;try{const d=await getDoc(doc(db,"carritos",usuarioActual.uid));carrito=d.exists()&&Array.isArray(d.data().productos)?d.data().productos:[];actualizarCarrito()}catch(e){carrito=[];actualizarCarrito()}}async function cargarFavoritos(){if(!usuarioActual)return;try{const d=await getDoc(doc(db,"favoritos",usuarioActual.uid));favoritos=d.exists()&&Array.isArray(d.data().productos)?d.data().productos:[];pintarFavoritos()}catch(e){favoritos=[]}}
+async function cerrarSesionFn(){try{await signOut(auth);$("menuUsuario").classList.remove("activo");mostrarMensaje("Hasta pronto","Has cerrado sesión correctamente.")}catch(e){}}
+$("btnUsuario").onclick=()=>{if(usuarioActual)$("menuUsuario").classList.toggle("activo");else $("modalLogin").classList.add("activo")};$("cerrarSesion").onclick=cerrarSesionFn;
+$("registroBtn").onclick=async()=>{const c=$("correo").value.trim(),p=$("password").value;if(!c||!p)return mostrarMensaje("Campos incompletos","Escribe correo y contraseña.");try{await createUserWithEmailAndPassword(auth,c,p);cerrarModal("modalLogin");mostrarMensaje("¡Cuenta creada!","Tu cuenta está lista.")}catch(e){mostrarMensaje("Error","No se pudo crear la cuenta. Revisa el correo y la contraseña.")}};$("loginBtn").onclick=async()=>{const c=$("correo").value.trim(),p=$("password").value;if(!c||!p)return mostrarMensaje("Campos incompletos","Escribe correo y contraseña.");try{await signInWithEmailAndPassword(auth,c,p);cerrarModal("modalLogin")}catch(e){mostrarMensaje("Error","Correo o contraseña incorrectos.")}};$("googleBtn").onclick=async()=>{try{await signInWithPopup(auth,provider);cerrarModal("modalLogin")}catch(e){mostrarMensaje("Error","No fue posible iniciar sesión con Google.")}};
+$("comprar").onclick=async()=>{if(!usuarioActual)return mostrarMensaje("Inicia sesión","Debes iniciar sesión para comprar.");if(!carrito.length)return mostrarMensaje("Carrito vacío","Agrega productos antes de comprar.");try{const total=carrito.reduce((s,p)=>s+Number(p.precio)*Number(p.cantidad),0);await addDoc(collection(db,"pedidos"),{usuario:usuarioActual.uid,correo:usuarioActual.email||"",productos:carrito,total,fecha:new Date()});carrito=[];actualizarCarrito();$("panelCarrito").classList.remove("activo");await cargarPedidos();mostrarMensaje("¡Compra realizada!","Tu pedido quedó guardado en Mis pedidos.")}catch(e){mostrarMensaje("Error","No se pudo completar la compra.")}};
+/* SLIDER */
+const slides=document.querySelectorAll(".slide"),dots=document.querySelectorAll(".dot"),hero=document.querySelector(".hero");let indice=0,timer;function slide(i){slides.forEach(x=>x.classList.remove("activo"));dots.forEach(x=>x.classList.remove("activo"));slides[i].classList.add("activo");dots[i].classList.add("activo");indice=i}function iniciar(){clearInterval(timer);timer=setInterval(()=>slide((indice+1)%slides.length),5000)}$("siguiente").onclick=()=>{slide((indice+1)%slides.length);iniciar()};$("anterior").onclick=()=>{slide((indice-1+slides.length)%slides.length);iniciar()};dots.forEach((d,i)=>d.onclick=()=>{slide(i);iniciar()});hero.onmouseenter=()=>clearInterval(timer);hero.onmouseleave=iniciar;let tx=0;hero.addEventListener("touchstart",e=>tx=e.changedTouches[0].screenX,{passive:true});hero.addEventListener("touchend",e=>{const d=tx-e.changedTouches[0].screenX;if(Math.abs(d)>50){slide((indice+(d>0?1:-1)+slides.length)%slides.length);iniciar()}},{passive:true});document.querySelectorAll("[data-scroll]").forEach(b=>b.onclick=()=>document.querySelector(b.dataset.scroll)?.scrollIntoView({behavior:"smooth"}));
+/* ARRANQUE */
+ofertasVisibles=localStorage.getItem("americanStyle_ofertasVisibles")!=="0";$("ofertas").style.display=ofertasVisibles?"block":"none";actualizarPrefsUI();cargarCatalogo();iniciar();onAuthStateChanged(auth,async u=>{usuarioActual=u;$("textoUsuario").textContent=u?nombreUsuario():"Iniciar sesión";$("adminLink").style.display=esAdmin()?"flex":"none";if(u){await cargarCarrito();await cargarFavoritos();await cargarPedidos();pedirPermisoNotificaciones()}else{carrito=[];favoritos=[];pedidosUsuario=[];actualizarCarrito();pintarFavoritos()}});
 </script>
 </body>
 </html>
