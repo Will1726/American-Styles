@@ -759,6 +759,33 @@ nav a:hover:after{
     background:#0F62FE
 }
 
+.badge.agotado{
+    background:#111827;
+    color:#fff;
+    animation:badgeEntrada .6s ease both, agotadoPulso 2s ease-in-out .7s infinite
+}
+
+@keyframes agotadoPulso{
+    0%,100%{transform:scale(1)}
+    50%{transform:scale(1.04)}
+}
+
+.agotadoBtn,
+.agotadoBtn:disabled{
+    background:#9ca3af !important;
+    color:#fff !important;
+    cursor:not-allowed !important;
+    opacity:.85;
+}
+
+.stockMini{
+    display:block;
+    margin-top:6px;
+    font-size:11px;
+    color:#777;
+    font-weight:600;
+}
+
 .badge.oferta{
     background:#e53935;
     animation:
@@ -3272,6 +3299,11 @@ import {
     serverTimestamp
 } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
 
+import {
+    getFunctions,
+    httpsCallable
+} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-functions.js";
+
 
 const firebaseConfig = {
     apiKey:"AIzaSyAfJ8vGvEy7HCi9PaiA6hmv6yhlm-JDDBE",
@@ -3290,6 +3322,8 @@ const auth = getAuth(app);
 const provider = new GoogleAuthProvider();
 
 const db = getFirestore(app);
+const functions = getFunctions(app, "us-central1");
+const crearSesionStripe = httpsCallable(functions, "crearSesionStripe");
 
 const ADMIN_EMAIL = "willduran620@gmail.com";
 
@@ -3956,6 +3990,7 @@ const iniciales = [
 ];
 
 
+const DEFAULT_STOCK = 10;
 const NUEVO_DURACION =
     7 * 24 * 60 * 60 * 1000;
 
@@ -3985,6 +4020,10 @@ function normalizarProducto(p){
         precio:Number(p.precio) || 0,
 
         descuento:Number(p.descuento) || 0,
+
+        stock:Number.isFinite(Number(p.stock))
+            ? Math.max(0, Math.floor(Number(p.stock)))
+            : DEFAULT_STOCK,
 
         nuevo:esNuevoActivo(p),
 
@@ -4064,6 +4103,21 @@ async function sembrarCatalogo(){
     }
 
 
+    if(!snap.empty && localStorage.getItem("americanStyle_migracionStockV1") !== "1"){
+        for(const d of snap.docs){
+            const data = d.data();
+            if(data.stock === undefined || data.stock === null){
+                await setDoc(
+                    doc(db,"catalogo",String(d.id)),
+                    {stock:DEFAULT_STOCK},
+                    {merge:true}
+                );
+            }
+        }
+        localStorage.setItem("americanStyle_migracionStockV1","1");
+    }
+
+
     if(
         localStorage.getItem(
             "americanStyle_migracionOfertasV2"
@@ -4137,6 +4191,11 @@ function badgesHTML(p){
 
     }
 
+    if(Number(p.stock) <= 0){
+        h +=
+            '<span class="badge agotado">AGOTADO</span>';
+    }
+
     return h
         ? `<div class="badges">${h}</div>`
         : "";
@@ -4184,6 +4243,7 @@ function cardHTML(p){
         data-categoria="${p.categoria.toLowerCase()}"
         data-nuevo="${esNuevoActivo(p)}"
         data-oferta="${p.oferta}"
+        data-stock="${Number(p.stock)}"
     >
 
         ${badgesHTML(p)}
@@ -4201,8 +4261,12 @@ function cardHTML(p){
 
         ${precioHtml}
 
-        <button class="agregarCarrito">
-            Agregar al carrito
+        ${Number(p.stock) > 0
+            ? `<span class="stockMini">${Number(p.stock)} disponible${Number(p.stock)===1?"":"s"}</span>`
+            : `<span class="stockMini">Sin existencias</span>`}
+
+        <button class="agregarCarrito ${Number(p.stock)<=0?"agotadoBtn":""}" ${Number(p.stock)<=0?"disabled":""}>
+            ${Number(p.stock)<=0?"Agotado":"Agregar al carrito"}
         </button>
 
     </div>
@@ -4681,7 +4745,29 @@ async function guardarCarrito(){
 }
 
 
+function sincronizarCarritoConStock(){
+    let cambio = false;
+    carrito = carrito.filter(item => {
+        const p = productos.find(x => String(x.id) === String(item.id));
+        const stock = Math.max(0, Math.floor(Number(p?.stock ?? item.stock ?? 0)));
+        if(!p || stock <= 0){
+            cambio = true;
+            return false;
+        }
+        if(Number(item.cantidad) > stock){
+            item.cantidad = stock;
+            cambio = true;
+        }
+        item.stock = stock;
+        return Number(item.cantidad) > 0;
+    });
+    return cambio;
+}
+
+
 function actualizarCarrito(){
+
+    sincronizarCarritoConStock();
 
     let total = 0;
 
@@ -4883,6 +4969,22 @@ function cambiarCantidad(id,c){
     if(!p)
         return;
 
+    const productoCatalogo = productos.find(
+        x => String(x.id) === String(id)
+    );
+
+    const stock = Math.max(0, Math.floor(Number(productoCatalogo?.stock ?? p.stock ?? 0)));
+
+    if(c > 0 && Number(p.cantidad) >= stock){
+        if(stock <= 0){
+            carrito = carrito.filter(x => String(x.id) !== String(id));
+            actualizarCarrito();
+            mostrarMensaje("Producto agotado", `${p.nombre} ya no tiene existencias.`);
+        }else{
+            mostrarMensaje("Stock limitado", `Solo puedes comprar hasta ${stock} unidad${stock===1?"":"es"} de ${p.nombre}.`);
+        }
+        return;
+    }
 
     p.cantidad =
         Number(p.cantidad) + c;
@@ -5007,6 +5109,12 @@ function agregarAlCarrito(card){
     if(!p)
         return;
 
+    const stock = Math.max(0, Math.floor(Number(p.stock) || 0));
+
+    if(stock <= 0){
+        mostrarMensaje("Producto agotado", `${p.nombre} ya no tiene existencias disponibles.`);
+        return;
+    }
 
     const existe =
         carrito.find(
@@ -5032,6 +5140,8 @@ function agregarAlCarrito(card){
                 : 0,
 
         imagen:p.imagen,
+
+        stock,
 
         cantidad:1
 
@@ -5884,6 +5994,18 @@ function adminFormulario(){
         </label>
 
         <label>
+            Stock disponible
+
+            <input
+                id="adminStock"
+                type="number"
+                min="0"
+                step="1"
+                value="10"
+            >
+        </label>
+
+        <label>
             Características
 
             <div class="adminToggle">
@@ -6051,6 +6173,9 @@ async function mostrarAdmin(){
                                             : ""
                                     }
 
+                                    • STOCK: ${Number(p.stock)}
+                                    ${Number(p.stock)<=0 ? "• AGOTADO" : ""}
+
                                 </small>
 
                             </div>
@@ -6077,6 +6202,13 @@ async function mostrarAdmin(){
                                             ? "Quitar OFERTA"
                                             : "Poner OFERTA"
                                     }
+                                </button>
+
+                                <button
+                                    class="miniBtn"
+                                    data-admin-stock="${p.id}"
+                                >
+                                    Stock
                                 </button>
 
                                 <button
@@ -6188,7 +6320,7 @@ async function mostrarAdmin(){
             `https://picsum.photos/400/500?${Date.now()}`;
 
 
-        const descuento =
+            const descuento =
             Math.min(
                 90,
                 Math.max(
@@ -6199,6 +6331,8 @@ async function mostrarAdmin(){
                     ) || 0
                 )
             );
+
+        const stock = Math.max(0, Math.floor(Number($("adminStock").value) || 0));
 
 
         if(!nombre || !precio){
@@ -6421,6 +6555,23 @@ async function mostrarAdmin(){
 
             };
 
+        });
+
+
+    $("contenidoAdmin")
+        .querySelectorAll("[data-admin-stock]")
+        .forEach(b => {
+            b.onclick = async () => {
+                const p = productos.find(x => String(x.id) === String(b.dataset.adminStock));
+                if(!p) return;
+                const valor = prompt(`Stock para ${p.nombre}:`, String(p.stock));
+                if(valor === null) return;
+                const stock = Math.max(0, Math.floor(Number(valor)));
+                if(!Number.isFinite(stock)) return mostrarMensaje("Stock inválido","Escribe un número entero mayor o igual a 0.");
+                await setDoc(doc(db,"catalogo",p.id),{stock},{merge:true});
+                mostrarToast(stock === 0 ? "Producto agotado" : "Stock actualizado", `${p.nombre}: ${stock} unidad${stock===1?"":"es"}`);
+                mostrarAdmin();
+            };
         });
 
 
@@ -7213,110 +7364,79 @@ async () => {
 
 
 /* ============================================================
-   COMPRA
+   COMPRA / STRIPE TEST
 ============================================================ */
 
-$("comprar").onclick =
-async () => {
+async function validarStockAntesDePagar(){
+    const faltantes=[];
+    const items=[];
 
-    if(!usuarioActual){
-
-        return mostrarMensaje(
-            "Inicia sesión",
-            "Debes iniciar sesión para comprar."
-        );
-
+    for(const item of carrito){
+        const producto=productos.find(x=>String(x.id)===String(item.id));
+        const stock=Math.max(0,Math.floor(Number(producto?.stock||0)));
+        if(!producto || stock<=0){
+            faltantes.push(item.nombre);
+            continue;
+        }
+        if(Number(item.cantidad)>stock){
+            faltantes.push(`${item.nombre} (quedan ${stock})`);
+            continue;
+        }
+        items.push({id:String(producto.id),cantidad:Number(item.cantidad)});
     }
 
+    if(faltantes.length){
+        return {ok:false,mensaje:`Hay productos sin stock suficiente: ${faltantes.join(", ")}.`};
+    }
+    return {ok:true,items};
+}
+
+$("comprar").onclick = async () => {
+    if(!usuarioActual){
+        return mostrarMensaje("Inicia sesión","Debes iniciar sesión para comprar.");
+    }
 
     if(!carrito.length){
-
-        return mostrarMensaje(
-            "Carrito vacío",
-            "Agrega productos antes de comprar."
-        );
-
+        return mostrarMensaje("Carrito vacío","Agrega productos antes de comprar.");
     }
 
+    const validacion=await validarStockAntesDePagar();
+    if(!validacion.ok){
+        mostrarMensaje("Stock actualizado",validacion.mensaje);
+        return;
+    }
 
     try{
+        $("comprar").disabled=true;
+        $("comprar").textContent="Conectando con Stripe...";
 
-        const total =
-            carrito.reduce(
-                (s,p) =>
-                    s +
-                    Number(p.precio) *
-                    Number(p.cantidad),
-                0
-            );
+        const resultado=await crearSesionStripe({
+            items:validacion.items,
+            successUrl:`${window.location.origin}${window.location.pathname}?pago=exitoso`,
+            cancelUrl:`${window.location.origin}${window.location.pathname}?pago=cancelado`
+        });
 
-
-        await addDoc(
-
-            collection(
-                db,
-                "pedidos"
-            ),
-
-            {
-
-                usuario:
-                    usuarioActual.uid,
-
-                nombre:
-                    usuarioActual.displayName ||
-                    nombreUsuario(),
-
-                correo:
-                    usuarioActual.email ||
-                    "",
-
-                productos:
-                    carrito,
-
-                total,
-
-                fecha:
-                    serverTimestamp()
-
-            }
-
-        );
-
-
-        carrito = [];
-
-        actualizarCarrito();
-
-
-        $("panelCarrito")
-            .classList.remove(
-                "activo"
-            );
-
-
-        await cargarPedidos();
-
-
-        mostrarMensaje(
-            "¡Compra realizada!",
-            "Tu pedido quedó guardado en Mis pedidos."
-        );
-
-
+        const url=resultado?.data?.url;
+        if(!url) throw new Error("Stripe no devolvió la URL de Checkout.");
+        window.location.href=url;
     }catch(e){
-
-        console.error(e);
-
-        mostrarMensaje(
-            "Error",
-            "No se pudo completar la compra."
-        );
-
+        console.error("Stripe:",e);
+        mostrarMensaje("No se pudo abrir Stripe",e?.message||"Revisa que la Cloud Function de Stripe esté desplegada y configurada.");
+        $("comprar").disabled=false;
+        $("comprar").textContent="Finalizar compra";
     }
-
 };
 
+function revisarResultadoStripe(){
+    const estado=new URLSearchParams(window.location.search).get("pago");
+    if(estado==="exitoso"){
+        mostrarMensaje("Pago enviado a Stripe","Si el pago fue aprobado, el pedido aparecerá en Mis pedidos cuando Stripe confirme la operación.");
+        history.replaceState({},document.title,window.location.pathname);
+    }else if(estado==="cancelado"){
+        mostrarMensaje("Pago cancelado","No se realizó ningún cargo. Tu carrito sigue disponible.");
+        history.replaceState({},document.title,window.location.pathname);
+    }
+}
 
 /* ============================================================
    TOAST
@@ -7581,6 +7701,7 @@ $("ofertas").style.display =
 
 actualizarPrefsUI();
 
+revisarResultadoStripe();
 cargarCatalogo();
 
 iniciar();
